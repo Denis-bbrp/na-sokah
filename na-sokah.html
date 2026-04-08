@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>НА СОКАХ.Еда — готовьте как шеф за 15 минут</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Golos+Text:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Golos Text',sans-serif;background:#EFEFEF;color:#1A1A1A;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+button{cursor:pointer;font-family:inherit;border:none;outline:none;background:none}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+:root{
+  --or:#F26522;--or-d:#D4501A;
+  --ye:#FFD600;--ye-h:#ECC900;
+  --gr:#3DAA57;
+  --bg:#EFEFEF;--wh:#FFFFFF;
+  --card:#F5F5F5;--bdr:#E4E4E4;
+  --ink:#1A1A1A;--ink2:#4A4A4A;--ink3:#8A8A8A;--ink4:#C0C0C0;
+  --ft:#272727;
+  --rs:26px;--rc:16px;--rp:100px;
+  --sh1:0 2px 12px rgba(0,0,0,.07);
+  --sh2:0 6px 28px rgba(0,0,0,.11);
+}
+.w{max-width:1160px;margin:0 auto;padding:0 24px}
+.hs{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.hs::-webkit-scrollbar{display:none}
+@keyframes sideIn{from{transform:translateX(105%)}to{transform:translateX(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* HEADER */
+#hdr{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--bdr)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.logo{display:flex;align-items:center;gap:13px;flex-shrink:0}
+.logo-mk{width:44px;height:44px;border-radius:14px;background:var(--ye);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 14px rgba(255,214,0,.4)}
+.logo-mk svg{width:26px;height:26px}
+.logo-nm{font-family:'Playfair Display',Georgia,serif;font-size:18px;font-weight:800;color:#2a2a2a;letter-spacing:-.01em;line-height:1.15}
+.logo-nm small{color:var(--ink3);font-size:10px;font-weight:500;display:block;letter-spacing:.01em;font-family:'Golos Text',sans-serif;margin-top:2px}
+.city-wrap{position:relative;flex-shrink:0}
+.city-btn{display:flex;align-items:center;gap:5px;font-size:14px;color:var(--ink2);padding:7px 13px;border-radius:var(--rp);transition:background .15s}
+.city-btn:hover{background:var(--card)}
+.city-arr{font-size:9px;color:var(--ink3)}
+.city-drop{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border-radius:var(--rc);box-shadow:var(--sh2);border:1px solid var(--bdr);min-width:230px;overflow:hidden;display:none;z-index:10}
+.city-drop.open{display:block;animation:fadeUp .14s ease}
+.city-drop a{display:block;padding:12px 18px;font-size:14px;color:var(--ink2);transition:background .12s}
+.city-drop a:hover{background:var(--card)}
+.hdr-r{display:flex;align-items:center;gap:8px}
+.btn-login{background:var(--card);color:var(--ink);font-size:14px;font-weight:500;padding:8px 18px;border-radius:var(--rp);transition:background .15s}
+.btn-login:hover{background:#e6e6e6}
+.btn-cart{display:flex;align-items:center;gap:8px;background:var(--card);font-size:14px;font-weight:600;padding:8px 14px;border-radius:var(--rp);transition:background .15s}
+.btn-cart:hover{background:#e6e6e6}
+.cart-ct{background:var(--or);color:#fff;font-size:11px;font-weight:700;min-width:20px;height:20px;padding:0 4px;border-radius:10px;display:none;align-items:center;justify-content:center}
+.cart-ct.on{display:flex}
+
+/* HERO */
+#hero{padding:16px 0 0}
+.hero-wrap{background:var(--or);border-radius:40px;padding:56px 56px 48px;display:flex;flex-direction:column;gap:36px}
+.hero-title{font-family:'Golos Text',sans-serif;font-size:clamp(38px,5vw,72px);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.01em;white-space:nowrap}
+.hero-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:end}
+.hero-bl{font-family:'Golos Text',sans-serif;font-size:clamp(15px,1.6vw,20px);font-weight:300;color:rgba(255,255,255,.9);line-height:1.45;margin-bottom:12px;padding-left:4px}
+.hero-inner{border-radius:22px;overflow:hidden;height:400px;background:#e8601e}
+.hero-inner img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .5s}
+.hero-inner:hover img{transform:scale(1.04)}
+
+/* CATEGORIES */
+#cats{padding:36px 0 0}
+.tagline{font-size:clamp(15px,1.8vw,21px);font-weight:400;color:var(--ink2);text-align:center;line-height:1.55;margin-bottom:26px}
+.cats-row{display:flex;gap:10px;padding:4px 2px 14px}
+.cat-c{flex-shrink:0;background:#fff;border-radius:var(--rc);border:1.5px solid var(--bdr);padding:14px 16px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;transition:box-shadow .2s,transform .18s,border-color .18s;min-width:120px;position:relative}
+.cat-c:hover{box-shadow:var(--sh1);transform:translateY(-2px)}
+.cat-c.act{border-color:var(--or);box-shadow:0 0 0 1px var(--or)}
+.cat-ph{width:76px;height:76px;border-radius:50%;overflow:hidden;background:var(--card);flex-shrink:0}
+.cat-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.cat-lb{font-size:12px;font-weight:600;color:var(--ink);text-align:center;line-height:1.3}
+.cat-bdg{position:absolute;top:9px;right:9px;background:var(--gr);color:#fff;font-size:9.5px;font-weight:700;padding:3px 7px;border-radius:var(--rp);letter-spacing:.03em;white-space:nowrap}
+.cat-all{flex-shrink:0;background:#fff;border-radius:var(--rc);border:1.5px solid var(--bdr);padding:14px 20px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:600;color:var(--ink2);white-space:nowrap;gap:6px;min-width:116px;transition:box-shadow .18s}
+.cat-all:hover{box-shadow:var(--sh1)}
+
+/* SETS */
+#sets{padding:28px 0}
+.sets-box{background:var(--card);border-radius:var(--rs);padding:38px}
+.sets-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px;gap:20px;flex-wrap:wrap}
+.sets-hed{font-family:'Unbounded',sans-serif;font-size:clamp(30px,4vw,52px);font-weight:900;color:var(--ink);letter-spacing:-.035em;line-height:1.0;flex-shrink:0}
+.sets-bul{display:flex;flex-direction:column;gap:8px;padding-top:4px}
+.sets-bul li{font-size:14px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px;line-height:1.45}
+.sets-bul li::before{content:'—';color:var(--or);font-weight:700;flex-shrink:0}
+.sets-body{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch}
+.sets-promo{border-radius:var(--rc);overflow:hidden;position:relative;min-height:340px;display:flex;flex-direction:column;justify-content:flex-end}
+.sp-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.sp-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(210,65,8,.88) 0%,rgba(242,101,34,.4) 55%,transparent 100%)}
+.sp-cnt{position:relative;z-index:1;padding:28px}
+.sp-title{font-family:'Unbounded',sans-serif;font-size:22px;font-weight:900;color:#fff;line-height:1.18;margin-bottom:18px}
+.btn-promo{display:inline-block;background:#fff;color:var(--or);font-size:13px;font-weight:700;padding:10px 22px;border-radius:var(--rp);transition:background .15s;width:fit-content}
+.btn-promo:hover{background:rgba(255,255,255,.9)}
+.sets-rows{background:#fff;border-radius:var(--rc);overflow:hidden;display:flex;flex-direction:column}
+.set-row{display:flex;align-items:center;gap:14px;padding:19px 20px;border-bottom:1px solid var(--bdr);cursor:pointer;transition:background .15s}
+.set-row:last-child{border-bottom:none}
+.set-row:hover{background:#fafafa}
+.set-inf{flex:1;min-width:0}
+.set-nm{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.set-sb{font-size:13px;color:var(--ink3);margin-bottom:9px}
+.set-mt{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.set-pr{background:var(--ink);color:#fff;font-size:12px;font-weight:700;padding:4px 11px;border-radius:var(--rp)}
+.set-ct{font-size:12px;color:var(--ink3)}
+.set-ic{width:30px;height:30px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.set-img{width:74px;height:74px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--card);overflow:hidden;display:block}
+
+/* SEC TITLE */
+.sec-t{font-family:'Unbounded',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:900;color:var(--ink);letter-spacing:-.03em;margin-bottom:22px}
+
+/* FAV ROW */
+#fav{padding:0 0 28px}
+.fav-row{display:flex;gap:14px;padding:4px 0 10px}
+.dc{flex-shrink:0;width:254px;background:#fff;border-radius:var(--rc);overflow:hidden;border:1px solid var(--bdr);cursor:pointer;transition:box-shadow .2s,transform .2s;display:flex;flex-direction:column}
+.dc:hover{box-shadow:var(--sh2);transform:translateY(-3px)}
+.dc-ib{height:175px;position:relative;overflow:hidden;flex-shrink:0}
+.dc-bg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;transition:transform .4s}
+.dc:hover .dc-bg{transform:scale(1.06)}
+.dc-wm{position:absolute;bottom:8px;right:12px;font-size:11px;font-weight:700;font-style:italic;color:rgba(255,255,255,.62);letter-spacing:.03em;pointer-events:none}
+.dc-bd{padding:14px 14px 14px;flex:1;display:flex;flex-direction:column;gap:10px}
+.dc-nm{font-size:14px;font-weight:600;color:var(--ink);line-height:1.42;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1}
+.dc-ft{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.dc-pr{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.dc-ps{font-size:11px;font-weight:400;color:var(--ink3);margin-top:2px}
+.btn-add{width:38px;height:38px;border-radius:50%;background:var(--ye);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--ink);line-height:1;flex-shrink:0;transition:background .15s,transform .15s}
+.btn-add:hover{background:var(--ye-h);transform:scale(1.1) rotate(5deg)}
+.btn-add.done{background:var(--gr);color:#fff;font-size:14px}
+
+/* MENU GRID */
+#mn{padding:0 0 28px}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mc{background:#fff;border-radius:var(--rc);overflow:hidden;border:1px solid var(--bdr);cursor:pointer;transition:box-shadow .2s,transform .2s}
+.mc:hover{box-shadow:var(--sh2);transform:translateY(-2px)}
+.mc-ib{height:228px;position:relative;overflow:hidden;display:block}
+.mc-bg{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;transition:transform .4s}
+.mc:hover .mc-bg{transform:scale(1.04)}
+.mc-wm{position:absolute;bottom:10px;right:14px;font-size:12px;font-weight:700;font-style:italic;color:rgba(255,255,255,.55);pointer-events:none}
+.mc-bd{padding:36px 20px 20px}
+.mc-nm{font-size:16px;font-weight:700;color:var(--ink);line-height:1.38;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:44px}
+.mc-mt{font-size:12px;color:var(--ink3);margin-bottom:14px}
+.mc-var{background:var(--card);border-radius:9px;padding:9px 13px;font-size:13px;color:var(--ink2);display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;cursor:pointer;transition:background .15s;user-select:none}
+.mc-var:hover{background:#ebebeb}
+.mc-bot{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.mc-price{font-size:26px;font-weight:700;letter-spacing:-.025em}
+.mc-psub{font-size:11px;color:var(--ink3);margin-top:2px}
+.mc-acts{display:flex;align-items:center;gap:8px}
+.mc-port{background:var(--card);border-radius:9px;padding:8px 13px;font-size:13px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:5px;cursor:pointer;transition:background .15s;user-select:none}
+.mc-port:hover{background:#ebebeb}
+.mc-cart{width:42px;height:42px;border-radius:10px;background:var(--ye);display:flex;align-items:center;justify-content:center;transition:background .15s,transform .13s;flex-shrink:0}
+.mc-cart:hover{background:var(--ye-h);transform:scale(1.08)}
+.mc-cart svg{width:19px;height:19px;stroke:var(--ink);stroke-width:2.2;fill:none}
+.mc-cart.done{background:var(--gr)}
+.mc-cart.done svg{stroke:#fff}
+
+/* COLLECTIONS */
+#coll{padding:0 0 28px}
+.coll-g{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch}
+.cf{border-radius:var(--rc);overflow:hidden;position:relative;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer}
+.cf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.cf:hover img{transform:scale(1.04)}
+.cf-ov{position:relative;z-index:1;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 65%);padding:30px}
+.cf-t{font-family:'Unbounded',sans-serif;font-size:24px;font-weight:900;color:#fff;line-height:1.18;margin-bottom:14px}
+.btn-coll{display:inline-block;background:#fff;color:var(--ink);font-size:13px;font-weight:700;padding:10px 20px;border-radius:var(--rp);transition:background .15s}
+.btn-coll:hover{background:rgba(255,255,255,.88)}
+.ct-g{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:10px}
+.ct{border-radius:var(--rc);overflow:hidden;position:relative;cursor:pointer;min-height:126px}
+.ct img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.ct:hover img{transform:scale(1.07)}
+.ct-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.48) 0%,transparent 58%)}
+.ct-lb{position:absolute;bottom:10px;left:12px;font-size:13px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.28)}
+.ct-solid{display:flex;align-items:center;justify-content:center}
+.ct-pnm{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:900;letter-spacing:-.02em}
+
+/* TESTIMONIALS */
+#testi{padding:0 0 28px}
+.testi-box{background:var(--card);border-radius:var(--rs);padding:42px}
+.testi-in{display:grid;grid-template-columns:5fr 7fr;gap:44px;align-items:start}
+.t-big{font-family:'Unbounded',sans-serif;font-size:clamp(20px,2.4vw,28px);font-weight:900;color:var(--ink);line-height:1.22;letter-spacing:-.03em;margin-bottom:22px}
+.btn-ya{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1.5px solid var(--bdr);border-radius:var(--rp);padding:10px 18px;font-size:13px;font-weight:700;color:var(--ink);transition:box-shadow .15s;cursor:pointer}
+.btn-ya:hover{box-shadow:var(--sh1)}
+.ya-pin{width:20px;height:20px;background:#FC3F1D;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ya-pin-i{width:8px;height:8px;background:#fff;border-radius:50%}
+.tg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tc{background:#fff;border-radius:var(--rc);padding:22px}
+.tc-top{display:flex;align-items:center;gap:11px;margin-bottom:13px}
+.tc-av{width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--card);overflow:hidden;display:block}
+.tc-nm{font-size:14px;font-weight:700}
+.tc-who{font-size:12px;color:var(--ink3);margin-top:1px}
+.tc-txt{font-size:13.5px;color:var(--ink2);line-height:1.65;margin-bottom:14px}
+.tc-tag{display:inline-block;background:var(--card);border-radius:var(--rp);padding:5px 13px;font-size:12px;font-weight:600;color:var(--ink2)}
+
+/* COUNTER */
+#ctr{padding:60px 0 48px;text-align:center}
+.ctr-n{font-family:'Unbounded',sans-serif;font-size:clamp(80px,12vw,130px);font-weight:900;color:#E0E0E0;letter-spacing:-.04em;line-height:1;margin-bottom:14px}
+.ctr-t{font-size:16px;color:var(--ink3);line-height:1.65;max-width:480px;margin:0 auto}
+.ctr-em{color:var(--ink4);font-style:italic}
+
+/* FAQ */
+#faq{padding:0 0 28px}
+.faq-box{background:var(--card);border-radius:var(--rs);padding:42px}
+.faq-g{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:30px}
+.fi{background:#fff;border-radius:var(--rc);overflow:hidden}
+.fi-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:17px 19px;gap:12px;text-align:left;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;transition:color .15s;font-family:'Golos Text',sans-serif}
+.fi-q:hover{color:var(--or)}
+.fi-ch{width:28px;height:28px;border-radius:50%;background:var(--card);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink3);transition:transform .28s,background .2s,color .2s}
+.fi.open .fi-ch{transform:rotate(180deg);background:var(--or);color:#fff}
+.fi-a{max-height:0;overflow:hidden;font-size:13.5px;color:var(--ink2);line-height:1.7;padding:0 19px;transition:max-height .32s ease,padding .28s}
+.fi.open .fi-a{max-height:180px;padding:0 19px 18px}
+.faq-ft{display:flex;align-items:center;justify-content:flex-end;gap:22px;flex-wrap:wrap}
+.faq-ft-t{font-size:13px;color:var(--ink3);line-height:1.5}
+.sb{display:flex;gap:8px}
+.sb a{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;transition:transform .15s,opacity .15s;flex-shrink:0}
+.sb a:hover{transform:scale(1.14);opacity:.85}
+
+/* FOOTER */
+#ft{background:var(--ft);border-radius:var(--rs) var(--rs) 0 0;margin-top:8px;padding:52px 0 36px}
+.ft-g{display:grid;grid-template-columns:2fr 1.4fr 1.4fr;gap:44px;margin-bottom:44px}
+.ft-ct{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:18px}
+.ft-lk{display:flex;flex-direction:column;gap:11px}
+.ft-lk a{font-size:14px;color:rgba(255,255,255,.48);transition:color .15s}
+.ft-lk a:hover{color:rgba(255,255,255,.9)}
+.ft-sub{font-size:13px;color:rgba(255,255,255,.38);margin-bottom:10px;line-height:1.55}
+.ft-ph{font-size:19px;font-weight:700;color:#fff;margin-bottom:18px;letter-spacing:-.01em}
+.ft-sc{display:flex;gap:10px}
+.ft-sc a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(255,255,255,.65);transition:background .15s}
+.ft-sc a:hover{background:rgba(255,255,255,.2)}
+.ft-ap{font-size:13px;color:rgba(255,255,255,.38);margin-bottom:16px;line-height:1.55}
+.app-bts{display:flex;flex-direction:column;gap:9px}
+.btn-ap{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.09);border-radius:11px;padding:11px 16px;color:#fff;transition:background .15s}
+.btn-ap:hover{background:rgba(255,255,255,.16)}
+.btn-ap-ic{font-size:22px;flex-shrink:0}
+.btn-ap b{font-size:14px;font-weight:600;display:block}
+.btn-ap small{font-size:10px;color:rgba(255,255,255,.45);display:block;margin-bottom:2px}
+.ft-bt{border-top:1px solid rgba(255,255,255,.08);padding-top:26px}
+.ft-lg{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:18px}
+.ft-lg a{font-size:12px;color:rgba(255,255,255,.28);transition:color .15s}
+.ft-lg a:hover{color:rgba(255,255,255,.6)}
+.ft-pay{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.pay-b{background:rgba(255,255,255,.09);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;color:rgba(255,255,255,.45);letter-spacing:.04em}
+.skv{margin-left:auto;font-size:11px;color:rgba(255,255,255,.28);display:flex;align-items:center;gap:5px}
+
+/* DOC MODAL */
+#docov{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:800;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);animation:fadeUp .18s ease}
+#docov.off{display:none}
+.doc-w{position:relative;width:100%;max-width:560px;padding:0 16px}
+.doc-b{background:#fff;border-radius:var(--rs);max-height:80vh;display:flex;flex-direction:column;box-shadow:0 20px 70px rgba(0,0,0,.2)}
+.doc-h{padding:24px 28px 20px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.doc-h h2{font-size:18px;font-weight:700}
+.doc-x{width:32px;height:32px;border-radius:50%;background:var(--card);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink2);cursor:pointer;transition:background .15s;flex-shrink:0}
+.doc-x:hover{background:#e6e6e6}
+.doc-body{padding:24px 28px;overflow-y:auto;font-size:14px;color:var(--ink2);line-height:1.75}
+.doc-body h3{font-size:15px;font-weight:700;color:var(--ink);margin:20px 0 8px}
+.doc-body h3:first-child{margin-top:0}
+.doc-body p{margin-bottom:10px}
+
+/* COOKIE */
+#cookie{position:fixed;bottom:20px;right:20px;background:#fff;border-radius:var(--rc);box-shadow:0 4px 28px rgba(0,0,0,.13);padding:16px 18px;max-width:318px;z-index:500;display:flex;align-items:flex-start;gap:11px;border:1px solid var(--bdr);animation:fadeUp .3s ease}
+#cookie.gone{display:none}
+.ck-ic{font-size:22px;line-height:1.3;flex-shrink:0}
+.ck-tx{font-size:12px;color:var(--ink2);line-height:1.6;flex:1}
+.ck-tx a{color:var(--or);text-decoration:underline}
+.ck-ok{font-size:13px;font-weight:700;color:var(--ink);padding:4px 0 4px 12px;flex-shrink:0;transition:color .15s}
+.ck-ok:hover{color:var(--or)}
+
+/* LOGIN */
+#lov{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:600;display:flex;align-items:center;justify-content:center;animation:fadeUp .2s ease;backdrop-filter:blur(4px)}
+#lov.off{display:none}
+.lw{position:relative;width:100%;max-width:420px;padding:0 16px}
+.lb{background:#fff;border-radius:var(--rs);padding:44px 40px;width:100%;box-shadow:0 16px 60px rgba(0,0,0,.18);animation:fadeUp .25s ease}
+.lb-logo{display:flex;justify-content:center;margin-bottom:28px}
+.lb-logo-mk{width:48px;height:48px;border-radius:14px;background:var(--or);display:flex;align-items:center;justify-content:center}
+.lb-logo-mk svg{width:26px;height:26px;fill:#fff}
+.lt{font-size:22px;font-weight:700;text-align:center;margin-bottom:6px}
+.lt-sub{font-size:14px;color:var(--ink3);text-align:center;margin-bottom:24px;line-height:1.5}
+.li{width:100%;border:1.5px solid var(--bdr);border-radius:var(--rc);padding:15px 17px;font-size:16px;font-family:'Golos Text',sans-serif;color:var(--ink);outline:none;margin-bottom:12px;transition:border-color .2s}
+.li:focus{border-color:var(--or)}
+.lbtn{width:100%;background:var(--card);border-radius:var(--rc);padding:15px;font-size:16px;font-weight:700;color:var(--ink3);transition:background .2s,color .2s;font-family:'Golos Text',sans-serif}
+.lbtn.rdy{background:var(--ye);color:var(--ink);cursor:pointer}
+.ll{font-size:11px;color:var(--ink4);text-align:center;line-height:1.65;margin-top:16px}
+.ll a{color:var(--ink3);text-decoration:underline}
+.lx{position:absolute;top:0;right:16px;background:#fff;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--ink2);cursor:pointer;transition:background .15s;box-shadow:var(--sh1);border:1px solid var(--bdr)}
+.lx:hover{background:var(--card)}
+.l-back{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--ink3);cursor:pointer;margin-bottom:20px;width:fit-content;transition:color .15s}
+.l-back:hover{color:var(--ink)}
+.sms-digits{display:flex;gap:12px;margin-bottom:16px;justify-content:center}
+.sms-d{width:64px;height:64px;border:1.5px solid var(--bdr);border-radius:var(--rc);padding:0;font-size:26px;font-weight:700;text-align:center;font-family:'Golos Text',sans-serif;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s;-moz-appearance:textfield;appearance:textfield;flex-shrink:0}
+.sms-d::-webkit-outer-spin-button,.sms-d::-webkit-inner-spin-button{-webkit-appearance:none;appearance:none}
+.sms-d:focus{border-color:var(--or);box-shadow:0 0 0 3px rgba(242,101,34,.12)}
+.sms-hint{font-size:13px;color:var(--ink3);text-align:center;margin-bottom:16px}
+.sms-hint b{color:var(--ink)}
+.l-resend{font-size:13px;color:var(--ink3);text-align:center;margin-top:14px}
+.l-resend span{color:var(--or);cursor:pointer;font-weight:600}
+.l-resend span.disabled{color:var(--ink3);cursor:default;pointer-events:none}
+@keyframes lShake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.l-shake{animation:lShake .4s ease}
+/* HEADER USER STATE */
+.btn-user{display:flex;align-items:center;gap:8px;background:var(--card);font-size:14px;font-weight:600;padding:8px 14px;border-radius:var(--rp);transition:background .15s;cursor:pointer}
+.btn-user:hover{background:#e6e6e6}
+.user-av{width:24px;height:24px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
+
+/* CART */
+#cov{position:fixed;inset:0;background:rgba(0,0,0,.38);z-index:700;display:none}
+#cov.on{display:block;animation:fadeUp .2s ease}
+#csb{position:fixed;top:0;right:0;bottom:0;width:min(100vw,420px);background:#fff;z-index:701;display:flex;flex-direction:column;display:none}
+#csb.on{display:flex;animation:sideIn .32s cubic-bezier(.32,.72,0,1)}
+.ch{display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--bdr);flex-shrink:0}
+.ch-bk{width:32px;height:32px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:background .15s}
+.ch-bk:hover{background:#e0e0e0}
+.ch-t{font-size:16px;font-weight:700}
+.cil{flex:1;overflow-y:auto;padding:14px 18px;display:flex;flex-direction:column}
+.ci{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--bdr);position:relative}
+.ci:last-child{border-bottom:none}
+.ci-img{width:70px;height:70px;border-radius:var(--rc);object-fit:cover;flex-shrink:0;background:var(--card);overflow:hidden;display:block}
+.ci-inf{flex:1;min-width:0;padding-right:24px}
+.ci-nm{font-size:14px;font-weight:600;line-height:1.35;margin-bottom:4px}
+.ci-pr{font-size:13px;font-weight:700;border-bottom:1.5px dashed var(--bdr);display:inline}
+.ci-vr{background:var(--card);border-radius:7px;padding:5px 10px;font-size:12px;color:var(--ink2);display:flex;align-items:center;justify-content:space-between;margin-top:8px;cursor:pointer}
+.ci-rm{position:absolute;top:14px;right:0;width:22px;height:22px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--ink3);cursor:pointer;transition:background .15s}
+.ci-rm:hover{background:#ddd}
+.cpb{background:var(--card);border-radius:var(--rc);padding:14px;margin:0 18px 14px;display:flex;gap:10px;align-items:center;flex-shrink:0}
+.cpb-img{width:56px;height:56px;border-radius:10px;object-fit:cover;flex-shrink:0;background:#ddd;overflow:hidden;display:block}
+.cpb-tx{font-size:13px;color:var(--ink2);line-height:1.4}
+.cpb-tx b{color:var(--ink);font-weight:700}
+.cs{padding:16px 18px;border-top:1px solid var(--bdr);flex-shrink:0}
+.cs-t{font-size:16px;font-weight:700;margin-bottom:14px}
+.cs-r{display:flex;justify-content:space-between;font-size:14px;color:var(--ink2);padding:6px 0}
+.cs-r.tot{font-size:16px;font-weight:700;color:var(--ink);border-top:1px solid var(--bdr);margin-top:8px;padding-top:13px}
+.cs-pi{width:100%;border:1.5px solid var(--bdr);border-radius:10px;padding:10px 14px;font-size:14px;color:var(--ink);outline:none;font-family:'Golos Text',sans-serif;margin:10px 0;transition:border-color .2s}
+.cs-pi:focus{border-color:var(--or)}
+.cs-pi::placeholder{color:var(--ink4)}
+.btn-co{width:100%;margin-top:14px;background:var(--ye);border-radius:var(--rp);padding:17px;font-size:16px;font-weight:700;color:var(--ink);display:flex;align-items:center;justify-content:center;gap:10px;transition:background .15s,transform .1s;font-family:'Golos Text',sans-serif}
+.btn-co:hover{background:var(--ye-h);transform:translateY(-1px)}
+.old-p{text-decoration:line-through;font-size:14px;font-weight:400;color:var(--ink3)}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .sets-body{grid-template-columns:1fr}
+  .mg{grid-template-columns:1fr}
+  .coll-g{grid-template-columns:1fr}
+  .ct-g{grid-template-rows:repeat(3,110px)}
+  .testi-in{grid-template-columns:1fr}
+  .faq-g{grid-template-columns:1fr}
+  .ft-g{grid-template-columns:1fr 1fr}
+}
+@media(max-width:960px){
+  .hero-inner{height:280px}
+}
+@media(max-width:640px){
+  .w{padding:0 14px}
+  .hero-wrap{padding:32px 24px 32px;border-radius:24px;gap:28px}
+  .hero-title{white-space:normal}
+  .hero-inner{height:200px}
+  .hero-bottom{grid-template-columns:1fr;gap:14px}
+  .sets-box,.testi-box,.faq-box{padding:24px 18px}
+  .ft-g{grid-template-columns:1fr}
+  .city-wrap{display:none}
+  .logo-nm small{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="w">
+    <div class="hdr-in">
+      <a href="#" class="logo">
+        <div class="logo-mk">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- пар -->
+            <path d="M9 6c0-1 1-1.5 1-2.5S9 2 9 2" stroke="rgba(0,0,0,.35)" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M13 6c0-1 1-1.5 1-2.5S13 2 13 2" stroke="rgba(0,0,0,.35)" stroke-width="1.4" stroke-linecap="round"/>
+            <path d="M17 6c0-1 1-1.5 1-2.5S17 2 17 2" stroke="rgba(0,0,0,.35)" stroke-width="1.4" stroke-linecap="round"/>
+            <!-- миска -->
+            <path d="M5 11h18a11 11 0 0 1-2.07 5.5A9 9 0 0 1 14 20a9 9 0 0 1-6.93-3.5A11 11 0 0 1 5 11z" fill="rgba(0,0,0,.8)"/>
+            <!-- ободок -->
+            <rect x="4" y="9.5" width="20" height="2.5" rx="1.25" fill="rgba(0,0,0,.85)"/>
+            <!-- ложка -->
+            <path d="M22 20.5 L14.5 14" stroke="rgba(0,0,0,.4)" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="23" cy="21.5" r="1.5" fill="rgba(0,0,0,.4)"/>
+          </svg>
+        </div>
+        <div class="logo-nm">
+          НА СОКАХ.Еда
+          <small>свежие продукты с рецептами</small>
+        </div>
+      </a>
+      <div class="city-wrap">
+        <button class="city-btn" id="cityBtn">Москва <span class="city-arr">▾</span></button>
+        <div class="city-drop" id="cityDrop">
+          <a href="#">Москва и область</a>
+          <a href="#">Санкт-Петербург и область</a>
+          <a href="#">Нижний Новгород</a>
+          <a href="#">Казань</a>
+          <a href="#">Екатеринбург</a>
+        </div>
+      </div>
+      <div class="hdr-r">
+        <button class="btn-login" id="loginBtn">Войти</button>
+        <button class="btn-cart" id="cartBtn">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span id="cPriceLbl">0 ₽</span>
+          <span class="cart-ct" id="cCtEl">0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="w">
+    <div class="hero-wrap">
+      <div class="hero-title">Привет,<br>это НА СОКАХ.Еда</div>
+      <div class="hero-bottom">
+        <div>
+          <div class="hero-bl">Соберём всё<br>необходимое,</div>
+          <div class="hero-inner">
+            <img src="foto/seedream-85674d4b0abfd43dffcf90e3d49c4c3e.png" alt="Свежие ингредиенты" loading="eager"/>
+          </div>
+        </div>
+        <div>
+          <div class="hero-bl">чтобы вы<br>приготовили</div>
+          <div class="hero-inner">
+            <img src="foto/seedream-dc1c4788ca59da1d8dce87d5f3ca1d83.png" alt="Процесс готовки" loading="eager"/>
+          </div>
+        </div>
+        <div>
+          <div class="hero-bl">ресторанный ужин<br>за 15 минут</div>
+          <div class="hero-inner">
+            <img src="foto/seedream-5a1e6f81adf4d0ac21b314d9e90cd1ab.png" alt="Готовый ужин" loading="eager"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="cats">
+  <div class="w">
+    <p class="tagline">Доставляем продукты с рецептами — выбирайте,<br>что приготовить за 15 минут</p>
+    <div class="hs">
+      <div class="cats-row">
+        <div class="cat-c act" onclick="doFilter('all',this)">
+          <div class="cat-ph"><img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=160&h=160&fit=crop&q=80" alt="Основные"/></div>
+          <span class="cat-lb">Основные<br>блюда</span>
+        </div>
+        <div class="cat-c" onclick="doFilter('soup',this)">
+          <div class="cat-ph"><img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=160&h=160&fit=crop&q=80" alt="Супы"/></div>
+          <span class="cat-lb">Супы</span>
+          <span class="cat-bdg">от 10 МИН</span>
+        </div>
+        <div class="cat-c" onclick="doFilter('salad',this)">
+          <div class="cat-ph"><img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=160&h=160&fit=crop&q=80" alt="Салаты"/></div>
+          <span class="cat-lb">Салаты</span>
+        </div>
+        <div class="cat-c" onclick="doFilter('breakfast',this)">
+          <div class="cat-ph"><img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=160&h=160&fit=crop&q=80" alt="Завтраки"/></div>
+          <span class="cat-lb">Завтраки</span>
+        </div>
+        <div class="cat-c" onclick="doFilter('snack',this)">
+          <div class="cat-ph"><img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?w=160&h=160&fit=crop&q=80" alt="Закуски"/></div>
+          <span class="cat-lb">Закуски</span>
+        </div>
+        <div class="cat-c" onclick="doFilter('dessert',this)">
+          <div class="cat-ph"><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=160&h=160&fit=crop&q=80" alt="Десерты"/></div>
+          <span class="cat-lb">Десерты</span>
+        </div>
+        <div class="cat-all">Всё меню &nbsp;→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEF SETS -->
+<section id="sets">
+  <div class="w">
+    <div class="sets-box">
+      <div class="sets-top">
+        <div class="sets-hed">Сеты<br>от шефа</div>
+        <ul class="sets-bul">
+          <li>Разнообразие мяса, гарниров, рецептов</li>
+          <li>Удобные сроки хранения до 7 дней</li>
+          <li>Всё нарезано: 15 минут — и готово!</li>
+          <li>Порции на 2 персоны в каждом сете</li>
+        </ul>
+      </div>
+      <div class="sets-body">
+        <div class="sets-promo">
+          <img class="sp-img" src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=700&h=400&fit=crop&crop=top&q=85" alt="Промо"/>
+          <div class="sp-grad"></div>
+          <div class="sp-cnt">
+            <div class="sp-title">Скидка 20%<br>на знакомство</div>
+            <button class="btn-promo">Забрать скидку</button>
+          </div>
+        </div>
+        <div class="sets-rows">
+          <div class="set-row">
+            <div class="set-inf">
+              <div class="set-nm">Выгодный</div>
+              <div class="set-sb">шок-цена за порцию 318 ₽</div>
+              <div class="set-mt"><span class="set-pr">3 180 ₽</span><span class="set-ct">5 блюд × 2 порции</span></div>
+            </div>
+            <div class="set-ic">%</div>
+            <img class="set-img" src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=200&h=200&fit=crop&q=80" alt="Сет Выгодный"/>
+          </div>
+          <div class="set-row">
+            <div class="set-inf">
+              <div class="set-nm">Топ 5</div>
+              <div class="set-sb">средняя оценка 5.0</div>
+              <div class="set-mt"><span class="set-pr">3 790 ₽</span><span class="set-ct">5 блюд × 2 порции</span></div>
+            </div>
+            <div class="set-ic">⭐</div>
+            <img class="set-img" src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=200&h=200&fit=crop&q=80" alt="Топ 5"/>
+          </div>
+          <div class="set-row">
+            <div class="set-inf">
+              <div class="set-nm">Green</div>
+              <div class="set-sb">лёгкие премиум-ингредиенты</div>
+              <div class="set-mt"><span class="set-pr">4 650 ₽</span><span class="set-ct">5 блюд × 2 порции</span></div>
+            </div>
+            <div class="set-ic">🌿</div>
+            <img class="set-img" src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=200&h=200&fit=crop&q=80" alt="Green"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAV DISHES -->
+<section id="fav">
+  <div class="w"><div class="sec-t">Самое любимое</div></div>
+  <div style="padding:0 max(14px,calc((100vw - 1160px)/2 + 24px));overflow:hidden">
+    <div class="hs"><div class="fav-row" id="favRow"></div></div>
+  </div>
+</section>
+
+<!-- MENU GRID -->
+<section id="mn">
+  <div class="w"><div class="mg" id="menuGrid"></div></div>
+</section>
+
+<!-- COLLECTIONS -->
+<section id="coll">
+  <div class="w">
+    <div class="coll-g">
+      <div class="cf">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&h=500&fit=crop&q=85" alt="Весеннее меню"/>
+        <div class="cf-ov">
+          <div class="cf-t">Весеннее<br>меню</div>
+          <button class="btn-coll">Перейти</button>
+        </div>
+      </div>
+      <div class="ct-g">
+        <div class="ct">
+          <img class="" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=200&fit=crop&q=80" alt="Постное"/>
+          <div class="ct-ov"></div><span class="ct-lb">Постное меню</span>
+        </div>
+        <div class="ct ct-solid" style="background:#1B5E20">
+          <span class="ct-pnm" style="color:#fff">Bio+</span>
+        </div>
+        <div class="ct" style="background:#F8BBD0">
+          <img src="https://images.unsplash.com/photo-1576402187878-974f70c890a5?w=400&h=200&fit=crop&q=80" alt="Детское"/>
+          <div class="ct-ov"></div><span class="ct-lb">Детское меню</span>
+        </div>
+        <div class="ct" style="background:#2E7D32">
+          <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&h=200&fit=crop&q=80" alt="Green"/>
+          <div class="ct-ov"></div><span class="ct-lb">Green</span>
+        </div>
+        <div class="ct">
+          <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=400&h=200&fit=crop&q=80" alt="Гости"/>
+          <div class="ct-ov"></div><span class="ct-lb">К приходу гостей</span>
+        </div>
+        <div class="ct">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=200&fit=crop&q=80" alt="15 минут"/>
+          <div class="ct-ov"></div><span class="ct-lb">Блюда за 15 минут</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testi">
+  <div class="w">
+    <div class="testi-box">
+      <div class="testi-in">
+        <div>
+          <div class="t-big">Отзывы клиентов скажут о нас гораздо больше</div>
+          <button class="btn-ya">
+            <div class="ya-pin"><div class="ya-pin-i"></div></div>
+            Отзывы на Я.&nbsp;Картах
+          </button>
+        </div>
+        <div class="tg">
+          <div class="tc">
+            <div class="tc-top">
+              <img class="tc-av" src="https://i.pravatar.cc/84?img=47" alt="Марина"/>
+              <div><div class="tc-nm">Марина и Сергей</div><div class="tc-who">готовят вдвоём</div></div>
+            </div>
+            <p class="tc-txt">Лосось с киноа, тыквенный крем-суп, паста с грибами... Теперь каждый ужин — маленький ресторан дома. Давно не ели так вкусно!</p>
+            <span class="tc-tag">Вкусно, как в ресторане</span>
+          </div>
+          <div class="tc">
+            <div class="tc-top">
+              <img class="tc-av" src="https://i.pravatar.cc/84?img=12" alt="Алексей"/>
+              <div><div class="tc-nm">Алексей Громов</div><div class="tc-who">готовит для себя</div></div>
+            </div>
+            <p class="tc-txt">Теперь готовлю сам! Вместо бургеров на доставке — тушёная говядина. Лук нарезан, всё порционно. Где вы были раньше?</p>
+            <span class="tc-tag">Быстро и удобно</span>
+          </div>
+          <div class="tc">
+            <div class="tc-top">
+              <img class="tc-av" src="https://i.pravatar.cc/84?img=32" alt="Наталья"/>
+              <div><div class="tc-nm">Наталья Берёзова</div><div class="tc-who">готовит на всю семью</div></div>
+            </div>
+            <p class="tc-txt">Просто открываю холодильник, беру пакетик — 15 минут, и все сыты. Дети едят овощи! Я не верила, что такое бывает.</p>
+            <span class="tc-tag">Помогает готовить</span>
+          </div>
+          <div class="tc">
+            <div class="tc-top">
+              <img class="tc-av" src="https://i.pravatar.cc/84?img=25" alt="Дмитрий"/>
+              <div><div class="tc-nm">Дмитрий Козлов</div><div class="tc-who">готовит для себя</div></div>
+            </div>
+            <p class="tc-txt">Занят с утра до ночи, но теперь каждый ужин полноценный. Набор уже в холодильнике. Уровень стресса упал вдвое!</p>
+            <span class="tc-tag">Экономит время</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTER -->
+<section id="ctr">
+  <div class="w">
+    <div class="ctr-n">+100</div>
+    <p class="ctr-t">новых блюд каждую неделю,<br>чтобы вы каждый день наслаждались шикарными ужинами, не выходя из дома.<br><span class="ctr-em">Да, это гедонизм.</span></p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="w">
+    <div class="faq-box">
+      <div class="sec-t" style="margin-bottom:28px">Ответы<br>на важные вопросы</div>
+      <div class="faq-g" id="faqGrid"></div>
+      <div class="faq-ft">
+        <div class="faq-ft-t">Остались вопросы?<br>На связи ежедневно с 7:00 до 23:00</div>
+        <div class="sb">
+          <a href="#" style="background:#2AABEE;color:#fff" title="Telegram">✈</a>
+          <a href="#" style="background:#4A76A8;color:#fff" title="ВКонтакте">В</a>
+          <a href="#" style="background:var(--or);color:#fff" title="Позвонить">☎</a>
+          <a href="#" style="background:#25D366;color:#fff" title="WhatsApp">W</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="ft">
+  <div class="w">
+    <div class="ft-g">
+      <div>
+        <div class="ft-ct">О нас</div>
+        <ul class="ft-lk">
+          <li><a href="#">Система качества</a></li>
+          <li><a href="#">Условия доставки и оплаты</a></li>
+          <li><a href="#">Что мы привезём?</a></li>
+          <li><a href="#">Наши рецепты</a></li>
+          <li><a href="#">Блог НА СОКАХ.Еда</a></li>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ct">На связи</div>
+        <div class="ft-sub">Готовы ответить на вопросы<br>ежедневно с 7:00 до 23:00</div>
+        <div class="ft-ph">+7 (800) 700-15-20</div>
+        <div class="ft-sc">
+          <a href="#">✈</a><a href="#">В</a><a href="#">💬</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-ct">Так удобнее</div>
+        <div class="ft-ap">В приложении вас ждёт<br>скидка 15% на первый заказ</div>
+        <div class="app-bts">
+          <a href="#" class="btn-ap">
+            <span class="btn-ap-ic">🍎</span>
+            <div><small>Загрузить в</small><b>App Store</b></div>
+          </a>
+          <a href="#" class="btn-ap">
+            <span class="btn-ap-ic">▶</span>
+            <div><small>Загрузить в</small><b>Google Play</b></div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bt">
+      <div class="ft-lg">
+        <a href="#">Пользовательское соглашение</a>
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Обработка персональных данных</a>
+        <a href="#">Использование cookie</a>
+        <a href="#">Рекламные рассылки</a>
+      </div>
+      <div class="ft-pay">
+        <span class="pay-b">МИР</span>
+        <span class="pay-b">VISA</span>
+        <span class="pay-b">MC</span>
+        <span class="pay-b">СБП</span>
+        <span class="pay-b">APPLE PAY</span>
+        <div class="skv">🏆 Резидент Сколково</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- COOKIE -->
+<div id="cookie">
+  <div class="ck-ic">🍪</div>
+  <div class="ck-tx">Принять политику использования <a href="#">cookie</a> и обработки персональных данных</div>
+  <button class="ck-ok" onclick="document.getElementById('cookie').classList.add('gone')">ОК</button>
+</div>
+
+<!-- LOGIN -->
+<div id="lov" class="off">
+  <div class="lw">
+    <button class="lx" onclick="closeLogin()">✕</button>
+    <div class="lb">
+      <div class="lb-logo"><div class="lb-logo-mk" style="background:var(--ye);box-shadow:0 4px 14px rgba(255,214,0,.4)"><svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6c0-1 1-1.5 1-2.5S9 2 9 2" stroke="rgba(0,0,0,.35)" stroke-width="1.4" stroke-linecap="round"/><path d="M13 6c0-1 1-1.5 1-2.5S13 2 13 2" stroke="rgba(0,0,0,.35)" stroke-width="1.4" stroke-linecap="round"/><path d="M17 6c0-1 1-1.5 1-2.5S17 2 17 2" stroke="rgba(0,0,0,.35)" stroke-width="1.4" stroke-linecap="round"/><path d="M5 11h18a11 11 0 0 1-2.07 5.5A9 9 0 0 1 14 20a9 9 0 0 1-6.93-3.5A11 11 0 0 1 5 11z" fill="rgba(0,0,0,.8)"/><rect x="4" y="9.5" width="20" height="2.5" rx="1.25" fill="rgba(0,0,0,.85)"/><path d="M22 20.5 L14.5 14" stroke="rgba(0,0,0,.4)" stroke-width="1.4" stroke-linecap="round"/><circle cx="23" cy="21.5" r="1.5" fill="rgba(0,0,0,.4)"/></svg></div></div>
+
+      <!-- ШАГ 1: телефон -->
+      <div id="lStep1">
+        <div class="lt">Войти или зарегистрироваться</div>
+        <div class="lt-sub">Введите номер телефона — пришлём код подтверждения</div>
+        <input class="li" type="tel" id="phoneInp" placeholder="+7 (___) ___-__-__" maxlength="18" oninput="fmtPhone(this)"/>
+        <button class="lbtn" id="lsubmit" onclick="sendSms()">Получить код</button>
+        <p class="ll">Нажимая «Получить код», вы соглашаетесь с <a href="#" onclick="openDoc('terms');return false">пользовательским соглашением</a> и <a href="#" onclick="openDoc('privacy');return false">политикой конфиденциальности</a></p>
+      </div>
+
+      <!-- ШАГ 2: SMS-код -->
+      <div id="lStep2" style="display:none">
+        <div class="l-back" onclick="backToPhone()">← Изменить номер</div>
+        <div class="lt">Введите код</div>
+        <div class="lt-sub sms-hint">Отправили SMS на <b id="lPhoneLbl"></b></div>
+        <div class="sms-digits" id="smsDigits">
+          <input class="sms-d" type="number" maxlength="1" id="sd0"/>
+          <input class="sms-d" type="number" maxlength="1" id="sd1"/>
+          <input class="sms-d" type="number" maxlength="1" id="sd2"/>
+          <input class="sms-d" type="number" maxlength="1" id="sd3"/>
+        </div>
+        <button class="lbtn rdy" id="lverify" onclick="verifyCode()">Войти</button>
+        <div class="l-resend">Не пришёл код? <span id="resendBtn" onclick="resendSms()">Отправить снова</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DOC MODAL -->
+<div id="docov" class="off" onclick="e=>{if(e.target===this)closeDoc()}">
+  <div class="doc-w">
+    <div class="doc-b">
+      <div class="doc-h">
+        <h2 id="docTitle"></h2>
+        <button class="doc-x" onclick="closeDoc()">✕</button>
+      </div>
+      <div class="doc-body" id="docBody"></div>
+    </div>
+  </div>
+</div>
+
+<!-- CART -->
+<div id="cov" onclick="closeCart()"></div>
+<div id="csb">
+  <div class="ch">
+    <button class="ch-bk" onclick="closeCart()">←</button>
+    <span class="ch-t">Ваш заказ</span>
+  </div>
+  <div class="cil" id="ciList"></div>
+  <div class="cpb">
+    <img class="cpb-img" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=120&h=120&fit=crop&q=80" alt="Весеннее"/>
+    <div class="cpb-tx"><b>🌷 Весеннее меню</b><br>Новые сезонные блюда уже доступны</div>
+  </div>
+  <div class="cs">
+    <div class="cs-t">Ваш заказ</div>
+    <div class="cs-r"><span>Стоимость блюд</span><span id="csSub">0 ₽</span></div>
+    <div class="cs-r"><span>Доставка по Москве и МО</span><span>0 ₽</span></div>
+    <div class="cs-r"><span>Скидка по подписке</span><span>–0 ₽</span></div>
+    <input class="cs-pi" type="text" placeholder="Промокод"/>
+    <div class="cs-r tot"><span>ИТОГО</span><span id="csTotal">0 ₽</span></div>
+    <button class="btn-co">
+      <span id="coText">Оформить заказ</span>
+    </button>
+  </div>
+</div>
+
+<script>
+const DISHES=[
+  {id:1,cat:'main',    name:'Утиная грудка с картофельным пюре и соусом демигляс',price:680,per:'1 порция / 380 г',
+   img:'https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=800&h=500&fit=crop&q=85',
+   bg:'#C8E6C9',lbl:'Green',variant:'Гарнир',opts:['Картофельное пюре','Гречка','Булгур']},
+  {id:2,cat:'main',    name:'Лосось на пару с киноа и сезонными овощами гриль',price:750,per:'1 порция / 360 г',
+   img:'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800&h=500&fit=crop&q=85',
+   bg:'#FFF9C4',lbl:'Light',variant:'Гарнир',opts:['Киноа','Рис','Кускус']},
+  {id:3,cat:'main',    name:'Говядина тушёная с томатами и прованскими травами',price:590,per:'1 порция / 400 г',
+   img:'https://images.unsplash.com/photo-1574484284002-952d92456975?w=800&h=500&fit=crop&q=85',
+   bg:'#FFE0B2',lbl:'Классика',variant:'Мясо',opts:['Говядина','Телятина']},
+  {id:4,cat:'soup',    name:'Борщ с говядиной, сметаной и чёрным хлебом',price:390,per:'1 порция / 450 мл',
+   img:'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&h=500&fit=crop&q=85',
+   bg:'#FCE4EC',lbl:'Суп',variant:null,opts:[]},
+  {id:5,cat:'soup',    name:'Крем-суп из тыквы с имбирём и кокосовым молоком',price:360,per:'1 порция / 400 мл',
+   img:'https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=800&h=500&fit=crop&q=85',
+   bg:'#FFF3E0',lbl:'Суп',variant:null,opts:[]},
+  {id:6,cat:'salad',   name:'Цезарь с куриным филе гриль, пармезаном и каперсами',price:430,per:'1 порция / 280 г',
+   img:'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800&h=500&fit=crop&q=85',
+   bg:'#E8F5E9',lbl:'Салат',variant:null,opts:[]},
+  {id:7,cat:'breakfast',name:'Сырники с малиновым соусом и домашней сметаной',price:320,per:'1 порция / 260 г',
+   img:'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=800&h=500&fit=crop&q=85',
+   bg:'#FFF8E1',lbl:'Завтрак',variant:null,opts:[]},
+  {id:8,cat:'dessert', name:'Шоколадный фондан с ванильным мороженым',price:290,per:'1 порция / 180 г',
+   img:'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&h=500&fit=crop&q=85',
+   bg:'#F3E5F5',lbl:'Десерт',variant:null,opts:[]},
+  {id:9,cat:'snack',   name:'Брускетты с авокадо, рикоттой и вялеными томатами',price:260,per:'1 порция / 200 г',
+   img:'https://images.unsplash.com/photo-1541014741259-de529411b96a?w=800&h=500&fit=crop&q=85',
+   bg:'#E3F2FD',lbl:'Закуска',variant:null,opts:[]},
+];
+const FAQS=[
+  {q:'Сколько стоит доставка?',a:'Доставка по Москве и МО бесплатна при заказе от 1 500 ₽. При меньшей сумме — 199 ₽. Для других регионов тариф рассчитывается при оформлении.'},
+  {q:'Как и сколько хранить продукты?',a:'Все ингредиенты упакованы в вакуум. Хранить при 0–4°C до 5–7 дней. Точные даты указаны на каждом пакете.'},
+  {q:'В какие районы доставляете?',a:'По Москве и МО, Санкт-Петербургу. В 2025 году — Нижний Новгород и Казань.'},
+  {q:'Как контролируете качество?',a:'Работаем с сертифицированными фермерами. Каждая партия проходит лабораторный контроль. Готовим строго в день отгрузки.'},
+  {q:'Что я получу в доставке?',a:'Свежие порционные ингредиенты, уже очищенные и нарезанные, плюс пошаговую карточку рецепта на нужное количество порций.'},
+  {q:'Что такое подписка?',a:'Подписка «НА СОКАХ Про» — скидка 10% на все заказы, приоритетная доставка и доступ к эксклюзивному меню. Первый месяц — 290 ₽.'},
+  {q:'Что нужно дома, чтобы готовить?',a:'Только сковорода, кастрюля и базовые специи: соль, перец, масло. Всё остальное привезём в нужных пропорциях.'},
+  {q:'Можно ли сдать упаковку?',a:'Да! Курьер заберёт использованные пакеты при следующей доставке. Перерабатываем более 95% упаковки.'},
+];
+
+let cart=[], portions={};
+DISHES.forEach(d=>portions[d.id]=2);
+const fmt=n=>n.toLocaleString('ru')+' ₽';
+
+function renderFav(){
+  document.getElementById('favRow').innerHTML=DISHES.slice(0,8).map(d=>`
+    <div class="dc">
+      <div class="dc-ib" style="background:${d.bg}">
+        <img class="dc-bg" src="${d.img}" alt="${d.name}" loading="lazy"/>
+        <span class="dc-wm">${d.lbl}</span>
+      </div>
+      <div class="dc-bd">
+        <div class="dc-nm">${d.name}</div>
+        <div class="dc-ft">
+          <div><div class="dc-pr">${d.price} ₽</div><div class="dc-ps">${d.per}</div></div>
+          <button class="btn-add" id="fb${d.id}" onclick="addCart(${d.id})">+</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function renderMenu(cat){
+  const list=cat==='all'?DISHES:DISHES.filter(d=>d.cat===cat);
+  if(!list.length){document.getElementById('menuGrid').innerHTML='<div style="grid-column:1/-1;padding:48px;text-align:center;color:#aaa">Блюда не найдены</div>';return;}
+  document.getElementById('menuGrid').innerHTML=list.map(d=>`
+    <div class="mc">
+      <div class="mc-ib" style="background:${d.bg}">
+        <img class="mc-bg" src="${d.img}" alt="${d.name}" loading="lazy"/>
+        <span class="mc-wm">${d.lbl}</span>
+      </div>
+      <div class="mc-bd">
+        <div class="mc-nm">${d.name}</div>
+        <div class="mc-mt">Цена за 1 порцию · ${d.per}</div>
+        ${d.variant?`<div class="mc-var">${d.variant}: <b>${d.opts[0]}</b> <span style="color:#bbb">▾</span></div>`:''}
+        <div class="mc-bot">
+          <div><div class="mc-price">${d.price} ₽</div><div class="mc-psub">за порцию</div></div>
+          <div class="mc-acts">
+            <div class="mc-port" onclick="cyclePt(${d.id},this)"><span id="pt${d.id}">${portions[d.id]}</span>&nbsp;порции <span style="color:#bbb">▾</span></div>
+            <button class="mc-cart" id="mb${d.id}" onclick="addCart(${d.id})" title="В корзину">
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function cyclePt(id,el){
+  const s=[1,2,3,4];
+  portions[id]=s[(s.indexOf(portions[id])+1)%s.length];
+  document.getElementById('pt'+id).textContent=portions[id];
+}
+function doFilter(cat,btn){
+  document.querySelectorAll('.cat-c').forEach(c=>c.classList.remove('act'));
+  btn.classList.add('act');
+  renderMenu(cat);
+}
+
+function addCart(id){
+  const d=DISHES.find(x=>x.id===id);if(!d)return;
+  const q=portions[id]||2;
+  const ex=cart.find(x=>x.id===id);
+  if(ex)ex.qty+=q;else cart.push({...d,qty:q});
+  syncCart();flashBtn(id);openCart();
+}
+function removeCart(id){cart=cart.filter(x=>x.id!==id);syncCart();}
+function flashBtn(id){
+  ['fb','mb'].forEach(p=>{
+    const b=document.getElementById(p+id);if(!b)return;
+    b.innerHTML=p==='fb'?'✓':'<svg viewBox="0 0 24 24" style="width:19px;height:19px;stroke:#fff;stroke-width:2.2;fill:none"><polyline points="20 6 9 17 4 12"/></svg>';
+    b.classList.add('done');
+    setTimeout(()=>{b.innerHTML=p==='fb'?'+':'<svg viewBox="0 0 24 24" style="width:19px;height:19px;stroke:#1a1a1a;stroke-width:2.2;fill:none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>';b.classList.remove('done');},1600);
+  });
+}
+function syncCart(){
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const count=cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cPriceLbl').textContent=fmt(total);
+  document.getElementById('csSub').textContent=fmt(total);
+  document.getElementById('csTotal').textContent=fmt(total);
+  document.getElementById('coText').textContent='Оформить заказ '+fmt(total);
+  const cc=document.getElementById('cCtEl');
+  if(count>0){cc.textContent=count;cc.classList.add('on');}else cc.classList.remove('on');
+  renderCartItems();
+}
+function renderCartItems(){
+  const el=document.getElementById('ciList');
+  if(!cart.length){el.innerHTML='<div style="flex:1;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:15px;text-align:center;padding:40px 20px">Корзина пуста 🛒</div>';return;}
+  el.innerHTML=cart.map(i=>`
+    <div class="ci">
+      <img class="ci-img" src="${i.img}" alt="${i.name}"/>
+      <div class="ci-inf">
+        <div class="ci-nm">${i.name}</div>
+        <span class="ci-pr">${i.qty} × ${i.price} ₽</span>
+        ${i.variant?`<div class="ci-vr">${i.variant}: <b>${i.opts[0]}</b> <span>▾</span></div>`:''}
+      </div>
+      <button class="ci-rm" onclick="removeCart(${i.id})">✕</button>
+    </div>`).join('');
+}
+function openCart(){document.getElementById('cov').classList.add('on');document.getElementById('csb').classList.add('on');document.body.style.overflow='hidden';}
+function closeCart(){document.getElementById('cov').classList.remove('on');document.getElementById('csb').classList.remove('on');document.body.style.overflow='';}
+
+let currentUser=null;
+let smsCode='';
+let resendTimer=null;
+
+function openLogin(){
+  if(currentUser){openUserMenu();return;}
+  resetLoginModal();
+  document.getElementById('lov').classList.remove('off');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>document.getElementById('phoneInp').focus(),100);
+}
+function closeLogin(){document.getElementById('lov').classList.add('off');document.body.style.overflow='';}
+function resetLoginModal(){
+  document.getElementById('lStep1').style.display='';
+  document.getElementById('lStep2').style.display='none';
+  document.getElementById('phoneInp').value='';
+  document.getElementById('lsubmit').classList.remove('rdy');
+  [0,1,2,3].forEach(i=>{const d=document.getElementById('sd'+i);if(d)d.value='';});
+}
+
+function fmtPhone(inp){
+  let v=inp.value.replace(/\D/g,'');
+  if(v.startsWith('7')||v.startsWith('8'))v=v.slice(1);
+  let f='+7 ';
+  if(v.length>0)f+='('+v.slice(0,3);
+  if(v.length>=3)f+=') '+v.slice(3,6);
+  if(v.length>=6)f+='-'+v.slice(6,8);
+  if(v.length>=8)f+='-'+v.slice(8,10);
+  inp.value=f;
+  document.getElementById('lsubmit').classList.toggle('rdy',v.length>=10);
+}
+
+function sendSms(){
+  if(!document.getElementById('lsubmit').classList.contains('rdy'))return;
+  const phone=document.getElementById('phoneInp').value;
+  // Генерируем демо-код
+  smsCode=String(Math.floor(1000+Math.random()*9000));
+  document.getElementById('lStep1').style.display='none';
+  document.getElementById('lStep2').style.display='';
+  document.getElementById('lPhoneLbl').textContent=phone;
+  document.getElementById('sd0').focus();
+  startResendTimer(60);
+  // В реальном проекте здесь fetch() к API — для демо показываем код в консоли
+  console.log('[Demo] SMS код:', smsCode);
+  showToast('SMS-код: '+smsCode+' (демо-режим)');
+}
+
+function setupSmsInputs(){
+  [0,1,2,3].forEach(i=>{
+    const d=document.getElementById('sd'+i);
+    d.addEventListener('input',function(){
+      this.value=this.value.replace(/\D/g,'').slice(-1);
+      if(this.value&&i<3)document.getElementById('sd'+(i+1)).focus();
+      checkSmsReady();
+    });
+    d.addEventListener('keydown',function(e){
+      if(e.key==='Backspace'&&!this.value&&i>0)document.getElementById('sd'+(i-1)).focus();
+    });
+    d.addEventListener('paste',function(e){
+      e.preventDefault();
+      const txt=(e.clipboardData||window.clipboardData).getData('text').replace(/\D/g,'').slice(0,4);
+      txt.split('').forEach((ch,j)=>{const el=document.getElementById('sd'+j);if(el)el.value=ch;});
+      const last=document.getElementById('sd'+(Math.min(txt.length,3)));
+      if(last)last.focus();
+      checkSmsReady();
+    });
+  });
+}
+
+function checkSmsReady(){
+  const code=[0,1,2,3].map(i=>document.getElementById('sd'+i).value).join('');
+  if(code.length===4)autoVerify(code);
+}
+
+function autoVerify(code){
+  if(code===smsCode){
+    loginSuccess();
+  } else {
+    shakeSms();
+    [0,1,2,3].forEach(i=>{const d=document.getElementById('sd'+i);d.value='';});
+    document.getElementById('sd0').focus();
+    showToast('Неверный код, попробуйте снова');
+  }
+}
+
+function verifyCode(){
+  const code=[0,1,2,3].map(i=>document.getElementById('sd'+i).value).join('');
+  if(code.length<4)return;
+  autoVerify(code);
+}
+
+function shakeSms(){
+  const el=document.getElementById('smsDigits');
+  el.classList.add('l-shake');
+  el.addEventListener('animationend',()=>el.classList.remove('l-shake'),{once:true});
+}
+
+function loginSuccess(){
+  const phone=document.getElementById('phoneInp').value;
+  currentUser={phone};
+  clearInterval(resendTimer);
+  closeLogin();
+  updateHeaderUser();
+  showToast('Добро пожаловать!');
+}
+
+function backToPhone(){
+  clearInterval(resendTimer);
+  document.getElementById('lStep1').style.display='';
+  document.getElementById('lStep2').style.display='none';
+  setTimeout(()=>document.getElementById('phoneInp').focus(),50);
+}
+
+function startResendTimer(sec){
+  const btn=document.getElementById('resendBtn');
+  btn.classList.add('disabled');
+  let t=sec;
+  btn.textContent='Отправить снова через '+t+'с';
+  resendTimer=setInterval(()=>{
+    t--;
+    if(t<=0){
+      clearInterval(resendTimer);
+      btn.classList.remove('disabled');
+      btn.textContent='Отправить снова';
+    } else {
+      btn.textContent='Отправить снова через '+t+'с';
+    }
+  },1000);
+}
+
+function resendSms(){
+  smsCode=String(Math.floor(1000+Math.random()*9000));
+  [0,1,2,3].forEach(i=>{const d=document.getElementById('sd'+i);if(d)d.value='';});
+  document.getElementById('sd0').focus();
+  startResendTimer(60);
+  console.log('[Demo] Новый SMS код:', smsCode);
+  showToast('SMS-код: '+smsCode+' (демо-режим)');
+}
+
+function updateHeaderUser(){
+  const btn=document.getElementById('loginBtn');
+  if(currentUser){
+    const initials=currentUser.phone.slice(-4);
+    btn.className='btn-user';
+    btn.innerHTML=`<div class="user-av">${initials.slice(-2)}</div><span>${currentUser.phone.slice(0,6)}…</span>`;
+    btn.onclick=logoutUser;
+  } else {
+    btn.className='btn-login';
+    btn.innerHTML='Войти';
+    btn.onclick=openLogin;
+  }
+}
+
+function logoutUser(){
+  if(!confirm('Выйти из аккаунта?'))return;
+  currentUser=null;
+  updateHeaderUser();
+  showToast('Вы вышли из аккаунта');
+}
+
+function openUserMenu(){/* расширим позже */}
+
+const DOCS={
+  terms:{
+    title:'Пользовательское соглашение',
+    body:`
+      <h3>1. Общие положения</h3>
+      <p>Настоящее Пользовательское соглашение (далее — Соглашение) регулирует отношения между ООО «НА СОКАХ.Еда» (далее — Компания) и пользователем сайта nasokah.ru (далее — Пользователь).</p>
+      <p>Используя сайт, Пользователь подтверждает, что ознакомился с настоящим Соглашением и принимает его условия в полном объёме.</p>
+      <h3>2. Регистрация и авторизация</h3>
+      <p>Для оформления заказа Пользователь проходит авторизацию по номеру телефона. Пользователь несёт ответственность за сохранность своих данных и не передаёт доступ к аккаунту третьим лицам.</p>
+      <h3>3. Оформление заказов</h3>
+      <p>Заказы принимаются через сайт ежедневно с 00:00 до 22:00. Компания оставляет за собой право отказать в выполнении заказа в случае отсутствия товара или технических ошибок на сайте.</p>
+      <h3>4. Доставка</h3>
+      <p>Доставка осуществляется по Москве и Московской области в сроки, указанные при оформлении заказа. Минимальная сумма заказа для бесплатной доставки — 1 500 ₽.</p>
+      <h3>5. Возврат и обмен</h3>
+      <p>В случае ненадлежащего качества продуктов Пользователь вправе потребовать замену или возврат денежных средств в течение 24 часов с момента получения заказа.</p>
+      <h3>6. Ответственность сторон</h3>
+      <p>Компания не несёт ответственности за задержку доставки, вызванную обстоятельствами непреодолимой силы, а также за действия третьих лиц.</p>
+      <h3>7. Изменение условий</h3>
+      <p>Компания вправе в одностороннем порядке вносить изменения в настоящее Соглашение. Актуальная версия всегда доступна на сайте.</p>
+    `
+  },
+  privacy:{
+    title:'Политика конфиденциальности',
+    body:`
+      <h3>1. Сбор персональных данных</h3>
+      <p>При регистрации и оформлении заказов мы собираем: номер телефона, имя, адрес доставки, историю заказов. Данные используются исключительно для оказания услуг.</p>
+      <h3>2. Использование данных</h3>
+      <p>Персональные данные используются для: обработки заказов и доставки, уведомлений о статусе заказа, улучшения качества сервиса, направления акций и предложений (только при наличии согласия).</p>
+      <h3>3. Защита данных</h3>
+      <p>Мы применяем современные методы шифрования и защиты данных. Доступ к персональным данным имеет ограниченный круг сотрудников, связанных обязательством о конфиденциальности.</p>
+      <h3>4. Передача третьим лицам</h3>
+      <p>Мы не продаём и не передаём ваши данные третьим лицам, за исключением партнёров по доставке и платёжных систем — исключительно для выполнения заказа.</p>
+      <h3>5. Cookie</h3>
+      <p>Сайт использует файлы cookie для корректной работы, аналитики и персонализации. Вы можете отключить cookie в настройках браузера, однако это может повлиять на работу сайта.</p>
+      <h3>6. Права пользователя</h3>
+      <p>Вы вправе запросить доступ к своим данным, их изменение или удаление, направив запрос на privacy@nasokah.ru. Мы ответим в течение 10 рабочих дней.</p>
+      <h3>7. Контакты</h3>
+      <p>По вопросам обработки персональных данных: privacy@nasokah.ru, +7 (800) 700-15-20.</p>
+    `
+  }
+};
+
+function openDoc(type){
+  const d=DOCS[type];
+  document.getElementById('docTitle').textContent=d.title;
+  document.getElementById('docBody').innerHTML=d.body;
+  document.getElementById('docov').classList.remove('off');
+}
+function closeDoc(){document.getElementById('docov').classList.add('off');}
+document.getElementById('docov').addEventListener('click',function(e){if(e.target===this)closeDoc();});
+
+function renderFAQ(){
+  document.getElementById('faqGrid').innerHTML=FAQS.map((f,i)=>`
+    <div class="fi" id="fi${i}">
+      <button class="fi-q" onclick="toggleFAQ(${i})">
+        <span>${f.q}</span><span class="fi-ch">▾</span>
+      </button>
+      <div class="fi-a">${f.a}</div>
+    </div>`).join('');
+}
+function toggleFAQ(i){
+  const el=document.getElementById('fi'+i);
+  const was=el.classList.contains('open');
+  document.querySelectorAll('.fi.open').forEach(x=>x.classList.remove('open'));
+  if(!was)el.classList.add('open');
+}
+
+document.getElementById('loginBtn').onclick=openLogin;
+document.getElementById('cartBtn').onclick=openCart;
+document.getElementById('lov').onclick=e=>{if(e.target===e.currentTarget)closeLogin();};
+document.getElementById('cityBtn').onclick=e=>{e.stopPropagation();document.getElementById('cityDrop').classList.toggle('open');};
+document.addEventListener('click',()=>document.getElementById('cityDrop').classList.remove('open'));
+document.getElementById('cityDrop').querySelectorAll('a').forEach(a=>a.onclick=e=>{
+  e.stopPropagation();
+  const c=a.textContent.replace(' и область','').replace(' и Ленинградской области','');
+  document.getElementById('cityBtn').innerHTML=c+' <span class="city-arr">▾</span>';
+  document.getElementById('cityDrop').classList.remove('open');
+});
+
+function showToast(msg){
+  let t=document.getElementById('toast');
+  if(!t){
+    t=document.createElement('div');
+    t.id='toast';
+    t.style.cssText='position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;font-size:14px;font-weight:500;padding:12px 22px;border-radius:100px;z-index:9999;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap';
+    document.body.appendChild(t);
+  }
+  t.textContent=msg;
+  t.style.opacity='1';
+  clearTimeout(t._to);
+  t._to=setTimeout(()=>t.style.opacity='0',3000);
+}
+
+renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
+</script>
+</body>
+</html>
