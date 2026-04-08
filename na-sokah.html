@@ -472,7 +472,7 @@ ul{list-style:none}
           <div class="cat-ph"><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=160&h=160&fit=crop&q=80" alt="Десерты"/></div>
           <span class="cat-lb">Десерты</span>
         </div>
-        <div class="cat-all">Всё меню &nbsp;→</div>
+        <div class="cat-all" onclick="gotoMenu('all')">Всё меню &nbsp;→</div>
       </div>
     </div>
   </div>
@@ -497,11 +497,11 @@ ul{list-style:none}
           <div class="sp-grad"></div>
           <div class="sp-cnt">
             <div class="sp-title">Скидка 20%<br>на знакомство</div>
-            <button class="btn-promo">Забрать скидку</button>
+            <button class="btn-promo" onclick="showDiscount()">Забрать скидку</button>
           </div>
         </div>
         <div class="sets-rows">
-          <div class="set-row">
+          <div class="set-row" onclick="addSet('set1')">
             <div class="set-inf">
               <div class="set-nm">Выгодный</div>
               <div class="set-sb">шок-цена за порцию 318 ₽</div>
@@ -510,7 +510,7 @@ ul{list-style:none}
             <div class="set-ic">%</div>
             <img class="set-img" src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=200&h=200&fit=crop&q=80" alt="Сет Выгодный"/>
           </div>
-          <div class="set-row">
+          <div class="set-row" onclick="addSet('set2')">
             <div class="set-inf">
               <div class="set-nm">Топ 5</div>
               <div class="set-sb">средняя оценка 5.0</div>
@@ -519,7 +519,7 @@ ul{list-style:none}
             <div class="set-ic">⭐</div>
             <img class="set-img" src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=200&h=200&fit=crop&q=80" alt="Топ 5"/>
           </div>
-          <div class="set-row">
+          <div class="set-row" onclick="addSet('set3')">
             <div class="set-inf">
               <div class="set-nm">Green</div>
               <div class="set-sb">лёгкие премиум-ингредиенты</div>
@@ -555,30 +555,30 @@ ul{list-style:none}
         <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&h=500&fit=crop&q=85" alt="Весеннее меню"/>
         <div class="cf-ov">
           <div class="cf-t">Весеннее<br>меню</div>
-          <button class="btn-coll">Перейти</button>
+          <button class="btn-coll" onclick="gotoMenu('all')">Перейти</button>
         </div>
       </div>
       <div class="ct-g">
-        <div class="ct">
+        <div class="ct" onclick="gotoMenu('salad')">
           <img class="" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=200&fit=crop&q=80" alt="Постное"/>
           <div class="ct-ov"></div><span class="ct-lb">Постное меню</span>
         </div>
-        <div class="ct ct-solid" style="background:#1B5E20">
+        <div class="ct ct-solid" style="background:#1B5E20" onclick="gotoMenu('all')">
           <span class="ct-pnm" style="color:#fff">Bio+</span>
         </div>
-        <div class="ct" style="background:#F8BBD0">
+        <div class="ct" style="background:#F8BBD0" onclick="gotoMenu('breakfast')">
           <img src="https://images.unsplash.com/photo-1576402187878-974f70c890a5?w=400&h=200&fit=crop&q=80" alt="Детское"/>
           <div class="ct-ov"></div><span class="ct-lb">Детское меню</span>
         </div>
-        <div class="ct" style="background:#2E7D32">
+        <div class="ct" style="background:#2E7D32" onclick="gotoMenu('main')">
           <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400&h=200&fit=crop&q=80" alt="Green"/>
           <div class="ct-ov"></div><span class="ct-lb">Green</span>
         </div>
-        <div class="ct">
+        <div class="ct" onclick="gotoMenu('snack')">
           <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=400&h=200&fit=crop&q=80" alt="Гости"/>
           <div class="ct-ov"></div><span class="ct-lb">К приходу гостей</span>
         </div>
-        <div class="ct">
+        <div class="ct" onclick="gotoMenu('all')">
           <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=200&fit=crop&q=80" alt="15 минут"/>
           <div class="ct-ov"></div><span class="ct-lb">Блюда за 15 минут</span>
         </div>
@@ -594,7 +594,7 @@ ul{list-style:none}
       <div class="testi-in">
         <div>
           <div class="t-big">Отзывы клиентов скажут о нас гораздо больше</div>
-          <button class="btn-ya">
+          <button class="btn-ya" onclick="showYaReviews()">
             <div class="ya-pin"><div class="ya-pin-i"></div></div>
             Отзывы на Я.&nbsp;Картах
           </button>
@@ -797,7 +797,7 @@ ul{list-style:none}
     <div class="cs-r"><span>Скидка по подписке</span><span>–0 ₽</span></div>
     <input class="cs-pi" type="text" placeholder="Промокод"/>
     <div class="cs-r tot"><span>ИТОГО</span><span id="csTotal">0 ₽</span></div>
-    <button class="btn-co">
+    <button class="btn-co" onclick="checkout()">
       <span id="coText">Оформить заказ</span>
     </button>
   </div>
@@ -877,7 +877,7 @@ function renderMenu(cat){
       <div class="mc-bd">
         <div class="mc-nm">${d.name}</div>
         <div class="mc-mt">Цена за 1 порцию · ${d.per}</div>
-        ${d.variant?`<div class="mc-var">${d.variant}: <b>${d.opts[0]}</b> <span style="color:#bbb">▾</span></div>`:''}
+        ${d.variant?`<div class="mc-var" onclick="cycleVariant(${d.id})">${d.variant}: <b id="vt${d.id}">${d.opts[variantIdx[d.id]||0]}</b> <span style="color:#bbb">▾</span></div>`:''}
         <div class="mc-bot">
           <div><div class="mc-price">${d.price} ₽</div><div class="mc-psub">за порцию</div></div>
           <div class="mc-acts">
@@ -1199,6 +1199,58 @@ function showToast(msg){
   t.style.opacity='1';
   clearTimeout(t._to);
   t._to=setTimeout(()=>t.style.opacity='0',3000);
+}
+
+// СЕТЫ
+const SETS=[
+  {id:'set1',name:'Выгодный',price:3180,img:'https://images.unsplash.com/photo-1574484284002-952d92456975?w=200&h=200&fit=crop&q=80'},
+  {id:'set2',name:'Топ 5',price:3790,img:'https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=200&h=200&fit=crop&q=80'},
+  {id:'set3',name:'Green',price:4650,img:'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=200&h=200&fit=crop&q=80'},
+];
+function addSet(setId){
+  const s=SETS.find(x=>x.id===setId);if(!s)return;
+  const ex=cart.find(x=>x.id===setId);
+  if(ex)ex.qty+=1;else cart.push({...s,cat:'set',per:'5 блюд × 2 порции',bg:'#F5F0E8',lbl:'Сет',variant:null,opts:[],qty:1});
+  syncCart();openCart();showToast('Сет «'+s.name+'» добавлен в корзину 🍽');
+}
+
+// ВАРИАНТЫ БЛЮД
+let variantIdx={};
+function cycleVariant(id){
+  const d=DISHES.find(x=>x.id===id);if(!d||!d.opts.length)return;
+  variantIdx[id]=((variantIdx[id]||0)+1)%d.opts.length;
+  const el=document.getElementById('vt'+id);
+  if(el)el.textContent=d.opts[variantIdx[id]];
+}
+
+// НАВИГАЦИЯ К МЕНЮ
+function gotoMenu(cat){
+  renderMenu(cat);
+  document.querySelectorAll('.cat-c').forEach(c=>c.classList.remove('act'));
+  const map={'all':0,'soup':1,'salad':2,'breakfast':3,'snack':4,'dessert':5};
+  const btns=document.querySelectorAll('.cat-c');
+  const idx=map[cat]??0;
+  if(btns[idx])btns[idx].classList.add('act');
+  setTimeout(()=>document.getElementById('mn').scrollIntoView({behavior:'smooth'}),50);
+}
+
+// ОФОРМИТЬ ЗАКАЗ
+function checkout(){
+  if(!cart.length){showToast('Добавьте блюда в корзину');return;}
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  closeCart();
+  showToast('Заказ на '+fmt(total)+' принят! Свяжемся с вами скоро 🎉');
+}
+
+// СКИДКА
+function showDiscount(){
+  showToast('Войдите — и скидка 20% активируется автоматически');
+  setTimeout(openLogin,600);
+}
+
+// Я.КАРТЫ
+function showYaReviews(){
+  window.open('https://yandex.ru/maps/','_blank');
 }
 
 renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
