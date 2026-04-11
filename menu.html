@@ -565,7 +565,7 @@ const fmt=n=>n.toLocaleString('ru')+' ₽';
 function card(d){
   return `<div class="mc">
     <div class="mc-img-wrap">
-      <img class="mc-img" src="${d.img}" alt="${d.name}" loading="lazy"/>
+      <img class="mc-img" src="${P}${d.id}.jpg" alt="${d.name}" loading="lazy"/>
     </div>
     <div class="mc-body">
       <div class="mc-name">${d.name}</div>
