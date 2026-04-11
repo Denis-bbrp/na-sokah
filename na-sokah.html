@@ -133,7 +133,44 @@ ul{list-style:none}
 
 /* MENU GRID */
 #mn{padding:0 0 28px}
-.mg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mn-layout{display:flex;align-items:flex-start;gap:32px}
+.mn-sidebar{width:220px;flex-shrink:0;position:sticky;top:90px;padding-right:24px;border-right:1px solid var(--bdr);font-family:'Golos Text',sans-serif}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;min-width:0}
+/* ── Аккордеон сайдбара ── */
+.sb-acc{border-bottom:1px solid var(--bdr)}
+.sb-acc-hd{display:flex;align-items:center;gap:11px;padding:13px 0;cursor:pointer;user-select:none;transition:opacity .15s}
+.sb-acc-hd:hover{opacity:.7}
+.sb-acc-chev{font-size:18px;color:#ccc;margin-left:auto;flex-shrink:0;display:inline-block;transition:transform .25s ease}
+.sb-acc-hd.open .sb-acc-chev{transform:rotate(90deg)}
+.sb-acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.sb-acc-body.open{max-height:600px}
+.sb-acc-inner{padding:4px 0 14px}
+.sb-fi{width:20px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.sb-ft-wrap{flex:1;min-width:0}
+.sb-ft{display:block;font-size:14px;font-weight:700;color:#1a1a1a}
+.sb-ft-sub{display:block;font-size:12px;color:#888;margin-top:2px}
+/* ── Радио ── */
+.sb-radio{display:flex;align-items:center;gap:11px;padding:6px 0;cursor:pointer}
+.sb-rdot{width:20px;height:20px;border-radius:50%;border:2px solid #ddd;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:border-color .15s,background .15s}
+.sb-rdot.on{border-color:var(--ye);background:var(--ye)}
+.sb-rdot.on::after{content:'';width:7px;height:7px;border-radius:50%;background:#fff}
+.sb-rlabel{font-size:14px;color:#1a1a1a}
+.sb-rlabel b{font-weight:700;margin-right:4px}
+/* ── Чекбокс ── */
+.sb-chk{display:flex;align-items:center;gap:11px;padding:5px 0;cursor:pointer}
+.sb-cbox{width:20px;height:20px;border-radius:4px;border:2px solid #ddd;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s}
+.sb-cbox.on{background:var(--ye);border-color:var(--ye)}
+.sb-cbox svg{display:none;width:12px;height:12px}
+.sb-cbox.on svg{display:block}
+.sb-clabel{font-size:14px;color:#1a1a1a;flex:1}
+.sb-ccount{font-size:14px;color:#aaa}
+/* ── Подписка ── */
+.sb-sub{margin-top:20px}
+.sb-sub-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.sb-sub-pct{font-size:20px;font-weight:900;color:#1a1a1a;letter-spacing:-.02em}
+.sb-sub-desc{font-size:11px;color:#555;line-height:1.4}
+.sb-sub-link{font-size:13px;font-weight:600;color:#1a1a1a;cursor:pointer;text-decoration-line:underline;text-decoration-style:dotted;text-underline-offset:3px}
+.sb-sub-link:hover{text-decoration-style:solid}
 .mc{background:#fff;border-radius:var(--rc);overflow:hidden;border:1px solid var(--bdr);cursor:pointer;transition:box-shadow .2s,transform .2s}
 .mc:hover{box-shadow:var(--sh2);transform:translateY(-2px)}
 .mc-ib{height:228px;position:relative;overflow:hidden;display:block}
@@ -340,6 +377,8 @@ ul{list-style:none}
 /* RESPONSIVE */
 @media(max-width:960px){
   .sets-body{grid-template-columns:1fr}
+  .mn-layout{flex-direction:column}
+  .mn-sidebar{width:100%;border-right:none;border-bottom:1px solid var(--bdr);padding-right:0;padding-bottom:16px;position:static}
   .mg{grid-template-columns:1fr}
   .coll-g{grid-template-columns:1fr}
   .ct-g{grid-template-rows:repeat(3,110px)}
@@ -544,7 +583,64 @@ ul{list-style:none}
 
 <!-- MENU GRID -->
 <section id="mn">
-  <div class="w"><div class="mg" id="menuGrid"></div></div>
+  <div class="w">
+    <div class="mn-layout">
+      <aside class="mn-sidebar">
+        <!-- Регион доставки -->
+        <div class="sb-acc">
+          <div class="sb-acc-hd" onclick="toggleAcc(this)">
+            <div class="sb-fi"><svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path fill="#1a1a1a" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.6" fill="white"/></svg></div>
+            <div class="sb-ft-wrap"><span class="sb-ft">Регион доставки</span><span class="sb-ft-sub">Москва</span></div>
+            <span class="sb-acc-chev">›</span>
+          </div>
+          <div class="sb-acc-body">
+            <div class="sb-acc-inner">
+              <div class="sb-radio"><div class="sb-rdot on"></div><span class="sb-rlabel">Москва и область</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Неделя доставки -->
+        <div class="sb-acc">
+          <div class="sb-acc-hd" onclick="toggleAcc(this)">
+            <div class="sb-fi"><svg viewBox="0 0 24 24" fill="none" width="22" height="22"><rect x="2.5" y="4.5" width="19" height="17" rx="2" stroke="#1a1a1a" stroke-width="1.6"/><path d="M8 2.5v4M16 2.5v4" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round"/><path d="M2.5 9.5h19" stroke="#1a1a1a" stroke-width="1.4"/><rect x="5.5" y="12" width="2.5" height="2" rx=".4" fill="#1a1a1a"/><rect x="10.8" y="12" width="2.5" height="2" rx=".4" fill="#1a1a1a"/><rect x="16" y="12" width="2.5" height="2" rx=".4" fill="#1a1a1a"/><rect x="5.5" y="15.5" width="2.5" height="2" rx=".4" fill="#1a1a1a"/><rect x="10.8" y="15.5" width="2.5" height="2" rx=".4" fill="#1a1a1a"/><rect x="16" y="15.5" width="2.5" height="2" rx=".4" fill="#1a1a1a"/></svg></div>
+            <div class="sb-ft-wrap"><span class="sb-ft">Неделя доставки</span><span class="sb-ft-sub" id="mnDateLabel"></span></div>
+            <span class="sb-acc-chev">›</span>
+          </div>
+          <div class="sb-acc-body">
+            <div class="sb-acc-inner" id="mnWeekDays"></div>
+          </div>
+        </div>
+        <!-- Настроить меню -->
+        <div class="sb-acc">
+          <div class="sb-acc-hd" onclick="toggleAcc(this)">
+            <div class="sb-fi"><svg viewBox="0 0 24 24" fill="none" width="22" height="22"><polygon points="22,3 2,3 10,12.5 10,19 14,21 14,12.5" stroke="#1a1a1a" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+            <div class="sb-ft-wrap"><span class="sb-ft">Настроить меню</span><span class="sb-ft-sub">Настройте своё меню</span></div>
+            <span class="sb-acc-chev">›</span>
+          </div>
+          <div class="sb-acc-body">
+            <div class="sb-acc-inner">
+              <div class="sb-chk"><div class="sb-cbox on"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sb-clabel">Основные блюда</span><span class="sb-ccount">39</span></div>
+              <div class="sb-chk"><div class="sb-cbox on"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sb-clabel">Супы</span><span class="sb-ccount">5</span></div>
+              <div class="sb-chk"><div class="sb-cbox on"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sb-clabel">Салаты</span><span class="sb-ccount">7</span></div>
+              <div class="sb-chk"><div class="sb-cbox on"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sb-clabel">Закуски</span><span class="sb-ccount">8</span></div>
+              <div class="sb-chk"><div class="sb-cbox on"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sb-clabel">Завтраки</span><span class="sb-ccount">5</span></div>
+              <div class="sb-chk"><div class="sb-cbox on"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sb-clabel">Десерты</span><span class="sb-ccount">7</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Подписка -->
+        <div class="sb-sub">
+          <div class="sb-sub-row">
+            <svg viewBox="0 0 20 20" fill="none" width="28" height="28"><rect width="20" height="20" rx="4" fill="#FFD600"/><path d="M5 10.5l3.5 3.5 6.5-7" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="sb-sub-pct">−10%</span>
+            <span class="sb-sub-desc">при подписке<br>на все блюда</span>
+          </div>
+          <span class="sb-sub-link" onclick="openSubInfo && openSubInfo()">Что такое подписка?</span>
+        </div>
+      </aside>
+      <div class="mg" id="menuGrid"></div>
+    </div>
+  </div>
 </section>
 
 <!-- COLLECTIONS -->
@@ -1254,6 +1350,36 @@ function showYaReviews(){
 }
 
 renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
+
+// Аккордеон сайдбара
+function toggleAcc(hd){
+  hd.classList.toggle('open');
+  hd.nextElementSibling.classList.toggle('open');
+}
+
+// Даты недели доставки
+(function(){
+  const days=['вс.','пн.','вт.','ср.','чт.','пт.','сб.'];
+  const months=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  const today=new Date();
+  const dow=today.getDay();
+  const daysToMon=dow===0?1:(dow===1?7:8-dow);
+  const mon=new Date(today); mon.setDate(today.getDate()+daysToMon);
+  let html='';
+  for(let i=0;i<7;i++){
+    const d=new Date(mon); d.setDate(mon.getDate()+i);
+    html+=`<div class="sb-radio"><div class="sb-rdot"></div><span class="sb-rlabel"><b>${days[d.getDay()]}</b>${d.getDate()} ${months[d.getMonth()]}</span></div>`;
+  }
+  const nextMon=new Date(mon); nextMon.setDate(mon.getDate()+7);
+  const nextSun=new Date(nextMon); nextSun.setDate(nextMon.getDate()+6);
+  const range=nextMon.getDate()+' '+months[nextMon.getMonth()]+' – '+nextSun.getDate()+' '+months[nextSun.getMonth()];
+  html+=`<div class="sb-radio"><div class="sb-rdot on"></div><span class="sb-rlabel">${range}</span></div>`;
+  const el=document.getElementById('mnWeekDays');
+  const lbl=document.getElementById('mnDateLabel');
+  if(el) el.innerHTML=html;
+  const shortMonths=['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+  if(lbl) lbl.textContent=today.getDate()+' '+shortMonths[today.getMonth()];
+})();
 </script>
 </body>
 </html>
