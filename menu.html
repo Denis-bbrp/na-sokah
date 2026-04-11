@@ -229,9 +229,17 @@ ul{list-style:none}
 .dm-p2{font-size:12px;color:#bbb;margin-bottom:18px}
 /* Строка: [порции] [кнопка] */
 .dm-row{display:flex;gap:10px;align-items:center}
-.dm-psb{flex-shrink:0;height:46px;padding:0 16px;border:1.5px solid #e0e0e0;border-radius:8px;background:#fff;font-size:13px;font-weight:500;color:#1a1a1a;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap;transition:border-color .15s}
-.dm-psb:hover{border-color:#aaa}
-.dm-psb em{font-size:9px;color:#bbb;font-style:normal}
+.dm-dd{position:relative;flex-shrink:0}
+.dm-psb{height:46px;padding:0 16px;border:1.5px solid #e0e0e0;border-radius:8px;background:#fff;font-size:13px;font-weight:500;color:#1a1a1a;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap;transition:border-color .15s,box-shadow .15s;width:100%}
+.dm-psb:hover,.dm-dd.open .dm-psb{border-color:#aaa}
+.dm-psb-arr{font-size:10px;color:#aaa;transition:transform .2s;display:inline-block}
+.dm-dd.open .dm-psb-arr{transform:rotate(180deg)}
+.dm-ddlist{position:absolute;top:calc(100% + 6px);left:0;min-width:100%;background:#fff;border:1.5px solid #e0e0e0;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:600;overflow:hidden;display:none;animation:ddIn .15s ease}
+.dm-dd.open .dm-ddlist{display:block}
+.dm-dditem{padding:11px 20px;font-size:13px;font-weight:500;color:#1a1a1a;cursor:pointer;white-space:nowrap;transition:background .1s}
+.dm-dditem:hover{background:#f5f5f5}
+.dm-dditem.sel{background:#fff8e0;font-weight:700}
+@keyframes ddIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 .dm-add{flex:1;height:46px;background:var(--ye);border:none;border-radius:8px;font-size:14px;font-weight:700;color:#1a1a1a;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .15s,color .15s}
 .dm-add:hover{background:var(--ye-h)}
 .dm-add.done{background:#5B9E5A;color:#fff}
@@ -520,9 +528,12 @@ ul{list-style:none}
         <div class="dm-p1" id="dmPrice"></div>
         <div class="dm-p2">Цена за 1 порцию · <span id="dmPrice1"></span></div>
         <div class="dm-row">
-          <button class="dm-psb" onclick="dmCyclePt()">
-            <span id="dmSrv">2</span> порции <span>▾</span>
-          </button>
+          <div class="dm-dd" id="dmDd">
+            <button class="dm-psb" onclick="dmToggleDrop(event)">
+              <span id="dmSrv">2</span>&nbsp;порции&nbsp;<span class="dm-psb-arr">▾</span>
+            </button>
+            <div class="dm-ddlist" id="dmDdList"></div>
+          </div>
           <button class="dm-add" id="dmAdd" onclick="dmAddCart()">Добавить в корзину</button>
         </div>
       </div>
@@ -1013,15 +1024,30 @@ function updateDMPrice(){
   document.getElementById('dmPrice').textContent = fmt(d.price*q);
   document.getElementById('dmPrice1').textContent = fmt(d.price);
 }
-function dmCyclePt(){
-  if(!dmCurrentId) return;
-  const s=[1,2,3,4,5,6];
+function dmBuildDrop(){
+  const list = document.getElementById('dmDdList');
+  const opts = [1,2,3,4,5,6];
   const cur = portions[dmCurrentId]||2;
-  portions[dmCurrentId] = s[(s.indexOf(cur)+1)%s.length];
+  list.innerHTML = opts.map(n=>`<div class="dm-dditem${n===cur?' sel':''}" onclick="dmSelectPt(${n})">${n} ${n===1?'порция':n<5?'порции':'порций'}</div>`).join('');
+}
+function dmToggleDrop(e){
+  e.stopPropagation();
+  const dd = document.getElementById('dmDd');
+  if(!dd.classList.contains('open')){dmBuildDrop();}
+  dd.classList.toggle('open');
+}
+function dmSelectPt(n){
+  if(!dmCurrentId) return;
+  portions[dmCurrentId] = n;
   const pt = document.getElementById('pt'+dmCurrentId);
-  if(pt) pt.textContent = portions[dmCurrentId];
+  if(pt) pt.textContent = n;
+  document.getElementById('dmDd').classList.remove('open');
   updateDMPrice();
 }
+document.addEventListener('click',function(e){
+  const dd = document.getElementById('dmDd');
+  if(dd && !dd.contains(e.target)) dd.classList.remove('open');
+});
 function closeDM(){
   document.getElementById('dmov').classList.remove('on');
   document.getElementById('dmpanel').classList.remove('on');
