@@ -206,42 +206,55 @@ ul{list-style:none}
 .btn-co:hover{background:#333}
 
 /* ─── DISH MODAL ─── */
-#dmov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
+#dmov{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
 #dmov.on{display:flex}
-#dmpanel{background:#fff;border-radius:14px;max-width:860px;width:100%;max-height:90vh;overflow:hidden;display:flex;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.25);animation:dmIn .22s ease}
+#dmpanel{background:#fff;border-radius:12px;max-width:900px;width:100%;max-height:88vh;overflow:hidden;display:flex;position:relative;box-shadow:0 30px 90px rgba(0,0,0,.28);animation:dmIn .22s ease}
 @keyframes dmIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
-.dm-x{position:absolute;top:14px;right:14px;z-index:2;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;font-size:15px;color:#555;cursor:pointer;border:none;transition:background .15s;box-shadow:0 2px 8px rgba(0,0,0,.15)}
-.dm-x:hover{background:#fff;color:#1a1a1a}
-.dm-img-side{width:44%;flex-shrink:0;position:relative;background:#f5f5f5}
-.dm-img{width:100%;height:100%;object-fit:cover;display:block}
-.dm-info-side{flex:1;overflow-y:auto;padding:32px 30px 30px}
-.dm-badges{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
-.dm-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#555;background:#f5f5f5;padding:5px 12px;border-radius:20px}
-.dm-badge b{color:#1a1a1a;font-weight:700}
-.dm-name{font-size:22px;font-weight:700;color:#1a1a1a;line-height:1.3;margin-bottom:10px;letter-spacing:-.02em}
-.dm-price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:20px}
-.dm-price{font-size:28px;font-weight:800;color:#1a1a1a;letter-spacing:-.03em}
-.dm-srv-lbl{font-size:13px;color:#aaa}
-.dm-add{width:100%;padding:14px 20px;background:var(--ye);border-radius:8px;font-size:15px;font-weight:700;color:#1a1a1a;display:flex;align-items:center;justify-content:center;gap:9px;transition:background .15s,color .15s;margin-bottom:24px;border:none;cursor:pointer}
+.dm-x{position:absolute;top:14px;right:14px;z-index:10;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center;font-size:13px;color:#888;cursor:pointer;border:none;transition:background .15s}
+.dm-x:hover{background:rgba(0,0,0,.12);color:#333}
+/* Photo side */
+.dm-photo{flex-shrink:0;width:43%;position:relative;overflow:hidden;background:#f0f0f0}
+.dm-photo img{width:100%;height:100%;object-fit:cover;display:block}
+/* Info side */
+.dm-info{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+/* Top (fixed) */
+.dm-top{padding:26px 28px 0;flex-shrink:0}
+.dm-meta{display:flex;justify-content:flex-end;gap:18px;margin-bottom:18px}
+.dm-meta-it{display:flex;align-items:center;gap:5px;font-size:12px;color:#999}
+.dm-meta-it b{color:#1a1a1a;font-weight:600;margin-left:1px}
+.dm-title{font-size:23px;font-weight:700;color:#1a1a1a;line-height:1.3;letter-spacing:-.02em;margin-bottom:12px}
+.dm-price-big{font-size:30px;font-weight:800;color:#1a1a1a;letter-spacing:-.03em;line-height:1}
+.dm-price-hint{font-size:12px;color:#bbb;margin-top:4px;margin-bottom:16px}
+/* Stepper */
+.dm-stepper{display:inline-flex;align-items:center;margin-bottom:16px;border:1.5px solid #e8e8e8;border-radius:8px;overflow:hidden}
+.dm-s-btn{width:38px;height:38px;background:#fff;border:none;font-size:20px;color:#555;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;line-height:1;flex-shrink:0}
+.dm-s-btn:hover{background:#f5f5f5}
+.dm-s-val{padding:0 14px;font-size:13px;font-weight:500;color:#1a1a1a;border-left:1.5px solid #e8e8e8;border-right:1.5px solid #e8e8e8;height:38px;display:flex;align-items:center;white-space:nowrap}
+/* Add btn */
+.dm-add{width:100%;padding:13px;background:var(--ye);border-radius:8px;font-size:14px;font-weight:700;color:#1a1a1a;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .15s,color .15s;border:none;cursor:pointer}
 .dm-add:hover{background:var(--ye-h)}
 .dm-add.done{background:#5B9E5A;color:#fff}
-.dm-divider{height:1px;background:#f0f0f0;margin:0 0 20px}
-.dm-sect{font-size:11px;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
-.dm-desc{font-size:14px;color:#555;line-height:1.75;margin-bottom:22px}
-.dm-nutr{width:100%;border-collapse:collapse;font-size:13px}
-.dm-nutr th{text-align:right;font-weight:600;color:#bbb;padding:5px 0;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
-.dm-nutr th:first-child{text-align:left}
-.dm-nutr td{padding:7px 0;border-bottom:1px solid #f5f5f5;color:#1a1a1a}
-.dm-nutr td:not(:first-child){text-align:right;font-weight:600}
-.dm-nutr tbody tr:last-child td{border-bottom:none;font-weight:700}
+/* Scrollable body */
+.dm-body{flex:1;overflow-y:auto;padding:20px 28px 28px;border-top:1px solid #f0f0f0;margin-top:20px;display:grid;grid-template-columns:1fr 148px;gap:20px;align-items:start}
+.dm-label{font-size:10px;font-weight:700;color:#c0c0c0;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.dm-desc-txt{font-size:13px;color:#666;line-height:1.75}
+.dm-nutr-head{font-size:11px;color:#bbb;line-height:1.5;margin-bottom:10px}
+.dm-nutr-row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid #f5f5f5}
+.dm-nutr-row:last-child{border-bottom:none}
+.dm-nutr-nm{font-size:13px;color:#666}
+.dm-nutr-vl{font-size:13px;font-weight:700;color:#1a1a1a}
+/* Mobile */
 @media(max-width:768px){
   #dmov{padding:0;align-items:flex-end}
-  #dmpanel{flex-direction:column;max-width:100%;width:100%;max-height:92vh;border-radius:18px 18px 0 0}
-  .dm-img-side{width:100%;height:230px;flex-shrink:0}
-  .dm-info-side{padding:20px 18px 32px;overflow-y:auto}
-  .dm-name{font-size:18px}
-  .dm-price{font-size:24px}
-  .dm-add{font-size:14px;padding:13px}
+  #dmpanel{flex-direction:column;max-width:100%;width:100%;max-height:93vh;border-radius:20px 20px 0 0}
+  .dm-photo{width:100%;height:210px;flex-shrink:0}
+  .dm-top{padding:16px 18px 0}
+  .dm-meta{margin-bottom:12px}
+  .dm-title{font-size:18px;margin-bottom:10px}
+  .dm-price-big{font-size:24px}
+  .dm-add{font-size:13px;padding:12px}
+  .dm-body{padding:16px 18px 28px;grid-template-columns:1fr;gap:14px}
+  @keyframes dmIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 }
 
 /* ─── LOGIN ─── */
@@ -490,46 +503,51 @@ ul{list-style:none}
 
 <!-- Dish Detail Modal -->
 <div id="dmov" onclick="if(event.target===this)closeDM()">
-<div id="dmpanel">
-  <button class="dm-x" onclick="closeDM()">✕</button>
-  <div class="dm-img-side">
-    <img class="dm-img" id="dmImg" src="" alt=""/>
-  </div>
-  <div class="dm-info-side">
-    <div class="dm-badges">
-      <span class="dm-badge">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Хранится <b id="dmShelf"></b> дн.
-      </span>
-      <span class="dm-badge">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <b id="dmTime"></b> минут
-      </span>
+  <div id="dmpanel">
+    <button class="dm-x" onclick="closeDM()">✕</button>
+    <div class="dm-photo">
+      <img id="dmImg" src="" alt=""/>
     </div>
-    <div class="dm-name" id="dmName"></div>
-    <div class="dm-price-row">
-      <span class="dm-price" id="dmPrice"></span>
-      <span class="dm-srv-lbl">на <span id="dmSrv">2</span> порции</span>
+    <div class="dm-info">
+      <div class="dm-top">
+        <div class="dm-meta">
+          <span class="dm-meta-it">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Приготовится за <b id="dmShelf"></b> дн.
+          </span>
+          <span class="dm-meta-it">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <b id="dmTime"></b> минут
+          </span>
+        </div>
+        <div class="dm-title" id="dmName"></div>
+        <div class="dm-price-big" id="dmPrice"></div>
+        <div class="dm-price-hint">Цена за 1 порцию · <span id="dmPrice1"></span></div>
+        <div class="dm-stepper">
+          <button class="dm-s-btn" onclick="dmStep(-1)">−</button>
+          <div class="dm-s-val"><span id="dmSrv">2</span> порции</div>
+          <button class="dm-s-btn" onclick="dmStep(1)">+</button>
+        </div>
+        <button class="dm-add" id="dmAdd" onclick="dmAddCart()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Добавить в корзину
+        </button>
+      </div>
+      <div class="dm-body">
+        <div>
+          <div class="dm-label">Что в наборе</div>
+          <div class="dm-desc-txt" id="dmDesc"></div>
+        </div>
+        <div>
+          <div class="dm-nutr-head">при приготовлении<br>по рецепту</div>
+          <div class="dm-nutr-row"><span class="dm-nutr-nm">Углеводы</span><span class="dm-nutr-vl" id="dcs"></span></div>
+          <div class="dm-nutr-row"><span class="dm-nutr-nm">Жиры</span><span class="dm-nutr-vl" id="dfs"></span></div>
+          <div class="dm-nutr-row"><span class="dm-nutr-nm">Белки</span><span class="dm-nutr-vl" id="dps"></span></div>
+          <div class="dm-nutr-row"><span class="dm-nutr-nm">Калорийность</span><span class="dm-nutr-vl" id="dks"></span></div>
+        </div>
+      </div>
     </div>
-    <button class="dm-add" id="dmAdd" onclick="dmAddCart()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      Добавить в корзину
-    </button>
-    <div class="dm-divider"></div>
-    <div class="dm-sect">Что в наборе</div>
-    <div class="dm-desc" id="dmDesc"></div>
-    <div class="dm-sect">Пищевая ценность</div>
-    <table class="dm-nutr">
-      <thead><tr><th></th><th>на 100 г</th><th>на порцию</th></tr></thead>
-      <tbody>
-        <tr><td>Углеводы</td><td id="dc100"></td><td id="dcs"></td></tr>
-        <tr><td>Жиры</td><td id="df100"></td><td id="dfs"></td></tr>
-        <tr><td>Белки</td><td id="dp100"></td><td id="dps"></td></tr>
-        <tr><td>Калорийность</td><td id="dk100"></td><td id="dks"></td></tr>
-      </tbody>
-    </table>
   </div>
-</div>
 </div>
 
 <script>
@@ -976,29 +994,42 @@ function openDM(id){
   document.getElementById('dmImg').src = P+id+'.jpg';
   document.getElementById('dmImg').alt = d.name;
   document.getElementById('dmName').textContent = d.name;
-  document.getElementById('dmPrice').textContent = d.price+' ₽';
   document.getElementById('dmShelf').textContent = det.shelf;
-  document.getElementById('dmTime').textContent = det.time === 0 ? 'Готово' : det.time;
+  document.getElementById('dmTime').textContent = det.time===0 ? '—' : det.time;
   document.getElementById('dmDesc').textContent = det.desc;
-  const srv = portions[id] || 2;
-  document.getElementById('dmSrv').textContent = srv;
-  // На 100г
-  document.getElementById('dc100').textContent = det.carb+' г';
-  document.getElementById('df100').textContent = det.fat+' г';
-  document.getElementById('dp100').textContent = det.prot+' г';
-  document.getElementById('dk100').textContent = det.kcal+' ккал';
-  // На порцию (общий вес / 2)
-  const ws = det.weight / 2;
+  // Питание на 1 порцию (weight/2)
+  const ws = det.weight/2;
   document.getElementById('dcs').textContent = Math.round(det.carb*ws/100)+' г';
   document.getElementById('dfs').textContent = Math.round(det.fat*ws/100)+' г';
   document.getElementById('dps').textContent = Math.round(det.prot*ws/100)+' г';
   document.getElementById('dks').textContent = Math.round(det.kcal*ws/100)+' ккал';
   // Сброс кнопки
   const btn = document.getElementById('dmAdd');
-  btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Добавить в корзину';
+  btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> Добавить в корзину';
   btn.classList.remove('done');
+  updateDMPrice();
   document.getElementById('dmov').classList.add('on');
   document.body.style.overflow='hidden';
+}
+function updateDMPrice(){
+  if(!dmCurrentId) return;
+  const d = Object.values(MENU).flat().find(x=>x.id===dmCurrentId);
+  if(!d) return;
+  const q = portions[dmCurrentId]||2;
+  document.getElementById('dmSrv').textContent = q;
+  document.getElementById('dmPrice').textContent = fmt(d.price*q);
+  document.getElementById('dmPrice1').textContent = fmt(d.price);
+}
+function dmStep(delta){
+  if(!dmCurrentId) return;
+  const s=[1,2,3,4,5,6];
+  const cur = portions[dmCurrentId]||2;
+  const idx = s.indexOf(cur);
+  portions[dmCurrentId] = s[Math.max(0,Math.min(s.length-1,idx+delta))];
+  // Синхронизируем счётчик на карточке тоже
+  const pt = document.getElementById('pt'+dmCurrentId);
+  if(pt) pt.textContent = portions[dmCurrentId];
+  updateDMPrice();
 }
 function closeDM(){
   document.getElementById('dmov').classList.remove('on');
@@ -1015,10 +1046,10 @@ function dmAddCart(){
   syncCart();
   flashBtn(dmCurrentId);
   const btn = document.getElementById('dmAdd');
-  btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Добавлено в корзину!';
+  btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Добавлено в корзину!';
   btn.classList.add('done');
   setTimeout(()=>{
-    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Добавить в корзину';
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> Добавить в корзину';
     btn.classList.remove('done');
   }, 1800);
 }
