@@ -59,19 +59,25 @@ ul{list-style:none}
 .sb-nav{margin-bottom:18px}
 .sb-nav-item{display:block;font-size:14px;color:#888;padding:5px 0;cursor:pointer;transition:color .15s}
 .sb-nav-item:hover,.sb-nav-item.act{color:#1a1a1a;font-weight:600}
-.sb-promo-pill{display:inline-block;background:var(--ye);color:#1a1a1a;font-size:11px;font-weight:700;padding:4px 10px;border-radius:4px;margin:4px 0 16px;line-height:1.4}
-.sb-promo-pill span{display:block;font-weight:400;font-size:10px;color:#555;margin-top:1px}
-.sb-div{height:1px;background:var(--bdr);margin:14px 0}
-.sb-filter{display:flex;align-items:center;gap:9px;padding:8px 0;cursor:pointer;transition:opacity .15s}
+.sb-promo-pill{display:block;font-size:12px;color:var(--or);font-weight:500;padding:6px 0 14px;cursor:pointer}
+.sb-promo-pill:hover{text-decoration:underline}
+.sb-div{height:1px;background:var(--bdr);margin:4px 0}
+.sb-filter{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--bdr);cursor:pointer;transition:opacity .15s}
 .sb-filter:hover{opacity:.65}
-.sb-fi{width:28px;height:28px;border-radius:50%;background:#f5f5f5;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.sb-fi svg{width:13px;height:13px;stroke:#888;fill:none;stroke-width:1.8}
-.sb-ft{font-size:13px;color:#555}
-.sb-sub{margin-top:18px}
-.sb-sub-badge{background:var(--ye);color:#1a1a1a;font-size:14px;font-weight:800;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:5px}
-.sb-sub-desc{font-size:11px;color:#888;line-height:1.5;margin-bottom:4px}
-.sb-sub-link{font-size:11px;color:var(--or);cursor:pointer}
-.sb-sub-link:hover{text-decoration:underline}
+.sb-fi{width:20px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.sb-fi svg{width:18px;height:18px;stroke:#555;fill:none;stroke-width:1.6}
+.sb-ft-wrap{flex:1;min-width:0}
+.sb-ft{display:block;font-size:14px;color:#1a1a1a;font-weight:500}
+.sb-ft-sub{display:block;font-size:12px;color:#888;margin-top:2px}
+.sb-chev{color:#ccc;font-size:18px;line-height:1;flex-shrink:0}
+.sb-sub{margin-top:20px;padding:0}
+.sb-sub-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.sb-sub-check{flex-shrink:0}
+.sb-sub-info{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.sb-sub-pct{font-size:20px;font-weight:900;color:#1a1a1a;letter-spacing:-.02em}
+.sb-sub-desc{font-size:11px;color:#555;line-height:1.4}
+.sb-sub-link{font-size:13px;font-weight:600;color:#1a1a1a;cursor:pointer;text-decoration-line:underline;text-decoration-style:dotted;text-underline-offset:3px}
+.sb-sub-link:hover{text-decoration-style:solid}
 
 /* ─── MAIN ─── */
 .cat-main{padding:28px 0 0 32px}
@@ -99,6 +105,22 @@ ul{list-style:none}
 .mc-cart svg{width:17px;height:17px;stroke:#1a1a1a;stroke-width:2;fill:none}
 .mc-cart.done{background:#5B9E5A}
 .mc-cart.done svg{stroke:#fff}
+
+/* ─── SUB INFO PANEL ─── */
+#subov{position:fixed;inset:0;background:rgba(0,0,0,.15);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:300;display:none}
+#subov.on{display:block}
+#subpanel{position:fixed;top:0;right:0;width:420px;height:100%;background:#fff;z-index:301;display:flex;flex-direction:column;transform:translateX(105%);transition:transform .28s cubic-bezier(.25,.46,.45,.94);border-left:1px solid var(--bdr);font-family:'Inter',sans-serif}
+#subpanel.on{transform:translateX(0)}
+.subp-close{position:absolute;top:18px;right:18px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#aaa;cursor:pointer;transition:color .15s;background:none;border:none}
+.subp-close:hover{color:#555}
+.subp-body{flex:1;overflow-y:auto;padding:40px 32px 40px}
+.subp-main-title{font-size:26px;font-weight:900;color:#1a1a1a;line-height:1.2;margin-bottom:14px;letter-spacing:-.03em}
+.subp-lead-bold{font-size:15px;font-weight:700;color:#1a1a1a;line-height:1.5;margin-bottom:4px}
+.subp-lead{font-size:14px;color:#777;margin-bottom:32px;line-height:1.6;font-weight:400}
+.subp-q{font-size:16px;font-weight:700;color:#1a1a1a;margin-bottom:8px;margin-top:28px;letter-spacing:-.01em}
+.subp-a{font-size:14px;color:#777;line-height:1.7;font-weight:400}
+.subp-a strong{display:block;color:#1a1a1a;font-weight:700;margin-top:10px;margin-bottom:2px;font-size:14px}
+.subp-a strong:first-child{margin-top:0}
 
 /* ─── CART ─── */
 #cov{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:300;display:none}
@@ -197,25 +219,58 @@ ul{list-style:none}
       <span class="sb-nav-item act">Все блюда</span>
       <span class="sb-nav-item">Прочие наборы</span>
     </div>
-    <div class="sb-promo-pill">5 рецептов из своего меню<span>скидка −15%</span></div>
+    <div class="sb-promo-pill">5 рецептов из своего меню — скидка −10%</div>
     <div class="sb-div"></div>
     <div class="sb-filter">
-      <div class="sb-fi"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-      <span class="sb-ft">Регион доставки</span>
+      <div class="sb-fi">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+          <path fill="#1a1a1a" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.6" fill="white"/>
+        </svg>
+      </div>
+      <div class="sb-ft-wrap"><span class="sb-ft">Регион доставки</span><span class="sb-ft-sub">Москва</span></div>
+      <span class="sb-chev">›</span>
     </div>
     <div class="sb-filter">
-      <div class="sb-fi"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
-      <span class="sb-ft">Неделя доставки</span>
+      <div class="sb-fi">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+          <rect x="2.5" y="4.5" width="19" height="17" rx="2" stroke="#1a1a1a" stroke-width="1.6"/>
+          <path d="M8 2.5v4M16 2.5v4" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M2.5 9.5h19" stroke="#1a1a1a" stroke-width="1.4"/>
+          <rect x="5.5" y="12" width="2.5" height="2" rx=".4" fill="#1a1a1a"/>
+          <rect x="10.8" y="12" width="2.5" height="2" rx=".4" fill="#1a1a1a"/>
+          <rect x="16" y="12" width="2.5" height="2" rx=".4" fill="#1a1a1a"/>
+          <rect x="5.5" y="15.5" width="2.5" height="2" rx=".4" fill="#1a1a1a"/>
+          <rect x="10.8" y="15.5" width="2.5" height="2" rx=".4" fill="#1a1a1a"/>
+          <rect x="16" y="15.5" width="2.5" height="2" rx=".4" fill="#1a1a1a"/>
+        </svg>
+      </div>
+      <div class="sb-ft-wrap"><span class="sb-ft">Неделя доставки</span><span class="sb-ft-sub" id="sbDate"></span></div>
+      <span class="sb-chev">›</span>
     </div>
     <div class="sb-filter">
-      <div class="sb-fi"><svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="14" y2="12"/><line x1="4" y1="18" x2="11" y2="18"/></svg></div>
-      <span class="sb-ft">Настроить меню</span>
+      <div class="sb-fi">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+          <polygon points="22,3 2,3 10,12.5 10,19 14,21 14,12.5" stroke="#1a1a1a" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="sb-ft-wrap"><span class="sb-ft">Настроить меню</span><span class="sb-ft-sub">Настройте своё меню</span></div>
+      <span class="sb-chev">›</span>
     </div>
-    <div class="sb-div"></div>
     <div class="sb-sub">
-      <div class="sb-sub-badge">−10%</div>
-      <div class="sb-sub-desc">при подписке на все блюда в меню</div>
-      <span class="sb-sub-link" onclick="openLogin()">Что такое подписка?</span>
+      <div class="sb-sub-row">
+        <div class="sb-sub-check">
+          <svg viewBox="0 0 20 20" fill="none" width="28" height="28">
+            <rect width="20" height="20" rx="4" fill="#FFD600"/>
+            <path d="M5 10.5l3.5 3.5 6.5-7" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="sb-sub-info">
+          <span class="sb-sub-pct">−10%</span>
+          <span class="sb-sub-desc">при подписке<br>на все блюда в меню</span>
+        </div>
+      </div>
+      <span class="sb-sub-link" onclick="openSubInfo()">Что такое подписка?</span>
     </div>
   </aside>
 
@@ -229,6 +284,34 @@ ul{list-style:none}
     <section class="cat-sec"><div class="cat-sec-title">Приятные мелочи</div><div class="cat-grid" id="g-extras"></div></section>
     <section class="cat-sec"><div class="cat-sec-title">Фермерские продукты</div><div class="cat-grid" id="g-farm"></div></section>
   </main>
+</div>
+
+<div id="subov" onclick="closeSubInfo()"></div>
+<div id="subpanel">
+  <button class="subp-close" onclick="closeSubInfo()">✕</button>
+  <div class="subp-body">
+    <div class="subp-main-title">Что такое подписка?</div>
+    <div class="subp-lead-bold">Это доставка раз в неделю, скидка 10%.</div>
+    <div class="subp-lead">После оплаты доставки в личном кабинете появляется следующая.</div>
+
+    <div class="subp-q">Как можно менять меню?</div>
+    <div class="subp-a">Каждую неделю можно выбирать любые блюда на любую сумму. Оплата тоже изменится.</div>
+
+    <div class="subp-q">Когда можно вносить изменения?</div>
+    <div class="subp-a">
+      <strong>Для Москвы</strong>
+      Меню — за 3 дня до доставки до 16:00<br>
+      Дату доставки — за 2 дня до 16:00<br>
+      Адрес и время — за 1 день до 16:00
+      <strong>Для Санкт-Петербурга, Нижнего Новгорода и Казани</strong>
+      Меню — за 4 дня до доставки до 16:00<br>
+      Дату доставки — за 3 дня до 16:00<br>
+      Адрес и время — за 1 день до 16:00
+    </div>
+
+    <div class="subp-q">Как остановить подписку?</div>
+    <div class="subp-a">В личном кабинете легко отложить доставку. Хоть на месяц! Скидка при этом сохранится. По звонку можно всё отменить, но и скидка сгорит.</div>
+  </div>
 </div>
 
 <div id="cov" onclick="closeCart()"></div>
@@ -277,43 +360,43 @@ const MENU = {
   'g-main': [
     {id:1,  name:'"Попкорн" из индейки терияки с кунжутной',                       price:480, tag:'Рецепт: индейка',    img:P+'%22Попкорн%22 из индейки терияки с кунжутной.png'},
     {id:2,  name:'Большие котлеты с гарниром из кускуса с овощами',                price:520, tag:'Рецепт: котлеты',    img:P+'Большие котлеты с гарниром из кускуса с овощами.png'},
-    {id:3,  name:'Боул с креветками и киноа',                                      price:680, tag:'Рецепт: креветки',   img:P+'Боул с креветками и киноа.png'},
-    {id:4,  name:'Боул с лососем и авокадо',                                       price:720, tag:'Рецепт: лосось',     img:P+'Боул с лососем и авокадо.png'},
+    {id:3,  name:'Боул с креветками и киноа',                                      price:549, tag:'Рецепт: креветки',   img:P+'Боул с креветками и киноа.png'},
+    {id:4,  name:'Боул с лососем и авокадо',                                       price:693, tag:'Рецепт: лосось',     img:P+'Боул с лососем и авокадо.png'},
     {id:5,  name:'Вителло Тоннато',                                                price:890, tag:'Рецепт: телятина',   img:P+'Вителло Тоннато.png'},
     {id:6,  name:'Горчичная говядина с кремовым шпинатом и рисом',                price:620, tag:'Рецепт: говядина',   img:P+'Горчичная говядина с кремовым шпинатом и рисом.png'},
     {id:7,  name:'Домашние наггетсы с макаронами и сыром',                         price:450, tag:'Рецепт: курица',     img:P+'Домашние наггетсы с макаронами и сыром.png'},
-    {id:8,  name:'Котлеты из индейки с сытным пюре',                               price:490, tag:'Рецепт: индейка',    img:P+'Котлеты из индейки с сытным пюре.png'},
-    {id:9,  name:'Крабс-бургеры с картофельными дольками',                         price:560, tag:'Рецепт: краб',       img:P+'Крабс-бургеры с картофельными дольками.png'},
-    {id:10, name:'Кунжутная курица с миксом из зелёных овощей',                    price:510, tag:'Рецепт: курица',     img:P+'Кунжутная курица с миксом из зеленых овощей.png'},
-    {id:11, name:'Кускус Средиземноморья с цыплёнком и чесноком конфи',            price:540, tag:'Рецепт: курица',     img:P+'Кускус Средиземноморья с цыпленком и чесноком конфи.png'},
-    {id:12, name:'Лазанья Болоньезе с говядиной и готовыми соусами',               price:680, tag:'Рецепт: говядина',   img:P+'Лазанья Болоньезе с говядиной и готовыми соусами.png'},
+    {id:8,  name:'Котлеты из индейки с сытным пюре',                               price:500, tag:'Рецепт: индейка',    img:P+'Котлеты из индейки с сытным пюре.png'},
+    {id:9,  name:'Крабс-бургеры с картофельными дольками',                         price:450, tag:'Рецепт: краб',       img:P+'Крабс-бургеры с картофельными дольками.png'},
+    {id:10, name:'Кунжутная курица с миксом из зелёных овощей',                    price:450, tag:'Рецепт: курица',     img:P+'Кунжутная курица с миксом из зеленых овощей.png'},
+    {id:11, name:'Кускус Средиземноморья с цыплёнком и чесноком конфи',            price:360, tag:'Рецепт: курица',     img:P+'Кускус Средиземноморья с цыпленком и чесноком конфи.png'},
+    {id:12, name:'Лазанья Болоньезе с говядиной и готовыми соусами',               price:594, tag:'Рецепт: говядина',   img:P+'Лазанья Болоньезе с говядиной и готовыми соусами.png'},
     {id:13, name:'Немецкий ужин с колбасками и капустой',                          price:590, tag:'Рецепт: колбаски',   img:P+'Немецкий ужин с колбасками и капустой.png'},
-    {id:14, name:'Окунь и трио овощей с лимоном, травами и чесноком',              price:640, tag:'Рецепт: окунь',      img:P+'Окунь и трио овощей с лимоном, травами и чесноком.png'},
+    {id:14, name:'Окунь и трио овощей с лимоном, травами и чесноком',              price:594, tag:'Рецепт: окунь',      img:P+'Окунь и трио овощей с лимоном, травами и чесноком.png'},
     {id:15, name:'Паста с кунжутным тунцом и песто',                               price:550, tag:'Рецепт: тунец',      img:P+'Паста с кунжутным тунцом и песто.png'},
     {id:16, name:'Паста с постным песто и овощами',                                price:430, tag:'Рецепт: паста',      img:P+'Паста с постным песто и овощами.png'},
-    {id:17, name:'Пирог с индейкой и перцами в соусе барбекю',                     price:520, tag:'Рецепт: индейка',    img:P+'Пирог с индейкой и перцами в соусе барбекю.png'},
+    {id:17, name:'Пирог с индейкой и перцами в соусе барбекю',                     price:360, tag:'Рецепт: индейка',    img:P+'Пирог с индейкой и перцами в соусе барбекю.png'},
     {id:18, name:'Сате из печени в перечном соусе демиглас с грибами',             price:490, tag:'Рецепт: печень',     img:P+'Сате из печени в перечном соусе демиглас с грибами.png'},
-    {id:19, name:'Свежая паста Маринара с чоризо',                                 price:560, tag:'Рецепт: паста',      img:P+'Свежая паста Маринара с чоризо.png'},
-    {id:20, name:'Свинина в перечном соусе с жасминовым рисом',                    price:580, tag:'Рецепт: свинина',    img:P+'Свинина в перечном соусе с жасминовым рисом.png'},
+    {id:19, name:'Свежая паста Маринара с чоризо',                                 price:405, tag:'Рецепт: паста',      img:P+'Свежая паста Маринара с чоризо.png'},
+    {id:20, name:'Свинина в перечном соусе с жасминовым рисом',                    price:405, tag:'Рецепт: свинина',    img:P+'Свинина в перечном соусе с жасминовым рисом.png'},
     {id:21, name:'Сочные тефтели и гречка со взбитым маслом и аджикой',            price:470, tag:'Рецепт: говядина',   img:P+'Сочные тефтели и гречка со взбитым маслом и аджикой.png'},
-    {id:22, name:'Спагетти Болоньезе с говядиной',                                 price:510, tag:'Рецепт: говядина',   img:P+'Спагетти Болоньезе с говядиной.png'},
+    {id:22, name:'Спагетти Болоньезе с говядиной',                                 price:378, tag:'Рецепт: говядина',   img:P+'Спагетти Болоньезе с говядиной.png'},
     {id:23, name:'Техас Чили с кукурузным начос',                                  price:540, tag:'Рецепт: говядина',   img:P+'Техас Чили с кукурузным начос.png'},
     {id:24, name:'Том Ям с креветками и рисом',                                    price:580, tag:'Рецепт: креветки',   img:P+'Том Ям с креветками и рисом .png'},
     {id:25, name:'Тортилья с кальмарами в сливочном песто',                        price:520, tag:'Рецепт: кальмар',    img:P+'Тортилья с кальмарами в сливочном песто.png'},
-    {id:26, name:'Трюфельное ризотто с курицей су-вид',                            price:780, tag:'Рецепт: курица',     img:P+'Трюфельное ризотто с курицей су-вид.png'},
+    {id:26, name:'Трюфельное ризотто с курицей су-вид',                            price:288, tag:'Рецепт: курица',     img:P+'Трюфельное ризотто с курицей су-вид.png'},
     {id:27, name:'Туна паста с каперсами',                                         price:490, tag:'Рецепт: тунец',      img:P+'Туна паста с каперсами.png'},
     {id:28, name:'Утиное филе в карри-соусе и зелёными овощами',                   price:720, tag:'Рецепт: утка',       img:P+'Утиное филе в карри-соусе и зелеными овощами.png'},
     {id:29, name:'Утиное филе с овощами под апельсиновым терияки с имбирём',       price:750, tag:'Рецепт: утка',       img:P+'Утиное филе с овощами под апельсиновым терияки с имбирем.png'},
     {id:30, name:'Утиные ножки с блючиз и картофелем',                             price:690, tag:'Рецепт: утка',       img:P+'Утиные ножки с блючиз и картофелем.png'},
     {id:31, name:'Филе индейки с овощами, гречкой и соусом песто',                 price:530, tag:'Рецепт: индейка',    img:P+'Филе индейки с овощами, гречкой и соусом песто.png'},
     {id:32, name:'Хенд-роллы с сомом унаги и кайсо',                               price:680, tag:'Рецепт: сом',        img:P+'Хенд-роллы с сомом унаги и кайсо.png'},
-    {id:33, name:'Цитрусовая рыба с зелёным кускусом',                             price:590, tag:'Рецепт: рыба',       img:P+'Цитрусовая рыба с зеленым кускусом.png'},
+    {id:33, name:'Цитрусовая рыба с зелёным кускусом',                             price:468, tag:'Рецепт: рыба',       img:P+'Цитрусовая рыба с зеленым кускусом.png'},
     {id:34, name:'Чаша-боул с креветками',                                         price:650, tag:'Рецепт: креветки',   img:P+'Чаша-боул с креветками.png'},
     {id:35, name:'Чикен тандури с булгуром и овощами',                             price:520, tag:'Рецепт: курица',     img:P+'Чикен тандури с булгуром и овощами.png'},
     {id:36, name:'Чикен-бургеры с соусом Цезарь',                                  price:480, tag:'Рецепт: курица',     img:P+'Чикен-бургеры с соусом Цезарь.png'},
     {id:37, name:'Шницели с сыром и медовой горчицей',                             price:550, tag:'Рецепт: свинина',    img:P+'Шницели с сыром и медовой горчицей.png'},
     {id:38, name:'Эко-чизбургеры из растительного мяса',                           price:460, tag:'Рецепт: веган',      img:P+'Эко-чизбургеры из растительного мяса.png'},
-    {id:39, name:'Яки удон с индейкой и овощами',                                  price:520, tag:'Рецепт: индейка',    img:P+'Яки удон с индейкой и овощами.png'},
+    {id:39, name:'Яки удон с индейкой и овощами',                                  price:423, tag:'Рецепт: индейка',    img:P+'Яки удон с индейкой и овощами.png'},
   ],
   'g-soup': [
     {id:40, name:'Борщ с томлёной говядиной',                                      price:390, tag:'Суп / 450 мл',       img:P+'Борщ с томленой говядиной.png'},
@@ -387,7 +470,6 @@ function card(d){
   return `<div class="mc">
     <div class="mc-img-wrap">
       <img class="mc-img" src="${d.img}" alt="${d.name}" loading="lazy"/>
-      <span class="mc-tag">${d.tag}</span>
     </div>
     <div class="mc-body">
       <div class="mc-name">${d.name}</div>
@@ -475,6 +557,9 @@ function closeCart(){
   document.body.style.overflow='';
 }
 function openLogin(){document.getElementById('lov').classList.add('on');document.body.style.overflow='hidden';}
+function openSubInfo(){document.getElementById('subpanel').classList.add('on');document.getElementById('subov').classList.add('on');document.body.style.overflow='hidden';}
+function closeSubInfo(){document.getElementById('subpanel').classList.remove('on');document.getElementById('subov').classList.remove('on');document.body.style.overflow='';}
+
 function closeLogin(){document.getElementById('lov').classList.remove('on');document.body.style.overflow='';}
 function onPhoneInput(inp){document.getElementById('lsubmit').className='lbtn'+(inp.value.length>6?' rdy':'');}
 function sendSms(){
@@ -487,6 +572,13 @@ function backToPhone(){document.getElementById('lStep1').style.display='block';d
 function verifyCode(){closeLogin();}
 
 render();
+
+// Текущая дата в формате "14 апр."
+(function(){
+  const months = ['янв.','фев.','мар.','апр.','май','июн.','июл.','авг.','сен.','окт.','ноя.','дек.'];
+  const d = new Date();
+  document.getElementById('sbDate').textContent = d.getDate() + ' ' + months[d.getMonth()];
+})();
 </script>
 </body>
 </html>
