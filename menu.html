@@ -665,6 +665,14 @@ function verifyCode(){closeLogin();}
 
 render();
 
+// Скролл к секции по hash из URL (например menu.html#soup)
+(function(){
+  const hash = location.hash.replace('#','');
+  if(!hash) return;
+  const target = document.getElementById('g-' + hash);
+  if(target) setTimeout(()=>target.closest('.cat-sec').scrollIntoView({behavior:'smooth', block:'start'}), 100);
+})();
+
 </script>
 </body>
 </html>
