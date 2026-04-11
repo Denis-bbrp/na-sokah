@@ -205,6 +205,45 @@ ul{list-style:none}
 .btn-co{width:100%;margin-top:12px;background:#1a1a1a;color:#fff;font-size:14px;font-weight:600;padding:15px;border-radius:8px;transition:background .15s}
 .btn-co:hover{background:#333}
 
+/* ─── DISH MODAL ─── */
+#dmov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
+#dmov.on{display:flex}
+#dmpanel{background:#fff;border-radius:14px;max-width:860px;width:100%;max-height:90vh;overflow:hidden;display:flex;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.25);animation:dmIn .22s ease}
+@keyframes dmIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+.dm-x{position:absolute;top:14px;right:14px;z-index:2;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;font-size:15px;color:#555;cursor:pointer;border:none;transition:background .15s;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.dm-x:hover{background:#fff;color:#1a1a1a}
+.dm-img-side{width:44%;flex-shrink:0;position:relative;background:#f5f5f5}
+.dm-img{width:100%;height:100%;object-fit:cover;display:block}
+.dm-info-side{flex:1;overflow-y:auto;padding:32px 30px 30px}
+.dm-badges{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.dm-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#555;background:#f5f5f5;padding:5px 12px;border-radius:20px}
+.dm-badge b{color:#1a1a1a;font-weight:700}
+.dm-name{font-size:22px;font-weight:700;color:#1a1a1a;line-height:1.3;margin-bottom:10px;letter-spacing:-.02em}
+.dm-price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:20px}
+.dm-price{font-size:28px;font-weight:800;color:#1a1a1a;letter-spacing:-.03em}
+.dm-srv-lbl{font-size:13px;color:#aaa}
+.dm-add{width:100%;padding:14px 20px;background:var(--ye);border-radius:8px;font-size:15px;font-weight:700;color:#1a1a1a;display:flex;align-items:center;justify-content:center;gap:9px;transition:background .15s,color .15s;margin-bottom:24px;border:none;cursor:pointer}
+.dm-add:hover{background:var(--ye-h)}
+.dm-add.done{background:#5B9E5A;color:#fff}
+.dm-divider{height:1px;background:#f0f0f0;margin:0 0 20px}
+.dm-sect{font-size:11px;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.dm-desc{font-size:14px;color:#555;line-height:1.75;margin-bottom:22px}
+.dm-nutr{width:100%;border-collapse:collapse;font-size:13px}
+.dm-nutr th{text-align:right;font-weight:600;color:#bbb;padding:5px 0;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.dm-nutr th:first-child{text-align:left}
+.dm-nutr td{padding:7px 0;border-bottom:1px solid #f5f5f5;color:#1a1a1a}
+.dm-nutr td:not(:first-child){text-align:right;font-weight:600}
+.dm-nutr tbody tr:last-child td{border-bottom:none;font-weight:700}
+@media(max-width:768px){
+  #dmov{padding:0;align-items:flex-end}
+  #dmpanel{flex-direction:column;max-width:100%;width:100%;max-height:92vh;border-radius:18px 18px 0 0}
+  .dm-img-side{width:100%;height:230px;flex-shrink:0}
+  .dm-info-side{padding:20px 18px 32px;overflow-y:auto}
+  .dm-name{font-size:18px}
+  .dm-price{font-size:24px}
+  .dm-add{font-size:14px;padding:13px}
+}
+
 /* ─── LOGIN ─── */
 #lov{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:400;display:none;align-items:center;justify-content:center}
 #lov.on{display:flex}
@@ -449,6 +488,49 @@ ul{list-style:none}
   </div>
 </div>
 
+<!-- Dish Detail Modal -->
+<div id="dmov" onclick="if(event.target===this)closeDM()"></div>
+<div id="dmpanel">
+  <button class="dm-x" onclick="closeDM()">✕</button>
+  <div class="dm-img-side">
+    <img class="dm-img" id="dmImg" src="" alt=""/>
+  </div>
+  <div class="dm-info-side">
+    <div class="dm-badges">
+      <span class="dm-badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Хранится <b id="dmShelf"></b> дн.
+      </span>
+      <span class="dm-badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <b id="dmTime"></b> минут
+      </span>
+    </div>
+    <div class="dm-name" id="dmName"></div>
+    <div class="dm-price-row">
+      <span class="dm-price" id="dmPrice"></span>
+      <span class="dm-srv-lbl">на <span id="dmSrv">2</span> порции</span>
+    </div>
+    <button class="dm-add" id="dmAdd" onclick="dmAddCart()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Добавить в корзину
+    </button>
+    <div class="dm-divider"></div>
+    <div class="dm-sect">Что в наборе</div>
+    <div class="dm-desc" id="dmDesc"></div>
+    <div class="dm-sect">Пищевая ценность</div>
+    <table class="dm-nutr">
+      <thead><tr><th></th><th>на 100 г</th><th>на порцию</th></tr></thead>
+      <tbody>
+        <tr><td>Углеводы</td><td id="dc100"></td><td id="dcs"></td></tr>
+        <tr><td>Жиры</td><td id="df100"></td><td id="dfs"></td></tr>
+        <tr><td>Белки</td><td id="dp100"></td><td id="dps"></td></tr>
+        <tr><td>Калорийность</td><td id="dk100"></td><td id="dks"></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <script>
 const P = 'menu-img/';
 
@@ -562,21 +644,207 @@ let cart=[], portions={};
 Object.values(MENU).flat().forEach(d=>portions[d.id]=2);
 const fmt=n=>n.toLocaleString('ru')+' ₽';
 
+const DETAILS = {
+  /* ── Основные блюда ── */
+  1:{time:20,shelf:3,weight:500,kcal:165,prot:22,fat:6,carb:9,
+     desc:'Филе индейки 300г · Соус терияки 60мл · Кунжут чёрный и белый 20г · Имбирь свежий 15г · Чеснок 2 зубчика · Масло кунжутное 10мл · Кинза · Специи'},
+  2:{time:35,shelf:3,weight:650,kcal:210,prot:18,fat:11,carb:16,
+     desc:'Говяжий фарш 350г · Кускус 150г · Перец болгарский 1 шт · Цукини 1 шт · Лук 1 шт · Яйцо 1 шт · Сухари панировочные 30г · Специи для котлет'},
+  3:{time:20,shelf:3,weight:560,kcal:155,prot:20,fat:5,carb:13,
+     desc:'Креветки тигровые 200г · Киноа 100г · Авокадо 1 шт · Огурец 1 шт · Редис 5 шт · Соус понзу 40мл · Кунжут · Лайм · Зелёный лук'},
+  4:{time:15,shelf:2,weight:520,kcal:220,prot:18,fat:14,carb:8,
+     desc:'Лосось слабосолёный 200г · Авокадо 1 шт · Рис для суши 150г · Уксус рисовый · Огурец 1 шт · Нори 2 листа · Кунжут · Соевый соус · Васаби'},
+  5:{time:30,shelf:2,weight:480,kcal:195,prot:24,fat:10,carb:5,
+     desc:'Телятина 250г · Тунец консервированный 80г · Майонез домашний 60г · Каперсы 20г · Лимон · Анчоусы 3 шт · Руккола · Пармезан стружка'},
+  6:{time:40,shelf:3,weight:600,kcal:240,prot:22,fat:14,carb:12,
+     desc:'Говядина (антрекот) 300г · Горчица зернистая 30г · Шпинат 150г · Рис пропаренный 100г · Сливки 20% 80мл · Чеснок · Масло сливочное · Специи'},
+  7:{time:25,shelf:3,weight:580,kcal:280,prot:20,fat:15,carb:18,
+     desc:'Куриное филе 280г · Макароны 150г · Сыр твёрдый 60г · Сухари панировочные 50г · Яйцо 1 шт · Молоко 100мл · Масло сливочное · Специи'},
+  8:{time:35,shelf:3,weight:580,kcal:200,prot:19,fat:9,carb:14,
+     desc:'Фарш индейки 320г · Картофель 400г · Лук 1 шт · Яйцо 1 шт · Молоко 80мл · Масло сливочное 40г · Зелёный лук · Специи'},
+  9:{time:20,shelf:3,weight:540,kcal:250,prot:16,fat:12,carb:22,
+     desc:'Крабовые палочки 200г · Булочки для бургеров 2 шт · Картофель 300г · Салат листовой · Помидор 1 шт · Соус тартар 40г · Специи'},
+  10:{time:25,shelf:3,weight:520,kcal:175,prot:24,fat:8,carb:7,
+      desc:'Куриное филе 300г · Брокколи 150г · Стручковая фасоль 100г · Кабачок 1 шт · Кунжут белый 20г · Соевый соус 30мл · Имбирь · Чеснок · Масло'},
+  11:{time:20,shelf:3,weight:500,kcal:185,prot:20,fat:7,carb:16,
+      desc:'Цыплёнок (грудка) 250г · Кускус 150г · Чеснок конфи 20г · Помидоры вяленые 30г · Оливки 40г · Орегано · Тимьян · Оливковое масло · Лимон'},
+  12:{time:40,shelf:3,weight:700,kcal:270,prot:18,fat:14,carb:20,
+      desc:'Говяжий фарш 300г · Листы для лазаньи 200г · Соус болоньезе 250мл · Соус бешамель 200мл · Сыр моцарелла 80г · Пармезан 30г · Специи'},
+  13:{time:30,shelf:3,weight:620,kcal:310,prot:16,fat:22,carb:12,
+      desc:'Колбаски баварские 300г · Капуста белокочанная 300г · Лук 2 шт · Тмин · Яблочный уксус 30мл · Сахар · Лавровый лист · Специи'},
+  14:{time:30,shelf:3,weight:540,kcal:155,prot:22,fat:6,carb:8,
+      desc:'Филе окуня 280г · Морковь 1 шт · Цукини 1 шт · Болгарский перец 1 шт · Лимон 1 шт · Чеснок 3 зубчика · Тимьян · Оливковое масло · Специи'},
+  15:{time:25,shelf:3,weight:560,kcal:290,prot:20,fat:12,carb:28,
+      desc:'Тунец (стейк) 200г · Спагетти 150г · Соус песто 60г · Кунжут 20г · Каперсы 15г · Лимон · Оливковое масло · Чеснок · Пармезан'},
+  16:{time:20,shelf:3,weight:500,kcal:245,prot:10,fat:10,carb:32,
+      desc:'Паста фарфалле 200г · Соус песто постный 80г · Цукини 1 шт · Помидоры черри 10 шт · Шпинат 60г · Кедровые орехи 20г · Пармезан · Оливковое масло'},
+  17:{time:35,shelf:3,weight:600,kcal:220,prot:16,fat:10,carb:20,
+      desc:'Фарш индейки 280г · Тесто слоёное 200г · Перец болгарский 2 шт · Соус барбекю 60мл · Лук 1 шт · Сыр 50г · Специи'},
+  18:{time:30,shelf:3,weight:520,kcal:185,prot:20,fat:9,carb:8,
+      desc:'Печень куриная 250г · Соус демиглас 80мл · Грибы 150г · Перец чёрный молотый · Розмарин · Тимьян · Масло сливочное · Лук-шалот'},
+  19:{time:20,shelf:3,weight:500,kcal:260,prot:14,fat:12,carb:26,
+      desc:'Паста свежая 250г · Чоризо 100г · Помидоры пассата 150г · Чеснок 3 зубчика · Базилик свежий · Оливковое масло · Пармезан · Специи'},
+  20:{time:35,shelf:3,weight:580,kcal:280,prot:22,fat:16,carb:14,
+      desc:'Свинина (карбонад) 280г · Рис жасмин 150г · Соус перечный 80мл · Лук 1 шт · Сливки 100мл · Смесь перцев горошком · Масло сливочное · Специи'},
+  21:{time:35,shelf:3,weight:600,kcal:215,prot:18,fat:10,carb:16,
+      desc:'Говяжий фарш 300г · Гречка 150г · Лук 1 шт · Яйцо 1 шт · Аджика 30г · Масло сливочное 40г · Зелёный лук · Специи'},
+  22:{time:30,shelf:3,weight:560,kcal:255,prot:16,fat:11,carb:26,
+      desc:'Говяжий фарш 250г · Спагетти 180г · Помидоры пассата 150г · Лук 1 шт · Морковь 1 шт · Чеснок · Базилик · Пармезан · Специи'},
+  23:{time:40,shelf:3,weight:600,kcal:200,prot:18,fat:9,carb:14,
+      desc:'Говяжий фарш 300г · Фасоль красная 150г · Кукуруза 100г · Чили-перец 1 шт · Помидоры пассата 150г · Начос кукурузные 60г · Специи Tex-Mex'},
+  24:{time:25,shelf:2,weight:540,kcal:145,prot:16,fat:7,carb:10,
+      desc:'Креветки тигровые 200г · Рис жасмин 100г · Паста Том Ям 40г · Кокосовое молоко 100мл · Лемонграсс · Каффир-лайм · Галангал · Грибы шиитаке'},
+  25:{time:20,shelf:3,weight:520,kcal:235,prot:18,fat:9,carb:22,
+      desc:'Кальмар 200г · Тортилья 4 шт · Соус песто сливочный 60г · Салат листовой · Помидор 1 шт · Лайм · Чеснок · Специи'},
+  26:{time:30,shelf:3,weight:520,kcal:210,prot:18,fat:8,carb:22,
+      desc:'Куриное филе су-вид 200г · Рис арборио 150г · Трюфельный соус 40мл · Пармезан 50г · Белое вино 50мл · Лук-шалот · Бульон овощной · Масло сливочное'},
+  27:{time:20,shelf:3,weight:520,kcal:265,prot:18,fat:10,carb:27,
+      desc:'Тунец консервированный 160г · Паста пенне 180г · Каперсы 25г · Оливки 40г · Помидоры черри 10 шт · Чеснок · Оливковое масло · Лимон · Базилик'},
+  28:{time:35,shelf:2,weight:540,kcal:245,prot:26,fat:14,carb:7,
+      desc:'Утиное филе 280г · Соус карри жёлтый 80мл · Брокколи 150г · Стручковая фасоль 100г · Кокосовое молоко 80мл · Лайм · Имбирь · Специи'},
+  29:{time:35,shelf:2,weight:540,kcal:260,prot:25,fat:15,carb:10,
+      desc:'Утиное филе 280г · Соус терияки апельсиновый 80мл · Морковь 1 шт · Брокколи 100г · Болгарский перец · Имбирь · Кунжут · Специи'},
+  30:{time:40,shelf:2,weight:600,kcal:290,prot:24,fat:18,carb:9,
+      desc:'Утиные ножки 2 шт · Сыр блю чиз 60г · Картофель 300г · Тимьян · Розмарин · Чеснок · Масло сливочное · Специи'},
+  31:{time:30,shelf:3,weight:560,kcal:195,prot:26,fat:7,carb:14,
+      desc:'Филе индейки 280г · Гречка 150г · Цукини 1 шт · Морковь 1 шт · Соус песто 50г · Масло сливочное · Специи'},
+  32:{time:25,shelf:2,weight:500,kcal:175,prot:20,fat:7,carb:14,
+      desc:'Филе сома 200г · Унаги соус 40мл · Нори 4 листа · Рис для суши 150г · Кайсо (морская капуста) 50г · Кунжут · Имбирь маринованный · Васаби'},
+  33:{time:25,shelf:3,weight:520,kcal:165,prot:22,fat:6,carb:12,
+      desc:'Рыбное филе (тилапия) 280г · Кускус 150г · Апельсин 1 шт · Лимон 1 шт · Шпинат 60г · Каперсы 15г · Оливковое масло · Специи'},
+  34:{time:20,shelf:3,weight:540,kcal:155,prot:19,fat:5,carb:13,
+      desc:'Креветки 200г · Рис 100г · Авокадо 1 шт · Огурец 1 шт · Эдамаме 80г · Водоросли кайсо · Соус понзу · Кунжут · Лайм'},
+  35:{time:30,shelf:3,weight:560,kcal:190,prot:24,fat:7,carb:15,
+      desc:'Куриное бедро 280г · Булгур 150г · Соус тандури 60мл · Перец болгарский 1 шт · Лук 1 шт · Йогурт 80г · Специи тандури · Лайм'},
+  36:{time:20,shelf:3,weight:560,kcal:270,prot:22,fat:13,carb:18,
+      desc:'Куриное филе 280г · Булочки для бургеров 2 шт · Соус Цезарь 50г · Салат романо · Пармезан 30г · Помидор 1 шт · Панировочные сухари · Специи'},
+  37:{time:30,shelf:3,weight:560,kcal:295,prot:24,fat:17,carb:12,
+      desc:'Свиная корейка 300г · Сыр твёрдый 60г · Горчица медовая 40г · Яйцо 1 шт · Сухари панировочные 50г · Масло сливочное · Специи'},
+  38:{time:20,shelf:3,weight:520,kcal:255,prot:18,fat:12,carb:20,
+      desc:'Котлета растительная 200г · Булочка 2 шт · Листья салата · Помидор 1 шт · Лук красный · Соус веганский 40г · Огурец маринованный · Специи'},
+  39:{time:20,shelf:3,weight:520,kcal:185,prot:18,fat:6,carb:20,
+      desc:'Фарш индейки 200г · Лапша удон 200г · Перец болгарский 1 шт · Лук 1 шт · Морковь 1 шт · Соус яки 50мл · Кунжут · Имбирь · Специи'},
+  /* ── Супы ── */
+  40:{time:15,shelf:3,weight:450,kcal:65,prot:5,fat:3,carb:6,
+      desc:'Говядина томлёная 120г · Свёкла 100г · Капуста белокочанная 80г · Картофель 80г · Морковь 1 шт · Лук 1 шт · Томатная паста · Сметана · Специи'},
+  41:{time:15,shelf:3,weight:400,kcal:80,prot:6,fat:3,carb:9,
+      desc:'Горох колотый 100г · Рёбра копчёные 150г · Картофель 80г · Лук 1 шт · Морковь 1 шт · Чеснок · Копчёная паприка · Лавровый лист · Специи'},
+  42:{time:15,shelf:3,weight:400,kcal:70,prot:3,fat:3,carb:9,
+      desc:'Картофель 200г · Бекон 60г · Лук 1 шт · Чеснок · Бульон куриный 300мл · Сметана 50г · Зелень · Специи'},
+  43:{time:15,shelf:3,weight:400,kcal:75,prot:3,fat:4,carb:7,
+      desc:'Кабачок 150г · Морковь 1 шт · Сельдерей 1 стебель · Лук 1 шт · Сливки 80мл · Сыр сулугуни 60г · Бульон овощной · Тимьян · Специи'},
+  44:{time:15,shelf:3,weight:400,kcal:65,prot:7,fat:2,carb:5,
+      desc:'Куриное филе 120г · Брокколи 100г · Горошек зелёный 60г · Картофель 60г · Лук 1 шт · Морковь 1 шт · Бульон куриный · Специи'},
+  /* ── Салаты ── */
+  45:{time:10,shelf:1,weight:220,kcal:55,prot:2,fat:3,carb:5,
+      desc:'Огурцы свежие 300г · Чеснок 3 зубчика · Соевый соус 20мл · Рисовый уксус 15мл · Кунжутное масло 10мл · Грецкие орехи 30г · Перец чили · Зелёный лук · Кинза'},
+  46:{time:15,shelf:1,weight:280,kcal:120,prot:14,fat:5,carb:8,
+      desc:'Цыплёнок су-вид 150г · Лаваш хрустящий 30г · Помидоры черри 8 шт · Огурец 1 шт · Листья салата 60г · Заправка фаттуш 40мл · Мята · Лимон'},
+  47:{time:15,shelf:1,weight:300,kcal:125,prot:10,fat:5,carb:12,
+      desc:'Картофель отварной 200г · Креветки 100г · Апельсин 1 шт · Майонез домашний 40г · Горчица 10г · Зелёный лук · Укроп · Специи'},
+  48:{time:15,shelf:1,weight:260,kcal:155,prot:14,fat:9,carb:6,
+      desc:'Куриное филе 120г · Яйцо 2 шт · Авокадо 1 шт · Бекон 60г · Помидор 1 шт · Майонез домашний 40г · Листья салата 60г · Специи'},
+  49:{time:15,shelf:1,weight:260,kcal:175,prot:16,fat:9,carb:9,
+      desc:'Куриное филе 150г · Яблоко 1 шт · Сельдерей 2 стебля · Грецкие орехи 30г · Майонез греческий 40г · Листья салата · Виноград 40г · Специи'},
+  50:{time:10,shelf:1,weight:240,kcal:110,prot:4,fat:6,carb:11,
+      desc:'Груша 2 шт · Ореховый кроканты 40г · Руккола 60г · Сыр горгонзола 40г · Мёд 15г · Лимонный сок · Оливковое масло · Соль'},
+  51:{time:10,shelf:2,weight:200,kcal:80,prot:3,fat:4,carb:9,
+      desc:'Свёкла варёная 250г · Грецкие орехи 40г · Чернослив 40г · Чеснок 2 зубчика · Майонез 30г · Соль · Перец'},
+  /* ── Закуски ── */
+  52:{time:20,shelf:3,weight:300,kcal:185,prot:7,fat:6,carb:26,
+      desc:'Тесто для вареников 200г · Картофель 200г · Грибы шампиньоны 100г · Лук 1 шт · Масло сливочное 30г · Сметана 50г · Укроп · Специи'},
+  53:{time:15,shelf:1,weight:200,kcal:155,prot:4,fat:9,carb:16,
+      desc:'Авокадо 1 шт · Тостадос кукурузные 4 шт · Помидор 1 шт · Лук красный · Лайм 1 шт · Кинза · Перец чили · Соль'},
+  54:{time:20,shelf:2,weight:280,kcal:165,prot:15,fat:9,carb:7,
+      desc:'Щупальца кальмара 150г · Хумус 80г · Оливки 40г · Перец маринованный 40г · Помидоры черри 6 шт · Сыр фета 40г · Оливковое масло · Орегано · Лаваш'},
+  55:{time:25,shelf:3,weight:250,kcal:210,prot:8,fat:12,carb:18,
+      desc:'Тесто слоёное 150г · Бекон 80г · Баклажан 1 шт · Помидоры черри 8 шт · Лук 1 шт · Оливки 20г · Каперсы 15г · Специи'},
+  56:{time:25,shelf:3,weight:350,kcal:240,prot:12,fat:10,carb:28,
+      desc:'Тесто для пиццы 200г · Соус томатный 60г · Моцарелла 80г · Бекон 60г · Грибы 80г · Маслины 30г · Орегано · Базилик'},
+  57:{time:15,shelf:3,weight:300,kcal:220,prot:10,fat:8,carb:28,
+      desc:'Основа для пиццы готовая 200г · Соус томатный 60г · Моцарелла 100г · Базилик свежий · Оливковое масло · Соль'},
+  58:{time:10,shelf:2,weight:400,kcal:350,prot:22,fat:28,carb:6,
+      desc:'Сыр мягкий 100г · Сыр выдержанный 80г · Сыр с плесенью 60г · Лосось слабосолёный 80г · Прошутто 60г · Паштет из индейки 60г · Крекеры · Виноград · Орехи'},
+  59:{time:10,shelf:1,weight:220,kcal:175,prot:7,fat:9,carb:18,
+      desc:'Хлеб чиабатта 2 ломтя · Хумус 60г · Соус песто 30г · Цукини на гриле 60г · Перец печёный 40г · Руккола · Лимон · Оливковое масло'},
+  /* ── Завтраки ── */
+  60:{time:15,shelf:2,weight:250,kcal:195,prot:10,fat:11,carb:16,
+      desc:'Хлеб на закваске 2 ломтя · Томаты 2 шт · Яйцо 2 шт · Чеснок 2 зубчика · Оливковое масло 20мл · Базилик · Соль · Перец'},
+  61:{time:5,shelf:3,weight:300,kcal:140,prot:6,fat:5,carb:18,
+      desc:'Овсяные хлопья 80г · Орехи ассорти 30г · Ягоды сушёные 30г · Мёд 20г · Семена чиа 15г · Гранола 40г · Сухофрукты 30г'},
+  62:{time:10,shelf:2,weight:280,kcal:165,prot:5,fat:8,carb:21,
+      desc:'Овсяные хлопья 80г · Молоко кокосовое 150мл · Манго 100г · Орехи кешью 25г · Кокосовая стружка 15г · Семена чиа 10г · Мёд 15г'},
+  63:{time:20,shelf:2,weight:260,kcal:210,prot:12,fat:9,carb:22,
+      desc:'Творог 5% 200г · Яйцо 2 шт · Мука 60г · Смородина чёрная 80г · Масло для жарки · Сахар 30г · Сметана 40г · Ваниль'},
+  64:{time:10,shelf:1,weight:240,kcal:180,prot:10,fat:12,carb:10,
+      desc:'Яйцо 3 шт · Масло сливочное блючиз 40г · Хлеб для тостов 2 ломтя · Шпинат 40г · Лимон · Соль · Перец · Зелёный лук'},
+  /* ── Десерты ── */
+  65:{time:30,shelf:2,weight:180,kcal:310,prot:5,fat:14,carb:42,
+      desc:'Банан 2 шт · Мука 100г · Яйцо 2 шт · Сахар 60г · Масло сливочное 60г · Сыр кремчиз 100г · Ванильный экстракт · Разрыхлитель'},
+  66:{time:30,shelf:3,weight:160,kcal:320,prot:5,fat:12,carb:47,
+      desc:'Мука 120г · Яйцо 2 шт · Сахар 80г · Масло сливочное 60г · Лимон 2 шт · Сметана 50г · Разрыхлитель · Ванилин'},
+  67:{time:40,shelf:3,weight:200,kcal:290,prot:7,fat:18,carb:28,
+      desc:'Печенье Орео 100г · Сыр кремчиз 200г · Малина 100г · Сливки 33% 80мл · Желатин 8г · Сахар 60г · Масло сливочное 40г'},
+  68:{time:5,shelf:1,weight:350,kcal:95,prot:2,fat:3,carb:15,
+      desc:'Манго замороженное 150г · Молоко кокосовое 150мл · Банан 1 шт · Мёд 15г · Сок лимона · Семена чиа 10г'},
+  69:{time:35,shelf:2,weight:180,kcal:295,prot:5,fat:15,carb:36,
+      desc:'Морковь 150г · Мука 100г · Яйцо 2 шт · Масло растительное 60мл · Сахар 70г · Корица · Сыр кремчиз 80г · Сахарная пудра · Разрыхлитель'},
+  70:{time:5,shelf:1,weight:350,kcal:85,prot:5,fat:1,carb:14,
+      desc:'Облепиха замороженная 150г · Йогурт греческий 150г · Банан 1 шт · Мёд 20г · Апельсиновый сок 50мл'},
+  71:{time:40,shelf:2,weight:200,kcal:350,prot:7,fat:12,carb:52,
+      desc:'Мука 200г · Дрожжи 7г · Молоко 100мл · Масло сливочное 60г · Яйцо 1 шт · Корица 10г · Сахар коричневый 60г · Сыр кремчиз 80г · Сахарная пудра'},
+  /* ── Приятные мелочи ── */
+  72:{time:5,shelf:7,weight:180,kcal:620,prot:2,fat:66,carb:4,
+      desc:'Яйца перепелиные 6 шт · Масло подсолнечное 150мл · Горчица 10г · Лимонный сок · Соль · Перец · Сахар'},
+  73:{time:5,shelf:7,weight:200,kcal:420,prot:8,fat:40,carb:6,
+      desc:'Базилик свежий 60г · Кедровые орехи 40г · Пармезан 50г · Оливковое масло 100мл · Чеснок 2 зубчика · Лимонный сок · Соль'},
+  74:{time:5,shelf:7,weight:175,kcal:380,prot:3,fat:38,carb:5,
+      desc:'Майонез яичный 100г · Анчоусы 20г · Пармезан 30г · Горчица 15г · Чеснок 2 зубчика · Лимонный сок · Вустерский соус · Перец'},
+  75:{time:5,shelf:14,weight:215,kcal:180,prot:1,fat:0,carb:44,
+      desc:'Лук красный 500г · Сахар коричневый 60г · Бальзамический уксус 40мл · Масло оливковое 20мл · Тимьян · Лавровый лист · Соль'},
+  76:{time:5,shelf:14,weight:200,kcal:215,prot:2,fat:5,carb:38,
+      desc:'Мёд натуральный 150г · Горчица зернистая Дижон 60г · Лимонный сок 20мл · Розмарин сушёный · Соль'},
+  77:{time:0,shelf:5,weight:1000,kcal:58,prot:3,fat:3,carb:5,
+      desc:'Молоко цельное пастеризованное 3,2% жирности от фермерского хозяйства'},
+  78:{time:0,shelf:5,weight:250,kcal:155,prot:11,fat:12,carb:3,
+      desc:'Рикотта из коровьего молока 250г от фермерского хозяйства. Нежная молочная масса без добавок'},
+  79:{time:5,shelf:14,weight:250,kcal:430,prot:2,fat:18,carb:64,
+      desc:'Сахар 150г · Сливки 33% 100мл · Масло сливочное 50г · Морская соль 5г · Ванильный экстракт'},
+  /* ── Фермерские продукты ── */
+  80:{time:0,shelf:5,weight:200,kcal:200,prot:22,fat:12,carb:0,
+      desc:'Лосось атлантический 200г, слабосолёный по традиционному рецепту. Морская соль · Укроп · Лавровый лист'},
+  81:{time:90,shelf:3,weight:800,kcal:85,prot:14,fat:4,carb:1,
+      desc:'Фермерская курица (тушка) 800г · Морковь 2 шт · Лук 2 шт · Сельдерей 2 стебля · Лавровый лист · Перец горошком · Соль'},
+  82:{time:60,shelf:3,weight:1400,kcal:180,prot:22,fat:9,carb:3,
+      desc:'Цыплёнок фермерский целый 1,2–1,4кг · Чеснок · Тимьян · Розмарин · Масло сливочное · Лимон · Специи для запекания · Соль'},
+  83:{time:25,shelf:3,weight:600,kcal:145,prot:26,fat:4,carb:2,
+      desc:'Филе куриной грудки 500г от фермерского хозяйства · Маринад фирменный 100г · Специи'},
+  84:{time:0,shelf:5,weight:180,kcal:180,prot:14,fat:12,carb:4,
+      desc:'Паштет из индейки домашнего приготовления 180г. Состав: индейка, сливочный сыр, лук-порей, специи, соль'},
+  85:{time:0,shelf:5,weight:100,kcal:235,prot:28,fat:13,carb:1,
+      desc:'Прошутто из свиного бедра длительного вяления 100г. Традиционный итальянский рецепт'},
+  86:{time:0,shelf:5,weight:160,kcal:130,prot:27,fat:2,carb:1,
+      desc:'Филе куриной грудки приготовленное методом су-вид 160г. Без добавок. Готово к употреблению'},
+  87:{time:5,shelf:2,weight:200,kcal:255,prot:8,fat:2,carb:50,
+      desc:'Французский багет замороженный 200г. Выпекать в духовке 5 минут при 200°C. Хрустящая корочка гарантирована'},
+};
+
 function card(d){
-  return `<div class="mc">
+  return `<div class="mc" onclick="openDM(${d.id})" style="cursor:pointer">
     <div class="mc-img-wrap">
       <img class="mc-img" src="${P}${d.id}.jpg" alt="${d.name}" loading="lazy"/>
+      ${d.tag ? `<div class="mc-tag">${d.tag}</div>` : ''}
     </div>
     <div class="mc-body">
       <div class="mc-name">${d.name}</div>
       <div class="mc-footer">
         <div class="mc-price">${d.price} ₽</div>
         <div class="mc-actions">
-          <div class="mc-port" onclick="cyclePt(${d.id},this)">
+          <div class="mc-port" onclick="event.stopPropagation();cyclePt(${d.id},this)">
             <span id="pt${d.id}">${portions[d.id]}</span>
             <span class="mc-port-arr">▾</span>
           </div>
-          <button class="mc-cart" id="mb${d.id}" onclick="addCart(${d.id})">
+          <button class="mc-cart" id="mb${d.id}" onclick="event.stopPropagation();addCart(${d.id})">
             <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           </button>
         </div>
@@ -633,7 +901,7 @@ function renderCartItems(){
   if(!cart.length){el.innerHTML='<div style="flex:1;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:14px;text-align:center;padding:40px 20px">Корзина пуста</div>';return;}
   el.innerHTML=cart.map(i=>`
     <div class="ci">
-      <img class="ci-img" src="${i.img}" alt="${i.name}"/>
+      <img class="ci-img" src="${P}${i.id}.jpg" alt="${i.name}"/>
       <div class="ci-inf">
         <div class="ci-nm">${i.name}</div>
         <div class="ci-pr">${fmt(i.price*i.qty)} <span style="font-size:12px;font-weight:400;color:#aaa">${i.qty} порц.</span></div>
@@ -697,6 +965,62 @@ function sendSms(){
 }
 function backToPhone(){document.getElementById('lStep1').style.display='block';document.getElementById('lStep2').style.display='none';}
 function verifyCode(){closeLogin();}
+
+let dmCurrentId = null;
+function openDM(id){
+  const d = Object.values(MENU).flat().find(x=>x.id===id);
+  const det = DETAILS[id];
+  if(!d || !det) return;
+  dmCurrentId = id;
+  document.getElementById('dmImg').src = P+id+'.jpg';
+  document.getElementById('dmImg').alt = d.name;
+  document.getElementById('dmName').textContent = d.name;
+  document.getElementById('dmPrice').textContent = d.price+' ₽';
+  document.getElementById('dmShelf').textContent = det.shelf;
+  document.getElementById('dmTime').textContent = det.time === 0 ? 'Готово' : det.time;
+  document.getElementById('dmDesc').textContent = det.desc;
+  const srv = portions[id] || 2;
+  document.getElementById('dmSrv').textContent = srv;
+  // На 100г
+  document.getElementById('dc100').textContent = det.carb+' г';
+  document.getElementById('df100').textContent = det.fat+' г';
+  document.getElementById('dp100').textContent = det.prot+' г';
+  document.getElementById('dk100').textContent = det.kcal+' ккал';
+  // На порцию (общий вес / 2)
+  const ws = det.weight / 2;
+  document.getElementById('dcs').textContent = Math.round(det.carb*ws/100)+' г';
+  document.getElementById('dfs').textContent = Math.round(det.fat*ws/100)+' г';
+  document.getElementById('dps').textContent = Math.round(det.prot*ws/100)+' г';
+  document.getElementById('dks').textContent = Math.round(det.kcal*ws/100)+' ккал';
+  // Сброс кнопки
+  const btn = document.getElementById('dmAdd');
+  btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Добавить в корзину';
+  btn.classList.remove('done');
+  document.getElementById('dmov').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeDM(){
+  document.getElementById('dmov').classList.remove('on');
+  document.body.style.overflow='';
+  dmCurrentId = null;
+}
+function dmAddCart(){
+  if(!dmCurrentId) return;
+  const d = Object.values(MENU).flat().find(x=>x.id===dmCurrentId);
+  if(!d) return;
+  const q = portions[dmCurrentId]||2;
+  const ex = cart.find(x=>x.id===dmCurrentId);
+  if(ex) ex.qty+=q; else cart.push({...d,qty:q});
+  syncCart();
+  flashBtn(dmCurrentId);
+  const btn = document.getElementById('dmAdd');
+  btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Добавлено в корзину!';
+  btn.classList.add('done');
+  setTimeout(()=>{
+    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Добавить в корзину';
+    btn.classList.remove('done');
+  }, 1800);
+}
 
 render();
 
