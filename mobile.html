@@ -51,27 +51,27 @@ ul{list-style:none}
 #hero{padding:12px 16px 0}
 .hero-wrap{background:var(--or);border-radius:28px;padding:28px 24px 24px;display:flex;flex-direction:column;gap:24px}
 .hero-title{font-family:'Golos Text',sans-serif;font-size:38px;font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.01em}
-.hero-imgs{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;margin:0 -24px;padding:0 24px 4px}
-.hero-imgs::-webkit-scrollbar{display:none}
-.hero-img-col{flex-shrink:0;width:220px}
-.hero-bl{font-family:'Golos Text',sans-serif;font-size:14px;font-weight:300;color:rgba(255,255,255,.9);line-height:1.4;margin-top:10px;margin-bottom:0;text-align:center}
-.hero-inner{border-radius:18px;overflow:hidden;height:240px;background:#e8601e}
+.hero-imgs{display:flex;flex-direction:column;gap:20px;overflow-x:visible;margin:0;padding:0}
+.hero-img-col{flex-shrink:unset;width:100%}
+.hero-bl{font-family:'Golos Text',sans-serif;font-size:30px;font-weight:300;color:rgba(255,255,255,.92);line-height:1.2;margin:0 0 14px;text-align:left}
+.hero-inner{border-radius:22px;overflow:hidden;height:300px;background:#e8601e}
 .hero-inner img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 
 /* ========== TAGLINE ========== */
 #cats{padding:24px 16px 0}
 .tagline{font-size:14px;font-weight:400;color:var(--ink2);text-align:center;line-height:1.55;margin-bottom:18px}
-.cats-row{display:flex;gap:8px;padding:4px 0 10px}
-.cat-c{flex-shrink:0;background:#fff;border-radius:14px;border:1.5px solid var(--bdr);padding:12px 14px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:border-color .18s;min-width:90px;position:relative}
+.cats-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0;overflow:visible}
+.cat-c{min-width:unset;width:100%;background:#fff;border-radius:14px;border:1.5px solid var(--bdr);padding:14px 10px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:border-color .18s;position:relative}
 .cat-c.act{border-color:var(--or);box-shadow:0 0 0 1px var(--or)}
-.cat-ph{width:58px;height:58px;border-radius:50%;overflow:hidden;background:var(--card);flex-shrink:0}
+.cat-ph{width:64px;height:64px;border-radius:50%;overflow:hidden;background:var(--card);flex-shrink:0}
 .cat-ph img{width:100%;height:100%;object-fit:cover}
-.cat-lb{font-size:11px;font-weight:600;color:var(--ink);text-align:center;line-height:1.3}
+.cat-lb{font-size:12px;font-weight:600;color:var(--ink);text-align:center;line-height:1.3}
 .cat-bdg{position:absolute;top:7px;right:7px;background:var(--gr);color:#fff;font-size:8px;font-weight:700;padding:2px 6px;border-radius:var(--rp);white-space:nowrap}
-.cat-all{flex-shrink:0;background:#fff;border-radius:14px;border:1.5px solid var(--bdr);padding:12px 16px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--ink2);white-space:nowrap;min-width:90px}
+.cat-all{display:none}
+.btn-all-menu{display:block;width:100%;background:var(--ye);color:var(--ink);font-size:15px;font-weight:700;padding:16px;border-radius:100px;text-align:center;margin-top:16px;border:none;font-family:inherit;cursor:pointer}
 
 /* ========== SEC TITLE ========== */
-.sec-t{font-family:'Playfair Display',Georgia,serif;font-size:24px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:16px}
+.sec-t{font-family:'Playfair Display',Georgia,serif;font-size:28px;font-weight:800;color:var(--ink);letter-spacing:-.03em;margin-bottom:16px}
 
 /* ========== CHEF SETS ========== */
 #sets{padding:24px 16px}
@@ -99,19 +99,18 @@ ul{list-style:none}
 .set-img{width:60px;height:60px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--card)}
 
 /* ========== FAV ========== */
-#fav{padding:0 0 24px}
-#fav .sec-t{padding:0 16px}
-.fav-row{display:flex;gap:10px;padding:4px 16px 8px;align-items:stretch}
-.dc{flex-shrink:0;width:170px;border-radius:16px;overflow:hidden;border:none;display:flex;flex-direction:column;cursor:pointer;transition:transform .2s}
+#fav{padding:24px 16px}
+.fav-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0}
+.dc{width:100%;border-radius:14px;overflow:hidden;border:none;display:flex;flex-direction:column;cursor:pointer;transition:transform .2s;background:#fff;box-shadow:0 1px 8px rgba(0,0,0,.07)}
 .dc:active{transform:scale(.97)}
-.dc-ib{height:150px;display:flex;align-items:center;justify-content:center;padding:14px;flex-shrink:0}
-.dc-bg{width:100%;height:100%;object-fit:contain;display:block}
-.dc-bd{padding:0 12px 14px;display:flex;flex-direction:column;gap:4px}
-.dc-nm{font-size:11px;font-weight:400;color:#888;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.dc-pr{font-size:17px;font-weight:700;letter-spacing:-.02em;color:#1a1a1a}
-.fav-all{flex-shrink:0;width:100px;border-radius:16px;background:#f0f0f0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-decoration:none;color:#1a1a1a;padding:20px 12px}
+.dc-ib{height:150px;display:flex;align-items:center;justify-content:center;padding:0;flex-shrink:0;overflow:hidden;border-radius:14px 14px 0 0}
+.dc-bg{width:100%;height:100%;object-fit:cover;display:block;border-radius:0}
+.dc-bd{padding:10px 12px 14px;display:flex;flex-direction:column;gap:4px}
+.dc-nm{font-size:12px;font-weight:400;color:#888;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dc-pr{font-size:16px;font-weight:700;letter-spacing:-.02em;color:#1a1a1a}
+.fav-all{width:100%;border-radius:14px;background:#f5f5f5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-decoration:none;color:#1a1a1a;padding:20px 12px;min-height:150px}
 .fav-all-icon{width:40px;height:40px;border-radius:50%;background:#1a1a1a;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff}
-.fav-all span{font-size:11px;font-weight:500;text-align:center;line-height:1.3}
+.fav-all span{font-size:12px;font-weight:500;text-align:center;line-height:1.3}
 /* ========== SLOGAN ========== */
 #slogan{padding:32px 16px 36px}
 .slogan-text{font-family:'Golos Text',sans-serif;font-size:17px;font-weight:200;color:#aaa;line-height:1.65;text-align:center;letter-spacing:-.01em;margin:0}
@@ -202,9 +201,8 @@ ul{list-style:none}
 .btn-ya{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--bdr);border-radius:var(--rp);padding:9px 16px;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:20px}
 .ya-pin{width:18px;height:18px;background:#FC3F1D;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .ya-pin-i{width:7px;height:7px;background:#fff;border-radius:50%}
-.tg-m{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;margin:0 -18px;padding:0 18px 4px}
-.tg-m::-webkit-scrollbar{display:none}
-.tc{flex-shrink:0;width:260px;background:#fff;border-radius:14px;padding:18px}
+.tg-m{display:flex;flex-direction:column;gap:12px;overflow-x:visible;margin:0;padding:0}
+.tc{width:100%;flex-shrink:unset;background:#fff;border-radius:14px;padding:18px}
 .tc-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .tc-av{width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--card);overflow:hidden;display:block}
 .tc-nm{font-size:13px;font-weight:700}
@@ -371,16 +369,16 @@ ul{list-style:none}
     <div class="hero-title">Привет,<br>это НА СОКАХ.Еда</div>
     <div class="hero-imgs">
       <div class="hero-img-col">
-        <div class="hero-inner"><img src="foto/seedream-85674d4b0abfd43dffcf90e3d49c4c3e.png" alt="Продукты" loading="eager"/></div>
         <div class="hero-bl">Соберём всё<br>необходимое,</div>
+        <div class="hero-inner"><img src="foto/seedream-85674d4b0abfd43dffcf90e3d49c4c3e.png" alt="Продукты" loading="eager"/></div>
       </div>
       <div class="hero-img-col">
-        <div class="hero-inner"><img src="foto/seedream-dc1c4788ca59da1d8dce87d5f3ca1d83.png" alt="Готовка" loading="eager"/></div>
         <div class="hero-bl">чтобы вы<br>приготовили</div>
+        <div class="hero-inner"><img src="foto/seedream-dc1c4788ca59da1d8dce87d5f3ca1d83.png" alt="Готовка" loading="eager"/></div>
       </div>
       <div class="hero-img-col">
-        <div class="hero-inner"><img src="foto/seedream-5a1e6f81adf4d0ac21b314d9e90cd1ab.png" alt="Блюдо" loading="eager"/></div>
         <div class="hero-bl">ресторанный ужин<br>за 15 минут</div>
+        <div class="hero-inner"><img src="foto/seedream-5a1e6f81adf4d0ac21b314d9e90cd1ab.png" alt="Блюдо" loading="eager"/></div>
       </div>
     </div>
   </div>
@@ -389,7 +387,7 @@ ul{list-style:none}
 <!-- CATEGORIES -->
 <section id="cats">
   <p class="tagline">Доставляем продукты с рецептами — выбирайте,<br>что приготовить за 15 минут</p>
-  <div class="hs" style="padding:0 16px">
+  <div style="padding:0 16px">
     <div class="cats-row">
       <div class="cat-c act" onclick="location.href='menu.html#main'">
         <div class="cat-ph"><img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=160&h=160&fit=crop&q=80" alt="Основные"/></div>
@@ -416,8 +414,8 @@ ul{list-style:none}
         <div class="cat-ph"><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=160&h=160&fit=crop&q=80" alt="Десерты"/></div>
         <span class="cat-lb">Десерты</span>
       </div>
-      <div class="cat-all" onclick="location.href='menu.html'">Всё меню →</div>
     </div>
+    <button class="btn-all-menu" onclick="location.href='menu.html'">Все меню</button>
   </div>
 </section>
 
@@ -698,7 +696,7 @@ const fmt=n=>n.toLocaleString('ru')+' ₽';
 function renderFav(){
   const picks=[1,4,7,8,6,3].map(id=>DISHES.find(d=>d.id===id)).filter(Boolean);
   document.getElementById('favRow').innerHTML=picks.map(d=>`
-    <div class="dc" style="background:${d.bg}" onclick="openDM(${d.id})">
+    <div class="dc" onclick="openDM(${d.id})">
       <div class="dc-ib">
         <img class="dc-bg" src="${d.img}" alt="${d.name}" loading="lazy"/>
       </div>
