@@ -101,16 +101,60 @@ ul{list-style:none}
 /* ========== FAV ========== */
 #fav{padding:0 0 24px}
 #fav .sec-t{padding:0 16px}
-.fav-row{display:flex;gap:12px;padding:4px 16px 8px}
-.dc{flex-shrink:0;width:190px;background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--bdr);display:flex;flex-direction:column}
-.dc-ib{height:140px;position:relative;overflow:hidden;flex-shrink:0}
-.dc-bg{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-.dc-wm{position:absolute;bottom:6px;right:10px;font-size:10px;font-weight:700;font-style:italic;color:rgba(255,255,255,.62)}
-.dc-bd{padding:12px;flex:1;display:flex;flex-direction:column;gap:8px}
-.dc-nm{font-size:13px;font-weight:600;color:var(--ink);line-height:1.38;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1}
-.dc-ft{display:flex;align-items:center;justify-content:space-between;gap:6px}
-.dc-pr{font-size:19px;font-weight:700;letter-spacing:-.02em}
-.dc-ps{font-size:10px;color:var(--ink3);margin-top:1px}
+.fav-row{display:flex;gap:10px;padding:4px 16px 8px;align-items:stretch}
+.dc{flex-shrink:0;width:170px;border-radius:16px;overflow:hidden;border:none;display:flex;flex-direction:column;cursor:pointer;transition:transform .2s}
+.dc:active{transform:scale(.97)}
+.dc-ib{height:150px;display:flex;align-items:center;justify-content:center;padding:14px;flex-shrink:0}
+.dc-bg{width:100%;height:100%;object-fit:contain;display:block}
+.dc-bd{padding:0 12px 14px;display:flex;flex-direction:column;gap:4px}
+.dc-nm{font-size:11px;font-weight:400;color:#888;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dc-pr{font-size:17px;font-weight:700;letter-spacing:-.02em;color:#1a1a1a}
+.fav-all{flex-shrink:0;width:100px;border-radius:16px;background:#f0f0f0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-decoration:none;color:#1a1a1a;padding:20px 12px}
+.fav-all-icon{width:40px;height:40px;border-radius:50%;background:#1a1a1a;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff}
+.fav-all span{font-size:11px;font-weight:500;text-align:center;line-height:1.3}
+/* ========== SLOGAN ========== */
+#slogan{padding:32px 16px 36px}
+.slogan-text{font-family:'Golos Text',sans-serif;font-size:17px;font-weight:200;color:#aaa;line-height:1.65;text-align:center;letter-spacing:-.01em;margin:0}
+/* ========== DISH PANEL ========== */
+#dmov{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;display:none;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#dmov.on{display:block}
+#dmpanel{position:fixed;left:0;right:0;bottom:0;height:92vh;background:#f8f8f8;border-radius:20px 20px 0 0;display:flex;flex-direction:column;overflow:hidden;z-index:3000;transform:translateY(105%);transition:transform .35s cubic-bezier(.25,.46,.45,.94)}
+#dmpanel.on{transform:translateY(0)}
+.dm-x{position:absolute;top:8px;right:14px;z-index:20;width:auto;min-height:36px;background:transparent;border:none;font-size:18px;color:#424242;cursor:pointer;display:flex;align-items:center;padding:0}
+.dm-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.dm-scroll::-webkit-scrollbar{display:none}
+.dm-card-wrap{background:#f8f8f8;padding:16px 12px 0;flex-shrink:0}
+.dm-card{background:#fff;border-radius:6px;box-shadow:0 0 12px 8px rgba(1,1,1,.04);display:flex;flex-direction:column;width:100%;overflow:hidden}
+.dm-photo img{width:100%;height:220px;object-fit:cover;display:block}
+.dm-title-wrap{border-top:1px solid #f5f5f5;padding:14px 14px 16px}
+.dm-title{font-size:17px;font-weight:700;color:#424242;line-height:1.35;margin:0}
+.dm-price-wrap{border-top:1px solid #f5f5f5;display:flex;align-items:center;justify-content:space-between;padding:14px}
+.dm-p1{font-size:20px;font-weight:600;color:#424242;letter-spacing:-.2px}
+.dm-srv-wrap{display:flex;align-items:baseline;gap:3px}
+.dm-srv-count{font-weight:700;font-size:11px;color:#1a1a1a;line-height:14px}
+.dm-srv-x{color:#9e9e9e;font-size:11px;margin:0 2px}
+.dm-srv-price{color:#424242;font-size:13px}
+.dm-srv-btn{width:28px;height:28px;border:1.5px solid #e0e0e0;border-radius:5px;background:#fff;font-size:16px;color:#424242;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:0 4px}
+.dm-ct-row{border-top:1px solid #f5f5f5;display:flex}
+.dm-ct-col{display:flex;align-items:center;gap:6px;padding:16px 0}
+.dm-ct-col:first-child{flex:1;border-right:1px solid #f5f5f5;padding-left:14px}
+.dm-ct-col:last-child{flex:1;padding-left:16px}
+.dm-ct-label{color:#424242;font-size:11px}
+.dm-ct-num{font-size:19px;font-weight:600;color:#424242;line-height:1}
+.dm-ct-unit{font-size:9px;font-weight:700;color:#424242;align-self:flex-end;margin-bottom:2px}
+.dm-composition{padding:16px 16px 20px}
+.dm-comp-title{color:#1a1a1a;font-size:12px;font-weight:600;margin-bottom:5px}
+.dm-desc{color:#838383;font-size:12px;line-height:1.6}
+.dm-nutrition{border-top:1px solid #f5f5f5;padding:16px 20px 20px}
+.dm-nutr-title{color:#1a1a1a;font-size:12px;font-weight:600;margin-bottom:6px}
+.dm-nr{display:flex;align-items:baseline;margin-bottom:2px}
+.dm-nr-label{color:#424242;font-size:12px;line-height:19px;flex-shrink:0}
+.dm-nr-dots{flex:1;height:13px;margin:0 10px 0 5px;background-image:linear-gradient(to right,#b8b8b8 40%,transparent 20%);background-position:bottom;background-repeat:repeat-x;background-size:3px 1px}
+.dm-nr-val{font-size:12px;font-weight:600;color:#424242;flex-shrink:0}
+.dm-nr-unit{font-size:11px;font-weight:600;color:#424242;margin-left:2px;flex-shrink:0}
+.dm-footer{flex-shrink:0;padding:12px 14px 24px;background:#fff;border-top:1px solid #f5f5f5}
+.dm-add{width:100%;height:50px;background:#FFD600;border:none;border-radius:10px;font-size:15px;font-weight:700;color:#1a1a1a;cursor:pointer}
+.dm-add.done{background:#5B9E5A;color:#fff}
 .btn-add{width:34px;height:34px;border-radius:50%;background:var(--ye);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--ink);flex-shrink:0;transition:background .15s}
 .btn-add.done{background:var(--gr);color:#fff;font-size:13px}
 
@@ -433,6 +477,15 @@ ul{list-style:none}
   <div class="hs"><div class="fav-row" id="favRow"></div></div>
 </section>
 
+<!-- SLOGAN -->
+<section id="slogan">
+  <p class="slogan-text">
+    Мы уже всё сделали за вас: продукты очищены, нарезаны и готовы к делу.<br>
+    Остаётся только одно — приготовить ужин за 15 минут, по нашей инструкции<br>
+    и удивить себя вкусом уровня шеф-повара.
+  </p>
+</section>
+
 <!-- MENU -->
 <section id="mn">
   <div style="padding:0 16px"><div class="sec-t">Меню</div></div>
@@ -647,20 +700,21 @@ DISHES.forEach(d=>portions[d.id]=2);
 const fmt=n=>n.toLocaleString('ru')+' ₽';
 
 function renderFav(){
-  document.getElementById('favRow').innerHTML=DISHES.slice(0,6).map(d=>`
-    <div class="dc">
-      <div class="dc-ib" style="background:${d.bg}">
+  const picks=[1,4,7,8,6,3].map(id=>DISHES.find(d=>d.id===id)).filter(Boolean);
+  document.getElementById('favRow').innerHTML=picks.map(d=>`
+    <div class="dc" style="background:${d.bg}" onclick="openDM(${d.id})">
+      <div class="dc-ib">
         <img class="dc-bg" src="${d.img}" alt="${d.name}" loading="lazy"/>
-        <span class="dc-wm">${d.lbl}</span>
       </div>
       <div class="dc-bd">
         <div class="dc-nm">${d.name}</div>
-        <div class="dc-ft">
-          <div><div class="dc-pr">${d.price} ₽</div><div class="dc-ps">${d.per}</div></div>
-          <button class="btn-add" id="fb${d.id}" onclick="addCart(${d.id})">+</button>
-        </div>
+        <div class="dc-pr">${d.price} ₽</div>
       </div>
-    </div>`).join('');
+    </div>`).join('')+
+  `<a class="fav-all" href="#mn">
+    <div class="fav-all-icon">→</div>
+    <span>Все меню</span>
+  </a>`;
 }
 
 function renderMenu(cat){
@@ -947,6 +1001,137 @@ function showYaReviews(){
 }
 
 renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
+</script>
+
+<!-- DISH PANEL -->
+<div id="dmov"></div>
+<div id="dmpanel">
+  <button class="dm-x" onclick="closeDM()">✕</button>
+  <div class="dm-scroll">
+    <div class="dm-card-wrap">
+      <div class="dm-card">
+        <div class="dm-photo"><img id="dmImg" src="" alt=""/></div>
+        <div>
+          <div class="dm-title-wrap"><div class="dm-title" id="dmName"></div></div>
+          <div class="dm-price-wrap">
+            <div class="dm-srv-wrap">
+              <button class="dm-srv-btn" onclick="dmSrvChange(-1)">−</button>
+              <span class="dm-srv-count" id="dmSrv">2</span>
+              <span class="dm-srv-x">×</span>
+              <span class="dm-srv-price" id="dmPrice1"></span>
+              <button class="dm-srv-btn" onclick="dmSrvChange(1)">+</button>
+            </div>
+            <div class="dm-p1" id="dmPrice"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dm-ct-row">
+      <div class="dm-ct-col">
+        <div>
+          <div class="dm-ct-label" style="display:flex;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#424242" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div style="display:flex;align-items:flex-end;justify-content:center;gap:3px;margin-top:4px">
+            <span class="dm-ct-num" id="dmTime"></span>
+            <span class="dm-ct-unit">МИН</span>
+          </div>
+        </div>
+      </div>
+      <div class="dm-ct-col">
+        <div>
+          <div class="dm-ct-label">Порция</div>
+          <div style="display:flex;align-items:flex-end;gap:3px;margin-top:4px">
+            <span class="dm-ct-num" id="dmPortionW"></span>
+            <span class="dm-ct-unit">Г</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dm-composition">
+      <div class="dm-comp-title">Что в наборе</div>
+      <div class="dm-desc" id="dmDesc"></div>
+    </div>
+    <div class="dm-nutrition">
+      <div class="dm-nutr-title">На 100 г блюда</div>
+      <div class="dm-nr"><span class="dm-nr-label">Калории</span><span class="dm-nr-dots"></span><span class="dm-nr-val" id="dks"></span><span class="dm-nr-unit">ккал</span></div>
+      <div class="dm-nr"><span class="dm-nr-label">Белки</span><span class="dm-nr-dots"></span><span class="dm-nr-val" id="dps"></span><span class="dm-nr-unit">г</span></div>
+      <div class="dm-nr"><span class="dm-nr-label">Жиры</span><span class="dm-nr-dots"></span><span class="dm-nr-val" id="dfs"></span><span class="dm-nr-unit">г</span></div>
+      <div class="dm-nr"><span class="dm-nr-label">Углеводы</span><span class="dm-nr-dots"></span><span class="dm-nr-val" id="dcs"></span><span class="dm-nr-unit">г</span></div>
+    </div>
+  </div>
+  <div class="dm-footer">
+    <button class="dm-add" id="dmAdd" onclick="dmAddToCart()">Добавить в корзину</button>
+  </div>
+</div>
+
+<script>
+const DISH_DETAILS={
+  1:{time:25,weight:380,kcal:185,prot:28,fat:9,carb:4,  desc:'Утиная грудка · Картофель 300г · Соус демигляс 80мл · Масло сливочное · Тимьян · Розмарин · Чеснок · Специи'},
+  2:{time:15,weight:360,kcal:155,prot:24,fat:5,carb:10, desc:'Лосось 200г · Киноа 100г · Кабачок 1 шт · Томаты черри 8 шт · Лимон · Оливковое масло · Зелень · Специи'},
+  3:{time:25,weight:400,kcal:195,prot:20,fat:11,carb:8, desc:'Говядина 280г · Томаты пассата 150г · Прованские травы · Чеснок · Лук · Морковь · Оливковое масло · Специи'},
+  4:{time:10,weight:450,kcal:65, prot:5, fat:3, carb:6, desc:'Говядина томлёная 120г · Свёкла · Капуста · Картофель · Морковь · Лук · Томатная паста · Сметана · Ржаной хлеб'},
+  6:{time:10,weight:280,kcal:120,prot:16,fat:6,carb:8,  desc:'Куриное филе гриль 150г · Салат романо · Пармезан 30г · Каперсы 15г · Гренки · Соус Цезарь 40мл · Лимон'},
+  7:{time:20,weight:260,kcal:195,prot:12,fat:9,carb:18, desc:'Творог 5% 200г · Яйцо 2 шт · Мука 60г · Малина 80г · Сметана домашняя 50г · Масло · Сахар · Ваниль'},
+  8:{time:25,weight:180,kcal:310,prot:6, fat:18,carb:32,desc:'Шоколад горький 70% · Масло сливочное · Яйцо 2 шт · Сахар · Мука · Мороженое ванильное 60г · Специи'},
+  9:{time:5, weight:200,kcal:155,prot:5, fat:9, carb:16,desc:'Хлеб чиабатта · Авокадо 1 шт · Рикотта 60г · Томаты вяленые 40г · Базилик · Оливковое масло · Соль · Перец'},
+};
+let dmCurrentId=null,dmPortions={};
+function openDM(id){
+  const d=DISHES.find(x=>x.id===id);
+  const det=DISH_DETAILS[id];
+  if(!d||!det)return;
+  dmCurrentId=id;
+  if(!dmPortions[id])dmPortions[id]=2;
+  document.getElementById('dmImg').src=d.img;
+  document.getElementById('dmImg').alt=d.name;
+  document.getElementById('dmName').textContent=d.name;
+  document.getElementById('dmTime').textContent=det.time;
+  document.getElementById('dmPortionW').textContent=det.weight;
+  document.getElementById('dmDesc').textContent=det.desc;
+  document.getElementById('dks').textContent=det.kcal;
+  document.getElementById('dps').textContent=det.prot;
+  document.getElementById('dfs').textContent=det.fat;
+  document.getElementById('dcs').textContent=det.carb;
+  const btn=document.getElementById('dmAdd');
+  btn.classList.remove('done');
+  updateDMPrice();
+  document.getElementById('dmov').classList.add('on');
+  document.getElementById('dmpanel').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function updateDMPrice(){
+  if(!dmCurrentId)return;
+  const d=DISHES.find(x=>x.id===dmCurrentId);
+  if(!d)return;
+  const q=dmPortions[dmCurrentId]||2;
+  document.getElementById('dmSrv').textContent=q;
+  document.getElementById('dmPrice').textContent=(d.price*q).toLocaleString('ru')+' ₽';
+  document.getElementById('dmPrice1').textContent=d.price.toLocaleString('ru')+' ₽';
+  const btn=document.getElementById('dmAdd');
+  if(!btn.classList.contains('done'))btn.textContent='Добавить в корзину · '+(d.price*q).toLocaleString('ru')+' ₽';
+}
+function dmSrvChange(delta){
+  if(!dmCurrentId)return;
+  const cur=dmPortions[dmCurrentId]||2;
+  const next=Math.max(1,Math.min(6,cur+delta));
+  if(next===cur)return;
+  dmPortions[dmCurrentId]=next;
+  updateDMPrice();
+}
+function closeDM(){
+  document.getElementById('dmov').classList.remove('on');
+  document.getElementById('dmpanel').classList.remove('on');
+  document.body.style.overflow='';
+  dmCurrentId=null;
+}
+function dmAddToCart(){
+  if(!dmCurrentId)return;
+  addCart(dmCurrentId);
+  const btn=document.getElementById('dmAdd');
+  btn.textContent='✓ Добавлено!';
+  btn.classList.add('done');
+  setTimeout(()=>{btn.classList.remove('done');updateDMPrice();},1800);
+}
+document.getElementById('dmov').addEventListener('click',function(e){if(e.target===this)closeDM();});
 </script>
 </body>
 </html>
