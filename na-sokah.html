@@ -256,31 +256,31 @@ ul{list-style:none}
 .sb a:hover{transform:scale(1.14);opacity:.85}
 
 /* FOOTER */
-#ft{background:var(--ft);border-radius:var(--rs) var(--rs) 0 0;margin-top:8px;padding:52px 0 36px}
+#ft{background:#f5f5f5;border-radius:var(--rs) var(--rs) 0 0;margin-top:8px;padding:52px 0 36px}
 .ft-g{display:grid;grid-template-columns:2fr 1.4fr 1.4fr;gap:44px;margin-bottom:44px}
-.ft-ct{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:18px}
-.ft-lk{display:flex;flex-direction:column;gap:11px}
-.ft-lk a{font-size:14px;color:rgba(255,255,255,.48);transition:color .15s}
-.ft-lk a:hover{color:rgba(255,255,255,.9)}
-.ft-sub{font-size:13px;color:rgba(255,255,255,.38);margin-bottom:10px;line-height:1.55}
-.ft-ph{font-size:19px;font-weight:700;color:#fff;margin-bottom:18px;letter-spacing:-.01em}
-.ft-sc{display:flex;gap:10px}
-.ft-sc a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:14px;color:rgba(255,255,255,.65);transition:background .15s}
-.ft-sc a:hover{background:rgba(255,255,255,.2)}
-.ft-ap{font-size:13px;color:rgba(255,255,255,.38);margin-bottom:16px;line-height:1.55}
+.ft-ct{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#bbb;margin-bottom:18px}
+.ft-lk{display:flex;flex-direction:column;gap:10px}
+.ft-lk a{font-size:14px;color:#888;transition:color .15s}
+.ft-lk a:hover{color:#333}
+.ft-sub{font-size:13px;color:#888;margin-bottom:14px;line-height:1.55}
+.ft-sc{display:flex;gap:8px}
+.ft-sc a{width:34px;height:34px;border-radius:50%;background:#e4e4e4;display:flex;align-items:center;justify-content:center;font-size:15px;color:#666;transition:background .15s;text-decoration:none}
+.ft-sc a:hover{background:#d8d8d8}
+.ft-ap{font-size:13px;color:#888;margin-bottom:16px;line-height:1.55}
 .app-bts{display:flex;flex-direction:column;gap:9px}
-.btn-ap{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.09);border-radius:11px;padding:11px 16px;color:#fff;transition:background .15s}
-.btn-ap:hover{background:rgba(255,255,255,.16)}
+.btn-ap{display:flex;align-items:center;gap:12px;background:#e8e8e8;border-radius:11px;padding:11px 16px;color:#333;transition:background .15s}
+.btn-ap:hover{background:#ddd}
 .btn-ap-ic{font-size:22px;flex-shrink:0}
-.btn-ap b{font-size:14px;font-weight:600;display:block}
-.btn-ap small{font-size:10px;color:rgba(255,255,255,.45);display:block;margin-bottom:2px}
-.ft-bt{border-top:1px solid rgba(255,255,255,.08);padding-top:26px}
-.ft-lg{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:18px}
-.ft-lg a{font-size:12px;color:rgba(255,255,255,.28);transition:color .15s}
-.ft-lg a:hover{color:rgba(255,255,255,.6)}
+.btn-ap b{font-size:14px;font-weight:600;display:block;color:#1a1a1a}
+.btn-ap small{font-size:10px;color:#999;display:block;margin-bottom:2px}
+.ft-legal{border-top:1px solid #e0e0e0;padding-top:28px;margin-bottom:28px}
+.ft-legal-g{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px}
+.ft-bt{border-top:1px solid #e0e0e0;padding-top:22px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.ft-eng{font-size:12px;color:#bbb;transition:color .15s}
+.ft-eng:hover{color:#666}
 .ft-pay{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-.pay-b{background:rgba(255,255,255,.09);border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;color:rgba(255,255,255,.45);letter-spacing:.04em}
-.skv{margin-left:auto;font-size:11px;color:rgba(255,255,255,.28);display:flex;align-items:center;gap:5px}
+.pay-b{background:#e4e4e4;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;color:#999;letter-spacing:.04em}
+.ft-copy{margin-left:auto;font-size:11px;color:#bbb}
 
 /* DOC MODAL */
 #docov{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:800;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);animation:fadeUp .18s ease}
@@ -827,24 +827,32 @@ ul{list-style:none}
         <ul class="ft-lk">
           <li><a href="#">Система качества</a></li>
           <li><a href="#">Условия доставки и оплаты</a></li>
-          <li><a href="#">Что мы привезём?</a></li>
+          <li><a href="#">Что мы привезём в доставке?</a></li>
           <li><a href="#">Наши рецепты</a></li>
-          <li><a href="#">Блог НА СОКАХ.Еда</a></li>
+          <li><a href="#">Наш блог</a></li>
+          <li><a href="#">Мы в Яндекс.Дзен</a></li>
           <li><a href="#">О компании</a></li>
           <li><a href="#">Контакты</a></li>
         </ul>
       </div>
       <div>
         <div class="ft-ct">На связи</div>
-        <div class="ft-sub">Готовы ответить на вопросы<br>ежедневно с 7:00 до 23:00</div>
-        <div class="ft-ph">+7 (800) 700-15-20</div>
+        <div class="ft-sub">Готовы ответить на ваши вопросы<br>ежедневно с 6:00 до 23:00</div>
         <div class="ft-sc">
-          <a href="#">✈</a><a href="#">В</a><a href="#">💬</a>
+          <a href="#" title="Telegram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg>
+          </a>
+          <a href="#" title="ВКонтакте">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.02-1.304.585-1.496c.598-.19 1.365 1.26 2.179 1.815.615.418 1.083.326 1.083.326l2.176-.03s1.138-.071.598-1.256c-.044-.094-.312-.66-1.608-1.868-1.36-1.267-1.178-1.062.46-3.254.998-1.329 1.396-2.142 1.271-2.489-.12-.332-.85-.244-.85-.244l-2.448.015s-.181-.025-.316.056c-.132.079-.217.262-.217.262s-.386 1.03-.901 1.904c-1.085 1.844-1.52 1.942-1.698 1.827-.413-.267-.31-1.075-.31-1.648 0-1.793.271-2.54-.529-2.733-.266-.065-.461-.107-1.141-.114-.872-.009-1.609.003-2.025.207-.278.136-.492.44-.361.457.161.022.526.099.72.363.25.341.241 1.107.241 1.107s.144 2.11-.335 2.372c-.329.18-.78-.187-1.748-1.86-.497-.859-.872-1.81-.872-1.81s-.072-.177-.202-.272c-.157-.115-.376-.151-.376-.151l-2.327.015s-.35.01-.478.163c-.114.135-.009.414-.009.414s1.822 4.265 3.881 6.414c1.891 1.974 4.037 1.843 4.037 1.843h.972z"/></svg>
+          </a>
+          <a href="#" title="Одноклассники">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm4.5 9.5c-.4.4-1 .6-1.6.5l-1.4-.3-1.5 1.5 1.1 1.1c.4.4.4 1 0 1.4s-1 .4-1.4 0L10.5 18l-1.2 1.2c-.4.4-1 .4-1.4 0s-.4-1 0-1.4l1.1-1.1-1.5-1.5-1.4.3c-.5.1-1.1-.1-1.4-.5-.4-.5-.3-1.1.2-1.5.1-.1.3-.2.5-.2l2-.4c.9.5 1.9.7 3 .7s2.1-.3 3-.7l2 .4c.6.1 1 .8.8 1.5-.1.2-.2.4-.2.2z"/></svg>
+          </a>
         </div>
       </div>
       <div>
         <div class="ft-ct">Так удобнее</div>
-        <div class="ft-ap">В приложении вас ждёт<br>скидка 15% на первый заказ</div>
+        <div class="ft-ap">Ого! В приложении вас ждёт супер-скидка 15% на первый заказ</div>
         <div class="app-bts">
           <a href="#" class="btn-ap">
             <span class="btn-ap-ic">🍎</span>
@@ -857,21 +865,29 @@ ul{list-style:none}
         </div>
       </div>
     </div>
-    <div class="ft-bt">
-      <div class="ft-lg">
-        <a href="#">Пользовательское соглашение</a>
-        <a href="#">Политика конфиденциальности</a>
-        <a href="#">Обработка персональных данных</a>
-        <a href="#">Использование cookie</a>
-        <a href="#">Рекламные рассылки</a>
+    <div class="ft-legal">
+      <div class="ft-ct">Юридические документы</div>
+      <div class="ft-legal-g">
+        <ul class="ft-lk">
+          <li><a href="#">Пользовательское соглашение</a></li>
+          <li><a href="#">Обработка персональных данных</a></li>
+        </ul>
+        <ul class="ft-lk">
+          <li><a href="#">Политика конфиденциальности</a></li>
+          <li><a href="#">Использование cookie</a></li>
+        </ul>
+        <ul class="ft-lk">
+          <li><a href="#">Рекламные и информ. рассылки</a></li>
+        </ul>
       </div>
+    </div>
+    <div class="ft-bt">
+      <a href="#" class="ft-eng">English version</a>
       <div class="ft-pay">
         <span class="pay-b">МИР</span>
-        <span class="pay-b">VISA</span>
         <span class="pay-b">MC</span>
-        <span class="pay-b">СБП</span>
-        <span class="pay-b">APPLE PAY</span>
       </div>
+      <div class="ft-copy">2013–2026 НА СОКАХ.Еда</div>
     </div>
   </div>
 </footer>
