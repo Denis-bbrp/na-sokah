@@ -256,21 +256,23 @@ ul{list-style:none}
 .ctr-em{color:var(--ink4);font-style:italic}
 
 /* FAQ */
-#faq{padding:0 0 28px}
-.faq-box{background:var(--card);border-radius:var(--rs);padding:42px}
-.faq-g{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:30px}
-.fi{background:#fff;border-radius:var(--rc);overflow:hidden}
-.fi-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:17px 19px;gap:12px;text-align:left;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;transition:color .15s;font-family:'Golos Text',sans-serif}
-.fi-q:hover{color:var(--or)}
-.fi-ch{width:28px;height:28px;border-radius:50%;background:var(--card);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--ink3);transition:transform .28s,background .2s,color .2s}
-.fi.open .fi-ch{transform:rotate(180deg);background:var(--or);color:#fff}
-.fi-a{max-height:0;overflow:hidden;font-size:13.5px;color:var(--ink2);line-height:1.7;padding:0 19px;transition:max-height .32s ease,padding .28s}
-.fi.open .fi-a{max-height:180px;padding:0 19px 18px}
-.faq-ft{display:flex;align-items:center;justify-content:flex-end;gap:22px;flex-wrap:wrap}
-.faq-ft-t{font-size:13px;color:var(--ink3);line-height:1.5}
+#faq{padding:0 0 48px}
+.faq-box{background:#EBEBEB;border-radius:28px;padding:52px 48px 44px}
+.faq-hed{font-family:'Golos Text',sans-serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;color:#4a4a4a;line-height:1.15;letter-spacing:-.02em;margin-bottom:32px}
+.faq-g{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.fi{background:#fff;border-radius:14px;overflow:hidden}
+.fi-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 22px;gap:12px;text-align:left;font-size:15px;font-weight:400;color:#3a3a3a;cursor:pointer;transition:color .15s;font-family:'Golos Text',sans-serif}
+.fi-q:hover{color:#1a1a1a}
+.fi-ch{flex-shrink:0;color:#ccc;font-size:18px;transition:transform .28s}
+.fi.open .fi-ch{transform:rotate(180deg);color:#888}
+.fi-a{max-height:0;overflow:hidden;font-size:13.5px;color:var(--ink2);line-height:1.7;padding:0 22px;transition:max-height .32s ease,padding .28s}
+.fi.open .fi-a{max-height:180px;padding:0 22px 18px}
+.faq-ft{display:flex;align-items:center;justify-content:flex-end;gap:16px;flex-wrap:wrap}
+.faq-ft-t{font-family:'Golos Text',sans-serif;font-size:13px;color:#999;line-height:1.5;text-align:right}
 .sb{display:flex;gap:8px}
-.sb a{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;transition:transform .15s,opacity .15s;flex-shrink:0}
-.sb a:hover{transform:scale(1.14);opacity:.85}
+.sb a{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;text-decoration:none;transition:transform .15s,opacity .15s;flex-shrink:0}
+.sb a:hover{transform:scale(1.1);opacity:.88}
+@media(max-width:640px){.faq-box{padding:28px 20px 24px}.faq-g{grid-template-columns:1fr}}
 
 /* FOOTER */
 #ft{background:#f5f5f5;border-radius:var(--rs) var(--rs) 0 0;margin-top:8px;padding:52px 0 36px}
@@ -812,6 +814,25 @@ ul{list-style:none}
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+  <div class="w">
+    <div class="faq-box">
+      <div class="faq-hed">Ответы<br>на важные вопросы</div>
+      <div class="faq-g" id="faqGrid"></div>
+      <div class="faq-ft">
+        <div class="faq-ft-t">Остались вопросы?<br>На связи ежедневно с 6:00 до 23:00</div>
+        <div class="sb">
+          <a href="#" style="background:#d0d0d0" title="Позвонить"><i class="fas fa-phone" style="font-size:16px;color:#888"></i></a>
+          <a href="#" style="background:#4C75A3" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+          <a href="#" style="background:#229ED9" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="#" style="background:#EE8208" title="Одноклассники"><i class="fab fa-odnoklassniki"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- COUNTER -->
 <section id="ctr">
   <div class="w">
@@ -821,24 +842,6 @@ ul{list-style:none}
 </section>
 
 <!-- FAQ -->
-<section id="faq">
-  <div class="w">
-    <div class="faq-box">
-      <div class="sec-t" style="margin-bottom:28px">Ответы<br>на важные вопросы</div>
-      <div class="faq-g" id="faqGrid"></div>
-      <div class="faq-ft">
-        <div class="faq-ft-t">Остались вопросы?<br>На связи ежедневно с 7:00 до 23:00</div>
-        <div class="sb">
-          <a href="#" style="background:#2AABEE;color:#fff" title="Telegram">✈</a>
-          <a href="#" style="background:#4A76A8;color:#fff" title="ВКонтакте">В</a>
-          <a href="#" style="background:var(--or);color:#fff" title="Позвонить">☎</a>
-          <a href="#" style="background:#25D366;color:#fff" title="WhatsApp">W</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer id="ft">
   <div class="w">
