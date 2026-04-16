@@ -1458,7 +1458,7 @@ function showYaReviews(){
   window.open('https://yandex.ru/maps/','_blank');
 }
 
-renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
+renderFav();renderMenu('all');syncCart();setupSmsInputs();
 
 // Аккордеон сайдбара
 function toggleAcc(hd){
@@ -1624,6 +1624,7 @@ function dmAddToCart(){
 }
 document.getElementById('dmov').addEventListener('click',function(e){if(e.target===this)closeDM();});
 renderPicks();
+renderFAQ();
 </script>
 </body>
 </html>
