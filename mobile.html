@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
@@ -68,13 +69,13 @@ ul{list-style:none}
 
 /* ========== TAGLINE ========== */
 #cats{padding:24px 16px 0}
-.tagline{font-size:14px;font-weight:400;color:var(--ink2);text-align:center;line-height:1.55;margin-bottom:18px}
+.tagline{font-family:'Golos Text',sans-serif;font-size:15px;font-weight:200;color:#aaa;text-align:center;line-height:1.6;letter-spacing:-.01em;margin-bottom:18px}
 .cats-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0;overflow:visible}
 .cat-c{min-width:unset;width:100%;background:#fff;border-radius:14px;border:1.5px solid var(--bdr);padding:14px 10px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:border-color .18s;position:relative}
 .cat-c.act{border-color:var(--or);box-shadow:0 0 0 1px var(--or)}
 .cat-ph{width:64px;height:64px;border-radius:50%;overflow:hidden;background:var(--card);flex-shrink:0}
 .cat-ph img{width:100%;height:100%;object-fit:cover}
-.cat-lb{font-size:12px;font-weight:600;color:var(--ink);text-align:center;line-height:1.3}
+.cat-lb{font-size:13px;font-weight:500;color:var(--ink2);text-align:center;line-height:1.3}
 .cat-bdg{position:absolute;top:7px;right:7px;background:var(--gr);color:#fff;font-size:8px;font-weight:700;padding:2px 6px;border-radius:var(--rp);white-space:nowrap}
 .cat-all{display:none}
 .btn-all-menu{display:block;width:100%;background:var(--ye);color:var(--ink);font-size:15px;font-weight:700;padding:16px;border-radius:100px;text-align:center;margin-top:16px;border:none;font-family:inherit;cursor:pointer}
@@ -117,9 +118,8 @@ ul{list-style:none}
 .dc-bd{padding:10px 12px 14px;display:flex;flex-direction:column;gap:4px}
 .dc-nm{font-size:12px;font-weight:400;color:#888;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .dc-pr{font-size:16px;font-weight:700;letter-spacing:-.02em;color:#1a1a1a}
-.fav-all{width:100%;border-radius:14px;background:#f5f5f5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-decoration:none;color:#1a1a1a;padding:20px 12px;min-height:150px}
-.fav-all-icon{width:40px;height:40px;border-radius:50%;background:#1a1a1a;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff}
-.fav-all span{font-size:12px;font-weight:500;text-align:center;line-height:1.3}
+.fav-all{width:100%;border-radius:14px;background:#f0f0f0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-decoration:none;cursor:pointer;min-height:130px;transition:background .2s}
+.fav-all-btn{background:#fff;border:none;border-radius:100px;padding:9px 18px;font-family:'Golos Text',sans-serif;font-size:13px;font-weight:600;color:#1a1a1a;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
 /* ========== SLOGAN ========== */
 #slogan{padding:32px 16px 36px}
 .slogan-text{font-family:'Golos Text',sans-serif;font-size:17px;font-weight:200;color:#aaa;line-height:1.65;text-align:center;letter-spacing:-.01em;margin:0}
@@ -227,36 +227,37 @@ ul{list-style:none}
 
 /* ========== FAQ ========== */
 #faq{padding:0 16px 24px}
-.faq-box{background:var(--card);border-radius:22px;padding:22px 18px}
+.faq-box{background:#EBEBEB;border-radius:22px;padding:28px 20px 24px}
+.faq-hed{font-family:'Golos Text',sans-serif;font-size:26px;font-weight:300;color:#4a4a4a;line-height:1.2;letter-spacing:-.02em;margin-bottom:20px}
 .fi{background:#fff;border-radius:12px;overflow:hidden;margin-bottom:8px}
 .fi:last-child{margin-bottom:0}
-.fi-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:15px 16px;gap:10px;text-align:left;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;font-family:'Golos Text',sans-serif}
-.fi-ch{width:26px;height:26px;border-radius:50%;background:var(--card);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--ink3);transition:transform .28s,background .2s,color .2s}
-.fi.open .fi-ch{transform:rotate(180deg);background:var(--or);color:#fff}
+.fi-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:15px 16px;gap:10px;text-align:left;font-size:14px;font-weight:400;color:#3a3a3a;cursor:pointer;font-family:'Golos Text',sans-serif}
+.fi-q:hover{color:#1a1a1a}
+.fi-ch{flex-shrink:0;color:#ccc;font-size:16px;transition:transform .28s}
+.fi.open .fi-ch{transform:rotate(180deg);color:#888}
 .fi-a{max-height:0;overflow:hidden;font-size:13px;color:var(--ink2);line-height:1.7;padding:0 16px;transition:max-height .32s ease,padding .28s}
 .fi.open .fi-a{max-height:180px;padding:0 16px 16px}
 .faq-ft{margin-top:20px;display:flex;flex-direction:column;gap:14px}
 .faq-ft-t{font-size:13px;color:var(--ink3);line-height:1.5}
 .sb{display:flex;gap:8px}
-.sb a{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px}
+.sb a{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff;text-decoration:none;transition:transform .15s,opacity .15s;flex-shrink:0}
 
 /* ========== FOOTER ========== */
-#ft{background:var(--ft);border-radius:22px 22px 0 0;margin-top:8px;padding:32px 18px 28px}
+#ft{background:#f5f5f5;border-radius:22px 22px 0 0;margin-top:8px;padding:32px 18px 28px;border-top:1px solid #e4e4e4}
 .ft-logo-row{display:flex;align-items:center;gap:10px;margin-bottom:22px}
-.ft-ph{font-size:18px;font-weight:700;color:#fff;margin-bottom:16px}
 .ft-sc{display:flex;gap:10px;margin-bottom:24px}
-.ft-sc a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(255,255,255,.65)}
+.ft-sc a{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff;text-decoration:none}
 .ft-lk-m{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
-.ft-lk-m a{font-size:13px;color:rgba(255,255,255,.48)}
+.ft-lk-m a{font-size:13px;color:#8a8a8a}
 .app-bts{display:flex;gap:9px;margin-bottom:24px}
-.btn-ap{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.09);border-radius:11px;padding:10px 14px;color:#fff;flex:1}
+.btn-ap{display:flex;align-items:center;gap:10px;background:#e8e8e8;border-radius:11px;padding:10px 14px;color:#1a1a1a;flex:1}
 .btn-ap-ic{font-size:20px;flex-shrink:0}
 .btn-ap b{font-size:13px;font-weight:600;display:block}
-.btn-ap small{font-size:9px;color:rgba(255,255,255,.45);display:block;margin-bottom:1px}
+.btn-ap small{font-size:9px;color:#8a8a8a;display:block;margin-bottom:1px}
 .ft-pay{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:18px}
-.pay-b{background:rgba(255,255,255,.09);border-radius:5px;padding:3px 8px;font-size:10px;font-weight:700;color:rgba(255,255,255,.45)}
-.ft-bt{border-top:1px solid rgba(255,255,255,.08);padding-top:18px;font-size:11px;color:rgba(255,255,255,.28);line-height:1.8}
-.ft-bt a{color:rgba(255,255,255,.28);display:block;margin-bottom:4px}
+.pay-b{background:#e0e0e0;border-radius:5px;padding:3px 8px;font-size:10px;font-weight:700;color:#8a8a8a}
+.ft-bt{border-top:1px solid #e4e4e4;padding-top:18px;font-size:11px;color:#aaa;line-height:1.8}
+.ft-bt a{color:#aaa;display:block;margin-bottom:4px}
 
 /* ========== BOTTOM NAV ========== */
 #bnav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--bdr);z-index:300;display:flex;height:64px;padding-bottom:env(safe-area-inset-bottom)}
@@ -417,7 +418,6 @@ ul{list-style:none}
       <div class="cat-c" onclick="location.href='menu.html#soup'">
         <div class="cat-ph"><img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=160&h=160&fit=crop&q=80" alt="Супы"/></div>
         <span class="cat-lb">Супы</span>
-        <span class="cat-bdg">от 10 МИН</span>
       </div>
       <div class="cat-c" onclick="location.href='menu.html#salad'">
         <div class="cat-ph"><img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=160&h=160&fit=crop&q=80" alt="Салаты"/></div>
@@ -546,27 +546,27 @@ ul{list-style:none}
   </div>
 </section>
 
-<!-- COUNTER -->
-<section id="ctr">
-  <div class="ctr-n">+100</div>
-  <p class="ctr-t">новых блюд каждую неделю,<br>чтобы вы наслаждались шикарными ужинами.<br><span class="ctr-em">Да, это гедонизм.</span></p>
-</section>
-
 <!-- FAQ -->
 <section id="faq">
   <div class="faq-box">
-    <div class="sec-t" style="margin-bottom:16px">Ответы на важные вопросы</div>
+    <div class="faq-hed">Ответы<br>на важные вопросы</div>
     <div id="faqGrid"></div>
     <div class="faq-ft">
-      <div class="faq-ft-t">Остались вопросы? На связи с 7:00 до 23:00</div>
+      <div class="faq-ft-t">Остались вопросы?<br>На связи ежедневно с 6:00 до 23:00</div>
       <div class="sb">
-        <a href="#" style="background:#2AABEE;color:#fff">✈</a>
-        <a href="#" style="background:#4A76A8;color:#fff">В</a>
-        <a href="#" style="background:var(--or);color:#fff">☎</a>
-        <a href="#" style="background:#25D366;color:#fff">W</a>
+        <a href="#" style="background:#d0d0d0"><i class="fas fa-phone" style="font-size:14px;color:#888"></i></a>
+        <a href="#" style="background:#4C75A3"><i class="fab fa-vk"></i></a>
+        <a href="#" style="background:#229ED9"><i class="fab fa-telegram"></i></a>
+        <a href="#" style="background:#EE8208"><i class="fab fa-odnoklassniki"></i></a>
       </div>
     </div>
   </div>
+</section>
+
+<!-- COUNTER -->
+<section id="ctr">
+  <div class="ctr-n">50+</div>
+  <p class="ctr-t">новых блюд каждую неделю — наслаждайтесь вкусными ужинами дома без лишних усилий. Живите вкусно.</p>
 </section>
 
 <!-- FOOTER -->
@@ -575,11 +575,12 @@ ul{list-style:none}
     <div class="logo-mk" style="width:36px;height:36px;border-radius:11px">
       <svg viewBox="0 0 28 28" fill="none" width="20" height="20"><path d="M5 11h18a11 11 0 0 1-2.07 5.5A9 9 0 0 1 14 20a9 9 0 0 1-6.93-3.5A11 11 0 0 1 5 11z" fill="rgba(0,0,0,.8)"/><rect x="4" y="9.5" width="20" height="2.5" rx="1.25" fill="rgba(0,0,0,.85)"/></svg>
     </div>
-    <span style="font-family:'Playfair Display',serif;font-size:14px;font-weight:800;color:#fff">НА СОКАХ.Еда</span>
+    <span style="font-family:'Playfair Display',serif;font-size:14px;font-weight:800;color:#1a1a1a">НА СОКАХ.Еда</span>
   </div>
-  <div class="ft-ph">+7 (800) 700-15-20</div>
   <div class="ft-sc">
-    <a href="#">✈</a><a href="#">В</a><a href="#">💬</a>
+    <a href="#" style="background:#229ED9"><i class="fab fa-telegram"></i></a>
+    <a href="#" style="background:#4C75A3"><i class="fab fa-vk"></i></a>
+    <a href="#" style="background:#EE8208"><i class="fab fa-odnoklassniki"></i></a>
   </div>
   <div class="ft-lk-m">
     <a href="#">Система качества</a>
@@ -599,7 +600,7 @@ ul{list-style:none}
     <a href="#" onclick="openDoc('terms');return false">Пользовательское соглашение</a>
     <a href="#" onclick="openDoc('privacy');return false">Политика конфиденциальности</a>
     <a href="#">Обработка персональных данных</a>
-    © 2025 НА СОКАХ.Еда
+    © 2013–2026 НА СОКАХ.Еда
   </div>
 </footer>
 
@@ -715,7 +716,8 @@ DISHES.forEach(d=>portions[d.id]=2);
 const fmt=n=>n.toLocaleString('ru')+' ₽';
 
 function renderFav(){
-  const picks=[1,4,7,8,6,3].map(id=>DISHES.find(d=>d.id===id)).filter(Boolean);
+  const catOrder=['main','salad','soup','snack','dessert'];
+  const picks=catOrder.map(cat=>{const pool=DISHES.filter(d=>d.cat===cat);return pool[Math.floor(Math.random()*pool.length)];}).filter(Boolean);
   document.getElementById('favRow').innerHTML=picks.map(d=>`
     <div class="dc" onclick="openDM(${d.id})">
       <div class="dc-ib">
@@ -726,9 +728,8 @@ function renderFav(){
         <div class="dc-pr">${d.price} ₽</div>
       </div>
     </div>`).join('')+
-  `<a class="fav-all" href="#mn">
-    <div class="fav-all-icon">→</div>
-    <span>Все меню</span>
+  `<a class="fav-all" href="menu.html">
+    <button class="fav-all-btn">Все меню →</button>
   </a>`;
 }
 
