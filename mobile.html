@@ -251,21 +251,28 @@ ul{list-style:none}
 .sb a{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff;text-decoration:none;transition:transform .15s,opacity .15s;flex-shrink:0}
 
 /* ========== FOOTER ========== */
-#ft{background:#f5f5f5;border-radius:22px 22px 0 0;margin-top:8px;padding:32px 18px 28px;border-top:1px solid #e4e4e4}
-.ft-logo-row{display:flex;align-items:center;gap:10px;margin-bottom:22px}
-.ft-sc{display:flex;gap:10px;margin-bottom:24px}
-.ft-sc a{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff;text-decoration:none}
-.ft-lk-m{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
-.ft-lk-m a{font-size:13px;color:#8a8a8a}
-.app-bts{display:flex;gap:9px;margin-bottom:24px}
-.btn-ap{display:flex;align-items:center;gap:10px;background:#e8e8e8;border-radius:11px;padding:10px 14px;color:#1a1a1a;flex:1}
-.btn-ap-ic{font-size:20px;flex-shrink:0}
-.btn-ap b{font-size:13px;font-weight:600;display:block}
-.btn-ap small{font-size:9px;color:#8a8a8a;display:block;margin-bottom:1px}
-.ft-pay{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:18px}
-.pay-b{background:#e0e0e0;border-radius:5px;padding:3px 8px;font-size:10px;font-weight:700;color:#8a8a8a}
-.ft-bt{border-top:1px solid #e4e4e4;padding-top:18px;font-size:11px;color:#aaa;line-height:1.8}
-.ft-bt a{color:#aaa;display:block;margin-bottom:4px}
+#ft{background:#f2f2f2;padding:24px 18px 36px;margin-top:0}
+.ft-row1{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:20px;border-bottom:1px solid #e0e0e0}
+.ft-sec-label{font-size:10px;font-weight:700;letter-spacing:.08em;color:#999;text-transform:uppercase;margin-bottom:5px}
+.ft-sec-sub{font-size:13px;color:#555;line-height:1.4}
+.ft-appstore{display:flex;align-items:center;gap:8px;background:#e8e8e8;border-radius:10px;padding:9px 13px;flex-shrink:0;text-decoration:none;color:#1a1a1a}
+.ft-appstore svg{width:16px;height:16px;fill:#1a1a1a;flex-shrink:0}
+.ft-appstore-t small{font-size:9px;color:#888;display:block;line-height:1.3}
+.ft-appstore-t b{font-size:13px;font-weight:700;display:block;line-height:1.3}
+.ft-contact{display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;border-bottom:1px solid #e0e0e0}
+.ft-ph{font-size:18px;font-weight:700;color:#1a1a1a;margin-bottom:5px}
+.ft-hrs{font-size:12px;color:#888;line-height:1.5}
+.ft-soc-sm{display:flex;gap:7px}
+.ft-soc-sm a{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;text-decoration:none;flex-shrink:0}
+.ft-lnk{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid #e0e0e0}
+.ft-lnk-col{flex:1;display:flex;flex-direction:column;gap:11px}
+.ft-lnk-col a{font-size:13px;color:#555;text-decoration:none;line-height:1.3}
+.ft-jur-ttl{font-size:10px;font-weight:700;letter-spacing:.08em;color:#999;text-transform:uppercase;margin:20px 0 12px}
+.ft-jur{display:flex;flex-direction:column;gap:10px;padding-bottom:20px;border-bottom:1px solid #e0e0e0}
+.ft-jur a{font-size:13px;color:#555;text-decoration:none}
+.ft-pay-r{display:flex;gap:7px;padding:16px 0;border-bottom:1px solid #e0e0e0}
+.ft-pay-pill{background:#e8e8e8;border-radius:5px;padding:3px 10px;font-size:10px;font-weight:700;color:#888}
+.ft-copy{font-size:11px;color:#aaa;padding-top:14px}
 
 /* ========== BOTTOM NAV ========== */
 #bnav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--bdr);z-index:300;display:flex;height:64px;padding-bottom:env(safe-area-inset-bottom)}
@@ -277,7 +284,7 @@ ul{list-style:none}
 .bn-badge.on{display:flex}
 
 /* ========== COOKIE ========== */
-#cookie{position:fixed;bottom:76px;left:12px;right:12px;background:#fff;border-radius:14px;box-shadow:0 4px 28px rgba(0,0,0,.13);padding:14px 16px;z-index:500;display:flex;align-items:center;gap:10px;border:1px solid var(--bdr);animation:fadeUp .3s ease}
+#cookie{position:fixed;bottom:16px;left:12px;right:12px;background:#fff;border-radius:14px;box-shadow:0 4px 28px rgba(0,0,0,.13);padding:14px 16px;z-index:500;display:flex;align-items:center;gap:10px;border:1px solid var(--bdr);animation:fadeUp .3s ease}
 #cookie.gone{display:none}
 .ck-ic{font-size:20px;flex-shrink:0}
 .ck-tx{font-size:12px;color:var(--ink2);line-height:1.5;flex:1}
@@ -582,37 +589,55 @@ ul{list-style:none}
 
 <!-- FOOTER -->
 <footer id="ft">
-  <div class="ft-logo-row">
-    <div class="logo-mk" style="width:36px;height:36px;border-radius:11px">
-      <svg viewBox="0 0 28 28" fill="none" width="20" height="20"><path d="M5 11h18a11 11 0 0 1-2.07 5.5A9 9 0 0 1 14 20a9 9 0 0 1-6.93-3.5A11 11 0 0 1 5 11z" fill="rgba(0,0,0,.8)"/><rect x="4" y="9.5" width="20" height="2.5" rx="1.25" fill="rgba(0,0,0,.85)"/></svg>
+  <div class="ft-row1">
+    <div>
+      <div class="ft-sec-label">ТАК УДОБНЕЕ</div>
+      <div class="ft-sec-sub">И здесь ждёт скидка 15%</div>
     </div>
-    <span style="font-family:'Playfair Display',serif;font-size:14px;font-weight:800;color:#1a1a1a">НА СОКАХ.Еда</span>
+    <a href="#" class="ft-appstore">
+      <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      <div class="ft-appstore-t"><small>Download on the</small><b>App Store</b></div>
+    </a>
   </div>
-  <div class="ft-sc">
-    <a href="#" style="background:#229ED9"><i class="fab fa-telegram"></i></a>
-    <a href="#" style="background:#4C75A3"><i class="fab fa-vk"></i></a>
-    <a href="#" style="background:#EE8208"><i class="fab fa-odnoklassniki"></i></a>
+  <div class="ft-contact">
+    <div>
+      <div class="ft-ph">+7 (800) 454-15-13</div>
+      <div class="ft-hrs">Ежедневно с 6:00<br>до 23:00</div>
+    </div>
+    <div class="ft-soc-sm">
+      <a href="#" style="background:#229ED9"><i class="fab fa-telegram"></i></a>
+      <a href="#" style="background:#4C75A3"><i class="fab fa-vk"></i></a>
+      <a href="#" style="background:#EE8208"><i class="fab fa-odnoklassniki"></i></a>
+    </div>
   </div>
-  <div class="ft-lk-m">
-    <a href="#">Система качества</a>
-    <a href="#">Условия доставки и оплаты</a>
-    <a href="#">О компании</a>
-    <a href="#">Контакты</a>
-    <a href="#">Блог НА СОКАХ.Еда</a>
+  <div class="ft-lnk">
+    <div class="ft-lnk-col">
+      <a href="#">Система качества</a>
+      <a href="#">Условия доставки</a>
+      <a href="#">Что мы привезём?</a>
+      <a href="#">Наши рецепты</a>
+    </div>
+    <div class="ft-lnk-col">
+      <a href="#">Наш блог</a>
+      <a href="#">Мы в Яндекс.Дзен</a>
+      <a href="#">О компании</a>
+      <a href="#">English version</a>
+      <a href="#">Контакты</a>
+    </div>
   </div>
-  <div class="app-bts">
-    <a href="#" class="btn-ap"><span class="btn-ap-ic">🍎</span><div><small>Загрузить в</small><b>App Store</b></div></a>
-    <a href="#" class="btn-ap"><span class="btn-ap-ic">▶</span><div><small>Загрузить в</small><b>Google Play</b></div></a>
-  </div>
-  <div class="ft-pay">
-    <span class="pay-b">МИР</span><span class="pay-b">VISA</span><span class="pay-b">MC</span><span class="pay-b">СБП</span><span class="pay-b">APPLE PAY</span>
-  </div>
-  <div class="ft-bt">
+  <div class="ft-jur-ttl">ЮРИДИЧЕСКИЕ ДОКУМЕНТЫ</div>
+  <div class="ft-jur">
     <a href="#" onclick="openDoc('terms');return false">Пользовательское соглашение</a>
-    <a href="#" onclick="openDoc('privacy');return false">Политика конфиденциальности</a>
     <a href="#">Обработка персональных данных</a>
-    © 2013–2026 НА СОКАХ.Еда
+    <a href="#" onclick="openDoc('privacy');return false">Политика конфиденциальности</a>
+    <a href="#">Использование cookie</a>
+    <a href="#">Рекламные и информ. рассылки</a>
   </div>
+  <div class="ft-pay-r">
+    <span class="ft-pay-pill">МИР</span>
+    <span class="ft-pay-pill">МИР Accept</span>
+  </div>
+  <div class="ft-copy">2013–2026 НА СОКАХ.Еда</div>
 </footer>
 
 
