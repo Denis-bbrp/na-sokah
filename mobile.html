@@ -11,7 +11,7 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
-body{font-family:'Golos Text',sans-serif;background:#EFEFEF;color:#1A1A1A;overflow-x:hidden;-webkit-font-smoothing:antialiased;padding-bottom:72px}
+body{font-family:'Golos Text',sans-serif;background:#EFEFEF;color:#1A1A1A;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 button{cursor:pointer;font-family:inherit;border:none;outline:none;background:none}
 a{text-decoration:none;color:inherit}
@@ -615,26 +615,6 @@ ul{list-style:none}
   </div>
 </footer>
 
-<!-- BOTTOM NAV -->
-<nav id="bnav">
-  <div class="bn-item act" onclick="scrollTo({top:0,behavior:'smooth'})">
-    <span class="bn-ic">🏠</span>
-    <span class="bn-lb">Главная</span>
-  </div>
-  <div class="bn-item" onclick="document.getElementById('mn').scrollIntoView({behavior:'smooth'})">
-    <span class="bn-ic">🍽</span>
-    <span class="bn-lb">Меню</span>
-  </div>
-  <div class="bn-item" id="bnavCart" onclick="openCart()">
-    <span class="bn-ic">🛒</span>
-    <span class="bn-lb">Корзина</span>
-    <span class="bn-badge" id="bnavBadge">0</span>
-  </div>
-  <div class="bn-item" onclick="openLogin()">
-    <span class="bn-ic">👤</span>
-    <span class="bn-lb" id="bnavUserLbl">Войти</span>
-  </div>
-</nav>
 
 <!-- COOKIE -->
 <div id="cookie">
