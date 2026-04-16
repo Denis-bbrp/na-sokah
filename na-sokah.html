@@ -142,7 +142,7 @@ ul{list-style:none}
 .pk-top{height:190px;padding:0;overflow:hidden;flex-shrink:0}
 .pk-top img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .4s}
 .pk:hover .pk-top img{transform:scale(1.06)}
-.pk-all{flex-shrink:0;width:195px;border-radius:20px;background:#f0f0f0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;cursor:pointer;text-decoration:none;transition:background .2s,transform .25s;min-height:280px}
+.pk-all{flex-shrink:0;width:195px;border-radius:20px;background:#f0f0f0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;cursor:pointer;text-decoration:none;transition:background .2s,transform .25s;align-self:stretch}
 .pk-all:hover{background:#e4e4e4;transform:translateY(-4px)}
 .pk-all-btn{background:#fff;border:none;border-radius:100px;padding:11px 20px;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:600;color:#1a1a1a;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
 .pk-all-btn svg{width:16px;height:16px;stroke:#1a1a1a;stroke-width:2;fill:none}
@@ -1033,7 +1033,11 @@ DISHES.forEach(d=>portions[d.id]=2);
 const fmt=n=>n.toLocaleString('ru')+' ₽';
 
 function renderPicks(){
-  const shuffled=[...DISHES].sort(()=>Math.random()-.5).slice(0,4);
+  const catOrder=['main','salad','soup','snack','dessert'];
+  const shuffled=catOrder.map(cat=>{
+    const pool=DISHES.filter(d=>d.cat===cat);
+    return pool[Math.floor(Math.random()*pool.length)];
+  }).filter(Boolean);
   document.getElementById('picksRow').innerHTML=shuffled.map(d=>`
     <div class="pk" onclick="openDM(${d.id})">
       <div class="pk-top">
