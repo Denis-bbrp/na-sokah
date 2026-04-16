@@ -53,7 +53,15 @@ ul{list-style:none}
 #hdr.s .logo-text-b{opacity:1;transform:translateY(-50%) translateX(0)}
 .hdr-r{display:flex;align-items:center;gap:8px}
 .btn-login-m{font-size:13px;font-weight:600;color:var(--ink2);padding:7px 14px;background:var(--card);border-radius:var(--rp)}
-.btn-cart-m{display:flex;align-items:center;gap:6px;background:var(--card);font-size:13px;font-weight:600;padding:7px 12px;border-radius:var(--rp);position:relative}
+.btn-city-m{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:var(--ink2);padding:7px 12px;background:var(--card);border-radius:var(--rp)}
+.city-arr{font-size:11px;transition:transform .22s;display:inline-block}
+.btn-city-m.open .city-arr{transform:rotate(180deg)}
+.city-drop{position:absolute;top:57px;left:0;right:0;background:#fff;border-bottom:1px solid var(--bdr);z-index:190;padding:4px 16px 8px;display:none;flex-direction:column;box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.city-drop.on{display:flex}
+.city-opt{padding:13px 0;font-size:14px;font-weight:500;color:var(--ink);border-bottom:1px solid var(--bdr);cursor:pointer;display:flex;align-items:center;justify-content:space-between}
+.city-opt:last-child{border-bottom:none}
+.city-opt.act{color:var(--or)}
+.city-opt.act::after{content:'✓';font-size:13px;color:var(--or)}
 .cart-ct{background:var(--or);color:#fff;font-size:10px;font-weight:700;min-width:18px;height:18px;padding:0 3px;border-radius:9px;display:none;align-items:center;justify-content:center}
 .cart-ct.on{display:flex}
 
@@ -375,13 +383,16 @@ ul{list-style:none}
       </div>
     </a>
     <div class="hdr-r">
+      <button class="btn-city-m" id="cityBtn" onclick="toggleCity()">Мск <span class="city-arr">▾</span></button>
       <button class="btn-login-m" id="loginBtn">Войти</button>
-      <button class="btn-cart-m" id="cartBtn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        <span id="cPriceLbl">0 ₽</span>
-        <span class="cart-ct" id="cCtEl">0</span>
-      </button>
     </div>
+  </div>
+  <div class="city-drop" id="cityDrop">
+    <div class="city-opt act" onclick="selectCity('Москва','Мск')">Москва</div>
+    <div class="city-opt" onclick="selectCity('Санкт-Петербург','СПб')">Санкт-Петербург</div>
+    <div class="city-opt" onclick="selectCity('Нижний Новгород','НН')">Нижний Новгород</div>
+    <div class="city-opt" onclick="selectCity('Казань','Каз')">Казань</div>
+    <div class="city-opt" onclick="selectCity('Екатеринбург','Екб')">Екатеринбург</div>
   </div>
 </header>
 
@@ -962,7 +973,28 @@ function showToast(msg){
 }
 
 document.getElementById('loginBtn').onclick=openLogin;
-document.getElementById('cartBtn').onclick=openCart;
+
+function toggleCity(){
+  const btn=document.getElementById('cityBtn');
+  const drop=document.getElementById('cityDrop');
+  btn.classList.toggle('open');
+  drop.classList.toggle('on');
+}
+function selectCity(full,short){
+  const btn=document.getElementById('cityBtn');
+  btn.childNodes[0].textContent=short+' ';
+  document.querySelectorAll('.city-opt').forEach(o=>o.classList.toggle('act',o.textContent.trim()===full));
+  btn.classList.remove('open');
+  document.getElementById('cityDrop').classList.remove('on');
+}
+document.addEventListener('click',function(e){
+  const btn=document.getElementById('cityBtn');
+  const drop=document.getElementById('cityDrop');
+  if(!btn.contains(e.target)&&!drop.contains(e.target)){
+    btn.classList.remove('open');
+    drop.classList.remove('on');
+  }
+});
 
 // СЕТЫ
 const SETS=[
