@@ -646,7 +646,7 @@ ul{list-style:none}
 
 <!-- PICKS ROW -->
 <section id="picks">
-  <div style="padding:0 max(14px,calc((100vw - 1280px)/2 + 28px));overflow:hidden">
+  <div style="padding:0 max(14px,calc((100vw - 1160px)/2 + 24px));overflow:hidden">
     <div class="hs"><div class="picks-row" id="picksRow"></div></div>
   </div>
 </section>
@@ -1457,7 +1457,7 @@ function showYaReviews(){
   window.open('https://yandex.ru/maps/','_blank');
 }
 
-renderPicks();renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
+renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
 
 // Аккордеон сайдбара
 function toggleAcc(hd){
@@ -1622,6 +1622,7 @@ function dmAddToCart(){
   setTimeout(()=>{btn.classList.remove('done');updateDMPrice();},1800);
 }
 document.getElementById('dmov').addEventListener('click',function(e){if(e.target===this)closeDM();});
+renderPicks();
 </script>
 </body>
 </html>
