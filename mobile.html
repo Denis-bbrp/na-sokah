@@ -371,6 +371,8 @@ ul{list-style:none}
   </div>
 </header>
 
+<!-- sentinel для смены лого -->
+<div id="logo-sentinel" style="height:1px;pointer-events:none;"></div>
 <!-- HERO -->
 <section id="hero">
   <div class="hero-wrap">
@@ -1019,15 +1021,17 @@ function showYaReviews(){
 }
 
 renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
-function updateLogo(){
-  var y=window.scrollY||window.pageYOffset||0;
-  var img=document.getElementById('logo-switch');
-  if(!img)return;
-  img.src=y>10?'logo/logo-mobile.png':'logo/logo-full.png';
+var logoImg=document.getElementById('logo-switch');
+var logoSrc={a:'logo/logo-full.png',b:'logo/logo-mobile.png'};
+function setLogo(scrolled){if(logoImg)logoImg.src=scrolled?logoSrc.b:logoSrc.a;}
+// IntersectionObserver — надёжно на мобиле
+var sentinel=document.getElementById('logo-sentinel');
+if(sentinel&&'IntersectionObserver' in window){
+  new IntersectionObserver(function(e){setLogo(!e[0].isIntersecting);},{threshold:0}).observe(sentinel);
+} else {
+  // fallback для старых браузеров
+  window.addEventListener('scroll',function(){setLogo((window.scrollY||window.pageYOffset||0)>10);},{passive:true});
 }
-window.addEventListener('scroll',updateLogo,{passive:true});
-window.addEventListener('touchmove',updateLogo,{passive:true});
-window.addEventListener('touchend',updateLogo,{passive:true});
 </script>
 
 <!-- DISH PANEL -->
