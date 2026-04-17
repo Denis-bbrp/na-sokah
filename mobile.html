@@ -355,8 +355,7 @@ ul{list-style:none}
 <header id="hdr">
   <div class="hdr-in">
     <a href="#" class="logo">
-      <img src="logo/logo-full.png" alt="НА СОКАХ.Еда" class="logo-img-a">
-      <img src="logo/logo-mobile.png" alt="NA|EDA" class="logo-img-b">
+      <img id="logo-switch" src="logo/logo-full.png" alt="лого" style="height:36px;width:auto;display:block;">
     </a>
     <div class="hdr-r">
       <button class="btn-city-m" id="cityBtn" onclick="toggleCity()">Мск <span class="city-arr">▾</span></button>
@@ -1021,12 +1020,10 @@ function showYaReviews(){
 
 renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
 function updateLogo(){
-  var y=window.scrollY||window.pageYOffset||document.documentElement.scrollTop||0;
-  var a=document.querySelector('.logo-img-a');
-  var b=document.querySelector('.logo-img-b');
-  if(!a||!b)return;
-  if(y>10){a.style.opacity='0';b.style.opacity='1';}
-  else{a.style.opacity='1';b.style.opacity='0';}
+  var y=window.scrollY||window.pageYOffset||0;
+  var img=document.getElementById('logo-switch');
+  if(!img)return;
+  img.src=y>10?'logo/logo-mobile.png':'logo/logo-full.png';
 }
 window.addEventListener('scroll',updateLogo,{passive:true});
 window.addEventListener('touchmove',updateLogo,{passive:true});
