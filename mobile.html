@@ -1020,13 +1020,17 @@ function showYaReviews(){
 }
 
 renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
-window.addEventListener('scroll',function(){
+function updateLogo(){
   var y=window.scrollY||window.pageYOffset||document.documentElement.scrollTop||0;
   var a=document.querySelector('.logo-img-a');
   var b=document.querySelector('.logo-img-b');
+  if(!a||!b)return;
   if(y>10){a.style.opacity='0';b.style.opacity='1';}
   else{a.style.opacity='1';b.style.opacity='0';}
-},{passive:true});
+}
+window.addEventListener('scroll',updateLogo,{passive:true});
+window.addEventListener('touchmove',updateLogo,{passive:true});
+window.addEventListener('touchend',updateLogo,{passive:true});
 </script>
 
 <!-- DISH PANEL -->
