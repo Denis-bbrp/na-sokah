@@ -35,22 +35,12 @@ ul{list-style:none}
 @keyframes lShake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
 
 /* ========== HEADER ========== */
-#hdr{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--bdr);transition:border-color .3s}
+#hdr{position:sticky;top:0;z-index:200;background:transparent;border-bottom:1px solid transparent;transition:background .3s,border-color .3s,box-shadow .3s}
+#hdr.s{background:#fff;border-bottom:1px solid var(--bdr);box-shadow:0 2px 12px rgba(0,0,0,.07)}
 .hdr-in{display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 16px}
-.logo{display:flex;align-items:center;gap:10px}
-.logo-mk{width:38px;height:38px;border-radius:12px;background:var(--ye);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(255,214,0,.35);position:relative;transition:background .35s,box-shadow .35s,border-radius .35s}
-.logo-mk svg{width:22px;height:22px}
-.logo-icon-a,.logo-icon-b{position:absolute;transition:opacity .35s ease}
-.logo-icon-b{opacity:0}
-#hdr.s .logo-mk{border-radius:12px}
-#hdr.s .logo-icon-a{opacity:0}
-#hdr.s .logo-icon-b{opacity:1}
-.logo-nm{font-family:'Playfair Display',Georgia,serif;font-size:15px;font-weight:800;color:#2a2a2a;letter-spacing:-.01em;line-height:1.15;position:relative}
-.logo-nm small{color:var(--ink3);font-size:9px;font-weight:500;display:block;font-family:'Golos Text',sans-serif;margin-top:1px}
-.logo-text-a,.logo-text-b{transition:opacity .35s ease,transform .35s ease}
-.logo-text-b{position:absolute;top:50%;transform:translateY(-50%) translateX(4px);opacity:0;white-space:nowrap;font-size:17px;letter-spacing:.08em;color:#1a1a1a}
-#hdr.s .logo-text-a{opacity:0;transform:translateY(-6px)}
-#hdr.s .logo-text-b{opacity:1;transform:translateY(-50%) translateX(0)}
+.logo{display:flex;align-items:center}
+.logo-img{height:36px;width:auto;display:block;opacity:0;transition:opacity .3s ease}
+#hdr.s .logo-img{opacity:1}
 .hdr-r{display:flex;align-items:center;gap:8px}
 .btn-login-m{font-size:13px;font-weight:600;color:var(--ink2);padding:7px 14px;background:var(--card);border-radius:var(--rp)}
 .btn-city-m{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:var(--ink2);padding:7px 12px;background:var(--card);border-radius:var(--rp)}
@@ -363,28 +353,7 @@ ul{list-style:none}
 <header id="hdr">
   <div class="hdr-in">
     <a href="#" class="logo">
-      <div class="logo-mk">
-        <!-- Иконка по умолчанию: чаша с паром -->
-        <svg class="logo-icon-a" viewBox="0 0 28 28" fill="none" width="22" height="22">
-          <path d="M9 6c0-1 1-1.5 1-2.5S9 2 9 2" stroke="rgba(0,0,0,.35)" stroke-width="1.4" stroke-linecap="round"/>
-          <path d="M13 6c0-1 1-1.5 1-2.5S13 2 13 2" stroke="rgba(0,0,0,.35)" stroke-width="1.4" stroke-linecap="round"/>
-          <path d="M17 6c0-1 1-1.5 1-2.5S17 2 17 2" stroke="rgba(0,0,0,.35)" stroke-width="1.4" stroke-linecap="round"/>
-          <path d="M5 11h18a11 11 0 0 1-2.07 5.5A9 9 0 0 1 14 20a9 9 0 0 1-6.93-3.5A11 11 0 0 1 5 11z" fill="rgba(0,0,0,.8)"/>
-          <rect x="4" y="9.5" width="20" height="2.5" rx="1.25" fill="rgba(0,0,0,.85)"/>
-        </svg>
-        <!-- Иконка при скролле: тарелка с вилкой и ножом -->
-        <svg class="logo-icon-b" viewBox="0 0 32 32" fill="none" width="30" height="30">
-          <path d="M5 4v24" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round"/>
-          <path d="M4 4v7M5 4v7M6 4v7" stroke="#1a1a1a" stroke-width="1.4" stroke-linecap="round"/>
-          <path d="M4 11Q5 13.5 6 11" stroke="#1a1a1a" stroke-width="1.4" stroke-linecap="round" fill="none"/>
-          <circle cx="16" cy="17" r="7" stroke="#1a1a1a" stroke-width="1.6"/>
-          <path d="M27 4v24M27 4c2.5 2 2.5 6 0 8" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-        </svg>
-      </div>
-      <div class="logo-nm">
-        <div class="logo-text-a">НА СОКАХ.Еда<small>свежие продукты с рецептами</small></div>
-        <div class="logo-text-b">NA&thinsp;|&thinsp;EDA</div>
-      </div>
+      <img src="logo/logo-mobile.png" alt="NA|EDA" class="logo-img">
     </a>
     <div class="hdr-r">
       <button class="btn-city-m" id="cityBtn" onclick="toggleCity()">Мск <span class="city-arr">▾</span></button>
