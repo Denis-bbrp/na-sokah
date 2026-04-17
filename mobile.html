@@ -1020,7 +1020,7 @@ function showYaReviews(){
 }
 
 renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
-window.addEventListener('scroll',function(){document.getElementById('hdr').classList.toggle('s',window.scrollY>40);},{passive:true});
+window.addEventListener('scroll',function(){var y=window.scrollY||window.pageYOffset||document.documentElement.scrollTop;document.getElementById('hdr').classList.toggle('s',y>10);},{passive:true});
 </script>
 
 <!-- DISH PANEL -->
