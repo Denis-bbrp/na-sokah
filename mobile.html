@@ -372,7 +372,6 @@ ul{list-style:none}
 </header>
 
 <!-- sentinel для смены лого -->
-<div id="logo-sentinel" style="height:1px;pointer-events:none;"></div>
 <!-- HERO -->
 <section id="hero">
   <div class="hero-wrap">
@@ -1024,17 +1023,10 @@ renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
 setInterval(function(){
   var y=window.scrollY||window.pageYOffset||document.documentElement.scrollTop||0;
   var img=document.getElementById('logo-switch');
-  var hdr=document.getElementById('hdr');
-  if(!img||!hdr)return;
-  if(y>50){
-    hdr.style.background='orange';
-    var next='logo/logo-mobile.png';
-    if(img.getAttribute('data-s')!==next){img.src=next;img.setAttribute('data-s',next);}
-  } else {
-    hdr.style.background='#fff';
-    var next='logo/logo-full.png';
-    if(img.getAttribute('data-s')!==next){img.src=next;img.setAttribute('data-s',next);}
-  }
+  if(!img)return;
+  var next=y>50?'logo/logo-mobile.png':'logo/logo-full.png';
+  if(img.getAttribute('data-s')!==next){img.src=next;img.setAttribute('data-s',next);}
+
 },100);
 </script>
 
