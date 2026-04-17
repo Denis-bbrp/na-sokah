@@ -38,8 +38,11 @@ ul{list-style:none}
 #hdr{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--bdr);transition:box-shadow .3s}
 #hdr.s{box-shadow:0 2px 12px rgba(0,0,0,.07)}
 .hdr-in{display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 16px}
-.logo{display:flex;align-items:center}
-.logo-img{height:36px;width:auto;display:block;}
+.logo{display:flex;align-items:center;position:relative}
+.logo-img-a{height:36px;width:auto;display:block;opacity:1;transition:opacity .3s ease}
+.logo-img-b{height:36px;width:auto;display:block;opacity:0;position:absolute;left:0;top:50%;transform:translateY(-50%);transition:opacity .3s ease;white-space:nowrap}
+#hdr.s .logo-img-a{opacity:0}
+#hdr.s .logo-img-b{opacity:1}
 .hdr-r{display:flex;align-items:center;gap:8px}
 .btn-login-m{font-size:13px;font-weight:600;color:var(--ink2);padding:7px 14px;background:var(--card);border-radius:var(--rp)}
 .btn-city-m{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:var(--ink2);padding:7px 12px;background:var(--card);border-radius:var(--rp)}
@@ -352,7 +355,8 @@ ul{list-style:none}
 <header id="hdr">
   <div class="hdr-in">
     <a href="#" class="logo">
-      <img src="logo/logo-mobile.png" alt="NA|EDA" class="logo-img">
+      <img src="logo/logo-full.png" alt="НА СОКАХ.Еда" class="logo-img-a">
+      <img src="logo/logo-mobile.png" alt="NA|EDA" class="logo-img-b">
     </a>
     <div class="hdr-r">
       <button class="btn-city-m" id="cityBtn" onclick="toggleCity()">Мск <span class="city-arr">▾</span></button>
