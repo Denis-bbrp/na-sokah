@@ -1021,17 +1021,13 @@ function showYaReviews(){
 }
 
 renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
-var logoImg=document.getElementById('logo-switch');
-var logoSrc={a:'logo/logo-full.png',b:'logo/logo-mobile.png'};
-function setLogo(scrolled){if(logoImg)logoImg.src=scrolled?logoSrc.b:logoSrc.a;}
-// IntersectionObserver — надёжно на мобиле
-var sentinel=document.getElementById('logo-sentinel');
-if(sentinel&&'IntersectionObserver' in window){
-  new IntersectionObserver(function(e){setLogo(!e[0].isIntersecting);},{threshold:0}).observe(sentinel);
-} else {
-  // fallback для старых браузеров
-  window.addEventListener('scroll',function(){setLogo((window.scrollY||window.pageYOffset||0)>10);},{passive:true});
-}
+setInterval(function(){
+  var y=window.scrollY||window.pageYOffset||document.documentElement.scrollTop||0;
+  var img=document.getElementById('logo-switch');
+  if(!img)return;
+  var next=y>50?'logo/logo-mobile.png':'logo/logo-full.png';
+  if(img.getAttribute('data-s')!==next){img.src=next;img.setAttribute('data-s',next);}
+},100);
 </script>
 
 <!-- DISH PANEL -->
