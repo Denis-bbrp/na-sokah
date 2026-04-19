@@ -58,17 +58,25 @@ ul{list-style:none}
 .nav-hours{font-size:13px;color:var(--ink3);margin-bottom:14px;line-height:1.5}
 .nav-socials{display:flex;gap:10px}
 .nav-soc-btn{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;border:1px solid var(--bdr)}
-#hdr.s #logoLink{cursor:pointer}
+
 
 /* ========== HEADER ========== */
 #hdr{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--bdr);transition:box-shadow .3s}
 #hdr.s{box-shadow:0 2px 12px rgba(0,0,0,.07)}
 .hdr-in{display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 16px}
-.logo{display:flex;align-items:center;position:relative}
-.logo-img-a{height:36px;width:auto;display:block;opacity:1;transition:opacity .3s ease}
-.logo-img-b{height:36px;width:auto;display:block;opacity:0;position:absolute;left:0;top:50%;transform:translateY(-50%);transition:opacity .3s ease;white-space:nowrap}
-#hdr.s .logo-img-a{opacity:0}
-#hdr.s .logo-img-b{opacity:1}
+.hdr-logo-area{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-full-wrap img{height:36px;width:auto;display:block}
+.logo-compact-text{display:none;font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1}
+#hdr.s .logo-full-wrap{display:none}
+#hdr.s .logo-compact-text{display:block}
+.btn-burger{position:relative;width:26px;height:20px;flex-shrink:0;padding:0;background:none;border:none;cursor:pointer}
+.btn-burger span{position:absolute;left:0;width:100%;height:3px;background:var(--ink);border-radius:2px;transition:all .26s cubic-bezier(.4,0,.2,1)}
+.btn-burger span:nth-child(1){top:0}
+.btn-burger span:nth-child(2){top:50%;transform:translateY(-50%)}
+.btn-burger span:nth-child(3){bottom:0}
+.btn-burger.open span:nth-child(1){top:50%;transform:translateY(-50%) rotate(45deg);background:var(--ink3)}
+.btn-burger.open span:nth-child(2){opacity:0;transform:translateY(-50%) scaleX(0)}
+.btn-burger.open span:nth-child(3){bottom:50%;transform:translateY(50%) rotate(-45deg);background:var(--ink3)}
 .hdr-r{display:flex;align-items:center;gap:8px}
 .btn-login-m{font-size:13px;font-weight:600;color:var(--ink2);padding:7px 14px;background:var(--card);border-radius:var(--rp)}
 .btn-city-m{display:flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:var(--ink2);padding:7px 12px;background:var(--card);border-radius:var(--rp)}
@@ -380,10 +388,15 @@ ul{list-style:none}
 <!-- HEADER -->
 <header id="hdr">
   <div class="hdr-in">
-    <a href="#" class="logo" id="logoLink">
-      <img class="logo-img-a" src="logo/logo-full.png" alt="лого">
-      <img class="logo-img-b" src="logo/logo-mobile.png" alt="лого">
-    </a>
+    <div class="hdr-logo-area">
+      <button class="btn-burger" id="burgerBtn" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="mobile.html" class="logo-full-wrap">
+        <img src="logo/logo-full.png" alt="НА СОКАХ.Еда">
+      </a>
+      <span class="logo-compact-text">НА <span style="color:var(--ink3)">|</span> <span style="color:var(--or)">ЕДА</span></span>
+    </div>
     <div class="hdr-r">
       <button class="btn-city-m" id="cityBtn" onclick="toggleCity()">Мск <span class="city-arr">▾</span></button>
       <button class="btn-login-m" id="loginBtn">Войти</button>
@@ -1096,11 +1109,19 @@ function checkout(){
 }
 
 // НАВ МЕНЮ
-function openNav(){document.getElementById('nav-ov').classList.add('on');document.body.style.overflow='hidden';}
-function closeNav(){document.getElementById('nav-ov').classList.remove('on');document.body.style.overflow='';}
-document.getElementById('logoLink').addEventListener('click',function(e){
-  if(document.getElementById('hdr').classList.contains('s')){e.preventDefault();openNav();}
-});
+function openNav(){
+  document.getElementById('nav-ov').classList.add('on');
+  document.getElementById('burgerBtn').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeNav(){
+  document.getElementById('nav-ov').classList.remove('on');
+  document.getElementById('burgerBtn').classList.remove('open');
+  document.body.style.overflow='';
+}
+function toggleNav(){
+  document.getElementById('nav-ov').classList.contains('on')?closeNav():openNav();
+}
 
 // СКИДКА
 function showDiscount(){
