@@ -1102,18 +1102,16 @@ function checkout(){
 }
 
 // НАВ МЕНЮ
-var _navScrollY=0;
+function _blockScroll(e){if(!document.getElementById('nav-ov').contains(e.target))e.preventDefault();}
 function openNav(){
-  _navScrollY=window.scrollY;
   window._navLock=true;
-  document.body.style.cssText='position:fixed;top:-'+_navScrollY+'px;left:0;right:0;overflow:hidden';
+  document.addEventListener('touchmove',_blockScroll,{passive:false});
   document.getElementById('nav-ov').classList.add('on');
   document.getElementById('burgerBtn').classList.add('open');
 }
 function closeNav(){
-  document.body.style.cssText='';
-  window.scrollTo(0,_navScrollY);
   window._navLock=false;
+  document.removeEventListener('touchmove',_blockScroll);
   document.getElementById('nav-ov').classList.remove('on');
   document.getElementById('burgerBtn').classList.remove('open');
 }
