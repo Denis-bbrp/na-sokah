@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/>
-<title>НА СОКАХ.Еда — готовьте как шеф за 15 минут</title>
+<title>НА СОКАХ.Еда — готовьте как шеф за 15 минут [v5]</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
@@ -1021,13 +1021,24 @@ function showYaReviews(){
 }
 
 renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
-function _setHdrS(on){document.getElementById('hdr').classList.toggle('s',on);}
-var _sentinel=document.getElementById('logo-sentinel');
-if(_sentinel&&'IntersectionObserver' in window){
-  new IntersectionObserver(function(e){_setHdrS(!e[0].isIntersecting);},{threshold:0}).observe(_sentinel);
-}
-window.addEventListener('scroll',function(){_setHdrS((window.scrollY||window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0)>40);},{passive:true});
-document.addEventListener('scroll',function(){_setHdrS((window.scrollY||window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0)>40);},{passive:true});
+(function(){
+  var hdr=document.getElementById('hdr');
+  var sentinel=document.getElementById('logo-sentinel');
+  var prev=-1;
+  function getY(){return Math.max(window.scrollY||0,window.pageYOffset||0,document.documentElement.scrollTop||0,document.body.scrollTop||0);}
+  function apply(on){if(on!==prev){prev=on;hdr.classList.toggle('s',on);}}
+  // rAF loop — работает всегда
+  (function tick(){apply(getY()>40);requestAnimationFrame(tick);})();
+  // Events fallback
+  ['scroll','touchend'].forEach(function(e){
+    window.addEventListener(e,function(){apply(getY()>40);},{passive:true});
+    document.addEventListener(e,function(){apply(getY()>40);},{passive:true});
+  });
+  // IntersectionObserver fallback
+  if(sentinel&&'IntersectionObserver' in window){
+    new IntersectionObserver(function(e){apply(!e[0].isIntersecting);},{threshold:0}).observe(sentinel);
+  }
+})();
 </script>
 
 <!-- DISH PANEL -->
