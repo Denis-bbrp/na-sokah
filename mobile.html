@@ -58,9 +58,7 @@ ul{list-style:none}
 .nav-hours{font-size:13px;color:var(--ink3);margin-bottom:14px;line-height:1.5}
 .nav-socials{display:flex;gap:10px}
 .nav-soc-btn{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;border:1px solid var(--bdr)}
-.btn-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;padding:4px 6px;flex-shrink:0}
-.btn-burger span{display:block;height:2px;border-radius:2px;background:var(--ink)}
-#hdr.s .btn-burger{display:flex}
+#hdr.s #logoLink{cursor:pointer}
 
 /* ========== HEADER ========== */
 #hdr{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--bdr);transition:box-shadow .3s}
@@ -382,10 +380,7 @@ ul{list-style:none}
 <!-- HEADER -->
 <header id="hdr">
   <div class="hdr-in">
-    <button class="btn-burger" onclick="openNav()" aria-label="Меню">
-      <span></span><span></span><span></span>
-    </button>
-    <a href="#" class="logo">
+    <a href="#" class="logo" id="logoLink">
       <img class="logo-img-a" src="logo/logo-full.png" alt="лого">
       <img class="logo-img-b" src="logo/logo-mobile.png" alt="лого">
     </a>
@@ -1103,6 +1098,9 @@ function checkout(){
 // НАВ МЕНЮ
 function openNav(){document.getElementById('nav-ov').classList.add('on');document.body.style.overflow='hidden';}
 function closeNav(){document.getElementById('nav-ov').classList.remove('on');document.body.style.overflow='';}
+document.getElementById('logoLink').addEventListener('click',function(e){
+  if(document.getElementById('hdr').classList.contains('s')){e.preventDefault();openNav();}
+});
 
 // СКИДКА
 function showDiscount(){
