@@ -372,7 +372,7 @@ ul{list-style:none}
   </div>
 </header>
 
-<!-- sentinel для смены лого -->
+<div id="logo-sentinel" style="height:1px;pointer-events:none;"></div>
 <!-- HERO -->
 <section id="hero">
   <div class="hero-wrap">
@@ -1021,12 +1021,13 @@ function showYaReviews(){
 }
 
 renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
-function _logoScroll(){
-  var y=window.scrollY||window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
-  document.getElementById('hdr').classList.toggle('s',y>50);
+function _setHdrS(on){document.getElementById('hdr').classList.toggle('s',on);}
+var _sentinel=document.getElementById('logo-sentinel');
+if(_sentinel&&'IntersectionObserver' in window){
+  new IntersectionObserver(function(e){_setHdrS(!e[0].isIntersecting);},{threshold:0}).observe(_sentinel);
 }
-window.addEventListener('scroll',_logoScroll,{passive:true});
-document.addEventListener('scroll',_logoScroll,{passive:true});
+window.addEventListener('scroll',function(){_setHdrS((window.scrollY||window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0)>40);},{passive:true});
+document.addEventListener('scroll',function(){_setHdrS((window.scrollY||window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0)>40);},{passive:true});
 </script>
 
 <!-- DISH PANEL -->
