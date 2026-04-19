@@ -1021,9 +1021,9 @@ function showYaReviews(){
 }
 
 renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
-window.addEventListener('scroll',function(){
-  document.getElementById('hdr').classList.toggle('s',window.scrollY>50);
-},{ passive:true });
+new IntersectionObserver(function(e){
+  document.getElementById('hdr').classList.toggle('s',!e[0].isIntersecting);
+},{threshold:0}).observe(document.getElementById('hero'));
 </script>
 
 <!-- DISH PANEL -->
