@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth}
-body{font-family:'Golos Text',sans-serif;background:#EFEFEF;color:#1A1A1A;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Golos Text',sans-serif;background:#EFEFEF;color:#1A1A1A;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 button{cursor:pointer;font-family:inherit;border:none;outline:none;background:none}
 a{text-decoration:none;color:inherit}
@@ -1021,9 +1021,12 @@ function showYaReviews(){
 }
 
 renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
-new IntersectionObserver(function(e){
-  document.getElementById('hdr').classList.toggle('s',!e[0].isIntersecting);
-},{threshold:0}).observe(document.getElementById('hero'));
+function _logoScroll(){
+  var y=window.scrollY||window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
+  document.getElementById('hdr').classList.toggle('s',y>50);
+}
+window.addEventListener('scroll',_logoScroll,{passive:true});
+document.addEventListener('scroll',_logoScroll,{passive:true});
 </script>
 
 <!-- DISH PANEL -->
