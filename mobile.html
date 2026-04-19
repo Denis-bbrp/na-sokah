@@ -54,10 +54,10 @@ ul{list-style:none}
 .nav-link{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;font-size:15px;font-weight:500;color:var(--ink);border-bottom:1px solid var(--bdr)}
 .nav-link:last-child{border-bottom:none}
 .nav-link-arr{color:var(--ink4);font-size:14px;flex-shrink:0}
-.nav-footer-section{padding:16px 0 8px}
-.nav-hours{font-size:13px;color:var(--ink3);margin-bottom:14px;line-height:1.5}
-.nav-socials{display:flex;gap:10px}
-.nav-soc-btn{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;border:1px solid var(--bdr)}
+.nav-footer-section{padding:16px 0 8px;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.nav-hours{font-size:13px;color:var(--ink3);line-height:1.6}
+.nav-socials{display:flex;gap:10px;flex-wrap:nowrap}
+.nav-soc-btn{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;border:1px solid var(--bdr);flex-shrink:0}
 
 
 /* ========== HEADER ========== */
@@ -438,11 +438,12 @@ ul{list-style:none}
       <a href="mobile.html#faq" class="nav-link" onclick="closeNav()">О сервисе <span class="nav-link-arr">›</span></a>
     </div>
     <div class="nav-footer-section">
-      <div class="nav-hours">Ежедневно<br>с 9:00 до 22:00</div>
+      <div class="nav-hours">Ежедневно<br>с 6:00 до 23:00</div>
       <div class="nav-socials">
         <button class="nav-soc-btn" style="background:#fff"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink2)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg></button>
         <button class="nav-soc-btn" style="background:#0077FF;border-color:#0077FF"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2zm3.08 13.5h-1.62c-.61 0-.8-.49-1.9-1.6-1-.96-1.45-.96-1.69-.96-.35 0-.44.1-.44.58v1.46c0 .41-.13.65-1.2.65-1.77 0-3.72-1.07-5.1-3.06-2.07-2.9-2.63-5.06-2.63-5.51 0-.24.09-.46.57-.46h1.62c.43 0 .59.19.75.65.83 2.38 2.21 4.47 2.78 4.47.21 0 .31-.1.31-.64V8.92c-.07-1.14-.67-1.24-.67-1.65 0-.2.16-.4.42-.4h2.54c.36 0 .48.19.48.6v3.24c0 .36.16.48.27.48.21 0 .39-.12.78-.51 1.21-1.36 2.07-3.44 2.07-3.44.11-.24.31-.46.74-.46h1.62c.49 0 .59.25.49.59-.21.96-2.22 3.81-2.22 3.81-.18.28-.24.41 0 .73.17.23.74.72 1.12 1.16.7.79 1.23 1.46 1.37 1.92.15.46-.08.69-.57.69z"/></svg></button>
         <button class="nav-soc-btn" style="background:#29A9EB;border-color:#29A9EB"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 5.373 0 12c0 6.628 5.373 12 12 12s12-5.372 12-12C24 5.373 18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg></button>
+        <button class="nav-soc-btn" style="background:#7360F2;border-color:#7360F2"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C6.48 0 2 4.48 2 10c0 2.39.85 4.59 2.25 6.33L2.69 21l4.81-1.53A9.93 9.93 0 0 0 12 20c5.52 0 10-4.48 10-10S17.52 0 12 0zm4.65 13.55c-.2.56-.99 1.02-1.62 1.15-.44.09-1.01.16-2.94-.63-2.46-1.02-4.04-3.52-4.17-3.68-.12-.17-1.02-1.36-1.02-2.59 0-1.23.64-1.84.87-2.1.2-.22.52-.33.83-.33.1 0 .19.005.27.01.24.01.36.025.52.4.2.46.68 1.67.74 1.79.06.12.12.28.04.45-.08.17-.12.27-.24.42-.12.15-.23.26-.35.42-.11.14-.23.29-.1.53.13.24.59.97 1.27 1.57.87.77 1.6 1.01 1.83 1.12.23.11.36.09.5-.05.14-.14.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.41.66 1.65.78.24.12.4.18.46.28.06.1.06.58-.14 1.14z"/></svg></button>
       </div>
     </div>
   </div>
