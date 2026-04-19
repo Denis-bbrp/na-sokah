@@ -34,6 +34,33 @@ ul{list-style:none}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @keyframes lShake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
 
+/* ========== NAV OVERLAY ========== */
+#nav-ov{position:fixed;inset:0;z-index:350;background:var(--bg);transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);overflow-y:auto;-webkit-overflow-scrolling:touch}
+#nav-ov.on{transform:translateX(0)}
+.nav-hdr{display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 16px;background:#fff;border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:10;flex-shrink:0}
+.btn-nav-close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--ink2);background:var(--card);border-radius:50%;flex-shrink:0}
+.nav-body{padding:14px 16px 40px}
+.nav-user-row{display:flex;align-items:center;gap:14px;background:#fff;border-radius:16px;padding:16px;margin-bottom:10px;cursor:pointer;border:1px solid var(--bdr)}
+.nav-user-ic{width:38px;height:38px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-user-lbl{font-size:15px;font-weight:600;color:var(--ink)}
+.nav-promo{background:var(--or);border-radius:16px;padding:16px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;overflow:hidden;position:relative;cursor:pointer;gap:12px}
+.nav-promo-txt{flex:1;min-width:0}
+.nav-promo-title{font-size:15px;font-weight:700;color:#fff;line-height:1.25;margin-bottom:3px}
+.nav-promo-sub{font-size:12px;color:rgba(255,255,255,.8);margin-bottom:10px}
+.nav-promo-price{display:inline-block;background:#fff;color:var(--ink);font-size:13px;font-weight:800;padding:5px 12px;border-radius:var(--rp)}
+.nav-promo-img{width:80px;height:80px;object-fit:cover;border-radius:12px;flex-shrink:0}
+.nav-promo-badge{position:absolute;top:10px;right:10px;width:28px;height:28px;background:var(--ye);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--ink)}
+.nav-links-card{background:#fff;border-radius:16px;margin-bottom:10px;overflow:hidden;border:1px solid var(--bdr)}
+.nav-link{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;font-size:15px;font-weight:500;color:var(--ink);border-bottom:1px solid var(--bdr)}
+.nav-link:last-child{border-bottom:none}
+.nav-link-arr{color:var(--ink4);font-size:14px;flex-shrink:0}
+.nav-footer-section{padding:16px 0 8px}
+.nav-hours{font-size:13px;color:var(--ink3);margin-bottom:14px;line-height:1.5}
+.nav-socials{display:flex;gap:10px}
+.nav-soc-btn{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;border:1px solid var(--bdr)}
+.btn-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;padding:4px 6px;flex-shrink:0}
+.btn-burger span{display:block;height:2px;border-radius:2px;background:var(--ink)}
+
 /* ========== HEADER ========== */
 #hdr{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--bdr);transition:box-shadow .3s}
 #hdr.s{box-shadow:0 2px 12px rgba(0,0,0,.07)}
@@ -354,6 +381,9 @@ ul{list-style:none}
 <!-- HEADER -->
 <header id="hdr">
   <div class="hdr-in">
+    <button class="btn-burger" onclick="openNav()" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
     <a href="#" class="logo">
       <img class="logo-img-a" src="logo/logo-full.png" alt="лого">
       <img class="logo-img-b" src="logo/logo-mobile.png" alt="лого">
@@ -371,6 +401,50 @@ ul{list-style:none}
     <div class="city-opt" onclick="selectCity('Екатеринбург','Екб')">Екатеринбург</div>
   </div>
 </header>
+
+<!-- NAV OVERLAY -->
+<div id="nav-ov">
+  <div class="nav-hdr">
+    <button class="btn-nav-close" onclick="closeNav()">✕</button>
+    <div class="hdr-r">
+      <button class="btn-city-m">Мск <span class="city-arr">▾</span></button>
+      <button class="btn-login-m" onclick="closeNav();setTimeout(openLogin,50)">Войти</button>
+    </div>
+  </div>
+  <div class="nav-body">
+    <div class="nav-user-row" onclick="closeNav();setTimeout(openLogin,50)">
+      <div class="nav-user-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+      <span class="nav-user-lbl">Войти в аккаунт</span>
+    </div>
+    <div class="nav-promo" onclick="closeNav();location.href='mobile.html#sets'">
+      <div class="nav-promo-txt">
+        <div class="nav-promo-title">Шеф-набор на неделю</div>
+        <div class="nav-promo-sub">со скидкой до 20%</div>
+        <span class="nav-promo-price">от 3 180 ₽</span>
+      </div>
+      <img class="nav-promo-img" src="menu-img/10.jpg" alt="Набор"/>
+      <div class="nav-promo-badge">%</div>
+    </div>
+    <div class="nav-links-card">
+      <a href="mobile.html" class="nav-link" onclick="closeNav()">Главная <span class="nav-link-arr">›</span></a>
+      <a href="menu.html" class="nav-link">Все блюда <span class="nav-link-arr">›</span></a>
+      <a href="mobile.html#sets" class="nav-link" onclick="closeNav()">Шеф-наборы <span class="nav-link-arr">›</span></a>
+      <a href="mobile.html#fav" class="nav-link" onclick="closeNav()">Хиты продаж <span class="nav-link-arr">›</span></a>
+      <a href="mobile.html#coll" class="nav-link" onclick="closeNav()">Коллекции рецептов <span class="nav-link-arr">›</span></a>
+    </div>
+    <div class="nav-links-card">
+      <a href="mobile.html#faq" class="nav-link" onclick="closeNav()">О сервисе <span class="nav-link-arr">›</span></a>
+    </div>
+    <div class="nav-footer-section">
+      <div class="nav-hours">Ежедневно<br>с 9:00 до 22:00</div>
+      <div class="nav-socials">
+        <button class="nav-soc-btn" style="background:#fff"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink2)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg></button>
+        <button class="nav-soc-btn" style="background:#0077FF;border-color:#0077FF"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2zm3.08 13.5h-1.62c-.61 0-.8-.49-1.9-1.6-1-.96-1.45-.96-1.69-.96-.35 0-.44.1-.44.58v1.46c0 .41-.13.65-1.2.65-1.77 0-3.72-1.07-5.1-3.06-2.07-2.9-2.63-5.06-2.63-5.51 0-.24.09-.46.57-.46h1.62c.43 0 .59.19.75.65.83 2.38 2.21 4.47 2.78 4.47.21 0 .31-.1.31-.64V8.92c-.07-1.14-.67-1.24-.67-1.65 0-.2.16-.4.42-.4h2.54c.36 0 .48.19.48.6v3.24c0 .36.16.48.27.48.21 0 .39-.12.78-.51 1.21-1.36 2.07-3.44 2.07-3.44.11-.24.31-.46.74-.46h1.62c.49 0 .59.25.49.59-.21.96-2.22 3.81-2.22 3.81-.18.28-.24.41 0 .73.17.23.74.72 1.12 1.16.7.79 1.23 1.46 1.37 1.92.15.46-.08.69-.57.69z"/></svg></button>
+        <button class="nav-soc-btn" style="background:#29A9EB;border-color:#29A9EB"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 5.373 0 12c0 6.628 5.373 12 12 12s12-5.372 12-12C24 5.373 18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg></button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div id="logo-sentinel" style="height:1px;pointer-events:none;"></div>
 <script>
@@ -1024,6 +1098,10 @@ function checkout(){
   closeCart();
   showToast('Заказ на '+fmt(total)+' принят! Свяжемся с вами скоро 🎉');
 }
+
+// НАВ МЕНЮ
+function openNav(){document.getElementById('nav-ov').classList.add('on');document.body.style.overflow='hidden';}
+function closeNav(){document.getElementById('nav-ov').classList.remove('on');document.body.style.overflow='';}
 
 // СКИДКА
 function showDiscount(){
