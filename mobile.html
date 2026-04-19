@@ -455,7 +455,7 @@ try{(function(){
   var s=document.getElementById('logo-sentinel');
   var prev=-1;
   function getY(){return Math.max(window.scrollY||0,window.pageYOffset||0,document.documentElement.scrollTop||0,document.body.scrollTop||0);}
-  function set(on){if(on===prev)return;prev=on;hdr.classList.toggle('s',on);}
+  function set(on){if(window._navLock||on===prev)return;prev=on;hdr.classList.toggle('s',on);}
   (function tick(){set(getY()>40);requestAnimationFrame(tick);})();
   ['scroll','touchmove','touchend'].forEach(function(e){
     document.addEventListener(e,function(){set(getY()>40);},{passive:true});
@@ -1105,6 +1105,7 @@ function checkout(){
 var _navScrollY=0;
 function openNav(){
   _navScrollY=window.scrollY;
+  window._navLock=true;
   document.body.style.cssText='position:fixed;top:-'+_navScrollY+'px;left:0;right:0;overflow:hidden';
   document.getElementById('nav-ov').classList.add('on');
   document.getElementById('burgerBtn').classList.add('open');
@@ -1112,6 +1113,7 @@ function openNav(){
 function closeNav(){
   document.body.style.cssText='';
   window.scrollTo(0,_navScrollY);
+  window._navLock=false;
   document.getElementById('nav-ov').classList.remove('on');
   document.getElementById('burgerBtn').classList.remove('open');
 }
