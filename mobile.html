@@ -355,7 +355,8 @@ ul{list-style:none}
 <header id="hdr">
   <div class="hdr-in">
     <a href="#" class="logo">
-      <img id="logo-switch" src="logo/logo-full.png" alt="лого" style="height:36px;width:auto;display:block;">
+      <img class="logo-img-a" src="logo/logo-full.png" alt="лого">
+      <img class="logo-img-b" src="logo/logo-mobile.png" alt="лого">
     </a>
     <div class="hdr-r">
       <button class="btn-city-m" id="cityBtn" onclick="toggleCity()">Мск <span class="city-arr">▾</span></button>
@@ -1020,14 +1021,9 @@ function showYaReviews(){
 }
 
 renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
-setInterval(function(){
-  var y=window.scrollY||window.pageYOffset||document.documentElement.scrollTop||0;
-  var img=document.getElementById('logo-switch');
-  if(!img)return;
-  var next=y>50?'logo/logo-mobile.png':'logo/logo-full.png';
-  if(img.getAttribute('data-s')!==next){img.src=next;img.setAttribute('data-s',next);}
-
-},100);
+window.addEventListener('scroll',function(){
+  document.getElementById('hdr').classList.toggle('s',window.scrollY>50);
+},{ passive:true });
 </script>
 
 <!-- DISH PANEL -->
