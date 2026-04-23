@@ -130,17 +130,16 @@ ul{list-style:none}
 .sp-cnt{position:relative;z-index:1;padding:20px}
 .sp-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:12px}
 .btn-promo{display:inline-block;background:#fff;color:var(--or);font-size:13px;font-weight:700;padding:9px 18px;border-radius:var(--rp)}
-.sets-rows{background:#fff;border-radius:14px;overflow:hidden}
-.set-row{display:flex;align-items:center;gap:12px;padding:16px;border-bottom:1px solid var(--bdr);cursor:pointer}
-.set-row:last-child{border-bottom:none}
-.set-inf{flex:1;min-width:0}
-.set-nm{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:2px}
-.set-sb{font-size:12px;color:var(--ink3);margin-bottom:7px}
-.set-mt{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.set-pr{background:var(--ink);color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:var(--rp)}
-.set-ct{font-size:11px;color:var(--ink3)}
-.set-ic{width:28px;height:28px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-.set-img{width:60px;height:60px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--card)}
+.sets-sl{display:flex;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;gap:10px;margin:0 -18px;padding:0 18px 4px}
+.sets-sl::-webkit-scrollbar{display:none}
+.set-card{flex-shrink:0;width:155px;background:#fff;border-radius:18px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;box-shadow:var(--sh1)}
+.set-card-top{padding:14px 14px 10px;display:flex;flex-direction:column;gap:5px}
+.set-nm{font-size:16px;font-weight:700;color:var(--ink);line-height:1.2}
+.set-sb{font-size:11px;color:var(--ink3);line-height:1.35}
+.set-pr{display:inline-block;background:var(--card);border:1px solid var(--bdr);color:var(--ink);font-size:12px;font-weight:700;padding:4px 10px;border-radius:var(--rp)}
+.set-card-img{position:relative;height:145px;overflow:hidden}
+.set-card-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.set-card-ic{position:absolute;bottom:10px;right:10px;width:32px;height:32px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 8px rgba(0,0,0,.14)}
 
 /* ========== FAV ========== */
 #fav{padding:24px 16px}
@@ -539,33 +538,39 @@ try{(function(){
         <button class="btn-promo" onclick="showDiscount()">Забрать скидку</button>
       </div>
     </div>
-    <div class="sets-rows">
-      <div class="set-row" onclick="addSet('set1')">
-        <div class="set-inf">
+    <div class="sets-sl">
+      <div class="set-card" onclick="addSet('set1')">
+        <div class="set-card-top">
           <div class="set-nm">Выгодный</div>
-          <div class="set-sb">шок-цена за порцию 318 ₽</div>
-          <div class="set-mt"><span class="set-pr">3 180 ₽</span><span class="set-ct">5 блюд × 2 порции</span></div>
+          <div class="set-sb">шок-цена 318 ₽</div>
+          <div class="set-pr">3 180 ₽</div>
         </div>
-        <div class="set-ic">%</div>
-        <img class="set-img" src="menu-img/3.jpg" alt="Выгодный"/>
+        <div class="set-card-img">
+          <img src="menu-img/3.jpg" alt="Выгодный"/>
+          <div class="set-card-ic">%</div>
+        </div>
       </div>
-      <div class="set-row" onclick="addSet('set2')">
-        <div class="set-inf">
+      <div class="set-card" onclick="addSet('set2')">
+        <div class="set-card-top">
           <div class="set-nm">Топ 5</div>
-          <div class="set-sb">средняя оценка 5.0</div>
-          <div class="set-mt"><span class="set-pr">3 790 ₽</span><span class="set-ct">5 блюд × 2 порции</span></div>
+          <div class="set-sb">оценка блюд 5.0</div>
+          <div class="set-pr">3 790 ₽</div>
         </div>
-        <div class="set-ic">⭐</div>
-        <img class="set-img" src="menu-img/1.jpg" alt="Топ 5"/>
+        <div class="set-card-img">
+          <img src="menu-img/1.jpg" alt="Топ 5"/>
+          <div class="set-card-ic">⭐</div>
+        </div>
       </div>
-      <div class="set-row" onclick="addSet('set3')">
-        <div class="set-inf">
+      <div class="set-card" onclick="addSet('set3')">
+        <div class="set-card-top">
           <div class="set-nm">Green</div>
-          <div class="set-sb">лёгкие премиум-ингредиенты</div>
-          <div class="set-mt"><span class="set-pr">4 650 ₽</span><span class="set-ct">5 блюд × 2 порции</span></div>
+          <div class="set-sb">лёгкое премиум</div>
+          <div class="set-pr">4 650 ₽</div>
         </div>
-        <div class="set-ic">🌿</div>
-        <img class="set-img" src="menu-img/6.jpg" alt="Green"/>
+        <div class="set-card-img">
+          <img src="menu-img/6.jpg" alt="Green"/>
+          <div class="set-card-ic">🌿</div>
+        </div>
       </div>
     </div>
   </div>
