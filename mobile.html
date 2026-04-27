@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/gilroy-free" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -382,6 +383,52 @@ ul{list-style:none}
 .cs-pi:focus{border-color:var(--or)}
 .cs-pi::placeholder{color:var(--ink4)}
 .btn-co{width:100%;margin-top:12px;background:var(--ye);border-radius:var(--rp);padding:16px;font-size:15px;font-weight:700;color:var(--ink);display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Golos Text',sans-serif}
+
+/* ========== QUALITY MODAL ========== */
+#qualov{position:fixed;inset:0;z-index:850;display:flex;flex-direction:column;background:#fff;overflow:hidden}
+#qualov.off{display:none}
+.qual-topbar{display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:56px;border-bottom:1px solid var(--bdr);background:#fff}
+.qual-x{width:36px;height:36px;border-radius:50%;background:var(--card);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;border:none}
+.qual-banner{position:relative;height:190px;overflow:hidden;flex-shrink:0}
+.qual-banner img{width:100%;height:100%;object-fit:cover;display:block}
+.qual-banner-ov{position:absolute;inset:0;background:rgba(255,255,255,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0 20px}
+.qual-bname{font-size:65px;font-weight:800;color:#454547;font-family:'Gilroy',Arial,sans-serif;letter-spacing:-.01em;text-align:center}
+.qual-bsub{font-size:15px;font-weight:700;color:#454547;font-family:'Gilroy',Arial,sans-serif;letter-spacing:.25em;text-align:center}
+.qual-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.qsec{padding:32px 20px 28px}
+.qsec-t{font-size:22px;font-weight:800;text-align:center;color:#454547;margin:0 0 5px;font-family:'Gilroy',Arial,sans-serif}
+.qsec-t em{color:var(--or);font-style:normal}
+.q-bar{color:#aaa;font-weight:400}
+.qsec-s{font-size:16px;font-weight:400;text-align:center;color:#414141;margin:0 0 26px;font-family:'Gilroy',Arial,sans-serif}
+.qdiv{border:none;border-top:1.5px dashed #ddd;margin:0}
+.qprocess{display:flex;align-items:flex-start;gap:4px}
+.qproc-step{flex:1;display:flex;flex-direction:column;align-items:center;gap:10px}
+.qproc-ic{width:90px;height:90px;border-radius:50%;background:#eef4ff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.qproc-text{font-size:14px;font-weight:400;color:#414141;line-height:1.5;text-align:center;font-family:'Gilroy',Arial,sans-serif}
+.qproc-text u{color:var(--or);text-decoration-color:var(--or)}
+.qproc-arr{flex-shrink:0;display:flex;align-items:center;margin-top:40px}
+.qprocess-txt{display:flex;gap:6px}
+.qslider{position:relative;margin-bottom:22px}
+.qsl-inner{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/3}
+.qsl-inner img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .25s}
+.qsl-cap{position:absolute;bottom:0;left:0;right:0;background:#fff;padding:11px 14px;text-align:center}
+.qsl-cap b{font-size:13px;font-weight:700;color:#1a1a1a;display:block}
+.qsl-cap span{font-size:11px;color:#7a7a7a}
+.qsl-btn{position:absolute;top:calc(50% - 24px);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.88);border:none;font-size:13px;color:#333;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 8px rgba(0,0,0,.15);z-index:2}
+.qsl-prev{left:8px}
+.qsl-next{right:8px}
+.qlist{list-style:none;padding:0;margin:0}
+.qlist li{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #ececec;font-size:15px;color:#454547;line-height:1.5;font-family:'Gilroy',Arial,sans-serif}
+.qlist li:last-child{border-bottom:none}
+.qlist-ic{width:34px;height:34px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.qsup-steps{display:flex;align-items:flex-start;gap:5px;margin-bottom:28px}
+.qsup-step{flex:1;font-size:11.5px;color:#4a4a4a;line-height:1.4}
+.qsup-n{font-size:20px;font-weight:900;color:#1a1a1a;display:block;margin-bottom:3px}
+.qsup-arr{font-size:10px;color:#bbb;letter-spacing:-1px;margin-top:14px;flex-shrink:0}
+.qsup-btn{display:block;width:100%;max-width:280px;margin:0 auto;background:var(--ye);border:none;border-radius:var(--rp);padding:15px;font-size:13px;font-weight:700;color:#1a1a1a;letter-spacing:.07em;font-family:'Golos Text',sans-serif;cursor:pointer}
+.qfoot{background:#272727;padding:18px 20px;text-align:center;font-size:13px;color:#aaa;line-height:1.6}
+.qfoot b{color:var(--or);font-style:italic}
+.qfoot i{font-style:italic}
 </style>
 </head>
 <body>
@@ -680,7 +727,7 @@ try{(function(){
   </div>
   <div class="ft-lnk">
     <div class="ft-lnk-col">
-      <a href="#">Система качества</a>
+      <a href="javascript:void(0)" onclick="openQuality()">Система качества</a>
       <a href="#">Условия доставки</a>
       <a href="#">Что мы привезём?</a>
       <a href="#">Наши рецепты</a>
@@ -707,6 +754,123 @@ try{(function(){
   <div class="ft-copy">2018–2026 НА СОКАХ</div>
 </footer>
 
+
+<!-- QUALITY MODAL -->
+<div id="qualov" class="off">
+  <div class="qual-body">
+  <div class="qual-topbar">
+    <img src="logo/logo-mobile.png" alt="НА СОКАХ.Еда" style="height:32px;width:auto;display:block;">
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:13px;color:var(--ink2)">Москва ▾</span>
+      <button onclick="closeQuality()" style="background:var(--card);color:var(--ink);font-size:13px;font-weight:600;padding:8px 16px;border-radius:10px;border:none;cursor:pointer;font-family:inherit">Войти</button>
+    </div>
+  </div>
+  <div class="qual-banner">
+    <img src="foto/gpt-image-2-7053352d3c5d64470625f71dfd7fa304.png" alt=""/>
+    <div class="qual-banner-ov">
+      <div class="qual-bname">НА СОКАХ.Еда</div>
+      <div class="qual-bsub">СИСТЕМА КАЧЕСТВА</div>
+    </div>
+  </div>
+
+    <!-- PROCESS -->
+    <section class="qsec">
+      <h2 class="qsec-t">NA <span class="q-bar">|</span> <em>EDA</em>.Process</h2>
+      <p class="qsec-s">Отбираем продукты в 3 этапа</p>
+      <div class="qprocess">
+        <div class="qproc-step">
+          <div class="qproc-ic"><img src="foto/Process 1.png" alt="Поставщики" style="width:100%;height:100%;object-fit:contain"/></div>
+          <p class="qproc-text">Наши технологи-закупщики отыскивают <u>поставщиков</u> по всей стране</p>
+        </div>
+        <div class="qproc-arr"><svg width="44" height="16" viewBox="0 0 44 16" fill="none"><line x1="0" y1="8" x2="34" y2="8" stroke="#aaa" stroke-width="1.5" stroke-dasharray="3 3"/><polyline points="28,3 38,8 28,13" fill="none" stroke="#aaa" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+        <div class="qproc-step">
+          <div class="qproc-ic"><img src="foto/Process 2.png" alt="Дегустация" style="width:100%;height:100%;object-fit:contain"/></div>
+          <p class="qproc-text">Дегустируют продукт: шеф, сотрудники, технологи и <u>основатель</u></p>
+        </div>
+        <div class="qproc-arr"><svg width="44" height="16" viewBox="0 0 44 16" fill="none"><line x1="0" y1="8" x2="34" y2="8" stroke="#aaa" stroke-width="1.5" stroke-dasharray="3 3"/><polyline points="28,3 38,8 28,13" fill="none" stroke="#aaa" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+        <div class="qproc-step">
+          <div class="qproc-ic"><img src="foto/Process 3.png" alt="Лаборатория" style="width:100%;height:100%;object-fit:contain"/></div>
+          <p class="qproc-text"><u>Проверяем</u> состав продукции в лаборатории — просто так никому не верим</p>
+        </div>
+      </div>
+    </section>
+    <hr class="qdiv"/>
+
+    <!-- FRESH -->
+    <section class="qsec">
+      <h2 class="qsec-t">NA <span class="q-bar">|</span> <em>EDA</em>.Fresh</h2>
+      <p class="qsec-s">Сохраняем свежесть продуктов</p>
+      <div class="qslider">
+        <div class="qsl-inner">
+          <img id="qfresh-img" src="" alt=""/>
+          <div class="qsl-cap" id="qfresh-cap"></div>
+        </div>
+        <button class="qsl-btn qsl-prev" onclick="qSlide('fresh',-1)">◀</button>
+        <button class="qsl-btn qsl-next" onclick="qSlide('fresh',1)">▶</button>
+      </div>
+      <ul class="qlist">
+        <li>
+          <div class="qlist-ic">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 18c0-6 4-10 10-10s10 4 10 10" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="14" cy="19" rx="10" ry="3" fill="#eee" stroke="#8a8a8a" stroke-width="1.5"/></svg>
+          </div>
+          Мясо <b>&nbsp;вакуумируем&nbsp;</b> перед сборкой набора
+        </li>
+        <li>
+          <div class="qlist-ic">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="10" y="4" width="8" height="20" rx="4" stroke="#8a8a8a" stroke-width="1.5"/><path d="M10 10h8" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          Молоко поставляется в день <b>производства</b>
+        </li>
+        <li>
+          <div class="qlist-ic">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4c-4 4-6 8-2 12s8 2 6 8" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/><path d="M10 8c-3 3-3 7 0 10" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          Овощи закупаются в день сборки набора
+        </li>
+      </ul>
+    </section>
+    <hr class="qdiv"/>
+
+    <!-- CHECK -->
+    <section class="qsec">
+      <h2 class="qsec-t">NA <span class="q-bar">|</span> <em>EDA</em>.Check</h2>
+      <p class="qsec-s">Проверяем продукцию ежедневно</p>
+      <div class="qslider">
+        <div class="qsl-inner">
+          <img id="qcheck-img" src="" alt=""/>
+          <div class="qsl-cap" id="qcheck-cap"></div>
+        </div>
+        <button class="qsl-btn qsl-prev" onclick="qSlide('check',-1)">◀</button>
+        <button class="qsl-btn qsl-next" onclick="qSlide('check',1)">▶</button>
+      </div>
+    </section>
+    <hr class="qdiv"/>
+
+    <!-- SUPPORT -->
+    <section class="qsec">
+      <h2 class="qsec-t">NA <span class="q-bar">|</span> <em>EDA</em>.Support</h2>
+      <p class="qsec-s">Решаем все ваши проблемы</p>
+      <div class="qsup-steps">
+        <div class="qsup-step">
+          <span class="qsup-n">1.</span>Получаем информацию из всех каналов
+        </div>
+        <div class="qsup-arr">····→</div>
+        <div class="qsup-step">
+          <span class="qsup-n">2.</span>Информация попадает в общую базу данных
+        </div>
+        <div class="qsup-arr">····→</div>
+        <div class="qsup-step">
+          <span class="qsup-n">3.</span>Анализируем и решаем все ваши проблемы!
+        </div>
+      </div>
+      <button class="qsup-btn">КОМАНДА ПОДДЕРЖКИ</button>
+    </section>
+
+    <div class="qfoot">
+      <b>Бесплатная доставка</b> <i>в любой трёхчасовой интервал</i> с 6:00 до 23:00
+    </div>
+  </div>
+</div>
 
 <!-- COOKIE -->
 <div id="cookie">
@@ -1270,6 +1434,40 @@ function dmAddToCart(){
   setTimeout(()=>{btn.classList.remove('done');updateDMPrice();},1800);
 }
 document.getElementById('dmov').addEventListener('click',function(e){if(e.target===this)closeDM();});
+
+const qSliders={
+  fresh:{idx:0,slides:[
+    {img:'menu-img/3.jpg',cap:'При транспортировке',sub:'Упаковка и перевозка продуктов в зиплоках'},
+    {img:'menu-img/1.jpg',cap:'На производстве',sub:'Строго установленная температура в цехе'},
+    {img:'menu-img/6.jpg',cap:'Хранение дома',sub:'Упаковки для холодильника и морозилки'},
+  ]},
+  check:{idx:0,slides:[
+    {img:'menu-img/2.jpg',cap:'Приёмка и проверка продукции'},
+    {img:'menu-img/4.jpg',cap:'Нарезка мясных продуктов перед сборкой набора'},
+    {img:'menu-img/5.jpg',cap:'Сборка продуктов в наборы'},
+    {img:'menu-img/7.jpg',cap:'Вакуумируем и упаковываем мясо и рыбу'},
+  ]}
+};
+function renderQSlide(id){
+  const sl=qSliders[id];const s=sl.slides[sl.idx];
+  document.getElementById('q'+id+'-img').src=s.img;
+  const cap=document.getElementById('q'+id+'-cap');
+  cap.innerHTML='<b>'+s.cap+'</b>'+(s.sub?'<br><span>'+s.sub+'</span>':'');
+}
+function qSlide(id,dir){
+  const sl=qSliders[id];
+  sl.idx=(sl.idx+dir+sl.slides.length)%sl.slides.length;
+  renderQSlide(id);
+}
+function openQuality(){
+  document.getElementById('qualov').classList.remove('off');
+  document.body.style.overflow='hidden';
+  for(const id in qSliders){qSliders[id].idx=0;renderQSlide(id);}
+}
+function closeQuality(){
+  document.getElementById('qualov').classList.add('off');
+  document.body.style.overflow='';
+}
 </script>
 </body>
 </html>
