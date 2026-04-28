@@ -507,6 +507,10 @@ ul{list-style:none}
 .qlist li{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid #ececec;font-size:16px;color:#454547;line-height:1.5;font-family:'Gilroy',Arial,sans-serif}
 .qlist li:last-child{border-bottom:none}
 .qlist-ic{width:36px;height:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.qfresh-wrap{display:flex;align-items:flex-start;gap:0}
+.qfresh-wrap .qslider{flex:0 0 50%;margin-bottom:0}
+.qfresh-right{flex:1;padding:50px 30px 40px 60px}
+.qfresh-hdg{font-size:17px;font-family:'Gilroy',Arial,sans-serif;color:#454547;line-height:1.5;margin:0 0 24px;font-weight:400}
 .qsup-steps{display:flex;align-items:flex-start;gap:8px;margin-bottom:30px}
 .qsup-step{flex:1;font-size:13px;color:#4a4a4a;line-height:1.4}
 .qsup-n{font-size:22px;font-weight:900;color:#1a1a1a;display:block;margin-bottom:4px}
@@ -978,19 +982,24 @@ ul{list-style:none}
     <section class="qsec">
       <h2 class="qsec-t">NA <span class="q-bar">|</span> <em>EDA</em>.Fresh</h2>
       <p class="qsec-s">От продукта до блюда — под контролем</p>
-      <div class="qslider">
-        <div class="qsl-inner">
-          <img id="qfresh-img" src="" alt=""/>
-          <div class="qsl-cap" id="qfresh-cap"></div>
+      <div class="qfresh-wrap">
+        <div class="qslider">
+          <div class="qsl-inner">
+            <img id="qfresh-img" src="" alt=""/>
+            <div class="qsl-cap" id="qfresh-cap"></div>
+          </div>
+          <button class="qsl-btn qsl-prev" onclick="qSlide('fresh',-1)">◀</button>
+          <button class="qsl-btn qsl-next" onclick="qSlide('fresh',1)">▶</button>
         </div>
-        <button class="qsl-btn qsl-prev" onclick="qSlide('fresh',-1)">◀</button>
-        <button class="qsl-btn qsl-next" onclick="qSlide('fresh',1)">▶</button>
+        <div class="qfresh-right">
+          <p class="qfresh-hdg"><b>Температурный режим</b> поддерживается на всей цепочке доставки:</p>
+          <ul class="qlist">
+            <li><div class="qlist-ic"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 18c0-6 4-10 10-10s10 4 10 10" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="14" cy="19" rx="10" ry="3" fill="#eee" stroke="#8a8a8a" stroke-width="1.5"/></svg></div>Мясо <b>&nbsp;вакуумируем&nbsp;</b> перед сборкой набора</li>
+            <li><div class="qlist-ic"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="10" y="4" width="8" height="20" rx="4" stroke="#8a8a8a" stroke-width="1.5"/><path d="M10 10h8" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg></div>Молоко поставляется в день <b>производства</b></li>
+            <li><div class="qlist-ic"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4c-4 4-6 8-2 12s8 2 6 8" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/><path d="M10 8c-3 3-3 7 0 10" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg></div>Овощи закупаются в день сборки набора</li>
+          </ul>
+        </div>
       </div>
-      <ul class="qlist">
-        <li><div class="qlist-ic"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 18c0-6 4-10 10-10s10 4 10 10" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="14" cy="19" rx="10" ry="3" fill="#eee" stroke="#8a8a8a" stroke-width="1.5"/></svg></div>Мясо <b>&nbsp;вакуумируем&nbsp;</b> перед сборкой набора</li>
-        <li><div class="qlist-ic"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="10" y="4" width="8" height="20" rx="4" stroke="#8a8a8a" stroke-width="1.5"/><path d="M10 10h8" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg></div>Молоко поставляется в день <b>производства</b></li>
-        <li><div class="qlist-ic"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4c-4 4-6 8-2 12s8 2 6 8" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/><path d="M10 8c-3 3-3 7 0 10" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg></div>Овощи закупаются в день сборки набора</li>
-      </ul>
     </section>
     <hr class="qdiv"/>
     <section class="qsec">
