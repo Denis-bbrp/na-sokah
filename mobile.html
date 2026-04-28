@@ -415,6 +415,9 @@ ul{list-style:none}
 .qsl-cap b{font-size:13px;font-weight:700;color:#1a1a1a;display:block}
 .qsl-cap span{font-size:11px;color:#7a7a7a}
 .qslider-fresh .qsl-inner img{object-fit:contain;background:#f7f7f7}
+.qfresh-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
+.qfd{height:3px;width:36px;border-radius:2px;background:#ddd;transition:background .3s}
+.qfd.active{background:#3DAA57}
 .qslider-fresh .qsl-cap{position:static;background:#fff;border-radius:14px;box-shadow:0 2px 14px rgba(0,0,0,.09);padding:18px 20px;margin-top:14px;text-align:center}
 .qslider-fresh .qsl-cap b{font-size:17px;font-weight:700;color:#1a1a1a;display:block;margin-bottom:6px}
 .qslider-fresh .qsl-cap span{font-size:14px;color:#6a6a6a;line-height:1.4}
@@ -804,14 +807,20 @@ try{(function(){
     <section class="qsec">
       <h2 class="qsec-t">NA <span class="q-bar">|</span> <em>EDA</em>.Fresh</h2>
       <p class="qsec-s">От продукта до блюда — под контролем</p>
-      <div class="qslider qslider-fresh">
+      <div class="qslider qslider-fresh" id="qfresh-slider">
         <div class="qsl-inner">
           <img id="qfresh-img" src="" alt=""/>
-          <button class="qsl-btn qsl-prev" onclick="qSlide('fresh',-1)">◀</button>
-          <button class="qsl-btn qsl-next" onclick="qSlide('fresh',1)">▶</button>
         </div>
         <div class="qsl-cap" id="qfresh-cap"></div>
+        <div class="qfresh-dots" id="qfresh-dots">
+          <span class="qfd"></span><span class="qfd"></span><span class="qfd"></span>
+        </div>
       </div>
+      <ul class="qlist" style="margin-top:20px">
+        <li><div class="qlist-ic"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M8 20l12-12" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="22" r="2.5" stroke="#8a8a8a" stroke-width="1.5"/><circle cx="8" cy="20" r="2.5" stroke="#8a8a8a" stroke-width="1.5"/><circle cx="22" cy="6" r="2.5" stroke="#8a8a8a" stroke-width="1.5"/><circle cx="20" cy="8" r="2.5" stroke="#8a8a8a" stroke-width="1.5"/></svg></div>Мясо <b>&nbsp;вакуумируем&nbsp;</b> перед сборкой набора</li>
+        <li><div class="qlist-ic"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="10" y="4" width="8" height="20" rx="4" stroke="#8a8a8a" stroke-width="1.5"/><path d="M10 10h8" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg></div>Молоко поставляется в день <b>производства</b></li>
+        <li><div class="qlist-ic"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 22 L10 8 Q14 5 18 8 Z" stroke="#8a8a8a" stroke-width="1.5" stroke-linejoin="round" fill="none"/><path d="M14 8 Q12 4 10 5M14 8 Q16 3 18 5" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg></div>Овощи закупаются в день <b>сборки</b> набора</li>
+      </ul>
     </section>
     <hr class="qdiv"/>
 
@@ -1443,11 +1452,18 @@ function renderQSlide(id){
   const cap=document.getElementById('q'+id+'-cap');
   if(cap)cap.innerHTML=s.cap?'<b>'+s.cap+'</b>'+(s.sub?'<br><span>'+s.sub+'</span>':''):'';
   if(id==='fresh'){
-    const hdg=document.getElementById('qfresh-hdg');
-    const list=document.getElementById('qfresh-list');
-    if(hdg)hdg.innerHTML=s.hdg||'';
-    if(list)list.innerHTML=(s.items||[]).map(it=>'<li><div class="qlist-ic">'+it.svg+'</div>'+it.text+'</li>').join('');
+    document.querySelectorAll('#qfresh-dots .qfd').forEach((d,i)=>d.classList.toggle('active',i===sl.idx));
   }
+}
+function initFreshSwipe(){
+  const el=document.getElementById('qfresh-slider');
+  if(!el)return;
+  let x0=0;
+  el.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;},{passive:true});
+  el.addEventListener('touchend',e=>{
+    const dx=x0-e.changedTouches[0].clientX;
+    if(Math.abs(dx)>40)qSlide('fresh',dx>0?1:-1);
+  },{passive:true});
 }
 function qSlide(id,dir){
   const sl=qSliders[id];
@@ -1458,6 +1474,7 @@ function openQuality(){
   document.getElementById('qualov').classList.remove('off');
   document.body.style.overflow='hidden';
   for(const id in qSliders){qSliders[id].idx=0;renderQSlide(id);}
+  initFreshSwipe();
 }
 function closeQuality(){
   document.getElementById('qualov').classList.add('off');
