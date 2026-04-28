@@ -428,11 +428,12 @@ ul{list-style:none}
 .qlist li{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #ececec;font-size:15px;color:#454547;line-height:1.5;font-family:'Gilroy',Arial,sans-serif}
 .qlist li:last-child{border-bottom:none}
 .qlist-ic{width:34px;height:34px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
-.qsup-steps{display:flex;align-items:flex-start;gap:5px;margin-bottom:28px}
-.qsup-step{flex:1;font-size:11.5px;color:#4a4a4a;line-height:1.4}
-.qsup-n{font-size:20px;font-weight:900;color:#1a1a1a;display:block;margin-bottom:3px}
-.qsup-arr{font-size:10px;color:#bbb;letter-spacing:-1px;margin-top:14px;flex-shrink:0}
-.qsup-btn{display:block;width:100%;max-width:280px;margin:0 auto;background:var(--ye);border:none;border-radius:var(--rp);padding:15px;font-size:13px;font-weight:700;color:#1a1a1a;letter-spacing:.07em;font-family:'Golos Text',sans-serif;cursor:pointer}
+.qsup-steps{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:32px}
+.qsup-step{text-align:center;padding:0 24px}
+.qsup-n{font-size:60px;font-weight:900;color:#1a1a1a;display:block;margin-bottom:10px;font-family:'Gilroy',Arial,sans-serif;line-height:1}
+.qsup-txt{font-size:16px;color:#4a4a4a;line-height:1.5;font-family:'Gilroy',Arial,sans-serif}
+.qsup-arr{display:flex;justify-content:center;padding:8px 0}
+.qsup-btn{display:block;width:100%;max-width:320px;margin:0 auto;background:var(--ye);border:none;border-radius:50px;padding:18px;font-size:15px;font-weight:700;color:#1a1a1a;letter-spacing:.05em;font-family:'Gilroy',Arial,sans-serif;cursor:pointer}
 .qfoot{background:#272727;padding:18px 20px;text-align:center;font-size:13px;color:#aaa;line-height:1.6}
 .qfoot b{color:var(--or);font-style:italic}
 .qfoot i{font-style:italic}
@@ -845,18 +846,21 @@ try{(function(){
       <p class="qsec-s">Решаем все ваши проблемы</p>
       <div class="qsup-steps">
         <div class="qsup-step">
-          <span class="qsup-n">1.</span>Получаем информацию из всех каналов
+          <span class="qsup-n">1.</span>
+          <p class="qsup-txt">Получаем информацию из всех каналов</p>
         </div>
-        <div class="qsup-arr">····→</div>
+        <div class="qsup-arr"><svg width="16" height="44" viewBox="0 0 16 44" fill="none"><line x1="8" y1="0" x2="8" y2="34" stroke="#aaa" stroke-width="1.5" stroke-dasharray="3 3"/><polyline points="3,28 8,38 13,28" fill="none" stroke="#aaa" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
         <div class="qsup-step">
-          <span class="qsup-n">2.</span>Информация попадает в общую базу данных
+          <span class="qsup-n">2.</span>
+          <p class="qsup-txt">Информация попадает в общую базу данных</p>
         </div>
-        <div class="qsup-arr">····→</div>
+        <div class="qsup-arr"><svg width="16" height="44" viewBox="0 0 16 44" fill="none"><line x1="8" y1="0" x2="8" y2="34" stroke="#aaa" stroke-width="1.5" stroke-dasharray="3 3"/><polyline points="3,28 8,38 13,28" fill="none" stroke="#aaa" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
         <div class="qsup-step">
-          <span class="qsup-n">3.</span>Анализируем и решаем все ваши проблемы!
+          <span class="qsup-n">3.</span>
+          <p class="qsup-txt">Анализируем и решаем все ваши проблемы!</p>
         </div>
       </div>
-      <button class="qsup-btn">КОМАНДА ПОДДЕРЖКИ</button>
+      <button class="qsup-btn">Команда поддержки</button>
     </section>
 
     <div class="qfoot">
