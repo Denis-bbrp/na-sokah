@@ -808,27 +808,8 @@ try{(function(){
         <button class="qsl-btn qsl-prev" onclick="qSlide('fresh',-1)">◀</button>
         <button class="qsl-btn qsl-next" onclick="qSlide('fresh',1)">▶</button>
       </div>
-      <p style="font-size:15px;font-family:'Gilroy',Arial,sans-serif;color:#454547;line-height:1.5;margin:0 0 16px;font-weight:400"><b>Температурный режим</b> поддерживается на всей цепочке доставки:</p>
-      <ul class="qlist">
-        <li>
-          <div class="qlist-ic">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 18c0-6 4-10 10-10s10 4 10 10" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="14" cy="19" rx="10" ry="3" fill="#eee" stroke="#8a8a8a" stroke-width="1.5"/></svg>
-          </div>
-          Мясо <b>&nbsp;вакуумируем&nbsp;</b> перед сборкой набора
-        </li>
-        <li>
-          <div class="qlist-ic">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="10" y="4" width="8" height="20" rx="4" stroke="#8a8a8a" stroke-width="1.5"/><path d="M10 10h8" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          Молоко поставляется в день <b>производства</b>
-        </li>
-        <li>
-          <div class="qlist-ic">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4c-4 4-6 8-2 12s8 2 6 8" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/><path d="M10 8c-3 3-3 7 0 10" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg>
-          </div>
-          Овощи закупаются в день сборки набора
-        </li>
-      </ul>
+      <p class="qfresh-hdg" id="qfresh-hdg" style="font-size:15px;font-family:'Gilroy',Arial,sans-serif;color:#454547;line-height:1.5;margin:0 0 16px;font-weight:400"></p>
+      <ul class="qlist" id="qfresh-list"></ul>
     </section>
     <hr class="qdiv"/>
 
@@ -1436,11 +1417,31 @@ function dmAddToCart(){
 }
 document.getElementById('dmov').addEventListener('click',function(e){if(e.target===this)closeDM();});
 
+const svgMeat='<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M8 20l12-12" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="22" r="2.5" stroke="#8a8a8a" stroke-width="1.5"/><circle cx="8" cy="20" r="2.5" stroke="#8a8a8a" stroke-width="1.5"/><circle cx="22" cy="6" r="2.5" stroke="#8a8a8a" stroke-width="1.5"/><circle cx="20" cy="8" r="2.5" stroke="#8a8a8a" stroke-width="1.5"/></svg>';
+const svgCarrot='<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 22 L10 8 Q14 5 18 8 Z" stroke="#8a8a8a" stroke-width="1.5" stroke-linejoin="round" fill="none"/><path d="M14 8 Q12 4 10 5M14 8 Q16 3 18 5" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg>';
+const svgThermo='<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="12" y="3" width="4" height="14" rx="2" stroke="#8a8a8a" stroke-width="1.5"/><circle cx="14" cy="21" r="4" stroke="#8a8a8a" stroke-width="1.5"/><path d="M9 9h2M9 13h2" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg>';
+const svgBox='<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M5 11l9-7 9 7v13a1 1 0 01-1 1H6a1 1 0 01-1-1V11z" stroke="#8a8a8a" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 24V16h8v8" stroke="#8a8a8a" stroke-width="1.5" stroke-linejoin="round"/></svg>';
+const svgFridge='<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="7" y="3" width="14" height="22" rx="2" stroke="#8a8a8a" stroke-width="1.5"/><path d="M7 12h14" stroke="#8a8a8a" stroke-width="1.5"/><path d="M12 7.5v3" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/><path d="M12 16v4" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg>';
 const qSliders={
   fresh:{idx:0,slides:[
-    {img:'foto/Fresh 1.png',cap:'При транспортировке',sub:'Упаковка и перевозка продуктов в зиплоках'},
-    {img:'foto/Fresh 2.png',cap:'На производстве',sub:'Строго установленная температура в цехе'},
-    {img:'foto/Fresh 3.png',cap:'Хранение дома',sub:'Упаковки для холодильника и морозилки'},
+    {img:'foto/Fresh 1.png',
+     hdg:'Для каждого ингредиента подобрана <b>упаковка, сохраняющая свежесть</b>',
+     items:[
+       {svg:svgMeat, text:'Подготовленное нарезанное мясо – в вакуумной упаковке'},
+       {svg:svgCarrot, text:'Овощи – в перфорированных пакетах, весь набор для блюда – в крафтовом пакете'},
+     ]},
+    {img:'foto/Fresh 2.png',
+     hdg:'На производстве <b>строго установленная температура</b>',
+     items:[
+       {svg:svgThermo, text:'Температура внутри отдельных помещений производства может быть от 2 до 20 градусов'},
+       {svg:svgBox, text:'Все продукты хранятся и фасуются внутри разных помещений на производстве'},
+     ]},
+    {img:'foto/Fresh 3.png',
+     hdg:'<b>Температурный режим</b> поддерживается на всём протяжении, в том числе и во время доставки',
+     items:[
+       {svg:svgThermo, text:'Все машины курьеров оборудованы рефрижераторами (2–7 градусов в машинах), а также термосумками с хладогенами'},
+       {svg:svgFridge, text:'Один пакет вы сразу кладёте в холодильник, другой – в морозилку'},
+     ]},
   ]},
   check:{idx:0,slides:[
     {img:'menu-img/2.jpg',cap:'Приёмка и проверка продукции'},
@@ -1453,7 +1454,13 @@ function renderQSlide(id){
   const sl=qSliders[id];const s=sl.slides[sl.idx];
   document.getElementById('q'+id+'-img').src=s.img;
   const cap=document.getElementById('q'+id+'-cap');
-  cap.innerHTML='<b>'+s.cap+'</b>'+(s.sub?'<br><span>'+s.sub+'</span>':'');
+  if(cap)cap.innerHTML=s.cap?'<b>'+s.cap+'</b>'+(s.sub?'<br><span>'+s.sub+'</span>':''):'';
+  if(id==='fresh'){
+    const hdg=document.getElementById('qfresh-hdg');
+    const list=document.getElementById('qfresh-list');
+    if(hdg)hdg.innerHTML=s.hdg||'';
+    if(list)list.innerHTML=(s.items||[]).map(it=>'<li><div class="qlist-ic">'+it.svg+'</div>'+it.text+'</li>').join('');
+  }
 }
 function qSlide(id,dir){
   const sl=qSliders[id];
