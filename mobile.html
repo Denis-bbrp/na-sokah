@@ -414,6 +414,9 @@ ul{list-style:none}
 .qsl-cap{position:absolute;bottom:0;left:0;right:0;background:#fff;padding:11px 14px;text-align:center}
 .qsl-cap b{font-size:13px;font-weight:700;color:#1a1a1a;display:block}
 .qsl-cap span{font-size:11px;color:#7a7a7a}
+.qslider-fresh .qsl-cap{position:static;background:#fff;border-radius:14px;box-shadow:0 2px 14px rgba(0,0,0,.09);padding:18px 20px;margin-top:14px;text-align:center}
+.qslider-fresh .qsl-cap b{font-size:17px;font-weight:700;color:#1a1a1a;display:block;margin-bottom:6px}
+.qslider-fresh .qsl-cap span{font-size:14px;color:#6a6a6a;line-height:1.4}
 .qsl-btn{position:absolute;top:calc(50% - 24px);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.88);border:none;font-size:13px;color:#333;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 8px rgba(0,0,0,.15);z-index:2}
 .qsl-prev{left:8px}
 .qsl-next{right:8px}
@@ -800,16 +803,14 @@ try{(function(){
     <section class="qsec">
       <h2 class="qsec-t">NA <span class="q-bar">|</span> <em>EDA</em>.Fresh</h2>
       <p class="qsec-s">От продукта до блюда — под контролем</p>
-      <div class="qslider">
+      <div class="qslider qslider-fresh">
         <div class="qsl-inner">
           <img id="qfresh-img" src="" alt=""/>
-          <div class="qsl-cap" id="qfresh-cap"></div>
+          <button class="qsl-btn qsl-prev" onclick="qSlide('fresh',-1)">◀</button>
+          <button class="qsl-btn qsl-next" onclick="qSlide('fresh',1)">▶</button>
         </div>
-        <button class="qsl-btn qsl-prev" onclick="qSlide('fresh',-1)">◀</button>
-        <button class="qsl-btn qsl-next" onclick="qSlide('fresh',1)">▶</button>
+        <div class="qsl-cap" id="qfresh-cap"></div>
       </div>
-      <p class="qfresh-hdg" id="qfresh-hdg" style="font-size:15px;font-family:'Gilroy',Arial,sans-serif;color:#454547;line-height:1.5;margin:0 0 16px;font-weight:400"></p>
-      <ul class="qlist" id="qfresh-list"></ul>
     </section>
     <hr class="qdiv"/>
 
@@ -1424,24 +1425,9 @@ const svgBox='<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path 
 const svgFridge='<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="7" y="3" width="14" height="22" rx="2" stroke="#8a8a8a" stroke-width="1.5"/><path d="M7 12h14" stroke="#8a8a8a" stroke-width="1.5"/><path d="M12 7.5v3" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/><path d="M12 16v4" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg>';
 const qSliders={
   fresh:{idx:0,slides:[
-    {img:'foto/Fresh 1.png',
-     hdg:'Для каждого ингредиента подобрана <b>упаковка, сохраняющая свежесть</b>',
-     items:[
-       {svg:svgMeat, text:'Подготовленное нарезанное мясо – в вакуумной упаковке'},
-       {svg:svgCarrot, text:'Овощи – в перфорированных пакетах, весь набор для блюда – в крафтовом пакете'},
-     ]},
-    {img:'foto/Fresh 2.png',
-     hdg:'На производстве <b>строго установленная температура</b>',
-     items:[
-       {svg:svgThermo, text:'Температура внутри отдельных помещений производства может быть от 2 до 20 градусов'},
-       {svg:svgBox, text:'Все продукты хранятся и фасуются внутри разных помещений на производстве'},
-     ]},
-    {img:'foto/Fresh 3.png',
-     hdg:'<b>Температурный режим</b> поддерживается на всём протяжении, в том числе и во время доставки',
-     items:[
-       {svg:svgThermo, text:'Все машины курьеров оборудованы рефрижераторами (2–7 градусов в машинах), а также термосумками с хладогенами'},
-       {svg:svgFridge, text:'Один пакет вы сразу кладёте в холодильник, другой – в морозилку'},
-     ]},
+    {img:'foto/Fresh 1.png',cap:'При транспортировке',sub:'Упаковка и перевозка продуктов в отдельных пакетах'},
+    {img:'foto/Fresh 2.png',cap:'На производстве',sub:'Установлена строго определенная температура в помещениях.'},
+    {img:'foto/Fresh 3.png',cap:'Хранение дома',sub:'Отдельные упаковки для холодильника, морозилки и помещения'},
   ]},
   check:{idx:0,slides:[
     {img:'menu-img/2.jpg',cap:'Приёмка и проверка продукции'},
