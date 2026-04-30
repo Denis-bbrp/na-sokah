@@ -960,10 +960,10 @@ ul{list-style:none}
 <div id="qualov" class="off">
   <div class="qual-body">
   <div class="qual-topbar">
-    <img src="logo/logo-full.png" alt="НА СОКАХ.Еда" style="height:52px;width:auto;display:block;">
+    <a href="na-sokah.html"><img src="logo/logo-full.png" alt="НА СОКАХ.Еда" style="height:52px;width:auto;display:block;"></a>
     <div style="display:flex;align-items:center;gap:8px">
-      <span style="font-size:18px;color:var(--ink2)">Москва ▾</span>
-      <button onclick="closeQuality()" style="background:var(--card);color:var(--ink);font-size:18px;font-weight:500;padding:12px 28px;border-radius:12px;border:none;cursor:pointer;font-family:inherit">Войти</button>
+      <button class="city-btn" onclick="closeQuality();document.getElementById('cityBtn').click()" style="background:none;border:none;font-size:16px;color:var(--ink2);cursor:pointer;font-family:inherit">Москва <span class="city-arr">▾</span></button>
+      <button id="qualLoginBtn" onclick="closeQuality();openLogin()" style="background:var(--card);color:var(--ink);font-size:16px;font-weight:500;padding:10px 24px;border-radius:12px;border:none;cursor:pointer;font-family:inherit">Войти</button>
     </div>
   </div>
   <div class="qual-banner">
@@ -1834,6 +1834,11 @@ function openQuality(){
   document.getElementById('qualov').classList.remove('off');
   document.body.style.overflow='hidden';
   for(const id in qSliders){qSliders[id].idx=0;renderQSlide(id);}
+  const qb=document.getElementById('qualLoginBtn');
+  if(qb){
+    if(currentUser){qb.textContent=currentUser.phone.slice(0,6)+'…';qb.onclick=()=>{closeQuality();logoutUser();};}
+    else{qb.textContent='Войти';qb.onclick=()=>{closeQuality();openLogin();};}
+  }
 }
 function closeQuality(){
   document.getElementById('qualov').classList.add('off');
