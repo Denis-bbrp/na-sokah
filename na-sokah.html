@@ -962,8 +962,8 @@ ul{list-style:none}
   <div class="qual-topbar">
     <a href="na-sokah.html"><img src="logo/logo-full.png" alt="НА СОКАХ.Еда" style="height:52px;width:auto;display:block;"></a>
     <div style="display:flex;align-items:center;gap:8px">
-      <button class="city-btn" onclick="closeQuality();document.getElementById('cityBtn').click()" style="background:none;border:none;font-size:16px;color:var(--ink2);cursor:pointer;font-family:inherit">Москва <span class="city-arr">▾</span></button>
-      <button id="qualLoginBtn" onclick="closeQuality();openLogin()" style="background:var(--card);color:var(--ink);font-size:16px;font-weight:500;padding:10px 24px;border-radius:12px;border:none;cursor:pointer;font-family:inherit">Войти</button>
+      <button class="city-btn" id="qualCityBtn" onclick="event.stopPropagation();document.getElementById('cityDrop').classList.toggle('open')" style="background:none;border:none;font-size:16px;color:var(--ink2);cursor:pointer;font-family:inherit">Москва <span class="city-arr">▾</span></button>
+      <button id="qualLoginBtn" onclick="openLogin()" style="background:var(--card);color:var(--ink);font-size:16px;font-weight:500;padding:10px 24px;border-radius:12px;border:none;cursor:pointer;font-family:inherit">Войти</button>
     </div>
   </div>
   <div class="qual-banner">
@@ -1836,8 +1836,8 @@ function openQuality(){
   for(const id in qSliders){qSliders[id].idx=0;renderQSlide(id);}
   const qb=document.getElementById('qualLoginBtn');
   if(qb){
-    if(currentUser){qb.textContent=currentUser.phone.slice(0,6)+'…';qb.onclick=()=>{closeQuality();logoutUser();};}
-    else{qb.textContent='Войти';qb.onclick=()=>{closeQuality();openLogin();};}
+    if(currentUser){qb.textContent=currentUser.phone.slice(0,6)+'…';qb.onclick=logoutUser;}
+    else{qb.textContent='Войти';qb.onclick=openLogin;}
   }
 }
 function closeQuality(){
