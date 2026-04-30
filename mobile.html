@@ -829,13 +829,14 @@ try{(function(){
     <section class="qsec">
       <h2 class="qsec-t">NA <span class="q-bar">|</span> <em>EDA</em>.Check</h2>
       <p class="qsec-s">Проверяем продукцию ежедневно</p>
-      <div class="qslider">
+      <div class="qslider qslider-fresh" id="qcheck-slider">
         <div class="qsl-inner">
           <img id="qcheck-img" src="" alt=""/>
-          <div class="qsl-cap" id="qcheck-cap"></div>
         </div>
-        <button class="qsl-btn qsl-prev" onclick="qSlide('check',-1)">◀</button>
-        <button class="qsl-btn qsl-next" onclick="qSlide('check',1)">▶</button>
+        <div class="qsl-cap" id="qcheck-cap"></div>
+        <div class="qfresh-dots" id="qcheck-dots">
+          <span class="qfd"></span><span class="qfd"></span><span class="qfd"></span><span class="qfd"></span>
+        </div>
       </div>
     </section>
     <hr class="qdiv"/>
@@ -1458,16 +1459,23 @@ function renderQSlide(id){
   if(id==='fresh'){
     document.querySelectorAll('#qfresh-dots .qfd').forEach((d,i)=>d.classList.toggle('active',i===sl.idx));
   }
+  if(id==='check'){
+    document.querySelectorAll('#qcheck-dots .qfd').forEach((d,i)=>d.classList.toggle('active',i===sl.idx));
+  }
 }
-function initFreshSwipe(){
-  const el=document.getElementById('qfresh-slider');
+function initSliderSwipe(elId,slId){
+  const el=document.getElementById(elId);
   if(!el)return;
   let x0=0;
   el.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;},{passive:true});
   el.addEventListener('touchend',e=>{
     const dx=x0-e.changedTouches[0].clientX;
-    if(Math.abs(dx)>40)qSlide('fresh',dx>0?1:-1);
+    if(Math.abs(dx)>40)qSlide(slId,dx>0?1:-1);
   },{passive:true});
+}
+function initFreshSwipe(){
+  initSliderSwipe('qfresh-slider','fresh');
+  initSliderSwipe('qcheck-slider','check');
 }
 function qSlide(id,dir){
   const sl=qSliders[id];
