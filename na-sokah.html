@@ -322,7 +322,7 @@ ul{list-style:none}
 .ck-ok:hover{color:var(--or)}
 
 /* LOGIN */
-#lov{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:600;display:flex;align-items:center;justify-content:center;animation:fadeUp .2s ease;backdrop-filter:blur(4px)}
+#lov{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:900;display:flex;align-items:center;justify-content:center;animation:fadeUp .2s ease;backdrop-filter:blur(4px)}
 #lov.off{display:none}
 .lw{position:relative;width:100%;max-width:420px;padding:0 16px}
 .lb{background:#fff;border-radius:var(--rs);padding:44px 40px;width:100%;box-shadow:0 16px 60px rgba(0,0,0,.18);animation:fadeUp .25s ease}
@@ -962,7 +962,14 @@ ul{list-style:none}
   <div class="qual-topbar">
     <a href="na-sokah.html"><img src="logo/logo-full.png" alt="НА СОКАХ.Еда" style="height:52px;width:auto;display:block;"></a>
     <div style="display:flex;align-items:center;gap:8px">
-      <button class="city-btn" id="qualCityBtn" onclick="event.stopPropagation();document.getElementById('cityDrop').classList.toggle('open')" style="background:none;border:none;font-size:16px;color:var(--ink2);cursor:pointer;font-family:inherit">Москва <span class="city-arr">▾</span></button>
+      <div class="city-wrap" style="position:relative">
+        <button class="city-btn" id="qualCityBtn" onclick="event.stopPropagation();document.getElementById('qualCityDrop').classList.toggle('open')" style="background:none;border:none;font-size:16px;color:var(--ink2);cursor:pointer;font-family:inherit">Москва <span class="city-arr">▾</span></button>
+        <div class="city-drop" id="qualCityDrop" style="z-index:960">
+          <a href="#" onclick="event.preventDefault();document.getElementById('qualCityBtn').innerHTML=this.textContent+' <span class=\'city-arr\'>▾</span>';document.getElementById('qualCityDrop').classList.remove('open')">Москва и область</a>
+          <a href="#" onclick="event.preventDefault();document.getElementById('qualCityBtn').innerHTML=this.textContent+' <span class=\'city-arr\'>▾</span>';document.getElementById('qualCityDrop').classList.remove('open')">Санкт-Петербург</a>
+          <a href="#" onclick="event.preventDefault();document.getElementById('qualCityBtn').innerHTML=this.textContent+' <span class=\'city-arr\'>▾</span>';document.getElementById('qualCityDrop').classList.remove('open')">Нижний Новгород</a>
+        </div>
+      </div>
       <button id="qualLoginBtn" onclick="openLogin()" style="background:var(--card);color:var(--ink);font-size:16px;font-weight:500;padding:10px 24px;border-radius:12px;border:none;cursor:pointer;font-family:inherit">Войти</button>
     </div>
   </div>
