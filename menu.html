@@ -998,6 +998,20 @@ function toggleAcc(hd){
   document.getElementById('sbDateLabel').textContent = today.getDate() + ' ' + shortMonths[today.getMonth()];
 })();
 
+let currentUser=null;
+function updateHeaderUser(){
+  const btn=document.getElementById('loginBtn');
+  if(!btn)return;
+  if(currentUser){
+    btn.className='btn-user';
+    btn.innerHTML=`<span>${currentUser.phone.slice(0,6)}…</span>`;
+    btn.onclick=()=>{if(confirm('Выйти из аккаунта?')){currentUser=null;localStorage.removeItem('nasokah_user');updateHeaderUser();}};
+  } else {
+    btn.className='btn-login';
+    btn.innerHTML='Войти';
+    btn.onclick=openLogin;
+  }
+}
 function openLogin(){document.getElementById('lov').classList.add('on');document.body.style.overflow='hidden';}
 function openSubInfo(){document.getElementById('subpanel').classList.add('on');document.getElementById('subov').classList.add('on');document.body.style.overflow='hidden';}
 function closeSubInfo(){document.getElementById('subpanel').classList.remove('on');document.getElementById('subov').classList.remove('on');document.body.style.overflow='';}
@@ -1011,7 +1025,16 @@ function sendSms(){
   document.getElementById('lStep2').style.display='block';
 }
 function backToPhone(){document.getElementById('lStep1').style.display='block';document.getElementById('lStep2').style.display='none';}
-function verifyCode(){closeLogin();}
+function verifyCode(){
+  const phone=document.getElementById('lPhone').value;
+  currentUser={phone};
+  localStorage.setItem('nasokah_user',JSON.stringify(currentUser));
+  closeLogin();
+  updateHeaderUser();
+}
+const _savedUser=localStorage.getItem('nasokah_user');
+if(_savedUser)try{currentUser=JSON.parse(_savedUser);}catch(e){}
+updateHeaderUser();
 
 let dmCurrentId = null;
 function openDM(id){

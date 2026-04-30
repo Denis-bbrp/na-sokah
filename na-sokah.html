@@ -542,7 +542,7 @@ ul{list-style:none}
 <header id="hdr">
   <div class="w">
     <div class="hdr-in">
-      <a href="#" class="logo">
+      <a href="na-sokah.html" class="logo">
         <img src="logo/logo-full.png" alt="НА СОКАХ.Еда" style="height:70px;width:auto;display:block;">
       </a>
       <div class="hdr-r">
@@ -1392,6 +1392,7 @@ function shakeSms(){
 function loginSuccess(){
   const phone=document.getElementById('phoneInp').value;
   currentUser={phone};
+  localStorage.setItem('nasokah_user',JSON.stringify(currentUser));
   clearInterval(resendTimer);
   closeLogin();
   updateHeaderUser();
@@ -1447,6 +1448,7 @@ function updateHeaderUser(){
 function logoutUser(){
   if(!confirm('Выйти из аккаунта?'))return;
   currentUser=null;
+  localStorage.removeItem('nasokah_user');
   updateHeaderUser();
   showToast('Вы вышли из аккаунта');
 }
@@ -1520,6 +1522,9 @@ function toggleFAQ(i){
   if(!was)el.classList.add('open');
 }
 
+const _savedUser=localStorage.getItem('nasokah_user');
+if(_savedUser)try{currentUser=JSON.parse(_savedUser);}catch(e){}
+updateHeaderUser();
 document.getElementById('loginBtn').onclick=openLogin;
 document.getElementById('cartBtn').onclick=openCart;
 document.getElementById('lov').onclick=e=>{if(e.target===e.currentTarget)closeLogin();};

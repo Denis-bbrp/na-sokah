@@ -1061,7 +1061,7 @@ function closeCart(){document.getElementById('cov').classList.remove('on');docum
 
 let currentUser=null, smsCode='', resendTimer=null;
 function openLogin(){
-  if(currentUser){if(confirm('Выйти из аккаунта?')){currentUser=null;updateHeaderUser();}return;}
+  if(currentUser){if(confirm('Выйти из аккаунта?')){currentUser=null;localStorage.removeItem('nasokah_user');updateHeaderUser();}return;}
   resetLoginModal();
   document.getElementById('lov').classList.remove('off');
   document.body.style.overflow='hidden';
@@ -1134,6 +1134,7 @@ function verifyCode(){
 }
 function loginSuccess(){
   currentUser={phone:document.getElementById('phoneInp').value};
+  localStorage.setItem('nasokah_user',JSON.stringify(currentUser));
   clearInterval(resendTimer);
   closeLogin();
   updateHeaderUser();
@@ -1205,6 +1206,9 @@ function showToast(msg){
   clearTimeout(t._to);t._to=setTimeout(()=>t.style.opacity='0',3000);
 }
 
+const _savedUser=localStorage.getItem('nasokah_user');
+if(_savedUser)try{currentUser=JSON.parse(_savedUser);}catch(e){}
+updateHeaderUser();
 document.getElementById('loginBtn').onclick=openLogin;
 
 function toggleCity(){
