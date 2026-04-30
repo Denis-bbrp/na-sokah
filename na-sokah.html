@@ -231,20 +231,20 @@ ul{list-style:none}
 /* TESTIMONIALS */
 #testi{padding:0 0 28px}
 .testi-box{background:var(--card);border-radius:var(--rs);padding:42px}
-.testi-in{display:grid;grid-template-columns:5fr 7fr;gap:44px;align-items:start}
-.t-big{font-family:'Unbounded',sans-serif;font-size:clamp(20px,2.4vw,28px);font-weight:900;color:var(--ink);line-height:1.22;letter-spacing:-.03em;margin-bottom:22px}
-.btn-ya{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1.5px solid var(--bdr);border-radius:var(--rp);padding:10px 18px;font-size:13px;font-weight:700;color:var(--ink);transition:box-shadow .15s;cursor:pointer}
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px}
+.t-left{display:flex;flex-direction:column;justify-content:center;gap:28px;padding:12px 16px 12px 0}
+.t-big{font-family:'Gilroy',Arial,sans-serif;font-size:clamp(26px,2.8vw,38px);font-weight:800;color:var(--ink);line-height:1.2;letter-spacing:-.02em}
+.btn-ya{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1.5px solid var(--bdr);border-radius:var(--rp);padding:12px 20px;font-size:14px;font-weight:600;color:var(--ink);transition:box-shadow .15s;cursor:pointer;width:fit-content}
 .btn-ya:hover{box-shadow:var(--sh1)}
 .ya-pin{width:20px;height:20px;background:#FC3F1D;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .ya-pin-i{width:8px;height:8px;background:#fff;border-radius:50%}
-.tg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.tc{background:#fff;border-radius:var(--rc);padding:22px}
-.tc-top{display:flex;align-items:center;gap:11px;margin-bottom:13px}
-.tc-av{width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--card);overflow:hidden;display:block}
+.tc{background:#fff;border-radius:var(--rc);padding:24px}
+.tc-top{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.tc-av{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--card);overflow:hidden;display:block}
 .tc-nm{font-size:14px;font-weight:700}
-.tc-who{font-size:12px;color:var(--ink3);margin-top:1px}
-.tc-txt{font-size:13.5px;color:var(--ink2);line-height:1.65;margin-bottom:14px}
-.tc-tag{display:inline-block;background:var(--card);border-radius:var(--rp);padding:5px 13px;font-size:12px;font-weight:600;color:var(--ink2)}
+.tc-who{font-size:12px;color:var(--ink3);margin-top:2px;text-transform:uppercase;letter-spacing:.04em}
+.tc-txt{font-size:14px;color:var(--ink2);line-height:1.65;margin-bottom:16px}
+.tc-tag{display:inline-block;background:var(--card);border-radius:var(--rp);padding:7px 16px;font-size:13px;font-weight:500;color:var(--ink2)}
 
 /* COUNTER */
 #ctr{padding:60px 0 48px;text-align:center}
@@ -399,7 +399,7 @@ ul{list-style:none}
   .mg{grid-template-columns:1fr}
   .coll-g{grid-template-columns:1fr}
   .ct-g{grid-template-rows:repeat(3,110px)}
-  .testi-in{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
   .faq-g{grid-template-columns:1fr}
   .ft-g{grid-template-columns:1fr 1fr}
 }
@@ -813,47 +813,37 @@ ul{list-style:none}
 <section id="testi">
   <div class="w">
     <div class="testi-box">
-      <div class="testi-in">
-        <div>
+      <div class="testi-grid">
+        <div class="t-left">
           <div class="t-big">Отзывы клиентов скажут о нас гораздо больше</div>
           <button class="btn-ya" onclick="showYaReviews()">
             <div class="ya-pin"><div class="ya-pin-i"></div></div>
             Отзывы на Я.&nbsp;Картах
           </button>
         </div>
-        <div class="tg">
-          <div class="tc">
-            <div class="tc-top">
-              <img class="tc-av" src="https://i.pravatar.cc/84?img=47" alt="Марина"/>
-              <div><div class="tc-nm">Марина и Сергей</div><div class="tc-who">готовят вдвоём</div></div>
-            </div>
-            <p class="tc-txt">Лосось с киноа, тыквенный крем-суп, паста с грибами... Теперь каждый ужин — маленький ресторан дома. Давно не ели так вкусно!</p>
-            <span class="tc-tag">Вкусно, как в ресторане</span>
+        <div class="tc">
+          <div class="tc-top">
+            <img class="tc-av" src="https://i.pravatar.cc/84?img=47" alt="Наталья"/>
+            <div><div class="tc-nm">Наталья и Алексей</div><div class="tc-who">готовят вдвоём</div></div>
           </div>
-          <div class="tc">
-            <div class="tc-top">
-              <img class="tc-av" src="https://i.pravatar.cc/84?img=12" alt="Алексей"/>
-              <div><div class="tc-nm">Алексей Громов</div><div class="tc-who">готовит для себя</div></div>
-            </div>
-            <p class="tc-txt">Теперь готовлю сам! Вместо бургеров на доставке — тушёная говядина. Лук нарезан, всё порционно. Где вы были раньше?</p>
-            <span class="tc-tag">Быстро и удобно</span>
+          <p class="tc-txt">Эти соусы маринара, тонатто, чипсы из шалфея... «Что-то на ресторанном», а у нас теперь такое дома каждый день!</p>
+          <span class="tc-tag">Вкусно, как в ресторане</span>
+        </div>
+        <div class="tc">
+          <div class="tc-top">
+            <img class="tc-av" src="https://i.pravatar.cc/84?img=12" alt="Вадим"/>
+            <div><div class="tc-nm">Вадим Некрасов</div><div class="tc-who">готовит для себя</div></div>
           </div>
-          <div class="tc">
-            <div class="tc-top">
-              <img class="tc-av" src="https://i.pravatar.cc/84?img=32" alt="Наталья"/>
-              <div><div class="tc-nm">Наталья Берёзова</div><div class="tc-who">готовит на всю семью</div></div>
-            </div>
-            <p class="tc-txt">Просто открываю холодильник, беру пакетик — 15 минут, и все сыты. Дети едят овощи! Я не верила, что такое бывает.</p>
-            <span class="tc-tag">Помогает готовить</span>
+          <p class="tc-txt">Я теперь супы ем! Вместо макарон и яичницы)) Лук нарезали, бульон сварили, говядину потушили. Где вы были раньше?</p>
+          <span class="tc-tag">Быстро и удобно</span>
+        </div>
+        <div class="tc">
+          <div class="tc-top">
+            <img class="tc-av" src="https://i.pravatar.cc/84?img=32" alt="Анастасия"/>
+            <div><div class="tc-nm">Анастасия Михайлова</div><div class="tc-who">готовит на всю семью</div></div>
           </div>
-          <div class="tc">
-            <div class="tc-top">
-              <img class="tc-av" src="https://i.pravatar.cc/84?img=25" alt="Дмитрий"/>
-              <div><div class="tc-nm">Дмитрий Козлов</div><div class="tc-who">готовит для себя</div></div>
-            </div>
-            <p class="tc-txt">Занят с утра до ночи, но теперь каждый ужин полноценный. Набор уже в холодильнике. Уровень стресса упал вдвое!</p>
-            <span class="tc-tag">Экономит время</span>
-          </div>
+          <p class="tc-txt">Просто отключаешь голову, открываешь холодильник, берёшь заветный пакетик, 15 минут и — все сыты и счастливы!</p>
+          <span class="tc-tag">Помогает готовить</span>
         </div>
       </div>
     </div>
