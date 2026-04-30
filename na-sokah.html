@@ -503,6 +503,11 @@ ul{list-style:none}
 .qsl-btn{position:absolute;top:calc(50% - 22px);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.9);border:none;font-size:14px;color:#333;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.15);z-index:2}
 .qsl-prev{left:10px}
 .qsl-next{right:10px}
+.qcheck-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.qcheck-item{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/3}
+.qcheck-item.wide{grid-column:1/-1;aspect-ratio:21/9}
+.qcheck-item img{width:100%;height:100%;object-fit:cover;display:block}
+.qcheck-lbl{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:#fff;border-radius:8px;padding:9px 20px;font-size:14px;font-weight:600;color:#1a1a1a;font-family:'Gilroy',Arial,sans-serif;white-space:nowrap;box-shadow:0 2px 14px rgba(0,0,0,.18);letter-spacing:.01em}
 .qlist{list-style:none;padding:0;margin:0}
 .qlist li{display:flex;align-items:center;gap:18px;padding:16px 0;border-bottom:1px solid #e8e8e8;font-size:16px;color:#454547;line-height:1.4;font-family:'Gilroy',Arial,sans-serif}
 .qlist li:last-child{border-bottom:none}
@@ -1003,13 +1008,12 @@ ul{list-style:none}
     <section class="qsec">
       <h2 class="qsec-t">NA <span class="q-bar">|</span> <em>EDA</em>.Check</h2>
       <p class="qsec-s">Проверяем продукцию ежедневно</p>
-      <div class="qslider">
-        <div class="qsl-inner">
-          <img id="qcheck-img" src="" alt=""/>
-          <div class="qsl-cap" id="qcheck-cap"></div>
-        </div>
-        <button class="qsl-btn qsl-prev" onclick="qSlide('check',-1)">◀</button>
-        <button class="qsl-btn qsl-next" onclick="qSlide('check',1)">▶</button>
+      <div class="qcheck-grid">
+        <div class="qcheck-item"><img src="foto/Chek 1.png" alt=""/><span class="qcheck-lbl">Приёмка и проверка продукции</span></div>
+        <div class="qcheck-item"><img src="foto/Chek 2.png" alt=""/><span class="qcheck-lbl">Нарезка мясных продуктов перед сборкой набора</span></div>
+        <div class="qcheck-item"><img src="foto/Chek 3.png" alt=""/><span class="qcheck-lbl">Сборка продуктов в наборы</span></div>
+        <div class="qcheck-item"><img src="foto/Chek 4.png" alt=""/><span class="qcheck-lbl">Вакуумируем и упаковываем мясо и рыбу</span></div>
+        <div class="qcheck-item wide"><img src="foto/Chek 5.png" alt=""/><span class="qcheck-lbl">Контроль качества на каждом этапе</span></div>
       </div>
     </section>
     <hr class="qdiv"/>
