@@ -504,9 +504,10 @@ ul{list-style:none}
 .qsl-prev{left:10px}
 .qsl-next{right:10px}
 .qlist{list-style:none;padding:0;margin:0}
-.qlist li{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid #ececec;font-size:16px;color:#454547;line-height:1.5;font-family:'Gilroy',Arial,sans-serif}
+.qlist li{display:flex;align-items:center;gap:18px;padding:16px 0;border-bottom:1px solid #e8e8e8;font-size:16px;color:#454547;line-height:1.4;font-family:'Gilroy',Arial,sans-serif}
 .qlist li:last-child{border-bottom:none}
-.qlist-ic{width:36px;height:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.qlist-ic{width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.qlist-ic svg{width:44px;height:44px}
 .qfresh-wrap{display:flex;align-items:flex-end;gap:0}
 #qfresh-cap{display:none}
 .qfresh-wrap .qslider{flex:0 0 50%;margin-bottom:0}
@@ -1744,11 +1745,11 @@ document.getElementById('dmov').addEventListener('click',function(e){if(e.target
 renderPicks();
 renderFAQ();
 
-const svgMeat='<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M8 20l12-12" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="22" r="2.5" stroke="#8a8a8a" stroke-width="1.5"/><circle cx="8" cy="20" r="2.5" stroke="#8a8a8a" stroke-width="1.5"/><circle cx="22" cy="6" r="2.5" stroke="#8a8a8a" stroke-width="1.5"/><circle cx="20" cy="8" r="2.5" stroke="#8a8a8a" stroke-width="1.5"/></svg>';
-const svgCarrot='<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 22 L10 8 Q14 5 18 8 Z" stroke="#8a8a8a" stroke-width="1.5" stroke-linejoin="round" fill="none"/><path d="M14 8 Q12 4 10 5M14 8 Q16 3 18 5" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg>';
-const svgThermo='<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="12" y="3" width="4" height="14" rx="2" stroke="#8a8a8a" stroke-width="1.5"/><circle cx="14" cy="21" r="4" stroke="#8a8a8a" stroke-width="1.5"/><path d="M9 9h2M9 13h2" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg>';
-const svgBox='<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M5 11l9-7 9 7v13a1 1 0 01-1 1H6a1 1 0 01-1-1V11z" stroke="#8a8a8a" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 24V16h8v8" stroke="#8a8a8a" stroke-width="1.5" stroke-linejoin="round"/></svg>';
-const svgFridge='<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="7" y="3" width="14" height="22" rx="2" stroke="#8a8a8a" stroke-width="1.5"/><path d="M7 12h14" stroke="#8a8a8a" stroke-width="1.5"/><path d="M12 7.5v3" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/><path d="M12 16v4" stroke="#8a8a8a" stroke-width="1.5" stroke-linecap="round"/></svg>';
+const svgMeat='<svg viewBox="0 0 64 64" fill="none" stroke="#555" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M13 33C10 23 16 13 28 10C43 6 56 17 55 31C54 43 42 53 30 52C21 51 16 44 15 38C15 36 14 35 13 33Z"/><path d="M24 36C22 30 25 24 32 22C39 20 46 25 46 32C46 39 39 45 32 45C27 45 25 41 24 36Z"/><circle cx="43" cy="25" r="3"/></svg>';
+const svgCarrot='<svg viewBox="0 0 64 64" fill="none" stroke="#555" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 15C36 10 43 14 43 21C50 23 53 30 51 39C49 50 40 55 32 54C24 55 15 50 13 39C11 30 14 23 21 21C21 14 28 10 32 15Z"/><path d="M32 15V9"/><path d="M26 23C22 28 22 40 27 47"/><path d="M38 23C42 29 42 40 37 47"/></svg>';
+const svgThermo='<svg viewBox="0 0 64 64" fill="none" stroke="#555" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="27" y="8" width="10" height="32" rx="5"/><circle cx="32" cy="46" r="8"/><path d="M22 22h5M22 30h5"/></svg>';
+const svgBox='<svg viewBox="0 0 64 64" fill="none" stroke="#555" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 24L32 10L54 24V52A2 2 0 0152 54H12A2 2 0 0110 52V24Z"/><path d="M24 54V38H40V54"/><path d="M10 24L32 38L54 24"/></svg>';
+const svgFridge='<svg viewBox="0 0 64 64" fill="none" stroke="#555" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="8" width="32" height="48" rx="4"/><path d="M16 28H48"/><path d="M26 18V24"/><path d="M26 36V44"/></svg>';
 const qSliders={
   fresh:{idx:0,slides:[
     {img:'foto/Fresh 1.png',
