@@ -319,7 +319,7 @@ ul{list-style:none}
 .ck-ok{font-size:13px;font-weight:700;color:var(--ink);padding:4px 0 4px 10px;flex-shrink:0}
 
 /* ========== LOGIN ========== */
-#lov{position:fixed;top:0;bottom:0;left:max(0px,calc(50vw - 240px));right:max(0px,calc(50vw - 240px));background:rgba(0,0,0,.45);z-index:600;display:flex;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px);animation:fadeUp .2s ease}
+#lov{position:fixed;top:0;bottom:0;left:max(0px,calc(50vw - 240px));right:max(0px,calc(50vw - 240px));background:rgba(0,0,0,.45);z-index:900;display:flex;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px);animation:fadeUp .2s ease}
 #lov.off{display:none}
 .lw{width:100%}
 .lb{background:#fff;border-radius:26px 26px 0 0;padding:32px 24px 40px;width:100%;animation:fadeUp .25s ease}
@@ -770,10 +770,17 @@ try{(function(){
 <div id="qualov" class="off">
   <div class="qual-body">
   <div class="qual-topbar">
-    <img src="logo/logo-mobile.png" alt="НА СОКАХ.Еда" style="height:32px;width:auto;display:block;">
+    <a href="mobile.html"><img src="logo/logo-mobile.png" alt="НА СОКАХ.Еда" style="height:32px;width:auto;display:block;"></a>
     <div style="display:flex;align-items:center;gap:8px">
-      <span style="font-size:13px;color:var(--ink2)">Москва ▾</span>
-      <button onclick="closeQuality()" style="background:var(--card);color:var(--ink);font-size:13px;font-weight:600;padding:8px 16px;border-radius:10px;border:none;cursor:pointer;font-family:inherit">Войти</button>
+      <div style="position:relative">
+        <button id="qualCityBtn" onclick="event.stopPropagation();document.getElementById('qualCityDrop').classList.toggle('open')" style="background:none;border:none;font-size:13px;color:var(--ink2);cursor:pointer;font-family:inherit;padding:6px 4px">Москва <span style="font-size:10px">▾</span></button>
+        <div class="city-drop" id="qualCityDrop" style="z-index:960;right:0;left:auto">
+          <a href="#" onclick="event.preventDefault();document.getElementById('qualCityBtn').innerHTML='Москва <span style=\'font-size:10px\'>▾</span>';document.getElementById('qualCityDrop').classList.remove('open')">Москва и область</a>
+          <a href="#" onclick="event.preventDefault();document.getElementById('qualCityBtn').innerHTML='СПб <span style=\'font-size:10px\'>▾</span>';document.getElementById('qualCityDrop').classList.remove('open')">Санкт-Петербург</a>
+          <a href="#" onclick="event.preventDefault();document.getElementById('qualCityBtn').innerHTML='Н.Новгород <span style=\'font-size:10px\'>▾</span>';document.getElementById('qualCityDrop').classList.remove('open')">Нижний Новгород</a>
+        </div>
+      </div>
+      <button id="qualLoginBtn" onclick="openLogin()" style="background:var(--card);color:var(--ink);font-size:13px;font-weight:600;padding:8px 16px;border-radius:10px;border:none;cursor:pointer;font-family:inherit">Войти</button>
     </div>
   </div>
   <div class="qual-banner">
@@ -1542,6 +1549,11 @@ function openQuality(){
   document.body.style.overflow='hidden';
   for(const id in qSliders){qSliders[id].idx=0;buildTrack(id);}
   initFreshSwipe();
+  const qb=document.getElementById('qualLoginBtn');
+  if(qb){
+    if(currentUser){qb.textContent=currentUser.phone.slice(0,6)+'…';qb.onclick=logoutUser;}
+    else{qb.textContent='Войти';qb.onclick=openLogin;}
+  }
 }
 function closeQuality(){
   document.getElementById('qualov').classList.add('off');
