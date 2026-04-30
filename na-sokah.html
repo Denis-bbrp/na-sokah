@@ -260,8 +260,8 @@ ul{list-style:none}
 .fi{background:#fff;border-radius:14px;overflow:hidden}
 .fi-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 22px;gap:12px;text-align:left;font-size:15px;font-weight:400;color:#3a3a3a;cursor:pointer;transition:color .15s;font-family:'Golos Text',sans-serif}
 .fi-q:hover{color:#1a1a1a}
-.fi-ch{flex-shrink:0;color:#ccc;font-size:18px;transition:transform .28s}
-.fi.open .fi-ch{transform:rotate(180deg);color:#888}
+.fi-ch{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:#e8e8e8;display:flex;align-items:center;justify-content:center;transition:transform .28s,background .2s}
+.fi.open .fi-ch{transform:rotate(180deg);background:#d4d4d4}
 .fi-a{max-height:0;overflow:hidden;font-size:13.5px;color:var(--ink2);line-height:1.7;padding:0 22px;transition:max-height .32s ease,padding .28s}
 .fi.open .fi-a{max-height:180px;padding:0 22px 18px}
 .faq-ft{display:flex;align-items:center;justify-content:flex-end;gap:16px;flex-wrap:wrap}
@@ -1503,7 +1503,7 @@ function renderFAQ(){
   document.getElementById('faqGrid').innerHTML=FAQS.map((f,i)=>`
     <div class="fi" id="fi${i}">
       <button class="fi-q" onclick="toggleFAQ(${i})">
-        <span>${f.q}</span><span class="fi-ch">▾</span>
+        <span>${f.q}</span><span class="fi-ch"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="2,4 7,10 12,4" stroke="#888" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
       <div class="fi-a">${f.a}</div>
     </div>`).join('');
