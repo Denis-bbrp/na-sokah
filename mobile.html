@@ -409,12 +409,14 @@ ul{list-style:none}
 .qproc-arr{flex-shrink:0;display:flex;align-items:center;margin-top:40px}
 .qprocess-txt{display:flex;gap:6px}
 .qslider{position:relative;margin-bottom:22px}
-.qsl-inner{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/3}
-.qsl-inner img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .25s}
+.qsl-inner{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/3;touch-action:pan-y}
+.qsl-track{display:flex;height:100%;will-change:transform}
+.qsl-slide{flex:0 0 100%;min-width:0}
+.qsl-slide img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;user-select:none;-webkit-user-drag:none}
 .qsl-cap{position:absolute;bottom:0;left:0;right:0;background:#fff;padding:11px 14px;text-align:center}
 .qsl-cap b{font-size:13px;font-weight:700;color:#1a1a1a;display:block}
 .qsl-cap span{font-size:11px;color:#7a7a7a}
-.qslider-fresh .qsl-inner img{object-fit:contain;background:#f7f7f7}
+.qslider-fresh .qsl-slide img{object-fit:contain;background:#f7f7f7}
 .qfresh-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
 .qfd{height:3px;width:36px;border-radius:2px;background:#ddd;transition:background .3s}
 .qfd.active{background:#3DAA57}
@@ -809,9 +811,7 @@ try{(function(){
       <h2 class="qsec-t">NA <span class="q-bar">|</span> <em>EDA</em>.Fresh</h2>
       <p class="qsec-s">От продукта до блюда — под контролем</p>
       <div class="qslider qslider-fresh" id="qfresh-slider">
-        <div class="qsl-inner">
-          <img id="qfresh-img" src="" alt=""/>
-        </div>
+        <div class="qsl-inner" id="qfresh-inner"></div>
         <div class="qsl-cap" id="qfresh-cap"></div>
         <div class="qfresh-dots" id="qfresh-dots">
           <span class="qfd"></span><span class="qfd"></span><span class="qfd"></span>
@@ -830,9 +830,7 @@ try{(function(){
       <h2 class="qsec-t">NA <span class="q-bar">|</span> <em>EDA</em>.Check</h2>
       <p class="qsec-s">Проверяем продукцию ежедневно</p>
       <div class="qslider qslider-fresh" id="qcheck-slider">
-        <div class="qsl-inner">
-          <img id="qcheck-img" src="" alt=""/>
-        </div>
+        <div class="qsl-inner" id="qcheck-inner"></div>
         <div class="qsl-cap" id="qcheck-cap"></div>
         <div class="qfresh-dots" id="qcheck-dots">
           <span class="qfd"></span><span class="qfd"></span><span class="qfd"></span><span class="qfd"></span>
@@ -1451,41 +1449,91 @@ const qSliders={
     {img:'menu-img/7.jpg',cap:'Вакуумируем и упаковываем мясо и рыбу'},
   ]}
 };
-function renderQSlide(id){
+function buildTrack(id){
+  const sl=qSliders[id];
+  const inner=document.getElementById('q'+id+'-inner');
+  if(!inner||inner.querySelector('.qsl-track'))return;
+  const track=document.createElement('div');
+  track.className='qsl-track';
+  track.id='q'+id+'-track';
+  sl.slides.forEach(s=>{
+    const slide=document.createElement('div');
+    slide.className='qsl-slide';
+    const img=document.createElement('img');
+    img.src=s.img;img.alt='';
+    slide.appendChild(img);
+    track.appendChild(slide);
+  });
+  inner.appendChild(track);
+  setTrackPos(id,false);
+  updateSliderUI(id);
+}
+function setTrackPos(id,animate,extraPx){
+  const sl=qSliders[id];
+  const track=document.getElementById('q'+id+'-track');
+  if(!track)return;
+  track.style.transition=animate?'transform .32s cubic-bezier(.25,.46,.45,.94)':'none';
+  const base=-sl.idx*100;
+  track.style.transform=extraPx!=null
+    ?'translateX(calc('+base+'% + '+extraPx+'px))'
+    :'translateX('+base+'%)';
+}
+function updateSliderUI(id){
   const sl=qSliders[id];const s=sl.slides[sl.idx];
-  document.getElementById('q'+id+'-img').src=s.img;
   const cap=document.getElementById('q'+id+'-cap');
   if(cap)cap.innerHTML=s.cap?'<b>'+s.cap+'</b>'+(s.sub?'<br><span>'+s.sub+'</span>':''):'';
-  if(id==='fresh'){
-    document.querySelectorAll('#qfresh-dots .qfd').forEach((d,i)=>d.classList.toggle('active',i===sl.idx));
-  }
-  if(id==='check'){
-    document.querySelectorAll('#qcheck-dots .qfd').forEach((d,i)=>d.classList.toggle('active',i===sl.idx));
-  }
+  document.querySelectorAll('#q'+id+'-dots .qfd').forEach((d,i)=>d.classList.toggle('active',i===sl.idx));
 }
-function initSliderSwipe(elId,slId){
+function initDragSlider(elId,id){
   const el=document.getElementById(elId);
-  if(!el)return;
-  let x0=0;
-  el.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;},{passive:true});
+  if(!el||el._drag)return;
+  el._drag=true;
+  let x0=0,y0=0,dragging=false,locked=false;
+  el.addEventListener('touchstart',e=>{
+    x0=e.touches[0].clientX;y0=e.touches[0].clientY;
+    dragging=true;locked=false;
+    setTrackPos(id,false);
+  },{passive:true});
+  el.addEventListener('touchmove',e=>{
+    if(!dragging)return;
+    const dx=e.touches[0].clientX-x0;
+    const dy=e.touches[0].clientY-y0;
+    if(!locked){
+      if(Math.abs(dy)>Math.abs(dx)){dragging=false;return;}
+      locked=true;
+    }
+    const sl=qSliders[id];
+    const maxPx=el.offsetWidth;
+    const clamped=Math.max(-maxPx,Math.min(maxPx,dx));
+    setTrackPos(id,false,clamped);
+  },{passive:true});
   el.addEventListener('touchend',e=>{
-    const dx=x0-e.changedTouches[0].clientX;
-    if(Math.abs(dx)>40)qSlide(slId,dx>0?1:-1);
+    if(!dragging)return;
+    dragging=false;
+    const dx=e.changedTouches[0].clientX-x0;
+    const sl=qSliders[id];
+    const threshold=el.offsetWidth*0.28;
+    if(dx<-threshold&&sl.idx<sl.slides.length-1)sl.idx++;
+    else if(dx>threshold&&sl.idx>0)sl.idx--;
+    setTrackPos(id,true);
+    updateSliderUI(id);
   },{passive:true});
 }
 function initFreshSwipe(){
-  initSliderSwipe('qfresh-slider','fresh');
-  initSliderSwipe('qcheck-slider','check');
+  initDragSlider('qfresh-slider','fresh');
+  initDragSlider('qcheck-slider','check');
 }
 function qSlide(id,dir){
   const sl=qSliders[id];
   sl.idx=(sl.idx+dir+sl.slides.length)%sl.slides.length;
-  renderQSlide(id);
+  setTrackPos(id,true);
+  updateSliderUI(id);
 }
+function renderQSlide(id){updateSliderUI(id);}
 function openQuality(){
   document.getElementById('qualov').classList.remove('off');
   document.body.style.overflow='hidden';
-  for(const id in qSliders){qSliders[id].idx=0;renderQSlide(id);}
+  for(const id in qSliders){qSliders[id].idx=0;buildTrack(id);}
   initFreshSwipe();
 }
 function closeQuality(){
