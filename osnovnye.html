@@ -318,7 +318,6 @@ ul{list-style:none}
         <span class="chip" onclick="filterChip('fish',this)">Рыба</span>
         <span class="chip" onclick="filterChip('beef',this)">Говядина</span>
         <span class="chip" onclick="filterChip('veg',this)">Вегетарианское</span>
-        <span class="chip" onclick="filterChip('new',this)">Новинки</span>
       </div>
 
       <!-- PRODUCT GRID -->
@@ -385,48 +384,35 @@ ul{list-style:none}
 </div>
 
 <script>
-const DISHES=[
-  {id:1, tag:'beef',   new:false, name:'Утиная грудка с картофельным пюре и соусом демигляс',         price:680, per:'1 порция / 380 г',
-   img:'menu-img/1.jpg',
-   bg:'#C8E6C9', lbl:'Green', variant:'Гарнир', opts:['Картофельное пюре','Гречка','Булгур']},
-  {id:2, tag:'fish',   new:false, name:'Лосось на пару с киноа и сезонными овощами гриль',            price:750, per:'1 порция / 360 г',
-   img:'menu-img/2.jpg',
-   bg:'#FFF9C4', lbl:'Light', variant:'Гарнир', opts:['Киноа','Рис','Кускус']},
-  {id:3, tag:'beef',   new:false, name:'Говядина тушёная с томатами и прованскими травами',           price:590, per:'1 порция / 400 г',
-   img:'menu-img/3.jpg',
-   bg:'#FFE0B2', lbl:'Классика', variant:'Мясо', opts:['Говядина','Телятина']},
-  {id:10, tag:'chicken', new:true, name:'Курица тандури с рисом басмати и соусом раита',             price:520, per:'1 порция / 370 г',
-   img:'menu-img/20.jpg',
-   bg:'#FFF3E0', lbl:'Хит', variant:'Острота', opts:['Мягкий','Средний','Острый']},
-  {id:11, tag:'fish',   new:true, name:'Треска в томатно-оливковом соусе по-средиземноморски',       price:630, per:'1 порция / 350 г',
-   img:'menu-img/1.jpg',
-   bg:'#E3F2FD', lbl:'Новинка', variant:'Гарнир', opts:['Рис','Кускус','Полента']},
-  {id:12, tag:'veg',    new:false, name:'Паста ригатони с рикоттой, шпинатом и лимонным цедром',    price:420, per:'1 порция / 320 г',
-   img:'menu-img/16.jpg',
-   bg:'#F1F8E9', lbl:'Вег', variant:null, opts:[]},
-  {id:13, tag:'chicken', new:false, name:'Цыплёнок табака с чесночным соусом и картофелем фри',     price:560, per:'1 порция / 420 г',
-   img:'menu-img/19.jpg',
-   bg:'#FFF8E1', lbl:'Классика', variant:null, opts:[]},
-  {id:14, tag:'beef',   new:true, name:'Рибай-стейк с соусом из зелёного перца и запечёнными овощами', price:890, per:'1 порция / 350 г',
-   img:'menu-img/17.jpg',
-   bg:'#FCE4EC', lbl:'Премиум', variant:'Прожарка', opts:['Medium Rare','Medium','Well Done']},
-  {id:15, tag:'veg',    new:false, name:'Карри из нута с кокосовым молоком и свежим шпинатом',       price:380, per:'1 порция / 380 г',
-   img:'menu-img/15.jpg',
-   bg:'#FFF9C4', lbl:'Вег', variant:null, opts:[]},
-  {id:16, tag:'fish',   new:false, name:'Дорадо на гриле с лимонным маслом и зеленью',               price:710, per:'1 порция / 300 г',
-   img:'menu-img/18.jpg',
-   bg:'#E8F5E9', lbl:'Гриль', variant:'Гарнир', opts:['Киноа','Греческий салат']},
-];
+const P = 'menu-img/';
+const TAG_FILTERS = {
+  all:     ()=>true,
+  chicken: t=>/курица|индейк/i.test(t),
+  fish:    t=>/рыба|лосось|тунец|окунь|сом|креветк|кальмар|краб/i.test(t),
+  beef:    t=>/говядин|телятин|печень/i.test(t),
+  veg:     t=>/паста|веган|котлет/i.test(t)
+};
 
-let cart=[], portions={}, variantIdx={}, activechip='all', activeSort='default';
-DISHES.forEach(d=>{portions[d.id]=2; variantIdx[d.id]=0;});
+let DISHES=[], cart=[], portions={}, activechip='all', activeSort='default';
 const fmt=n=>n.toLocaleString('ru')+' ₽';
 
-function getFilteredDishes(){
-  let list = activechip==='all' ? [...DISHES]
-    : activechip==='new' ? DISHES.filter(d=>d.new)
-    : DISHES.filter(d=>d.tag===activechip);
+async function bootstrap(){
+  try{
+    const r=await fetch('data/dishes.json');
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    DISHES=await r.json();
+  } catch(e){
+    console.error('[catalog] Не удалось загрузить data/dishes.json:', e);
+    return;
+  }
+  DISHES.forEach(d=>portions[d.id]=2);
+  renderMenu();
+}
+document.addEventListener('DOMContentLoaded', bootstrap);
 
+function getFilteredDishes(){
+  const filter = TAG_FILTERS[activechip] || TAG_FILTERS.all;
+  let list = DISHES.filter(d => d.cat === 'main' && filter(d.tag||''));
   if(activeSort==='price_asc') list.sort((a,b)=>a.price-b.price);
   else if(activeSort==='price_desc') list.sort((a,b)=>b.price-a.price);
   else if(activeSort==='name') list.sort((a,b)=>a.name.localeCompare(b.name,'ru'));
@@ -443,15 +429,13 @@ function renderMenu(){
   }
   el.innerHTML=list.map(d=>`
     <div class="mc">
-      <div class="mc-ib" style="background:${d.bg}">
-        <img class="mc-bg" src="${d.img}" alt="${d.name}" loading="lazy"/>
-        <span class="mc-wm">${d.lbl}</span>
-        ${d.new?'<span class="mc-bdg mc-new">НОВИНКА</span>':''}
+      <div class="mc-ib" style="background:var(--card)">
+        <img class="mc-bg" src="${P}${d.id}.jpg" alt="${d.name}" loading="lazy"/>
+        ${d.tag?`<span class="mc-wm">${d.tag}</span>`:''}
       </div>
       <div class="mc-bd">
         <div class="mc-nm">${d.name}</div>
-        <div class="mc-mt">Цена за 1 порцию · ${d.per}</div>
-        ${d.variant?`<div class="mc-var" onclick="cycleVariant(${d.id})">${d.variant}: <b id="vt${d.id}">${d.opts[variantIdx[d.id]||0]}</b> <span style="color:#bbb">▾</span></div>`:''}
+        <div class="mc-mt">Цена за 1 порцию · ${Math.round(d.weight/2)} г</div>
         <div class="mc-bot">
           <div><div class="mc-price">${d.price} ₽</div><div class="mc-psub">за порцию</div></div>
           <div class="mc-acts">
@@ -469,12 +453,6 @@ function cyclePt(id,el){
   const s=[1,2,3,4];
   portions[id]=s[(s.indexOf(portions[id])+1)%s.length];
   document.getElementById('pt'+id).textContent=portions[id];
-}
-function cycleVariant(id){
-  const d=DISHES.find(x=>x.id===id); if(!d||!d.opts.length)return;
-  variantIdx[id]=((variantIdx[id]||0)+1)%d.opts.length;
-  const el=document.getElementById('vt'+id);
-  if(el) el.textContent=d.opts[variantIdx[id]];
 }
 function filterChip(chip,btn){
   activechip=chip;
@@ -529,7 +507,7 @@ function renderCartItems(){
   }
   el.innerHTML=cart.map(i=>`
     <div class="ci">
-      <img class="ci-img" src="${i.img}" alt="${i.name}"/>
+      <img class="ci-img" src="${P}${i.id}.jpg" alt="${i.name}"/>
       <div class="ci-inf">
         <div class="ci-nm">${i.name}</div>
         <div class="ci-pr">${fmt(i.price*i.qty)} <span style="font-size:12px;font-weight:400;color:var(--ink3)">${i.qty} порц.</span></div>
@@ -575,8 +553,6 @@ function backToPhone(){
   document.getElementById('lStep2').style.display='none';
 }
 function verifyCode(){closeLogin();}
-
-renderMenu();
 </script>
 </body>
 </html>

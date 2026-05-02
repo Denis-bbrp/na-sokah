@@ -1,0 +1,10 @@
+[
+  {"slug": "main",      "name": "Основные блюда"},
+  {"slug": "soup",      "name": "Супы"},
+  {"slug": "salad",     "name": "Салаты"},
+  {"slug": "breakfast", "name": "Завтраки"},
+  {"slug": "snack",     "name": "Закуски и пицца"},
+  {"slug": "dessert",   "name": "Десерты и смузи"},
+  {"slug": "extras",    "name": "Соусы и допы"},
+  {"slug": "farm",      "name": "Фермерское"}
+]

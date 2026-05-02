@@ -1,7 +1,13 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+---
+
 # НА СОКАХ.Еда — контекст проекта для Claude
 
 ## Что за проект
-Сайт доставки продуктов с рецептами «НА СОКАХ.Еда». Концепция: доставляем ингредиенты + рецепт, готовишь ресторанный ужин за 15 минут.
+Сайт доставки продуктов с рецептами «НА СОКАХ.Еда». Концепция: доставляем ингредиенты + рецепт, готовишь ресторанный ужин за 15 минут. Учебный/портфельный проект — приёмка по `КРИТЕРИИ-СДАЧИ.md`.
 
 ---
 
@@ -10,7 +16,7 @@
 - **GitHub репо:** https://github.com/Denis-bbrp/na-sokah
 - **Мобильная версия:** https://denis-bbrp.github.io/na-sokah/mobile.html
 - **Десктоп версия:** https://denis-bbrp.github.io/na-sokah/na-sokah.html
-- **Локальная папка:** `/Users/denis11orggmail.com/Desktop/Project Site/`
+- **Локальная папка:** `/Users/denis11orggmail.com/Desktop/NA SOKAH EDA/`
 
 Деплой: git push в main → GitHub Pages автоматически обновляет сайт (~30 сек).
 
@@ -20,17 +26,65 @@
 
 | Файл | Назначение |
 |---|---|
-| `na-sokah.html` | Десктоп версия (полный сайт) |
-| `mobile.html` | Мобильная версия |
-| `foto/` | 3 фото для hero-секции (seedream-*.png) |
+| `na-sokah.html` | Десктоп версия (полный лендинг, ~1840 строк) |
+| `mobile.html` | Мобильная версия (полный лендинг, ~1560 строк) |
+| `menu.html` | Отдельная страница «Меню» с модалом блюда + dropdown порций |
+| `osnovnye.html` | Отдельная страница «Основные блюда» |
+| `foto/` | Фото hero-секции (seedream-*.png), max-icon, mir-logo и т.д. |
+| `menu-img/` | Картинки блюд для каталога (нумерованные `1.jpg`, `2.jpg`…) |
+| `logo/` | Лого: `logo-full.png` (десктоп), `logo-mobile.png` (мобилка) |
+| `data/` | Единый источник данных каталога (см. раздел ниже) |
+| `Docs/` | Юридические документы (Политика обработки ПД, ИП Цедик и т.д.) |
+| `КРИТЕРИИ-СДАЧИ.md` | Чек-лист приёмки проекта — сверяться при финальной сдаче |
+| `elementaree_dish.html`, `elementaree_main.css` | **Референс конкурента** (Elementaree.ru). НЕ редактировать, только смотреть для вдохновения |
+| `.nojekyll` | Отключает Jekyll на GitHub Pages — не удалять |
 
 ---
 
 ## Технологии
 
-- Чистый HTML + CSS + vanilla JS (никаких фреймворков)
-- Шрифты: Unbounded (заголовки десктоп), Golos Text (основной), Playfair Display (акценты мобилки)
-- Всё в одном файле (inline CSS + JS)
+- Чистый HTML + CSS + vanilla JS, никаких фреймворков и сборщиков
+- Шрифты подключаются через Google Fonts: Unbounded (заголовки десктоп), Golos Text (основной), Playfair Display (акценты мобилки), Inter (на `menu.html`)
+- Разметка и стили — inline `<style>` внутри каждого HTML-файла. Десктоп и мобилка — **разные файлы**, не media queries. Правки UI делать в обоих, если контекст требует
+- **Данные каталога** (блюда, сеты, категории) — общие, лежат в `data/*.json`, грузятся через `fetch()`. См. раздел «Данные каталога» ниже
+
+---
+
+## Данные каталога: `data/`
+
+Единый источник истины для всех страниц с блюдами. Изменил цену в одном JSON — обновилось везде.
+
+| Файл | Что лежит |
+|---|---|
+| `data/dishes.json` | Массив из 87 блюд (схема: `id, cat, name, price, tag, weight, time, shelf, kcal, prot, fat, carb, desc, featured?`) |
+| `data/sets.json` | 3 шеф-набора (`id, name, price, subtitle, icon, img, qty`) — отдельная сущность от блюд |
+| `data/categories.json` | Справочник категорий: `main, soup, salad, breakfast, snack, dessert, extras, farm` |
+
+**Картинки** хранятся в `menu-img/` под именами `1.jpg ... 87.jpg` — индекс совпадает с `id` блюда. В JSON поле `img` для блюд **не хранится** — рендер всегда использует `menu-img/${id}.jpg`. Для сетов поле `img` есть (другая логика).
+
+**Флаг `featured: true`** — блюдо показывается на главной как «хит» (секции `#picks` в `na-sokah.html` и `#fav` в `mobile.html`). Сейчас отмечено 9 блюд: id 4, 12, 26, 40, 48, 56, 60, 67, 80.
+
+**Загрузка** — асинхронно через `fetch()` в начале каждой страницы:
+
+```js
+async function bootstrap(){
+  const [d, s] = await Promise.all([
+    fetch('data/dishes.json').then(r => r.json()),
+    fetch('data/sets.json').then(r => r.json())
+  ]);
+  DISHES = d; SETS = s;
+  // ...рендер
+}
+document.addEventListener('DOMContentLoaded', bootstrap);
+```
+
+**Важно:** `fetch()` НЕ работает при открытии HTML через `file://` (двойной клик) — браузер блокирует CORS. Для локальной разработки использовать `python3 -m http.server` (см. секцию «Локальный предпросмотр»). На GitHub Pages всё работает.
+
+**Кто что показывает:**
+- `na-sokah.html` (десктоп) — секция `#picks` (featured) + `#sets` (шеф-наборы) + модал блюда `#dmpanel`
+- `mobile.html` — секция `#fav` (featured) + `#sets` + модал
+- `menu.html` — все 87 блюд, сгруппированные по 8 категориям, c фильтром по hash (`menu.html#main`)
+- `osnovnye.html` — только `cat === 'main'` (39 блюд) с chip-фильтром по тэгам (курица/рыба/говядина/веган)
 
 ---
 
@@ -92,8 +146,29 @@
 ## Как обновить сайт
 
 ```bash
-cd "/Users/denis11orggmail.com/Desktop/Project Site"
-git add -A
+cd "/Users/denis11orggmail.com/Desktop/NA SOKAH EDA"
+git add <конкретные файлы>      # например: na-sokah.html mobile.html
 git commit -m "описание изменений"
 git push
 ```
+
+После `git push` GitHub Pages пересобирается ~30 сек. Кэш браузера может держать старую версию — проверять в инкогнито или с hard reload.
+
+**Не использовать `git add -A` / `git add .`** — в репо валяются `.DS_Store` (macOS мусор) в корне, `Docs/`, `foto/`. Они затащатся одной командой. Либо добавлять файлы по именам, либо сначала закинуть `.DS_Store` в `.gitignore`.
+
+## Локальный предпросмотр
+
+Файлы статические, открываются через `file://` напрямую (двойной клик по `na-sokah.html`). Для тестов с относительными путями к фото можно поднять простой сервер:
+
+```bash
+cd "/Users/denis11orggmail.com/Desktop/NA SOKAH EDA"
+python3 -m http.server 8000
+# затем http://localhost:8000/na-sokah.html
+```
+
+## Конвенции коммитов
+
+Сообщения короткие, по-русски, в духе истории репо. Префикс по зоне правки помогает читать `git log`:
+- `Mobile: <что>` — правки только в `mobile.html`
+- `FAQ: <что>`, `Testimonials: <что>` — правки конкретной секции
+- Без префикса — общие правки или сразу обе версии

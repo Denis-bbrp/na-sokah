@@ -271,8 +271,10 @@ ul{list-style:none}
 .fi-q:hover{color:#1a1a1a}
 .fi-ch{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:#e8e8e8;display:flex;align-items:center;justify-content:center;transition:transform .28s,background .2s}
 .fi.open .fi-ch{transform:rotate(180deg);background:#d4d4d4}
-.fi-a{max-height:0;overflow:hidden;font-size:13px;color:var(--ink2);line-height:1.7;padding:0 16px;transition:max-height .32s ease,padding .28s}
-.fi.open .fi-a{max-height:180px;padding:0 16px 16px}
+.fi-a{max-height:0;overflow:hidden;font-size:13px;color:var(--ink2);line-height:1.7;padding:0 16px;transition:max-height .4s cubic-bezier(.4,0,.2,1),padding .35s cubic-bezier(.4,0,.2,1)}
+.fi.open .fi-a{padding:0 16px 16px}
+.fi-a p{margin:0 0 12px}
+.fi-a p:last-child{margin-bottom:0}
 .faq-ft{margin-top:20px;display:flex;flex-direction:column;gap:14px}
 .faq-ft-t{font-size:13px;color:var(--ink3);line-height:1.5}
 .sb{display:flex;gap:8px}
@@ -283,10 +285,12 @@ ul{list-style:none}
 .ft-row1{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:20px;border-bottom:1px solid #e0e0e0}
 .ft-sec-label{font-size:10px;font-weight:700;letter-spacing:.08em;color:#999;text-transform:uppercase;margin-bottom:5px}
 .ft-sec-sub{font-size:13px;color:#555;line-height:1.4}
-.ft-appstore{display:flex;align-items:center;gap:8px;background:#e8e8e8;border-radius:10px;padding:9px 13px;flex-shrink:0;text-decoration:none;color:#1a1a1a}
-.ft-appstore svg{width:16px;height:16px;fill:#1a1a1a;flex-shrink:0}
-.ft-appstore-t small{font-size:9px;color:#888;display:block;line-height:1.3}
-.ft-appstore-t b{font-size:13px;font-weight:700;display:block;line-height:1.3}
+.ft-stores{display:flex;flex-direction:column;gap:6px;flex-shrink:0}
+.store-bd{display:inline-flex;align-items:center;gap:8px;background:#a8a8a8;color:#5a5a5a;border-radius:6px;padding:5px 11px;text-decoration:none;min-width:124px}
+.store-bd-ic{width:20px;height:20px;fill:currentColor;flex-shrink:0}
+.store-bd-tx{display:flex;flex-direction:column;line-height:1}
+.store-bd-tx small{font-size:8px;font-weight:400;letter-spacing:.01em;margin-bottom:2px;color:inherit}
+.store-bd-tx b{font-size:14px;font-weight:600;letter-spacing:-.01em;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:inherit}
 .ft-contact{display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;border-bottom:1px solid #e0e0e0}
 .ft-ph{font-size:18px;font-weight:700;color:#1a1a1a;margin-bottom:5px}
 .ft-hrs{font-size:12px;color:#888;line-height:1.5}
@@ -358,6 +362,16 @@ ul{list-style:none}
 .doc-body h3{font-size:14px;font-weight:700;color:#1a1a1a;margin:18px 0 7px}
 .doc-body h3:first-child{margin-top:0}
 .doc-body p{margin-bottom:10px}
+
+/* ========== CALL MODAL ========== */
+#callov{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:850;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);padding:0 16px;animation:fadeUp .18s ease}
+#callov.off{display:none}
+.call-b{position:relative;background:#fff;border-radius:18px;padding:32px 24px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:0 20px 70px rgba(0,0,0,.2);width:100%;max-width:340px}
+.call-x{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:var(--card);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--ink2);cursor:pointer}
+.call-title{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:800;letter-spacing:-.01em;color:var(--ink);margin-bottom:4px}
+.call-hrs{font-size:13px;color:var(--ink3);margin-bottom:18px}
+.call-phone{font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-.02em;margin-bottom:20px}
+.call-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--or);color:#fff;font-size:15px;font-weight:600;padding:14px 36px;border-radius:100px;text-decoration:none;border:none;cursor:pointer;width:100%}
 
 /* ========== CART ========== */
 #cov{position:fixed;top:0;bottom:0;left:max(0px,calc(50vw - 240px));right:max(0px,calc(50vw - 240px));background:rgba(0,0,0,.38);z-index:700;display:none}
@@ -499,10 +513,10 @@ ul{list-style:none}
     <div class="nav-footer-section">
       <div class="nav-hours">Ежедневно<br>с 6:00 до 23:00</div>
       <div class="nav-socials">
-        <button class="nav-soc-btn" style="background:#fff"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink2)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg></button>
+        <button class="nav-soc-btn" style="background:#fff" onclick="closeNav();openCallModal()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink2)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg></button>
         <button class="nav-soc-btn" style="background:#0077FF;border-color:#0077FF"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2zm3.08 13.5h-1.62c-.61 0-.8-.49-1.9-1.6-1-.96-1.45-.96-1.69-.96-.35 0-.44.1-.44.58v1.46c0 .41-.13.65-1.2.65-1.77 0-3.72-1.07-5.1-3.06-2.07-2.9-2.63-5.06-2.63-5.51 0-.24.09-.46.57-.46h1.62c.43 0 .59.19.75.65.83 2.38 2.21 4.47 2.78 4.47.21 0 .31-.1.31-.64V8.92c-.07-1.14-.67-1.24-.67-1.65 0-.2.16-.4.42-.4h2.54c.36 0 .48.19.48.6v3.24c0 .36.16.48.27.48.21 0 .39-.12.78-.51 1.21-1.36 2.07-3.44 2.07-3.44.11-.24.31-.46.74-.46h1.62c.49 0 .59.25.49.59-.21.96-2.22 3.81-2.22 3.81-.18.28-.24.41 0 .73.17.23.74.72 1.12 1.16.7.79 1.23 1.46 1.37 1.92.15.46-.08.69-.57.69z"/></svg></button>
         <button class="nav-soc-btn" style="background:#29A9EB;border-color:#29A9EB"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C5.373 0 0 5.373 0 12c0 6.628 5.373 12 12 12s12-5.372 12-12C24 5.373 18.627 0 12 0zm5.562 8.248-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.932z"/></svg></button>
-        <button class="nav-soc-btn" style="background:#7360F2;border-color:#7360F2"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 0C6.48 0 2 4.48 2 10c0 2.39.85 4.59 2.25 6.33L2.69 21l4.81-1.53A9.93 9.93 0 0 0 12 20c5.52 0 10-4.48 10-10S17.52 0 12 0zm4.65 13.55c-.2.56-.99 1.02-1.62 1.15-.44.09-1.01.16-2.94-.63-2.46-1.02-4.04-3.52-4.17-3.68-.12-.17-1.02-1.36-1.02-2.59 0-1.23.64-1.84.87-2.1.2-.22.52-.33.83-.33.1 0 .19.005.27.01.24.01.36.025.52.4.2.46.68 1.67.74 1.79.06.12.12.28.04.45-.08.17-.12.27-.24.42-.12.15-.23.26-.35.42-.11.14-.23.29-.1.53.13.24.59.97 1.27 1.57.87.77 1.6 1.01 1.83 1.12.23.11.36.09.5-.05.14-.14.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.41.66 1.65.78.24.12.4.18.46.28.06.1.06.58-.14 1.14z"/></svg></button>
+        <button class="nav-soc-btn" style="background:url('foto/max-icon.png') center/cover no-repeat;border-color:transparent;padding:0"></button>
       </div>
     </div>
   </div>
@@ -646,12 +660,6 @@ try{(function(){
   <p class="slogan-text">Мы уже всё сделали за вас: продукты очищены, нарезаны и готовы к делу. Остаётся только одно — приготовить ужин за 15 минут, по нашей инструкции и удивить себя вкусом уровня шеф-повара.</p>
 </section>
 
-<!-- MENU -->
-<section id="mn" style="display:none">
-  <div style="padding:0 16px"><div class="sec-t">Меню</div></div>
-  <div style="padding:0 16px"><div class="mg" id="menuGrid"></div></div>
-</section>
-
 <!-- COLLECTIONS -->
 <section id="coll">
   <div style="padding:0 16px">
@@ -694,7 +702,7 @@ try{(function(){
     <div class="faq-ft">
       <div class="faq-ft-t">Остались вопросы?<br>На связи ежедневно с 6:00 до 23:00</div>
       <div class="sb">
-        <a href="#" style="background:#d0d0d0"><i class="fas fa-phone" style="font-size:14px;color:#888"></i></a>
+        <a href="javascript:void(0)" onclick="openCallModal()" style="background:#d0d0d0"><i class="fas fa-phone" style="font-size:14px;color:#888"></i></a>
         <a href="#" style="background:#4C75A3"><i class="fab fa-vk"></i></a>
         <a href="#" style="background:#229ED9"><i class="fab fa-telegram"></i></a>
         <a href="#" style="background-image:url('foto/max-icon.png');background-size:cover;background-position:center"></a>
@@ -715,14 +723,20 @@ try{(function(){
     <div>
       <div class="ft-sec-sub" style="font-size:15px;font-weight:600;color:#333">Здесь ждёт скидка 10%</div>
     </div>
-    <a href="#" class="ft-appstore">
-      <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      <div class="ft-appstore-t"><small>Download on the</small><b>App Store</b></div>
-    </a>
+    <div class="ft-stores">
+      <a href="#" class="store-bd">
+        <svg class="store-bd-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="store-bd-tx"><small>Download on the</small><b>App Store</b></div>
+      </a>
+      <a href="#" class="store-bd">
+        <svg class="store-bd-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.892 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198 2.792 1.617c.453.246.749.726.749 1.265 0 .54-.296 1.02-.749 1.265l-2.797 1.62-2.553-2.553 2.558-2.514zM5.864 2.658 16.802 8.99l-2.302 2.302L5.864 2.658z"/></svg>
+        <div class="store-bd-tx"><small>GET IT ON</small><b>Google Play</b></div>
+      </a>
+    </div>
   </div>
   <div class="ft-contact">
     <div>
-      <div class="ft-ph">+7 (800) 454-15-13</div>
+      <div class="ft-ph">+7 902 403 9564</div>
       <div class="ft-hrs">Ежедневно с 6:00<br>до 23:00</div>
     </div>
     <div class="ft-soc-sm">
@@ -917,6 +931,17 @@ try{(function(){
   <div class="doc-body" id="docBody"></div>
 </div>
 
+<!-- CALL MODAL -->
+<div id="callov" class="off" onclick="if(event.target===this)closeCallModal()">
+  <div class="call-b">
+    <button class="call-x" onclick="closeCallModal()">✕</button>
+    <div class="call-title">Свяжитесь с нами</div>
+    <div class="call-hrs">Ежедневно с 6:00 до 23:00</div>
+    <div class="call-phone">+7 902 403 9564</div>
+    <a class="call-btn" href="tel:+79024039564">Позвонить</a>
+  </div>
+</div>
+
 <!-- CART -->
 <div id="cov" onclick="closeCart()"></div>
 <div id="csb">
@@ -936,37 +961,67 @@ try{(function(){
 </div>
 
 <script>
-const DISHES=[
-  {id:1,cat:'main',name:'Утиная грудка с картофельным пюре и соусом демигляс',price:680,per:'1 порция / 380 г',img:'menu-img/1.jpg',bg:'#C8E6C9',lbl:'Green',variant:'Гарнир',opts:['Картофельное пюре','Гречка','Булгур']},
-  {id:2,cat:'main',name:'Лосось на пару с киноа и сезонными овощами гриль',price:750,per:'1 порция / 360 г',img:'menu-img/2.jpg',bg:'#FFF9C4',lbl:'Light',variant:'Гарнир',opts:['Киноа','Рис','Кускус']},
-  {id:3,cat:'main',name:'Говядина тушёная с томатами и прованскими травами',price:590,per:'1 порция / 400 г',img:'menu-img/3.jpg',bg:'#FFE0B2',lbl:'Классика',variant:'Мясо',opts:['Говядина','Телятина']},
-  {id:4,cat:'soup',name:'Борщ с говядиной, сметаной и чёрным хлебом',price:390,per:'1 порция / 450 мл',img:'menu-img/4.jpg',bg:'#FCE4EC',lbl:'Суп',variant:null,opts:[]},
-  {id:5,cat:'soup',name:'Крем-суп из тыквы с имбирём и кокосовым молоком',price:360,per:'1 порция / 400 мл',img:'menu-img/5.jpg',bg:'#FFF3E0',lbl:'Суп',variant:null,opts:[]},
-  {id:6,cat:'salad',name:'Цезарь с куриным филе гриль, пармезаном и каперсами',price:430,per:'1 порция / 280 г',img:'menu-img/6.jpg',bg:'#E8F5E9',lbl:'Салат',variant:null,opts:[]},
-  {id:7,cat:'breakfast',name:'Сырники с малиновым соусом и домашней сметаной',price:320,per:'1 порция / 260 г',img:'menu-img/7.jpg',bg:'#FFF8E1',lbl:'Завтрак',variant:null,opts:[]},
-  {id:8,cat:'dessert',name:'Шоколадный фондан с ванильным мороженым',price:290,per:'1 порция / 180 г',img:'menu-img/8.jpg',bg:'#F3E5F5',lbl:'Десерт',variant:null,opts:[]},
-  {id:9,cat:'snack',name:'Брускетты с авокадо, рикоттой и вялеными томатами',price:260,per:'1 порция / 200 г',img:'menu-img/9.jpg',bg:'#E3F2FD',lbl:'Закуска',variant:null,opts:[]},
-];
 const FAQS=[
-  {q:'Сколько стоит доставка?',a:'Доставка по Москве и МО бесплатна при заказе от 1 500 ₽. При меньшей сумме — 199 ₽.'},
-  {q:'Как и сколько хранить продукты?',a:'Все ингредиенты упакованы в вакуум. Хранить при 0–4°C до 5–7 дней.'},
-  {q:'В какие районы доставляете?',a:'По Москве и МО, Санкт-Петербургу. В 2025 году — Нижний Новгород и Казань.'},
-  {q:'Как контролируете качество?',a:'Работаем с сертифицированными фермерами. Каждая партия проходит лабораторный контроль.'},
-  {q:'Что я получу в доставке?',a:'Свежие порционные ингредиенты, уже очищенные и нарезанные, плюс пошаговую карточку рецепта.'},
-  {q:'Что такое подписка?',a:'Скидка 10% на все заказы, приоритетная доставка. Первый месяц — 290 ₽.'},
+  {q:'Сколько стоит доставка?',a:[
+    'Доставка по городу бесплатная при заказе от 2 500 ₽, при заказе на меньшую сумму стоимость доставки зависит от зоны доставки.'
+  ]},
+  {q:'Как и сколько хранить продукты?',a:[
+    'Наборы продуктов из основного меню нужно хранить в оригинальной упаковке в холодильнике — замораживать ничего не нужно.',
+    'Так как в наших блюдах нет консервантов и лишних добавок, срок годности ингредиентов небольшой — обычно 2–7 дней, точный срок смотрите на упаковке.',
+    'При заказе сетов на неделю сроки продуманы так, чтобы готовить по одному блюду в день — на пакете с ингредиентами для каждого блюда указано, на какой день его нужно приготовить.',
+    'А для тех, у кого не всегда есть время и желание готовить каждый день, есть специальная подборка блюд «Про запас». Наборы продуктов из этой категории можно хранить в морозилке 10–60 дней после доставки и приготовить в любой удобный момент.'
+  ]},
+  {q:'В какие районы доставляете?',a:[
+    'Пока доставляем только по Москве и МО.',
+    'Скорость доставки зависит от выбранных блюд: например, сет недели привезём уже на следующий день по Москве и МО (при заказе до 15:00).'
+  ]},
+  {q:'Как контролируете качество?',a:[
+    'Прежде чем принять сырьё на производство, проверяем его на безопасность и качество: температурный режим, внешний вид, вкус, цвет, запах, консистенция. Документы (ВСД, декларации, паспорта качества), условия перевозки.',
+    'На производстве используем ХАССП: отслеживаем риски, контролируем ключевые моменты, следим за чистотой и соблюдаем все этапы процесса для безопасности продукции. Посмотреть на производство можно в Телеграм-канале НА СОКАХ.Еда по хештегу #NA_EDA_производство.',
+    'Качество сырья, продукции и чистоту производства контролируем и подтверждаем протоколами аккредитованных лабораторий. На продукцию есть декларации соответствия, что подтверждает безопасность и качество.'
+  ]},
+  {q:'Что я получу в доставке?',a:[
+    'Курьер привозит коробку с наборами продуктов и рецептами для приготовления выбранных вами блюд.',
+    'Ингредиенты для каждого блюда — в своём крафт-пакете: многие овощи уже очищены и нарезаны; соусы для шефа — уже готовы; специи, крупы, лапша — точно отмерены. На каждом пакете отмечено, когда приготовить.',
+    'Мясо, рыба и морепродукты обычно хранятся отдельно в вакууме в серебристом термопакете, чтобы всё доехало до вас максимально свежим.',
+    'Дополнительно покупать ничего не нужно — вам останется лишь взять пакет с ингредиентами для одного из блюд и приготовить его по рецепту за 15 минут.'
+  ]},
+  {q:'Что такое подписка?',a:[
+    'Подписка — это доставка наших продуктов с рецептами раз в неделю со скидкой 10%. Меню на каждую неделю формируется автоматически — оно похоже на то, что было на предыдущей неделе, но блюда всегда новые и их можно поменять.',
+    'Оплата за первый заказ спишется в момент оформления. Потом оплата будет списываться за 3 дня до даты доставки. Менять дату, время, адрес и блюда в заказе — можно.',
+    'Для подключения подписки оформите заказ на сайте, включив опцию «Скидка по подписке». Для отмены — напишите нам или позвоните +7 902 403 9564 не позднее чем за 2 дня до следующей доставки до 15:00.'
+  ]},
 ];
 
-let cart=[], portions={};
-DISHES.forEach(d=>portions[d.id]=2);
-const fmt=n=>n.toLocaleString('ru')+' ₽';
+const P = 'menu-img/';
+
+let DISHES = [], SETS = [], cart = [], portions = {};
+const fmt = n => n.toLocaleString('ru') + ' ₽';
+
+async function bootstrap(){
+  try {
+    const [d, s] = await Promise.all([
+      fetch('data/dishes.json').then(r => { if(!r.ok) throw new Error('dishes '+r.status); return r.json(); }),
+      fetch('data/sets.json').then(r => { if(!r.ok) throw new Error('sets '+r.status); return r.json(); })
+    ]);
+    DISHES = d; SETS = s;
+  } catch(e){
+    console.error('[catalog] Не удалось загрузить data:', e);
+    return;
+  }
+  DISHES.forEach(x => portions[x.id] = 2);
+  renderFav();
+  syncCart();
+}
+document.addEventListener('DOMContentLoaded', bootstrap);
 
 function renderFav(){
-  const catOrder=['main','salad','soup','snack','dessert'];
-  const picks=catOrder.map(cat=>{const pool=DISHES.filter(d=>d.cat===cat);return pool[Math.floor(Math.random()*pool.length)];}).filter(Boolean);
-  document.getElementById('favRow').innerHTML=picks.map(d=>`
+  // Витрина «Самое любимое» — featured-блюда из общего каталога
+  const list = DISHES.filter(d => d.featured && d.cat !== 'salad');
+  document.getElementById('favRow').innerHTML=list.map(d=>`
     <div class="dc" onclick="openDM(${d.id})">
       <div class="dc-ib">
-        <img class="dc-bg" src="${d.img}" alt="${d.name}" loading="lazy"/>
+        <img class="dc-bg" src="${P}${d.id}.jpg" alt="${d.name}" loading="lazy"/>
       </div>
       <div class="dc-bd">
         <div class="dc-nm">${d.name}</div>
@@ -979,43 +1034,11 @@ function renderFav(){
   </a>`;
 }
 
-function renderMenu(cat){
-  const list=cat==='all'?DISHES:DISHES.filter(d=>d.cat===cat);
-  if(!list.length){document.getElementById('menuGrid').innerHTML='<div style="padding:32px;text-align:center;color:#aaa">Блюда не найдены</div>';return;}
-  document.getElementById('menuGrid').innerHTML=list.map(d=>`
-    <div class="mc">
-      <div class="mc-ib" style="background:${d.bg};min-height:110px">
-        <img class="mc-bg" src="${d.img}" alt="${d.name}" loading="lazy"/>
-        <span class="mc-wm">${d.lbl}</span>
-      </div>
-      <div class="mc-bd">
-        <div class="mc-nm">${d.name}</div>
-        <div class="mc-mt">${d.per}</div>
-        ${d.variant?`<div class="mc-port" style="margin-bottom:4px;border-radius:8px" onclick="cycleVariant(${d.id})">${d.variant}: <b id="vt${d.id}">${d.opts[variantIdx[d.id]||0]}</b> ▾</div>`:''}
-        <div class="mc-bot">
-          <div><div class="mc-price">${d.price} ₽</div><div class="mc-psub">за порцию</div></div>
-          <div class="mc-acts">
-            <div class="mc-port" onclick="cyclePt(${d.id},this)"><span id="pt${d.id}">${portions[d.id]}</span> пор.</div>
-            <button class="mc-cart" id="mb${d.id}" onclick="addCart(${d.id})">
-              <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>`).join('');
-}
-
 function cyclePt(id){
   const s=[1,2,3,4];
   portions[id]=s[(s.indexOf(portions[id])+1)%s.length];
   document.getElementById('pt'+id).textContent=portions[id];
 }
-function doFilter(cat,btn){
-  document.querySelectorAll('.cat-c').forEach(c=>c.classList.remove('act'));
-  btn.classList.add('act');
-  renderMenu(cat);
-}
-
 function addCart(id){
   const d=DISHES.find(x=>x.id===id);if(!d)return;
   const q=portions[id]||2;
@@ -1035,14 +1058,20 @@ function flashBtn(id){
 function syncCart(){
   const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
   const count=cart.reduce((s,i)=>s+i.qty,0);
-  document.getElementById('cPriceLbl').textContent=fmt(total);
-  document.getElementById('csSub').textContent=fmt(total);
-  document.getElementById('csTotal').textContent=fmt(total);
-  document.getElementById('coText').textContent='Оформить заказ '+fmt(total);
+  const setText=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  setText('cPriceLbl',fmt(total));
+  setText('csSub',fmt(total));
+  setText('csTotal',fmt(total));
+  setText('coText','Оформить заказ '+fmt(total));
   const cc=document.getElementById('cCtEl');
   const bb=document.getElementById('bnavBadge');
-  if(count>0){cc.textContent=count;cc.classList.add('on');bb.textContent=count;bb.classList.add('on');}
-  else{cc.classList.remove('on');bb.classList.remove('on');}
+  if(count>0){
+    if(cc){cc.textContent=count;cc.classList.add('on');}
+    if(bb){bb.textContent=count;bb.classList.add('on');}
+  } else {
+    if(cc) cc.classList.remove('on');
+    if(bb) bb.classList.remove('on');
+  }
   renderCartItems();
 }
 function renderCartItems(){
@@ -1050,7 +1079,7 @@ function renderCartItems(){
   if(!cart.length){el.innerHTML='<div style="flex:1;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:15px;text-align:center;padding:40px 20px">Корзина пуста 🛒</div>';return;}
   el.innerHTML=cart.map(i=>`
     <div class="ci">
-      <img class="ci-img" src="${i.img}" alt="${i.name}"/>
+      <img class="ci-img" src="${i.img||(P+i.id+'.jpg')}" alt="${i.name}"/>
       <div class="ci-inf">
         <div class="ci-nm">${i.name}</div>
         <span class="ci-pr">${i.qty} × ${i.price} ₽</span>
@@ -1187,18 +1216,32 @@ function openDoc(type){
 }
 function closeDoc(){document.getElementById('docov').classList.add('off');}
 
+function openCallModal(){document.getElementById('callov').classList.remove('off');document.body.style.overflow='hidden';}
+function closeCallModal(){document.getElementById('callov').classList.add('off');document.body.style.overflow='';}
+
 function renderFAQ(){
-  document.getElementById('faqGrid').innerHTML=FAQS.map((f,i)=>`
+  document.getElementById('faqGrid').innerHTML=FAQS.map((f,i)=>{
+    const body=Array.isArray(f.a)?f.a.map(p=>`<p>${p}</p>`).join(''):f.a;
+    return `
     <div class="fi" id="fi${i}">
       <button class="fi-q" onclick="toggleFAQ(${i})"><span>${f.q}</span><span class="fi-ch"><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><polyline points="2,4 7,10 12,4" stroke="#888" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
-      <div class="fi-a">${f.a}</div>
-    </div>`).join('');
+      <div class="fi-a">${body}</div>
+    </div>`;
+  }).join('');
 }
 function toggleFAQ(i){
   const el=document.getElementById('fi'+i);
-  const was=el.classList.contains('open');
-  document.querySelectorAll('.fi.open').forEach(x=>x.classList.remove('open'));
-  if(!was)el.classList.add('open');
+  const wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.fi.open').forEach(x=>{
+    x.classList.remove('open');
+    const a=x.querySelector('.fi-a');
+    if(a)a.style.maxHeight='0';
+  });
+  if(!wasOpen){
+    el.classList.add('open');
+    const a=el.querySelector('.fi-a');
+    if(a)a.style.maxHeight=a.scrollHeight+'px';
+  }
 }
 
 function showToast(msg){
@@ -1236,36 +1279,17 @@ document.addEventListener('click',function(e){
 });
 
 // СЕТЫ
-const SETS=[
-  {id:'set1',name:'Выгодный',price:3180,img:'menu-img/3.jpg'},
-  {id:'set2',name:'Топ 5',price:3790,img:'menu-img/1.jpg'},
-  {id:'set3',name:'Green',price:4650,img:'menu-img/6.jpg'},
-];
 function addSet(setId){
   const s=SETS.find(x=>x.id===setId);if(!s)return;
   const ex=cart.find(x=>x.id===setId);
-  if(ex)ex.qty+=1;else cart.push({...s,cat:'set',per:'5 блюд × 2 порции',bg:'#F5F0E8',lbl:'Сет',variant:null,opts:[],qty:1});
+  if(ex)ex.qty+=1;else cart.push({...s,cat:'set',qty:1});
   syncCart();openCart();showToast('Сет «'+s.name+'» добавлен в корзину 🍽');
 }
 
-// ВАРИАНТЫ БЛЮД
-let variantIdx={};
-function cycleVariant(id){
-  const d=DISHES.find(x=>x.id===id);if(!d||!d.opts.length)return;
-  variantIdx[id]=((variantIdx[id]||0)+1)%d.opts.length;
-  const el=document.getElementById('vt'+id);
-  if(el)el.textContent=d.opts[variantIdx[id]];
-}
-
-// НАВИГАЦИЯ К МЕНЮ
+// НАВИГАЦИЯ К МЕНЮ — отдельная страница menu.html, скролл к категории по hash
 function gotoMenu(cat){
-  renderMenu(cat);
-  document.querySelectorAll('.cat-c').forEach(c=>c.classList.remove('act'));
-  const map={'all':0,'soup':1,'salad':2,'breakfast':3,'snack':4,'dessert':5};
-  const btns=document.querySelectorAll('.cat-c');
-  const idx=map[cat]??0;
-  if(btns[idx])btns[idx].classList.add('act');
-  setTimeout(()=>document.getElementById('mn').scrollIntoView({behavior:'smooth'}),50);
+  if(cat && cat!=='all') location.href='menu.html#'+cat;
+  else location.href='menu.html';
 }
 
 // ОФОРМИТЬ ЗАКАЗ
@@ -1305,7 +1329,7 @@ function showYaReviews(){
   window.open('https://yandex.ru/maps/','_blank');
 }
 
-renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
+renderFAQ();setupSmsInputs();
 </script>
 
 <!-- DISH PANEL -->
@@ -1369,33 +1393,22 @@ renderFav();renderMenu('all');renderFAQ();syncCart();setupSmsInputs();
 </div>
 
 <script>
-const DISH_DETAILS={
-  1:{time:25,weight:380,kcal:185,prot:28,fat:9,carb:4,  desc:'Утиная грудка · Картофель 300г · Соус демигляс 80мл · Масло сливочное · Тимьян · Розмарин · Чеснок · Специи'},
-  2:{time:15,weight:360,kcal:155,prot:24,fat:5,carb:10, desc:'Лосось 200г · Киноа 100г · Кабачок 1 шт · Томаты черри 8 шт · Лимон · Оливковое масло · Зелень · Специи'},
-  3:{time:25,weight:400,kcal:195,prot:20,fat:11,carb:8, desc:'Говядина 280г · Томаты пассата 150г · Прованские травы · Чеснок · Лук · Морковь · Оливковое масло · Специи'},
-  4:{time:10,weight:450,kcal:65, prot:5, fat:3, carb:6, desc:'Говядина томлёная 120г · Свёкла · Капуста · Картофель · Морковь · Лук · Томатная паста · Сметана · Ржаной хлеб'},
-  6:{time:10,weight:280,kcal:120,prot:16,fat:6,carb:8,  desc:'Куриное филе гриль 150г · Салат романо · Пармезан 30г · Каперсы 15г · Гренки · Соус Цезарь 40мл · Лимон'},
-  7:{time:20,weight:260,kcal:195,prot:12,fat:9,carb:18, desc:'Творог 5% 200г · Яйцо 2 шт · Мука 60г · Малина 80г · Сметана домашняя 50г · Масло · Сахар · Ваниль'},
-  8:{time:25,weight:180,kcal:310,prot:6, fat:18,carb:32,desc:'Шоколад горький 70% · Масло сливочное · Яйцо 2 шт · Сахар · Мука · Мороженое ванильное 60г · Специи'},
-  9:{time:5, weight:200,kcal:155,prot:5, fat:9, carb:16,desc:'Хлеб чиабатта · Авокадо 1 шт · Рикотта 60г · Томаты вяленые 40г · Базилик · Оливковое масло · Соль · Перец'},
-};
 let dmCurrentId=null,dmPortions={};
 function openDM(id){
   const d=DISHES.find(x=>x.id===id);
-  const det=DISH_DETAILS[id];
-  if(!d||!det)return;
+  if(!d)return;
   dmCurrentId=id;
   if(!dmPortions[id])dmPortions[id]=2;
-  document.getElementById('dmImg').src=d.img;
+  document.getElementById('dmImg').src=P+d.id+'.jpg';
   document.getElementById('dmImg').alt=d.name;
   document.getElementById('dmName').textContent=d.name;
-  document.getElementById('dmTime').textContent=det.time;
-  document.getElementById('dmPortionW').textContent=det.weight;
-  document.getElementById('dmDesc').textContent=det.desc;
-  document.getElementById('dks').textContent=det.kcal;
-  document.getElementById('dps').textContent=det.prot;
-  document.getElementById('dfs').textContent=det.fat;
-  document.getElementById('dcs').textContent=det.carb;
+  document.getElementById('dmTime').textContent=d.time===0?'—':d.time;
+  document.getElementById('dmPortionW').textContent=Math.round(d.weight/2);
+  document.getElementById('dmDesc').textContent=d.desc;
+  document.getElementById('dks').textContent=d.kcal;
+  document.getElementById('dps').textContent=d.prot;
+  document.getElementById('dfs').textContent=d.fat;
+  document.getElementById('dcs').textContent=d.carb;
   const btn=document.getElementById('dmAdd');
   btn.classList.remove('done');
   updateDMPrice();

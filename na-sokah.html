@@ -6,7 +6,7 @@
 <title>НА СОКАХ.Еда — готовьте как шеф за 15 минут</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Golos+Text:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;700;800;900&family=Golos+Text:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.cdnfonts.com/css/gilroy-free" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 <style>
@@ -132,17 +132,17 @@ ul{list-style:none}
 
 /* PICKS ROW */
 #picks{padding:0 0 40px}
-.picks-row{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;padding:4px 0 16px}
+.picks-row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;padding:4px 0 16px}
 .pk{width:auto;border-radius:20px;overflow:hidden;cursor:pointer;transition:box-shadow .25s,transform .25s;display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(0,0,0,.07)}
 .pk:hover{box-shadow:0 10px 28px rgba(0,0,0,.13);transform:translateY(-4px)}
 .pk-top{height:190px;padding:0;overflow:hidden;flex-shrink:0}
 .pk-top img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .4s}
 .pk:hover .pk-top img{transform:scale(1.06)}
-.pk-all{width:auto;border-radius:20px;background:#f0f0f0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;cursor:pointer;text-decoration:none;transition:background .2s,transform .25s}
-.pk-all:hover{background:#e4e4e4;transform:translateY(-4px)}
+.pk-all{width:auto;border-radius:20px;background:#DCDCDC;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;cursor:pointer;text-decoration:none;transition:background .2s,transform .25s}
+.pk-all:hover{background:#CCCCCC;transform:translateY(-4px)}
 .pk-all-btn{background:#fff;border:none;border-radius:100px;padding:11px 20px;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:600;color:#1a1a1a;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
 .pk-all-btn svg{width:16px;height:16px;stroke:#1a1a1a;stroke-width:2;fill:none}
-.pk-bot{background:#fff;padding:10px 14px 14px;display:flex;flex-direction:column;gap:5px}
+.pk-bot{background:#fff;padding:10px 14px 14px;display:flex;flex-direction:column;gap:5px;flex:1}
 .pk-nm{font-family:'Golos Text',sans-serif;font-size:12px;font-weight:400;color:#999;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .pk-pr{font-family:'Golos Text',sans-serif;font-size:18px;font-weight:700;color:#1a1a1a;letter-spacing:-.02em}
 
@@ -247,23 +247,26 @@ ul{list-style:none}
 .tc-tag{display:inline-block;background:var(--card);border-radius:var(--rp);padding:7px 16px;font-size:13px;font-weight:500;color:var(--ink2)}
 
 /* COUNTER */
-#ctr{padding:60px 0 48px;text-align:center}
-.ctr-n{font-family:'Unbounded',sans-serif;font-size:clamp(80px,12vw,130px);font-weight:900;color:#E0E0E0;letter-spacing:-.04em;line-height:1;margin-bottom:14px}
-.ctr-t{font-size:16px;color:var(--ink3);line-height:1.65;max-width:480px;margin:0 auto}
+#ctr{padding:24px 0 56px;text-align:center}
+.ctr-n{font-family:'Unbounded',sans-serif;font-size:clamp(80px,8vw,120px);font-weight:200;color:#cccccc;letter-spacing:-.04em;line-height:1;margin-bottom:18px}
+.ctr-t{font-size:14px;color:#9a9a9a;line-height:1.55;max-width:540px;margin:0 auto}
 .ctr-em{color:var(--ink4);font-style:italic}
 
 /* FAQ */
 #faq{padding:0 0 48px}
 .faq-box{background:#EBEBEB;border-radius:28px;padding:52px 48px 44px}
 .faq-hed{font-family:'Golos Text',sans-serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;color:#4a4a4a;line-height:1.15;letter-spacing:-.02em;margin-bottom:32px}
-.faq-g{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.faq-g{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;align-items:start}
+.faq-col{display:flex;flex-direction:column;gap:10px;min-width:0}
 .fi{background:#fff;border-radius:14px;overflow:hidden}
-.fi-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 22px;gap:12px;text-align:left;font-size:15px;font-weight:400;color:#3a3a3a;cursor:pointer;transition:color .15s;font-family:'Golos Text',sans-serif}
+.fi-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 22px;gap:12px;text-align:left;font-size:15px;font-weight:500;color:#5a5a5a;cursor:pointer;transition:color .15s,padding-bottom .35s cubic-bezier(.4,0,.2,1);font-family:'Golos Text',sans-serif}
+.fi.open .fi-q{padding-bottom:10px}
 .fi-q:hover{color:#1a1a1a}
 .fi-ch{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:#e8e8e8;display:flex;align-items:center;justify-content:center;transition:transform .28s,background .2s}
 .fi.open .fi-ch{transform:rotate(180deg);background:#d4d4d4}
-.fi-a{max-height:0;overflow:hidden;font-size:13.5px;color:var(--ink2);line-height:1.7;padding:0 22px;transition:max-height .32s ease,padding .28s}
-.fi.open .fi-a{max-height:180px;padding:0 22px 18px}
+.fi-a{max-height:0;overflow:hidden;font-size:13.5px;color:var(--ink2);line-height:1.3;padding:0 80px 0 22px;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.fi-a p{margin:0 0 12px}
+.fi-a p:last-child{margin-bottom:0;padding-bottom:22px}
 .faq-ft{display:flex;align-items:center;justify-content:flex-end;gap:16px;flex-wrap:wrap}
 .faq-ft-t{font-family:'Golos Text',sans-serif;font-size:13px;color:#999;line-height:1.5;text-align:right}
 .sb{display:flex;gap:8px}
@@ -273,29 +276,32 @@ ul{list-style:none}
 
 /* FOOTER */
 #ft{background:#f5f5f5;border-radius:var(--rs) var(--rs) 0 0;margin-top:8px;padding:52px 0 36px}
-.ft-g{display:grid;grid-template-columns:2fr 1.4fr 1.4fr;gap:44px;margin-bottom:44px}
-.ft-ct{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#bbb;margin-bottom:18px}
-.ft-lk{display:flex;flex-direction:column;gap:10px}
-.ft-lk a{font-size:14px;color:#888;transition:color .15s}
+.ft-g{display:grid;grid-template-columns:2fr 1.4fr 1.4fr;gap:44px;margin-bottom:36px}
+.ft-ct{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#bbb;margin-bottom:14px}
+.ft-lk{display:flex;flex-direction:column;gap:7px}
+.ft-lk a{font-size:13px;color:#888;transition:color .15s;line-height:1.35}
 .ft-lk a:hover{color:#333}
-.ft-sub{font-size:13px;color:#888;margin-bottom:14px;line-height:1.55}
-.ft-sc{display:flex;gap:10px}
-.ft-sc a{width:68px;height:68px;border-radius:16px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#888;transition:background .15s;text-decoration:none;font-size:28px}
+.ft-sub{font-size:13px;color:#888;margin-bottom:10px;line-height:1.5}
+.ft-sc{display:flex;gap:8px}
+.ft-sc a{width:38px;height:38px;border-radius:12px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#888;transition:background .15s,opacity .15s;text-decoration:none;font-size:20px;overflow:hidden}
 .ft-sc a:hover{background:#d8d8d8}
-.ft-ap{font-size:13px;color:#888;margin-bottom:16px;line-height:1.55}
-.app-bts{display:flex;flex-direction:column;gap:9px}
-.btn-ap{display:flex;align-items:center;gap:12px;background:#e8e8e8;border-radius:11px;padding:11px 16px;color:#333;transition:background .15s}
-.btn-ap:hover{background:#ddd}
-.btn-ap-ic{font-size:22px;flex-shrink:0}
-.btn-ap b{font-size:14px;font-weight:600;display:block;color:#1a1a1a}
-.btn-ap small{font-size:10px;color:#999;display:block;margin-bottom:2px}
-.ft-legal{border-top:1px solid #e0e0e0;padding-top:28px;margin-bottom:28px}
-.ft-legal-g{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px}
-.ft-bt{border-top:1px solid #e0e0e0;padding-top:22px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.ft-sc a img{width:55%;height:55%;object-fit:contain;display:block;filter:grayscale(1) invert(1) brightness(1.1) contrast(.7)}
+.ft-ph{font-size:13px;font-weight:400;color:#555;margin:6px 0 12px;letter-spacing:0;line-height:1.5}
+.ft-ap{font-size:13px;color:#888;margin-bottom:12px;line-height:1.5}
+.app-bts{display:flex;flex-direction:row;gap:8px;flex-wrap:wrap}
+.store-bd{display:inline-flex;align-items:center;gap:8px;background:#e4e4e4;color:#5a5a5a;border-radius:6px;padding:5px 12px;text-decoration:none;min-width:0;transition:background .15s}
+.store-bd:hover{background:#d8d8d8}
+.store-bd-ic{width:20px;height:20px;fill:currentColor;flex-shrink:0}
+.store-bd-tx{display:flex;flex-direction:column;line-height:1}
+.store-bd-tx small{font-size:9px;font-weight:400;letter-spacing:.01em;margin-bottom:2px;color:inherit}
+.store-bd-tx b{font-size:14px;font-weight:600;letter-spacing:-.01em;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:inherit}
+.ft-legal{border-top:1px solid #e0e0e0;padding-top:20px;margin-bottom:20px}
+.ft-legal-g{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+.ft-bt{border-top:1px solid #e0e0e0;padding-top:18px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .ft-eng{font-size:12px;color:#bbb;transition:color .15s}
 .ft-eng:hover{color:#666}
-.ft-pay{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-.pay-b{background:#e4e4e4;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:700;color:#999;letter-spacing:.04em}
+.ft-pay{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ft-pay img{height:32px;width:auto;display:block}
 .ft-copy{margin-left:auto;font-size:11px;color:#bbb}
 
 /* DOC MODAL */
@@ -311,6 +317,19 @@ ul{list-style:none}
 .doc-body h3{font-size:15px;font-weight:700;color:var(--ink);margin:20px 0 8px}
 .doc-body h3:first-child{margin-top:0}
 .doc-body p{margin-bottom:10px}
+
+/* CALL MODAL */
+#callov{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:800;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);animation:fadeUp .18s ease}
+#callov.off{display:none}
+.call-w{position:relative;width:100%;max-width:380px;padding:0 16px}
+.call-b{position:relative;background:#fff;border-radius:var(--rs);padding:36px 28px 28px;display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:0 20px 70px rgba(0,0,0,.2)}
+.call-x{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;background:var(--card);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--ink2);cursor:pointer;transition:background .15s}
+.call-x:hover{background:#e6e6e6}
+.call-title{font-family:'Unbounded',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin-bottom:4px}
+.call-hrs{font-size:13px;color:var(--ink3);margin-bottom:20px}
+.call-phone{font-size:28px;font-weight:700;color:var(--ink);letter-spacing:-.02em;margin-bottom:22px}
+.call-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--or);color:#fff;font-size:15px;font-weight:600;padding:14px 36px;border-radius:var(--rp);text-decoration:none;transition:background .15s;border:none;cursor:pointer;width:100%}
+.call-btn:hover{background:var(--or-d)}
 
 /* COOKIE */
 #cookie{position:fixed;bottom:20px;right:20px;background:#fff;border-radius:var(--rc);box-shadow:0 4px 28px rgba(0,0,0,.13);padding:16px 18px;max-width:318px;z-index:500;display:flex;align-items:flex-start;gap:11px;border:1px solid var(--bdr);animation:fadeUp .3s ease}
@@ -683,11 +702,6 @@ ul{list-style:none}
   </div>
 </section>
 
-<!-- FAV DISHES (скрыт — заменён секцией picks) -->
-<section id="fav" style="display:none">
-  <div class="hs"><div class="fav-row" id="favRow"></div></div>
-</section>
-
 <!-- PICKS ROW -->
 <section id="picks">
   <div class="w">
@@ -704,68 +718,6 @@ ul{list-style:none}
       Остаётся только одно — приготовить ужин за 15 минут, по нашей инструкции<br>
       и удивить себя вкусом уровня шеф-повара.
     </p>
-  </div>
-</section>
-
-<!-- MENU GRID (hidden) -->
-<section id="mn" style="display:none">
-  <div class="w">
-    <div class="mn-layout">
-      <aside class="mn-sidebar">
-        <!-- Регион доставки -->
-        <div class="sb-acc">
-          <div class="sb-acc-hd" onclick="toggleAcc(this)">
-            <div class="sb-fi"><svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path fill="#1a1a1a" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.6" fill="white"/></svg></div>
-            <div class="sb-ft-wrap"><span class="sb-ft">Регион доставки</span><span class="sb-ft-sub">Москва</span></div>
-            <span class="sb-acc-chev">›</span>
-          </div>
-          <div class="sb-acc-body">
-            <div class="sb-acc-inner">
-              <div class="sb-radio"><div class="sb-rdot on"></div><span class="sb-rlabel">Москва и область</span></div>
-            </div>
-          </div>
-        </div>
-        <!-- Неделя доставки -->
-        <div class="sb-acc">
-          <div class="sb-acc-hd" onclick="toggleAcc(this)">
-            <div class="sb-fi"><svg viewBox="0 0 24 24" fill="none" width="22" height="22"><rect x="2.5" y="4.5" width="19" height="17" rx="2" stroke="#1a1a1a" stroke-width="1.6"/><path d="M8 2.5v4M16 2.5v4" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round"/><path d="M2.5 9.5h19" stroke="#1a1a1a" stroke-width="1.4"/><rect x="5.5" y="12" width="2.5" height="2" rx=".4" fill="#1a1a1a"/><rect x="10.8" y="12" width="2.5" height="2" rx=".4" fill="#1a1a1a"/><rect x="16" y="12" width="2.5" height="2" rx=".4" fill="#1a1a1a"/><rect x="5.5" y="15.5" width="2.5" height="2" rx=".4" fill="#1a1a1a"/><rect x="10.8" y="15.5" width="2.5" height="2" rx=".4" fill="#1a1a1a"/><rect x="16" y="15.5" width="2.5" height="2" rx=".4" fill="#1a1a1a"/></svg></div>
-            <div class="sb-ft-wrap"><span class="sb-ft">Неделя доставки</span><span class="sb-ft-sub" id="mnDateLabel"></span></div>
-            <span class="sb-acc-chev">›</span>
-          </div>
-          <div class="sb-acc-body">
-            <div class="sb-acc-inner" id="mnWeekDays"></div>
-          </div>
-        </div>
-        <!-- Настроить меню -->
-        <div class="sb-acc">
-          <div class="sb-acc-hd" onclick="toggleAcc(this)">
-            <div class="sb-fi"><svg viewBox="0 0 24 24" fill="none" width="22" height="22"><polygon points="22,3 2,3 10,12.5 10,19 14,21 14,12.5" stroke="#1a1a1a" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
-            <div class="sb-ft-wrap"><span class="sb-ft">Настроить меню</span><span class="sb-ft-sub">Настройте своё меню</span></div>
-            <span class="sb-acc-chev">›</span>
-          </div>
-          <div class="sb-acc-body">
-            <div class="sb-acc-inner">
-              <div class="sb-chk"><div class="sb-cbox on"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sb-clabel">Основные блюда</span><span class="sb-ccount">39</span></div>
-              <div class="sb-chk"><div class="sb-cbox on"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sb-clabel">Супы</span><span class="sb-ccount">5</span></div>
-              <div class="sb-chk"><div class="sb-cbox on"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sb-clabel">Салаты</span><span class="sb-ccount">7</span></div>
-              <div class="sb-chk"><div class="sb-cbox on"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sb-clabel">Закуски</span><span class="sb-ccount">8</span></div>
-              <div class="sb-chk"><div class="sb-cbox on"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sb-clabel">Завтраки</span><span class="sb-ccount">5</span></div>
-              <div class="sb-chk"><div class="sb-cbox on"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sb-clabel">Десерты</span><span class="sb-ccount">7</span></div>
-            </div>
-          </div>
-        </div>
-        <!-- Подписка -->
-        <div class="sb-sub">
-          <div class="sb-sub-row">
-            <svg viewBox="0 0 20 20" fill="none" width="28" height="28"><rect width="20" height="20" rx="4" fill="#FFD600"/><path d="M5 10.5l3.5 3.5 6.5-7" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span class="sb-sub-pct">−10%</span>
-            <span class="sb-sub-desc">при подписке<br>на все блюда</span>
-          </div>
-          <span class="sb-sub-link" onclick="openSubInfo && openSubInfo()">Что такое подписка?</span>
-        </div>
-      </aside>
-      <div class="mg" id="menuGrid"></div>
-    </div>
   </div>
 </section>
 
@@ -855,7 +807,7 @@ ul{list-style:none}
       <div class="faq-ft">
         <div class="faq-ft-t">Остались вопросы?<br>На связи ежедневно с 6:00 до 23:00</div>
         <div class="sb">
-          <a href="#" style="background:#d0d0d0" title="Позвонить"><i class="fas fa-phone" style="font-size:16px;color:#888"></i></a>
+          <a href="javascript:void(0)" onclick="openCallModal()" style="background:#d0d0d0" title="Позвонить"><i class="fas fa-phone" style="font-size:16px;color:#888"></i></a>
           <a href="#" style="background:#4C75A3" title="ВКонтакте"><i class="fab fa-vk"></i></a>
           <a href="#" style="background:#229ED9" title="Telegram"><i class="fab fa-telegram"></i></a>
           <a href="#" style="background:#EE8208;padding:0;overflow:hidden" title="MAX"><img src="foto/max-icon.png" style="width:44px;height:44px;object-fit:cover;display:block"></a>
@@ -894,23 +846,24 @@ ul{list-style:none}
       <div>
         <div class="ft-ct">На связи</div>
         <div class="ft-sub">Готовы ответить на ваши вопросы<br>ежедневно с 6:00 до 23:00</div>
+        <div class="ft-ph">+7 902 403 9564</div>
         <div class="ft-sc">
           <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
           <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
-          <a href="#" title="Одноклассники"><i class="fab fa-odnoklassniki"></i></a>
+          <a href="#" title="MAX"><img src="foto/max-icon.png" alt="MAX"></a>
         </div>
       </div>
       <div>
         <div class="ft-ct">Так удобнее</div>
         <div class="ft-ap">Ого! В приложении вас ждёт супер-скидка 15% на первый заказ</div>
         <div class="app-bts">
-          <a href="#" class="btn-ap">
-            <span class="btn-ap-ic">🍎</span>
-            <div><small>Загрузить в</small><b>App Store</b></div>
+          <a href="#" class="store-bd">
+            <svg class="store-bd-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div class="store-bd-tx"><small>Download on the</small><b>App Store</b></div>
           </a>
-          <a href="#" class="btn-ap">
-            <span class="btn-ap-ic">▶</span>
-            <div><small>Загрузить в</small><b>Google Play</b></div>
+          <a href="#" class="store-bd">
+            <svg class="store-bd-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.892 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198 2.792 1.617c.453.246.749.726.749 1.265 0 .54-.296 1.02-.749 1.265l-2.797 1.62-2.553-2.553 2.558-2.514zM5.864 2.658 16.802 8.99l-2.302 2.302L5.864 2.658z"/></svg>
+            <div class="store-bd-tx"><small>GET IT ON</small><b>Google Play</b></div>
           </a>
         </div>
       </div>
@@ -934,8 +887,7 @@ ul{list-style:none}
     <div class="ft-bt">
       <a href="#" class="ft-eng">English version</a>
       <div class="ft-pay">
-        <span class="pay-b">МИР</span>
-        <span class="pay-b">MC</span>
+        <img src="foto/IMAGE 2026-04-17 01:37:38.jpg" alt="МИР">
       </div>
       <div class="ft-copy">2013–2026 НА СОКАХ.Еда</div>
     </div>
@@ -1099,6 +1051,19 @@ ul{list-style:none}
   </div>
 </div>
 
+<!-- CALL MODAL -->
+<div id="callov" class="off" onclick="if(event.target===this)closeCallModal()">
+  <div class="call-w">
+    <div class="call-b">
+      <button class="call-x" onclick="closeCallModal()">✕</button>
+      <div class="call-title">Свяжитесь с нами</div>
+      <div class="call-hrs">Ежедневно с 6:00 до 23:00</div>
+      <div class="call-phone">+7 902 403 9564</div>
+      <a class="call-btn" href="tel:+79024039564">Позвонить</a>
+    </div>
+  </div>
+</div>
+
 <!-- CART -->
 <div id="cov" onclick="closeCart()"></div>
 <div id="csb">
@@ -1125,57 +1090,72 @@ ul{list-style:none}
 </div>
 
 <script>
-const DISHES=[
-  {id:1,cat:'main',    name:'Утиная грудка с картофельным пюре и соусом демигляс',price:680,per:'1 порция / 380 г',
-   img:'menu-img/1.jpg',
-   bg:'#C8E6C9',lbl:'Green',variant:'Гарнир',opts:['Картофельное пюре','Гречка','Булгур']},
-  {id:2,cat:'main',    name:'Лосось на пару с киноа и сезонными овощами гриль',price:750,per:'1 порция / 360 г',
-   img:'menu-img/2.jpg',
-   bg:'#FFF9C4',lbl:'Light',variant:'Гарнир',opts:['Киноа','Рис','Кускус']},
-  {id:3,cat:'main',    name:'Говядина тушёная с томатами и прованскими травами',price:590,per:'1 порция / 400 г',
-   img:'menu-img/3.jpg',
-   bg:'#FFE0B2',lbl:'Классика',variant:'Мясо',opts:['Говядина','Телятина']},
-  {id:4,cat:'soup',    name:'Борщ с говядиной, сметаной и чёрным хлебом',price:390,per:'1 порция / 450 мл',
-   img:'menu-img/4.jpg',
-   bg:'#FCE4EC',lbl:'Суп',variant:null,opts:[]},
-  {id:5,cat:'soup',    name:'Крем-суп из тыквы с имбирём и кокосовым молоком',price:360,per:'1 порция / 400 мл',
-   img:'menu-img/5.jpg',
-   bg:'#FFF3E0',lbl:'Суп',variant:null,opts:[]},
-  {id:6,cat:'salad',   name:'Цезарь с куриным филе гриль, пармезаном и каперсами',price:430,per:'1 порция / 280 г',
-   img:'menu-img/6.jpg',
-   bg:'#E8F5E9',lbl:'Салат',variant:null,opts:[]},
-  {id:7,cat:'breakfast',name:'Сырники с малиновым соусом и домашней сметаной',price:320,per:'1 порция / 260 г',
-   img:'menu-img/7.jpg',
-   bg:'#FFF8E1',lbl:'Завтрак',variant:null,opts:[]},
-  {id:8,cat:'dessert', name:'Шоколадный фондан с ванильным мороженым',price:290,per:'1 порция / 180 г',
-   img:'menu-img/8.jpg',
-   bg:'#F3E5F5',lbl:'Десерт',variant:null,opts:[]},
-  {id:9,cat:'snack',   name:'Брускетты с авокадо, рикоттой и вялеными томатами',price:260,per:'1 порция / 200 г',
-   img:'menu-img/9.jpg',
-   bg:'#E3F2FD',lbl:'Закуска',variant:null,opts:[]},
-];
-const FAQS=[
-  {q:'Сколько стоит доставка?',a:'Доставка по Москве и МО бесплатна при заказе от 1 500 ₽. При меньшей сумме — 199 ₽. Для других регионов тариф рассчитывается при оформлении.'},
-  {q:'Как и сколько хранить продукты?',a:'Все ингредиенты упакованы в вакуум. Хранить при 0–4°C до 5–7 дней. Точные даты указаны на каждом пакете.'},
-  {q:'В какие районы доставляете?',a:'По Москве и МО, Санкт-Петербургу. В 2025 году — Нижний Новгород и Казань.'},
-  {q:'Как контролируете качество?',a:'Работаем с сертифицированными фермерами. Каждая партия проходит лабораторный контроль. Готовим строго в день отгрузки.'},
-  {q:'Что я получу в доставке?',a:'Свежие порционные ингредиенты, уже очищенные и нарезанные, плюс пошаговую карточку рецепта на нужное количество порций.'},
-  {q:'Что такое подписка?',a:'Подписка «НА СОКАХ Про» — скидка 10% на все заказы, приоритетная доставка и доступ к эксклюзивному меню. Первый месяц — 290 ₽.'},
-  {q:'Что нужно дома, чтобы готовить?',a:'Только сковорода, кастрюля и базовые специи: соль, перец, масло. Всё остальное привезём в нужных пропорциях.'},
-  {q:'Можно ли сдать упаковку?',a:'Да! Курьер заберёт использованные пакеты при следующей доставке. Перерабатываем более 95% упаковки.'},
-];
+const P = 'menu-img/';
 
-let cart=[], portions={};
-DISHES.forEach(d=>portions[d.id]=2);
-const fmt=n=>n.toLocaleString('ru')+' ₽';
+let DISHES = [], SETS = [], cart = [], portions = {};
+const fmt = n => n.toLocaleString('ru') + ' ₽';
+
+async function bootstrap(){
+  try {
+    const [d, s] = await Promise.all([
+      fetch('data/dishes.json').then(r => { if(!r.ok) throw new Error('dishes '+r.status); return r.json(); }),
+      fetch('data/sets.json').then(r => { if(!r.ok) throw new Error('sets '+r.status); return r.json(); })
+    ]);
+    DISHES = d; SETS = s;
+  } catch(e){
+    console.error('[catalog] Не удалось загрузить data:', e);
+    return;
+  }
+  DISHES.forEach(x => portions[x.id] = 2);
+  renderPicks();
+  syncCart();
+}
+document.addEventListener('DOMContentLoaded', bootstrap);
+const FAQS=[
+  {q:'Сколько стоит доставка?',a:[
+    'Доставка по городу бесплатная при заказе от 2 500 ₽, при заказе на меньшую сумму стоимость доставки зависит от зоны доставки.'
+  ]},
+  {q:'Как и сколько хранить продукты?',a:[
+    'Наборы продуктов из основного меню нужно хранить в оригинальной упаковке в холодильнике — замораживать ничего не нужно.',
+    'Так как в наших блюдах нет консервантов и лишних добавок, срок годности ингредиентов небольшой — обычно 2–7 дней, точный срок смотрите на упаковке.',
+    'При заказе сетов на неделю сроки продуманы так, чтобы готовить по одному блюду в день — на пакете с ингредиентами для каждого блюда указано, на какой день его нужно приготовить.',
+    'А для тех, у кого не всегда есть время и желание готовить каждый день, есть специальная подборка блюд «Про запас». Наборы продуктов из этой категории можно хранить в морозилке 10–60 дней после доставки и приготовить в любой удобный момент.'
+  ]},
+  {q:'В какие районы доставляете?',a:[
+    'Пока доставляем только по Москве и МО.',
+    'Скорость доставки зависит от выбранных блюд: например, сет недели привезём уже на следующий день по Москве и МО (при заказе до 15:00).'
+  ]},
+  {q:'Как контролируете качество?',a:[
+    'Прежде чем принять сырьё на производство, проверяем его на безопасность и качество: температурный режим, внешний вид, вкус, цвет, запах, консистенция. Документы (ВСД, декларации, паспорта качества), условия перевозки.',
+    'На производстве используем ХАССП: отслеживаем риски, контролируем ключевые моменты, следим за чистотой и соблюдаем все этапы процесса для безопасности продукции. Посмотреть на производство можно в Телеграм-канале НА СОКАХ.Еда по хештегу #NA_EDA_производство.',
+    'Качество сырья, продукции и чистоту производства контролируем и подтверждаем протоколами аккредитованных лабораторий. На продукцию есть декларации соответствия, что подтверждает безопасность и качество.'
+  ]},
+  {q:'Что я получу в доставке?',a:[
+    'Курьер привозит коробку с наборами продуктов и рецептами для приготовления выбранных вами блюд.',
+    'Ингредиенты для каждого блюда — в своём крафт-пакете: многие овощи уже очищены и нарезаны; соусы для шефа — уже готовы; специи, крупы, лапша — точно отмерены. На каждом пакете отмечено, когда приготовить.',
+    'Мясо, рыба и морепродукты обычно хранятся отдельно в вакууме в серебристом термопакете, чтобы всё доехало до вас максимально свежим.',
+    'Дополнительно покупать ничего не нужно — вам останется лишь взять пакет с ингредиентами для одного из блюд и приготовить его по рецепту за 15 минут.'
+  ]},
+  {q:'Что такое подписка?',a:[
+    'Подписка — это доставка наших продуктов с рецептами раз в неделю со скидкой 10%. Меню на каждую неделю формируется автоматически — оно похоже на то, что было на предыдущей неделе, но блюда всегда новые и их можно поменять.',
+    'Оплата за первый заказ спишется в момент оформления. Потом оплата будет списываться за 3 дня до даты доставки. Менять дату, время, адрес и блюда в заказе — можно.',
+    'Для подключения подписки оформите заказ на сайте, включив опцию «Скидка по подписке». Для отмены — напишите нам или позвоните +7 902 403 9564 не позднее чем за 2 дня до следующей доставки до 15:00.'
+  ]},
+  {q:'Что нужно дома, чтобы готовить?',a:[
+    'Только сковорода, кастрюля и базовые специи: соль, перец, масло. Всё остальное привезём в нужных пропорциях.'
+  ]},
+  {q:'Можно ли сдать упаковку?',a:[
+    'Да! Курьер заберёт использованные пакеты при следующей доставке. Перерабатываем более 95% упаковки.'
+  ]},
+];
 
 function renderPicks(){
-  const catOrder=['main','salad','soup','snack','dessert'];
-  const shuffled=catOrder.map(cat=>{const pool=DISHES.filter(d=>d.cat===cat);return pool[Math.floor(Math.random()*pool.length)];}).filter(Boolean);
-  document.getElementById('picksRow').innerHTML=shuffled.map(d=>`
+  // Витрина «Самое любимое» — featured-блюда из общего каталога
+  const list = DISHES.filter(d => d.featured);
+  document.getElementById('picksRow').innerHTML=list.map(d=>`
     <div class="pk" onclick="openDM(${d.id})">
       <div class="pk-top">
-        <img src="${d.img}" alt="" loading="lazy"/>
+        <img src="${P}${d.id}.jpg" alt="${d.name}" loading="lazy"/>
       </div>
       <div class="pk-bot">
         <div class="pk-nm">${d.name}</div>
@@ -1187,61 +1167,11 @@ function renderPicks(){
   </a>`;
 }
 
-function renderFav(){
-  const picks=[1,4,7,8,6,3].map(id=>DISHES.find(d=>d.id===id)).filter(Boolean);
-  document.getElementById('favRow').innerHTML=picks.map(d=>`
-    <div class="dc" style="background:${d.bg}" onclick="openDM(${d.id})">
-      <div class="dc-ib">
-        <img class="dc-bg" src="${d.img}" alt="${d.name}" loading="lazy"/>
-      </div>
-      <div class="dc-bd">
-        <div class="dc-nm">${d.name}</div>
-        <div class="dc-pr">${d.price} ₽</div>
-      </div>
-    </div>`).join('')+
-  `<a class="fav-all" href="#mn">
-    <div class="fav-all-icon">→</div>
-    <span>Все меню</span>
-  </a>`;
-}
-
-function renderMenu(cat){
-  const list=cat==='all'?DISHES:DISHES.filter(d=>d.cat===cat);
-  if(!list.length){document.getElementById('menuGrid').innerHTML='<div style="grid-column:1/-1;padding:48px;text-align:center;color:#aaa">Блюда не найдены</div>';return;}
-  document.getElementById('menuGrid').innerHTML=list.map(d=>`
-    <div class="mc">
-      <div class="mc-ib" style="background:${d.bg}">
-        <img class="mc-bg" src="${d.img}" alt="${d.name}" loading="lazy"/>
-        <span class="mc-wm">${d.lbl}</span>
-      </div>
-      <div class="mc-bd">
-        <div class="mc-nm">${d.name}</div>
-        <div class="mc-mt">Цена за 1 порцию · ${d.per}</div>
-        ${d.variant?`<div class="mc-var" onclick="cycleVariant(${d.id})">${d.variant}: <b id="vt${d.id}">${d.opts[variantIdx[d.id]||0]}</b> <span style="color:#bbb">▾</span></div>`:''}
-        <div class="mc-bot">
-          <div><div class="mc-price">${d.price} ₽</div><div class="mc-psub">за порцию</div></div>
-          <div class="mc-acts">
-            <div class="mc-port" onclick="cyclePt(${d.id},this)"><span id="pt${d.id}">${portions[d.id]}</span>&nbsp;порции <span style="color:#bbb">▾</span></div>
-            <button class="mc-cart" id="mb${d.id}" onclick="addCart(${d.id})" title="В корзину">
-              <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>`).join('');
-}
-
 function cyclePt(id,el){
   const s=[1,2,3,4];
   portions[id]=s[(s.indexOf(portions[id])+1)%s.length];
   document.getElementById('pt'+id).textContent=portions[id];
 }
-function doFilter(cat,btn){
-  document.querySelectorAll('.cat-c').forEach(c=>c.classList.remove('act'));
-  btn.classList.add('act');
-  renderMenu(cat);
-}
-
 function addCart(id){
   const d=DISHES.find(x=>x.id===id);if(!d)return;
   const q=portions[id]||2;
@@ -1261,12 +1191,13 @@ function flashBtn(id){
 function syncCart(){
   const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
   const count=cart.reduce((s,i)=>s+i.qty,0);
-  document.getElementById('cPriceLbl').textContent=fmt(total);
-  document.getElementById('csSub').textContent=fmt(total);
-  document.getElementById('csTotal').textContent=fmt(total);
-  document.getElementById('coText').textContent='Оформить заказ '+fmt(total);
+  const setText=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  setText('cPriceLbl',fmt(total));
+  setText('csSub',fmt(total));
+  setText('csTotal',fmt(total));
+  setText('coText','Оформить заказ '+fmt(total));
   const cc=document.getElementById('cCtEl');
-  if(count>0){cc.textContent=count;cc.classList.add('on');}else cc.classList.remove('on');
+  if(cc){if(count>0){cc.textContent=count;cc.classList.add('on');}else cc.classList.remove('on');}
   renderCartItems();
 }
 function renderCartItems(){
@@ -1274,7 +1205,7 @@ function renderCartItems(){
   if(!cart.length){el.innerHTML='<div style="flex:1;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:15px;text-align:center;padding:40px 20px">Корзина пуста 🛒</div>';return;}
   el.innerHTML=cart.map(i=>`
     <div class="ci">
-      <img class="ci-img" src="${i.img}" alt="${i.name}"/>
+      <img class="ci-img" src="${i.img||(P+i.id+'.jpg')}" alt="${i.name}"/>
       <div class="ci-inf">
         <div class="ci-nm">${i.name}</div>
         <span class="ci-pr">${i.qty} × ${i.price} ₽</span>
@@ -1499,36 +1430,62 @@ function openDoc(type){
 function closeDoc(){document.getElementById('docov').classList.add('off');}
 document.getElementById('docov').addEventListener('click',function(e){if(e.target===this)closeDoc();});
 
+function openCallModal(){document.getElementById('callov').classList.remove('off');document.body.style.overflow='hidden';}
+function closeCallModal(){document.getElementById('callov').classList.add('off');document.body.style.overflow='';}
+
 function renderFAQ(){
-  document.getElementById('faqGrid').innerHTML=FAQS.map((f,i)=>`
+  const card=(f,i)=>{
+    const body=Array.isArray(f.a)?f.a.map(p=>`<p>${p}</p>`).join(''):f.a;
+    return `
     <div class="fi" id="fi${i}">
       <button class="fi-q" onclick="toggleFAQ(${i})">
         <span>${f.q}</span><span class="fi-ch"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="2,4 7,10 12,4" stroke="#888" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
-      <div class="fi-a">${f.a}</div>
-    </div>`).join('');
+      <div class="fi-a">${body}</div>
+    </div>`;
+  };
+  const left=FAQS.map((f,i)=>i%2===0?card(f,i):'').join('');
+  const right=FAQS.map((f,i)=>i%2===1?card(f,i):'').join('');
+  document.getElementById('faqGrid').innerHTML=`<div class="faq-col">${left}</div><div class="faq-col">${right}</div>`;
 }
 function toggleFAQ(i){
   const el=document.getElementById('fi'+i);
-  const was=el.classList.contains('open');
-  document.querySelectorAll('.fi.open').forEach(x=>x.classList.remove('open'));
-  if(!was)el.classList.add('open');
+  const wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.fi.open').forEach(x=>{
+    x.classList.remove('open');
+    const a=x.querySelector('.fi-a');
+    if(a)a.style.maxHeight='0';
+  });
+  if(!wasOpen){
+    el.classList.add('open');
+    const a=el.querySelector('.fi-a');
+    if(a)a.style.maxHeight=a.scrollHeight+'px';
+  }
 }
 
 const _savedUser=localStorage.getItem('nasokah_user');
 if(_savedUser)try{currentUser=JSON.parse(_savedUser);}catch(e){}
 updateHeaderUser();
-document.getElementById('loginBtn').onclick=openLogin;
-document.getElementById('cartBtn').onclick=openCart;
-document.getElementById('lov').onclick=e=>{if(e.target===e.currentTarget)closeLogin();};
-document.getElementById('cityBtn').onclick=e=>{e.stopPropagation();document.getElementById('cityDrop').classList.toggle('open');};
-document.addEventListener('click',()=>document.getElementById('cityDrop').classList.remove('open'));
-document.getElementById('cityDrop').querySelectorAll('a').forEach(a=>a.onclick=e=>{
-  e.stopPropagation();
-  const c=a.textContent.replace(' и область','').replace(' и Ленинградской области','');
-  document.getElementById('cityBtn').innerHTML=c+' <span class="city-arr">▾</span>';
-  document.getElementById('cityDrop').classList.remove('open');
-});
+{
+  const loginBtn=document.getElementById('loginBtn');
+  if(loginBtn) loginBtn.onclick=openLogin;
+  const cartBtn=document.getElementById('cartBtn');
+  if(cartBtn) cartBtn.onclick=openCart;
+  const lov=document.getElementById('lov');
+  if(lov) lov.onclick=e=>{if(e.target===e.currentTarget)closeLogin();};
+  const cityBtn=document.getElementById('cityBtn');
+  const cityDrop=document.getElementById('cityDrop');
+  if(cityBtn&&cityDrop){
+    cityBtn.onclick=e=>{e.stopPropagation();cityDrop.classList.toggle('open');};
+    document.addEventListener('click',()=>cityDrop.classList.remove('open'));
+    cityDrop.querySelectorAll('a').forEach(a=>a.onclick=e=>{
+      e.stopPropagation();
+      const c=a.textContent.replace(' и область','').replace(' и Ленинградской области','');
+      cityBtn.innerHTML=c+' <span class="city-arr">▾</span>';
+      cityDrop.classList.remove('open');
+    });
+  }
+}
 
 function showToast(msg){
   let t=document.getElementById('toast');
@@ -1545,36 +1502,17 @@ function showToast(msg){
 }
 
 // СЕТЫ
-const SETS=[
-  {id:'set1',name:'Выгодный',price:3180,img:'menu-img/3.jpg'},
-  {id:'set2',name:'Топ 5',price:3790,img:'menu-img/1.jpg'},
-  {id:'set3',name:'Green',price:4650,img:'menu-img/6.jpg'},
-];
 function addSet(setId){
   const s=SETS.find(x=>x.id===setId);if(!s)return;
   const ex=cart.find(x=>x.id===setId);
-  if(ex)ex.qty+=1;else cart.push({...s,cat:'set',per:'5 блюд × 2 порции',bg:'#F5F0E8',lbl:'Сет',variant:null,opts:[],qty:1});
+  if(ex)ex.qty+=1;else cart.push({...s,cat:'set',qty:1});
   syncCart();openCart();showToast('Сет «'+s.name+'» добавлен в корзину 🍽');
 }
 
-// ВАРИАНТЫ БЛЮД
-let variantIdx={};
-function cycleVariant(id){
-  const d=DISHES.find(x=>x.id===id);if(!d||!d.opts.length)return;
-  variantIdx[id]=((variantIdx[id]||0)+1)%d.opts.length;
-  const el=document.getElementById('vt'+id);
-  if(el)el.textContent=d.opts[variantIdx[id]];
-}
-
-// НАВИГАЦИЯ К МЕНЮ
+// НАВИГАЦИЯ К МЕНЮ — отдельная страница menu.html, скролл к категории по hash
 function gotoMenu(cat){
-  renderMenu(cat);
-  document.querySelectorAll('.cat-c').forEach(c=>c.classList.remove('act'));
-  const map={'all':0,'soup':1,'salad':2,'breakfast':3,'snack':4,'dessert':5};
-  const btns=document.querySelectorAll('.cat-c');
-  const idx=map[cat]??0;
-  if(btns[idx])btns[idx].classList.add('act');
-  setTimeout(()=>document.getElementById('mn').scrollIntoView({behavior:'smooth'}),50);
+  if(cat && cat!=='all') location.href='menu.html#'+cat;
+  else location.href='menu.html';
 }
 
 // ОФОРМИТЬ ЗАКАЗ
@@ -1596,7 +1534,7 @@ function showYaReviews(){
   window.open('https://yandex.ru/maps/','_blank');
 }
 
-renderFav();renderMenu('all');syncCart();setupSmsInputs();
+setupSmsInputs();
 
 // Аккордеон сайдбара
 function toggleAcc(hd){
@@ -1690,33 +1628,22 @@ function toggleAcc(hd){
 </div>
 
 <script>
-const DISH_DETAILS={
-  1:{time:25,weight:380,kcal:185,prot:28,fat:9,carb:4,  desc:'Утиная грудка · Картофель 300г · Соус демигляс 80мл · Масло сливочное · Тимьян · Розмарин · Чеснок · Специи'},
-  2:{time:15,weight:360,kcal:155,prot:24,fat:5,carb:10, desc:'Лосось 200г · Киноа 100г · Кабачок 1 шт · Томаты черри 8 шт · Лимон · Оливковое масло · Зелень · Специи'},
-  3:{time:25,weight:400,kcal:195,prot:20,fat:11,carb:8, desc:'Говядина 280г · Томаты пассата 150г · Прованские травы · Чеснок · Лук · Морковь · Оливковое масло · Специи'},
-  4:{time:10,weight:450,kcal:65, prot:5, fat:3, carb:6, desc:'Говядина томлёная 120г · Свёкла · Капуста · Картофель · Морковь · Лук · Томатная паста · Сметана · Ржаной хлеб'},
-  6:{time:10,weight:280,kcal:120,prot:16,fat:6,carb:8,  desc:'Куриное филе гриль 150г · Салат романо · Пармезан 30г · Каперсы 15г · Гренки · Соус Цезарь 40мл · Лимон'},
-  7:{time:20,weight:260,kcal:195,prot:12,fat:9,carb:18, desc:'Творог 5% 200г · Яйцо 2 шт · Мука 60г · Малина 80г · Сметана домашняя 50г · Масло · Сахар · Ваниль'},
-  8:{time:25,weight:180,kcal:310,prot:6, fat:18,carb:32, desc:'Шоколад горький 70% · Масло сливочное · Яйцо 2 шт · Сахар · Мука · Мороженое ванильное 60г · Специи'},
-  9:{time:5, weight:200,kcal:155,prot:5, fat:9, carb:16, desc:'Хлеб чиабатта · Авокадо 1 шт · Рикотта 60г · Томаты вяленые 40г · Базилик · Оливковое масло · Соль · Перец'},
-};
 let dmCurrentId=null, dmPortions={};
 function openDM(id){
   const d=DISHES.find(x=>x.id===id);
-  const det=DISH_DETAILS[id];
-  if(!d||!det)return;
+  if(!d)return;
   dmCurrentId=id;
   if(!dmPortions[id])dmPortions[id]=2;
-  document.getElementById('dmImg').src=d.img;
+  document.getElementById('dmImg').src=P+d.id+'.jpg';
   document.getElementById('dmImg').alt=d.name;
   document.getElementById('dmName').textContent=d.name;
-  document.getElementById('dmTime').textContent=det.time;
-  document.getElementById('dmPortionW').textContent=det.weight;
-  document.getElementById('dmDesc').textContent=det.desc;
-  document.getElementById('dks').textContent=det.kcal;
-  document.getElementById('dps').textContent=det.prot;
-  document.getElementById('dfs').textContent=det.fat;
-  document.getElementById('dcs').textContent=det.carb;
+  document.getElementById('dmTime').textContent=d.time===0?'—':d.time;
+  document.getElementById('dmPortionW').textContent=Math.round(d.weight/2);
+  document.getElementById('dmDesc').textContent=d.desc;
+  document.getElementById('dks').textContent=d.kcal;
+  document.getElementById('dps').textContent=d.prot;
+  document.getElementById('dfs').textContent=d.fat;
+  document.getElementById('dcs').textContent=d.carb;
   const btn=document.getElementById('dmAdd');
   btn.classList.remove('done');
   updateDMPrice();
@@ -1761,7 +1688,6 @@ function dmAddToCart(){
   setTimeout(()=>{btn.classList.remove('done');updateDMPrice();},1800);
 }
 document.getElementById('dmov').addEventListener('click',function(e){if(e.target===this)closeDM();});
-renderPicks();
 renderFAQ();
 
 const svgMeat='<svg viewBox="0 0 64 64" fill="none" stroke="#555" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M13 33C10 23 16 13 28 10C43 6 56 17 55 31C54 43 42 53 30 52C21 51 16 44 15 38C15 36 14 35 13 33Z"/><path d="M24 36C22 30 25 24 32 22C39 20 46 25 46 32C46 39 39 45 32 45C27 45 25 41 24 36Z"/><circle cx="43" cy="25" r="3"/></svg>';
