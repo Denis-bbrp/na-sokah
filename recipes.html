@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Рецепты — НА СОКАХ.Еда</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Unbounded:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Golos Text',sans-serif;background:#efefef;color:#1a1a1a;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+button{cursor:pointer;font-family:inherit;border:none;outline:none;background:none}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+:root{
+  --or:#F26522;
+  --or-d:#D4501A;
+  --ye:#FFD600;
+  --gr:#3DAA57;
+  --bdr:#e4e4e4;
+  --ink:#1a1a1a;--ink2:#4a4a4a;--ink3:#8a8a8a;
+  --bg:#efefef;
+  --card:#f5f5f5;
+}
+
+/* HEADER */
+#hdr{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--bdr)}
+.w{max-width:1200px;margin:0 auto;padding:0 32px}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:11px;flex-shrink:0}
+.logo img{height:42px;width:auto;display:block}
+.hdr-r{display:flex;align-items:center;gap:10px}
+.hdr-btn{font-size:14px;font-weight:500;color:#1a1a1a;padding:9px 20px;border:1.5px solid var(--bdr);border-radius:8px;transition:border-color .15s,background .15s;font-family:inherit}
+.hdr-btn:hover{border-color:#aaa}
+.hdr-btn-pri{background:var(--or);color:#fff;border-color:var(--or)}
+.hdr-btn-pri:hover{background:var(--or-d);border-color:var(--or-d)}
+
+/* SUBNAV */
+.subnav{border-bottom:1px solid var(--bdr);background:#fff}
+.subnav-in{display:flex;align-items:center;overflow-x:auto;scrollbar-width:none}
+.subnav-in::-webkit-scrollbar{display:none}
+.snav-a{flex-shrink:0;font-size:13px;font-weight:500;color:#888;padding:14px 20px;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:color .15s,border-color .15s}
+.snav-a:hover{color:#1a1a1a}
+.snav-a.act{color:var(--or);border-bottom-color:var(--or)}
+
+/* HERO */
+.hero{background:#fff;border-bottom:1px solid var(--bdr);padding:48px 0 44px}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:#999;margin-bottom:20px}
+.breadcrumb a{color:#999;transition:color .15s}
+.breadcrumb a:hover{color:var(--or)}
+.breadcrumb-sep{font-size:10px;color:#ccc}
+.hero h1{font-family:'Unbounded',sans-serif;font-size:38px;font-weight:700;color:#1a1a1a;letter-spacing:-.02em;margin-bottom:12px;line-height:1.15}
+.hero-sub{font-size:15px;color:#777;line-height:1.6;max-width:580px}
+
+/* TOP DISHES */
+.top-dishes{background:#fff;border-bottom:1px solid var(--bdr);padding:40px 0}
+.top-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:24px;gap:16px}
+.top-title{font-family:'Unbounded',sans-serif;font-size:24px;font-weight:600;letter-spacing:-.01em}
+.top-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+
+/* LAYOUT */
+.page-layout{max-width:1200px;margin:0 auto;padding:0 32px 80px;display:grid;grid-template-columns:240px 1fr;gap:0}
+
+/* SIDEBAR */
+.sidebar{padding:32px 28px 32px 0;position:sticky;top:113px;height:fit-content;border-right:1px solid var(--bdr)}
+.sb-title{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#aaa;margin-bottom:14px}
+.sb-nav-list{margin-bottom:28px}
+.sb-nav-item{display:flex;align-items:center;font-size:14px;color:#666;padding:9px 12px;border-radius:8px;cursor:pointer;transition:all .15s;margin-bottom:2px}
+.sb-nav-item:hover{background:#e8e8e8;color:#1a1a1a}
+.sb-nav-item.act{background:var(--or);color:#fff;font-weight:600}
+.sb-nav-item .sb-nav-name{flex:1}
+.sb-nav-count{font-size:12px;color:#bbb;font-weight:400;flex-shrink:0;margin-left:8px}
+.sb-nav-item.act .sb-nav-count{color:rgba(255,255,255,.7)}
+.sb-divider{height:1px;background:var(--bdr);margin:20px 0}
+.sb-tag-title{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#aaa;margin-bottom:12px}
+.sb-tags{display:flex;flex-wrap:wrap;gap:6px}
+.sb-tag{font-size:12px;color:#666;padding:6px 12px;border:1px solid var(--bdr);border-radius:20px;cursor:pointer;transition:all .15s;white-space:nowrap;background:#fff}
+.sb-tag:hover{border-color:#aaa;color:#1a1a1a}
+.sb-tag.act{background:var(--or);border-color:var(--or);color:#fff}
+.sb-promo{padding:18px;background:#fff;border-radius:12px;border:1px solid var(--bdr);margin-top:8px}
+.sb-promo-t{font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:6px}
+.sb-promo-s{font-size:12px;color:#777;line-height:1.5;margin-bottom:12px}
+.sb-promo-a{display:inline-block;font-size:12px;font-weight:600;color:var(--or);border-bottom:1px solid var(--or);padding-bottom:1px}
+
+/* MAIN */
+.recipes-main{padding:32px 0 0 36px;min-width:0}
+
+/* FILTER BAR */
+.filter-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--bdr)}
+.filter-pill{font-size:13px;font-weight:500;padding:7px 16px;border-radius:24px;border:1px solid var(--bdr);color:#666;cursor:pointer;transition:all .15s;white-space:nowrap;background:#fff;font-family:inherit}
+.filter-pill:hover{border-color:#aaa;color:#1a1a1a}
+.filter-pill.act{background:#1a1a1a;border-color:#1a1a1a;color:#fff}
+
+/* SECTION */
+.rec-section{margin-bottom:48px;animation:fadeUp .35s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.sec-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px;gap:16px}
+.sec-title-wrap{display:flex;align-items:baseline;gap:10px}
+.sec-title{font-family:'Unbounded',sans-serif;font-size:22px;font-weight:600;color:#1a1a1a;letter-spacing:-.01em}
+.sec-count{font-size:13px;color:#aaa}
+.sec-link{font-size:13px;color:#666;font-weight:500;border-bottom:1px solid #ddd;padding-bottom:1px;transition:color .15s,border-color .15s;flex-shrink:0}
+.sec-link:hover{color:var(--or);border-color:var(--or)}
+
+/* CATEGORY HEADER (in single category view) */
+.cat-hdr{background:#fff;border-radius:14px;border:1px solid var(--bdr);padding:24px;margin-bottom:24px}
+.cat-hdr-t{font-family:'Unbounded',sans-serif;font-size:24px;font-weight:600;margin-bottom:8px;letter-spacing:-.01em}
+.cat-hdr-d{font-size:14px;color:#666;line-height:1.6}
+.cat-hdr-cnt{margin-top:12px;font-size:13px;color:#aaa}
+
+/* CARDS */
+.cat-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cat-card{border-radius:14px;overflow:hidden;border:1px solid var(--bdr);background:#fff;transition:box-shadow .2s,transform .2s;cursor:pointer;display:flex;flex-direction:column}
+.cat-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.08);transform:translateY(-2px)}
+.cat-card-img{height:180px;overflow:hidden;background:#f0f0ec;position:relative;flex-shrink:0}
+.cat-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.cat-card:hover .cat-card-img img{transform:scale(1.05)}
+.cat-card-img-fb{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#e8e8e0;color:#aaa;font-size:13px}
+.cat-card-badge{position:absolute;top:10px;left:10px;background:var(--or);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;letter-spacing:.02em}
+.cat-card-body{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column}
+.cat-card-name{font-size:14px;font-weight:600;color:#1a1a1a;margin-bottom:6px;line-height:1.35}
+.cat-card-desc{font-size:13px;color:#888;line-height:1.5;flex:1}
+.cat-card-price{font-size:15px;font-weight:700;color:#1a1a1a;margin-top:8px}
+
+/* MINI CARDS */
+.dishes-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.dish-mini{border-radius:12px;border:1px solid var(--bdr);background:#fff;overflow:hidden;transition:box-shadow .2s;cursor:pointer}
+.dish-mini:hover{box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.dm-img{height:130px;overflow:hidden;background:#f0f0ec}
+.dm-img img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.dish-mini:hover .dm-img img{transform:scale(1.04)}
+.dm-img-fb{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#e8e8e0;color:#aaa;font-size:12px}
+.dm-body{padding:10px 12px 12px}
+.dm-name{font-size:12px;font-weight:500;color:#1a1a1a;line-height:1.4;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:34px}
+.dm-price{font-size:14px;font-weight:700;color:#1a1a1a}
+.dm-tag{font-size:10px;color:#aaa;margin-top:2px}
+
+img[src$="/14.jpg"]{object-fit:contain !important;background:#fff}
+
+/* MOBILE FALLBACK (узкий экран на этой странице) */
+@media(max-width:768px){
+  .w{padding:0 16px}
+  .hero{padding:28px 0 24px}
+  .hero h1{font-size:26px}
+  .page-layout{grid-template-columns:1fr;padding:0 16px 60px}
+  .sidebar{display:none}
+  .recipes-main{padding:20px 0 0}
+  .cat-cards-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .cat-card-img{height:130px}
+  .dishes-row{grid-template-columns:1fr 1fr;gap:10px}
+  .top-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .filter-bar{overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
+  .filter-bar::-webkit-scrollbar{display:none}
+  .sec-title{font-size:20px}
+  .top-title{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="w">
+    <div class="hdr-in">
+      <a href="na-sokah.html" class="logo">
+        <img src="logo/logo-full.png" alt="НА СОКАХ.Еда"/>
+      </a>
+      <div class="hdr-r">
+        <a href="menu.html" class="hdr-btn">Меню блюд</a>
+        <a href="na-sokah.html" class="hdr-btn hdr-btn-pri">На главную</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="subnav">
+  <div class="w">
+    <div class="subnav-in">
+      <span class="snav-a act" data-snav="all" onclick="filterCat('all')">Все рецепты</span>
+      <span class="snav-a" data-snav="main" onclick="filterCat('main')">Основные блюда</span>
+      <span class="snav-a" data-snav="soup" onclick="filterCat('soup')">Супы</span>
+      <span class="snav-a" data-snav="salad" onclick="filterCat('salad')">Салаты</span>
+      <span class="snav-a" data-snav="snack" onclick="filterCat('snack')">Закуски</span>
+      <span class="snav-a" data-snav="breakfast" onclick="filterCat('breakfast')">Завтраки</span>
+      <span class="snav-a" data-snav="dessert" onclick="filterCat('dessert')">Десерты</span>
+      <span class="snav-a" data-snav="extras" onclick="filterCat('extras')">Приятные мелочи</span>
+      <span class="snav-a" data-snav="farm" onclick="filterCat('farm')">Фермерское</span>
+    </div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="w">
+    <div class="breadcrumb">
+      <a href="na-sokah.html">Главная</a>
+      <span class="breadcrumb-sep">›</span>
+      <span style="color:#1a1a1a">Рецепты</span>
+    </div>
+    <h1>Пошаговые рецепты<br>от нашего шефа</h1>
+    <div class="hero-sub">Каталог авторских рецептов с фотографиями и подробными инструкциями. Для любого блюда можно заказать набор со всеми ингредиентами.</div>
+  </div>
+</div>
+
+<div class="top-dishes">
+  <div class="w">
+    <div class="top-header">
+      <div class="top-title">Хиты недели</div>
+      <a href="menu.html" class="sec-link">Смотреть всё меню →</a>
+    </div>
+    <div class="top-grid" id="top-grid"></div>
+  </div>
+</div>
+
+<div class="page-layout">
+
+  <aside class="sidebar">
+    <div class="sb-title">Категории</div>
+    <div class="sb-nav-list">
+      <div class="sb-nav-item act" data-cat="all" onclick="filterCat('all')">
+        <span class="sb-nav-name">Все рецепты</span>
+        <span class="sb-nav-count" id="cnt-all"></span>
+      </div>
+      <div class="sb-nav-item" data-cat="main" onclick="filterCat('main')">
+        <span class="sb-nav-name">Основные блюда</span>
+        <span class="sb-nav-count" id="cnt-main"></span>
+      </div>
+      <div class="sb-nav-item" data-cat="soup" onclick="filterCat('soup')">
+        <span class="sb-nav-name">Супы</span>
+        <span class="sb-nav-count" id="cnt-soup"></span>
+      </div>
+      <div class="sb-nav-item" data-cat="salad" onclick="filterCat('salad')">
+        <span class="sb-nav-name">Салаты</span>
+        <span class="sb-nav-count" id="cnt-salad"></span>
+      </div>
+      <div class="sb-nav-item" data-cat="snack" onclick="filterCat('snack')">
+        <span class="sb-nav-name">Закуски</span>
+        <span class="sb-nav-count" id="cnt-snack"></span>
+      </div>
+      <div class="sb-nav-item" data-cat="breakfast" onclick="filterCat('breakfast')">
+        <span class="sb-nav-name">Завтраки</span>
+        <span class="sb-nav-count" id="cnt-breakfast"></span>
+      </div>
+      <div class="sb-nav-item" data-cat="dessert" onclick="filterCat('dessert')">
+        <span class="sb-nav-name">Десерты</span>
+        <span class="sb-nav-count" id="cnt-dessert"></span>
+      </div>
+      <div class="sb-nav-item" data-cat="extras" onclick="filterCat('extras')">
+        <span class="sb-nav-name">Приятные мелочи</span>
+        <span class="sb-nav-count" id="cnt-extras"></span>
+      </div>
+      <div class="sb-nav-item" data-cat="farm" onclick="filterCat('farm')">
+        <span class="sb-nav-name">Фермерское</span>
+        <span class="sb-nav-count" id="cnt-farm"></span>
+      </div>
+    </div>
+
+    <div class="sb-divider"></div>
+
+    <div class="sb-tag-title">Фильтры</div>
+    <div class="sb-tags">
+      <span class="sb-tag" onclick="toggleTag(this,'fast')">До 15 мин</span>
+      <span class="sb-tag" onclick="toggleTag(this,'cheap')">До 400 ₽</span>
+      <span class="sb-tag" onclick="toggleTag(this,'veg')">Без мяса</span>
+      <span class="sb-tag" onclick="toggleTag(this,'light')">Лёгкое</span>
+      <span class="sb-tag" onclick="toggleTag(this,'fish')">Рыба</span>
+      <span class="sb-tag" onclick="toggleTag(this,'chicken')">Курица</span>
+    </div>
+
+    <div class="sb-divider"></div>
+
+    <div class="sb-promo">
+      <div class="sb-promo-t">Скидка 10%</div>
+      <div class="sb-promo-s">При подписке на еженедельную доставку</div>
+      <a href="menu.html" class="sb-promo-a">Оформить подписку →</a>
+    </div>
+  </aside>
+
+  <main class="recipes-main">
+    <div class="filter-bar" id="filter-bar">
+      <span class="filter-pill act" data-pill="all" onclick="filterCat('all')">Все</span>
+      <span class="filter-pill" data-pill="main" onclick="filterCat('main')">Основные</span>
+      <span class="filter-pill" data-pill="soup" onclick="filterCat('soup')">Супы</span>
+      <span class="filter-pill" data-pill="salad" onclick="filterCat('salad')">Салаты</span>
+      <span class="filter-pill" data-pill="snack" onclick="filterCat('snack')">Закуски</span>
+      <span class="filter-pill" data-pill="breakfast" onclick="filterCat('breakfast')">Завтраки</span>
+      <span class="filter-pill" data-pill="dessert" onclick="filterCat('dessert')">Десерты</span>
+      <span class="filter-pill" data-pill="extras" onclick="filterCat('extras')">Мелочи</span>
+      <span class="filter-pill" data-pill="farm" onclick="filterCat('farm')">Фермерское</span>
+    </div>
+    <div id="recipes-content"></div>
+  </main>
+</div>
+
+<script>
+const P='menu-img/';
+const fmt=n=>n.toLocaleString('ru')+' ₽';
+
+const CATS=[
+  {id:'main',     name:'Основные блюда',    desc:'Сытные блюда на обед и ужин — от пасты и ризотто до стейков и боулов.'},
+  {id:'soup',     name:'Супы',              desc:'Первые блюда из разных кухонь мира: от борща до том ям.'},
+  {id:'salad',    name:'Салаты',            desc:'Свежие и сытные салаты с авторскими заправками.'},
+  {id:'snack',    name:'Закуски',           desc:'Питы, вареники, сэндвичи и другие лёгкие закуски.'},
+  {id:'breakfast',name:'Завтраки',          desc:'Быстрые и вкусные завтраки для хорошего начала дня.'},
+  {id:'dessert',  name:'Десерты',           desc:'Сладкие финалы — капкейки, чизкейки, смузи и выпечка.'},
+  {id:'extras',   name:'Приятные мелочи',   desc:'Авторские соусы, джемы и фермерские молочные продукты.'},
+  {id:'farm',     name:'Фермерские продукты',desc:'Свежие продукты с фермы: птица, рыба, готовые деликатесы.'},
+];
+
+let DISHES=[];
+let activeCat='all';
+let activeTags=new Set();
+
+async function bootstrap(){
+  try{
+    const r=await fetch('data/dishes.json');
+    DISHES=await r.json();
+  }catch(e){console.error(e);return;}
+
+  CATS.forEach(c=>{
+    const el=document.getElementById('cnt-'+c.id);
+    if(el)el.textContent=DISHES.filter(d=>d.cat===c.id).length;
+  });
+  const allEl=document.getElementById('cnt-all');
+  if(allEl)allEl.textContent=DISHES.length;
+
+  renderTop();
+  renderAll();
+}
+
+function renderTop(){
+  const featured=DISHES.filter(d=>d.featured);
+  const items=featured.length>=4?featured.slice(0,4):DISHES.slice(0,4);
+  document.getElementById('top-grid').innerHTML=items.map(dishMiniCard).join('');
+}
+
+function dishMiniCard(d){
+  return `<div class="dish-mini" onclick="openDish(${d.id})">
+    <div class="dm-img"><img src="${P}${d.id}.jpg" alt="${d.name}" loading="lazy"/></div>
+    <div class="dm-body">
+      <div class="dm-name">${d.name}</div>
+      <div class="dm-price">${fmt(d.price)}</div>
+      <div class="dm-tag">${d.time>0?d.time+' мин · ':''}${d.weight} г</div>
+    </div>
+  </div>`;
+}
+
+function catDishCard(d){
+  const fast=d.time<=15&&d.time>0;
+  return `<div class="cat-card" onclick="openDish(${d.id})">
+    <div class="cat-card-img">
+      <img src="${P}${d.id}.jpg" alt="${d.name}" loading="lazy"/>
+      ${fast?'<div class="cat-card-badge">Быстро</div>':''}
+    </div>
+    <div class="cat-card-body">
+      <div class="cat-card-name">${d.name}</div>
+      <div class="cat-card-desc">${d.time>0?d.time+' мин · ':''}${d.weight} г</div>
+      <div class="cat-card-price">${fmt(d.price)}</div>
+    </div>
+  </div>`;
+}
+
+function filterDishes(dishes){
+  let r=dishes;
+  if(activeTags.has('fast'))r=r.filter(d=>d.time<=15&&d.time>0);
+  if(activeTags.has('cheap'))r=r.filter(d=>d.price<=400);
+  if(activeTags.has('veg'))r=r.filter(d=>d.cat==='salad'||d.cat==='dessert'||d.cat==='extras'||(d.tag&&(d.tag.includes('паста')||d.tag.includes('веган'))));
+  if(activeTags.has('light'))r=r.filter(d=>d.kcal<=150);
+  if(activeTags.has('fish'))r=r.filter(d=>d.tag&&(d.tag.includes('рыба')||d.tag.includes('лосось')||d.tag.includes('тунец')||d.tag.includes('окунь')||d.tag.includes('сом')||d.tag.includes('креветки')||d.tag.includes('кальмар')));
+  if(activeTags.has('chicken'))r=r.filter(d=>d.tag&&d.tag.includes('курица'));
+  return r;
+}
+
+function renderAll(){
+  const content=document.getElementById('recipes-content');
+
+  if(activeCat==='all'){
+    let html='';
+    CATS.forEach((cat,i)=>{
+      const dishes=filterDishes(DISHES.filter(d=>d.cat===cat.id));
+      if(dishes.length===0)return;
+      const preview=dishes.slice(0,3);
+      html+=`<div class="rec-section" id="sec-${cat.id}" style="animation-delay:${i*0.05}s">
+        <div class="sec-header">
+          <div class="sec-title-wrap">
+            <span class="sec-title">${cat.name}</span>
+            <span class="sec-count">${dishes.length}</span>
+          </div>
+          <span class="sec-link" onclick="filterCat('${cat.id}')" style="cursor:pointer">Все рецепты →</span>
+        </div>
+        <div class="cat-cards-grid">
+          ${preview.map(catDishCard).join('')}
+        </div>
+      </div>`;
+    });
+    content.innerHTML=html||'<div style="padding:40px;text-align:center;color:#aaa">Ничего не найдено по выбранным фильтрам</div>';
+  }else{
+    const cat=CATS.find(c=>c.id===activeCat);
+    const dishes=filterDishes(DISHES.filter(d=>d.cat===activeCat));
+    let html=`<div class="rec-section">
+      <div class="cat-hdr">
+        <div class="cat-hdr-t">${cat.name}</div>
+        <div class="cat-hdr-d">${cat.desc}</div>
+        <div class="cat-hdr-cnt">${dishes.length} рецептов</div>
+      </div>
+      ${dishes.length?`<div class="dishes-row">${dishes.map(dishMiniCard).join('')}</div>`:'<div style="padding:40px;text-align:center;color:#aaa">Ничего не найдено по выбранным фильтрам</div>'}
+    </div>`;
+    content.innerHTML=html;
+  }
+}
+
+function filterCat(cat){
+  activeCat=cat;
+  document.querySelectorAll('.sb-nav-item').forEach(el=>el.classList.toggle('act',el.dataset.cat===cat));
+  document.querySelectorAll('.snav-a').forEach(el=>el.classList.toggle('act',el.dataset.snav===cat));
+  document.querySelectorAll('.filter-pill').forEach(el=>el.classList.toggle('act',el.dataset.pill===cat));
+  renderAll();
+  window.scrollTo({top:document.querySelector('.page-layout').offsetTop-80,behavior:'smooth'});
+}
+
+function toggleTag(el,tag){
+  if(activeTags.has(tag)){activeTags.delete(tag);el.classList.remove('act');}
+  else{activeTags.add(tag);el.classList.add('act');}
+  renderAll();
+}
+
+function openDish(id){
+  window.location='recipe.html?id='+id;
+}
+
+document.addEventListener('DOMContentLoaded',bootstrap);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1"/>
+<title>Рецепт — НА СОКАХ.Еда</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Golos Text',sans-serif;background:#fff;color:#1a1a1a;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:90px}
+img{display:block;max-width:100%}
+button{cursor:pointer;font-family:inherit;border:none;outline:none;background:none}
+a{text-decoration:none;color:inherit}
+:root{
+  --or:#F26522;--or-d:#D4501A;
+  --ye:#FFD600;
+  --bdr:#e4e4e4;
+  --ink:#1a1a1a;--ink2:#4a4a4a;--ink3:#8a8a8a;
+}
+
+/* HEADER */
+#hdr{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--bdr)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 14px}
+.h-back{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f3f3f3}
+.h-logo img{height:32px;width:auto;display:block}
+.h-spc{width:40px}
+
+/* CONTENT */
+.r-wrap{padding:0 16px}
+
+/* BREADCRUMB */
+.r-bc{padding:14px 0 6px;font-size:12px;color:#999}
+.r-bc a{color:#999}
+.r-bc-sep{color:#ddd;margin:0 4px}
+
+/* TITLE */
+.r-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;line-height:1.1;letter-spacing:-.01em;color:#1a1a1a;margin:6px 0 18px}
+
+/* HERO IMAGE */
+.r-hero{width:100%;height:280px;background:#f0f0ec;border-radius:14px;overflow:hidden;margin-bottom:20px}
+.r-hero img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* SUBHEAD */
+.r-sub{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding-bottom:18px;border-bottom:1px solid var(--bdr);margin-bottom:22px;flex-wrap:wrap}
+.r-sub-name{font-size:17px;font-weight:700;flex:1;min-width:160px;line-height:1.3}
+.r-sub-meta{display:flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--bdr);border-radius:24px;font-size:13px;color:#555;flex-shrink:0}
+.r-sub-meta svg{flex-shrink:0;color:#888}
+.r-sub-meta b{font-weight:700;color:#1a1a1a}
+
+/* SECTIONS */
+.r-sec{margin-bottom:24px}
+.r-sec-t{font-size:18px;font-weight:700;color:#1a1a1a;margin-bottom:10px}
+.r-text{font-size:14px;color:#3a3a3a;line-height:1.6}
+
+.r-kitchen{display:flex;flex-direction:column;gap:8px}
+.r-kitchen-i{display:flex;align-items:center;gap:10px;font-size:14px;color:#3a3a3a}
+.r-kitchen-d{width:6px;height:6px;border-radius:50%;background:var(--or);flex-shrink:0;margin-left:4px}
+
+.r-howto-empty{padding:18px;background:#f8f8f5;border-radius:12px;text-align:center;color:#888;font-size:13px;line-height:1.55}
+
+/* TAGS */
+.r-tags{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:18px;border-bottom:1px solid var(--bdr);margin-bottom:22px}
+.r-tag{font-size:12px;color:#555;padding:5px 12px;border:1px solid var(--bdr);border-radius:18px;background:#fff;font-weight:500}
+
+/* BOTTOM META */
+.r-bm{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:18px 0;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);margin-bottom:28px}
+.r-bm-t{font-size:12px;color:#888;margin-bottom:4px}
+.r-bm-v{font-size:16px;font-weight:700;color:#1a1a1a}
+.r-bm-v span{font-weight:400;color:#666;font-size:13px;margin-left:3px}
+
+/* SIMILAR */
+.r-sim-t{font-size:18px;font-weight:700;margin-bottom:14px}
+.r-sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.r-sim-card{border-radius:12px;background:#fff;border:1px solid var(--bdr);overflow:hidden;cursor:pointer;display:flex;flex-direction:column}
+.r-sim-img{height:130px;background:#f0f0ec;overflow:hidden}
+.r-sim-img img{width:100%;height:100%;object-fit:cover}
+.r-sim-body{padding:10px 12px}
+.r-sim-name{font-size:12px;font-weight:600;color:#1a1a1a;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:32px}
+
+/* CTA */
+.r-cta-wrap{position:fixed;left:0;right:0;bottom:0;padding:12px 16px;background:#fff;border-top:1px solid var(--bdr);z-index:300;display:flex;justify-content:center}
+.r-cta{width:100%;max-width:420px;background:var(--ye);color:#1a1a1a;font-size:15px;font-weight:700;padding:15px 24px;border-radius:12px;font-family:inherit}
+
+img[src$="/14.jpg"]{object-fit:contain !important;background:#fff}
+
+/* NOT FOUND */
+.r-nf{padding:60px 16px;text-align:center}
+.r-nf-t{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:10px}
+.r-nf-s{font-size:14px;color:#888;margin-bottom:20px}
+.r-nf-b{display:inline-block;padding:12px 24px;background:var(--or);color:#fff;border-radius:10px;font-weight:600}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="hdr-in">
+    <a href="recipes-mobile.html" class="h-back" aria-label="Назад">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+    <a href="mobile.html" class="h-logo">
+      <img src="logo/logo-mobile.png" alt="НА СОКАХ.Еда"/>
+    </a>
+    <div class="h-spc"></div>
+  </div>
+</header>
+
+<div class="r-wrap" id="page-root"></div>
+
+<script>
+const P='menu-img/';
+const CAT_NAMES={
+  main:'Основные блюда', soup:'Супы', salad:'Салаты', snack:'Закуски',
+  breakfast:'Завтраки', dessert:'Десерты', extras:'Приятные мелочи', farm:'Фермерские продукты'
+};
+
+let DISHES=[];
+
+async function bootstrap(){
+  try{
+    const r=await fetch('data/dishes.json');
+    DISHES=await r.json();
+  }catch(e){console.error(e);return;}
+  render();
+}
+
+function getId(){
+  const p=new URLSearchParams(window.location.search);
+  return parseInt(p.get('id'),10);
+}
+
+function render(){
+  const id=getId();
+  const dish=DISHES.find(d=>d.id===id);
+  const root=document.getElementById('page-root');
+
+  if(!dish){
+    root.innerHTML=`<div class="r-nf">
+      <div class="r-nf-t">Рецепт не найден</div>
+      <div class="r-nf-s">Похоже, такого блюда у нас нет.</div>
+      <a href="recipes-mobile.html" class="r-nf-b">К рецептам</a>
+    </div>`;
+    return;
+  }
+
+  document.title=`Рецепт: ${dish.name} — НА СОКАХ.Еда`;
+  const similar=DISHES.filter(d=>d.cat===dish.cat&&d.id!==dish.id).slice(0,4);
+
+  root.innerHTML=`
+    <div class="r-bc">
+      <a href="mobile.html">Главная</a><span class="r-bc-sep">/</span><a href="recipes-mobile.html">Рецепты</a>
+    </div>
+    <h1 class="r-title">Рецепт: ${dish.name}</h1>
+
+    <div class="r-hero"><img src="${P}${dish.id}.jpg" alt="${dish.name}"/></div>
+
+    <div class="r-sub">
+      <div class="r-sub-name">${dish.name}</div>
+      <div class="r-sub-meta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <b>${dish.weight} г</b>
+        ${dish.time>0?`<span style="color:#ccc">·</span><b>${dish.time}</b><span>мин</span>`:''}
+      </div>
+    </div>
+
+    <div class="r-sec">
+      <div class="r-sec-t">В наборе</div>
+      <div class="r-text">${dish.desc}</div>
+    </div>
+
+    <div class="r-sec">
+      <div class="r-sec-t">На вашей кухне</div>
+      <div class="r-kitchen">
+        <div class="r-kitchen-i"><span class="r-kitchen-d"></span>доска</div>
+        <div class="r-kitchen-i"><span class="r-kitchen-d"></span>миска</div>
+        <div class="r-kitchen-i"><span class="r-kitchen-d"></span>масло</div>
+        <div class="r-kitchen-i"><span class="r-kitchen-d"></span>соль</div>
+        <div class="r-kitchen-i"><span class="r-kitchen-d"></span>перец</div>
+      </div>
+    </div>
+
+    <div class="r-sec">
+      <div class="r-sec-t">Как готовить</div>
+      <div class="r-howto-empty">Пошаговая инструкция скоро появится.<br>Закажите набор ингредиентов и приготовьте за ${dish.time||15} мин.</div>
+    </div>
+
+    <div class="r-tags">
+      <span class="r-tag">${CAT_NAMES[dish.cat]||dish.cat}</span>
+      ${dish.tag?`<span class="r-tag">${dish.tag.replace(/^Рецепт:\s*/,'')}</span>`:''}
+      ${dish.time<=15&&dish.time>0?'<span class="r-tag">До 15 мин</span>':''}
+      ${dish.kcal<=150?'<span class="r-tag">Лёгкое</span>':''}
+      ${dish.price<=400?'<span class="r-tag">До 400 ₽</span>':''}
+    </div>
+
+    <div class="r-bm">
+      <div>
+        <div class="r-bm-t">Сколько получится?</div>
+        <div class="r-bm-v">${dish.weight}<span>г</span></div>
+      </div>
+      <div>
+        <div class="r-bm-t">Сколько готовить?</div>
+        <div class="r-bm-v">${dish.time||'—'}<span>${dish.time?'минут':''}</span></div>
+      </div>
+    </div>
+
+    ${similar.length?`
+    <div class="r-sim-t">Похожие рецепты:</div>
+    <div class="r-sim-grid">
+      ${similar.map(d=>`
+        <a class="r-sim-card" href="recipe-mobile.html?id=${d.id}">
+          <div class="r-sim-img"><img src="${P}${d.id}.jpg" alt="${d.name}" loading="lazy"/></div>
+          <div class="r-sim-body"><div class="r-sim-name">${d.name}</div></div>
+        </a>
+      `).join('')}
+    </div>`:''}
+
+    <div class="r-cta-wrap">
+      <button class="r-cta" onclick="window.location='menu.html#${dish.cat}'">Хочу попробовать!</button>
+    </div>
+  `;
+}
+
+document.addEventListener('DOMContentLoaded',bootstrap);
+</script>
+
+</body>
+</html>

@@ -278,7 +278,7 @@ ul{list-style:none}
 #ft{background:#f5f5f5;border-radius:var(--rs) var(--rs) 0 0;margin-top:8px;padding:52px 0 36px}
 .ft-g{display:grid;grid-template-columns:2fr 1.4fr 1.4fr;gap:44px;margin-bottom:36px}
 .ft-ct{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#bbb;margin-bottom:14px}
-.ft-lk{display:flex;flex-direction:column;gap:7px}
+.ft-lk{display:flex;flex-direction:column;gap:3px}
 .ft-lk a{font-size:13px;color:#888;transition:color .15s;line-height:1.35}
 .ft-lk a:hover{color:#333}
 .ft-sub{font-size:13px;color:#888;margin-bottom:10px;line-height:1.5}
@@ -553,6 +553,42 @@ ul{list-style:none}
 .qfoot{background:#272727;padding:20px;text-align:center;font-size:14px;color:#aaa;line-height:1.6}
 .qfoot b{color:#F26522;font-style:italic}
 .qfoot i{font-style:italic}
+
+img[src$="/14.jpg"]{object-fit:contain !important;background:#fff}
+
+/* DELIVERY MODAL */
+#delov{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:850;display:flex;justify-content:flex-end;backdrop-filter:blur(2px)}
+#delov.off{display:none}
+.del-pnl{width:min(100vw,520px);background:#efefef;height:100%;overflow-y:auto;animation:sideIn .32s cubic-bezier(.32,.72,0,1);position:relative;padding:24px 20px 32px}
+.del-x{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:transparent;border:0;font-size:22px;color:#888;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s}
+.del-x:hover{background:rgba(0,0,0,.06);color:#222}
+.del-card{background:#fff;border-radius:24px;padding:22px 20px;box-shadow:0 2px 14px rgba(0,0,0,.04);margin-top:12px}
+.del-card-t{font-size:22px;font-weight:800;color:#1a1a1a;font-family:'Golos Text',sans-serif;letter-spacing:-.01em;margin-bottom:18px}
+.del-city{position:relative;margin-bottom:10px}
+.del-city-cur{width:100%;background:#f3f3f3;border:0;border-radius:14px;padding:14px 18px;font-size:15px;color:#333;font-family:'Golos Text',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:space-between;text-align:left}
+.del-city-arr{transition:transform .2s;color:#888;flex-shrink:0}
+.del-city.open .del-city-arr{transform:rotate(180deg)}
+.del-city-opts{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.12);margin-top:6px;padding:6px;z-index:5}
+.del-city.open .del-city-opts{display:block}
+.del-city-opts button{width:100%;background:transparent;border:0;padding:12px 14px;font-size:14px;text-align:left;border-radius:8px;cursor:pointer;font-family:'Golos Text',sans-serif;color:#333}
+.del-city-opts button:hover{background:#f3f3f3}
+.del-addr{position:relative;margin-bottom:14px}
+.del-addr input{width:100%;background:#f3f3f3;border:0;border-radius:14px;padding:14px 50px 14px 18px;font-size:15px;color:#333;font-family:'Golos Text',sans-serif;outline:0;box-sizing:border-box}
+.del-addr input::placeholder{color:#888}
+.del-addr-ok{position:absolute;top:50%;right:16px;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:#3DAA57;color:#fff;font-size:13px;display:none;align-items:center;justify-content:center;font-weight:700}
+.del-addr.ok .del-addr-ok{display:flex}
+.del-map{position:relative;border-radius:16px;overflow:hidden;height:260px;margin-bottom:14px;background:#e8e8e8}
+.del-map iframe{width:100%;height:100%;border:0;display:block}
+.del-map-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(80,80,80,.85);color:#fff;font-size:14px;font-weight:500;padding:10px 22px;border-radius:24px;pointer-events:none;font-family:'Golos Text',sans-serif;white-space:nowrap}
+.del-free{padding-top:6px}
+.del-free-t{font-size:16px;font-weight:700;color:#1a1a1a;font-family:'Golos Text',sans-serif;margin-bottom:4px}
+.del-free-s{font-size:14px;color:#5a5a5a}
+.del-cond{margin-top:28px;padding:0 4px}
+.del-cond-t{font-size:24px;font-weight:800;color:#1a1a1a;font-family:'Golos Text',sans-serif;letter-spacing:-.01em;margin:0 0 16px}
+.del-cond-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.del-cond-list li{position:relative;padding-left:18px;font-size:15px;color:#333;line-height:1.5;font-family:'Golos Text',sans-serif}
+.del-cond-list li::before{content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;border-radius:50%;background:#888}
+@keyframes sideIn{from{transform:translateX(40px);opacity:0}to{transform:translateX(0);opacity:1}}
 </style>
 </head>
 <body>
@@ -834,9 +870,9 @@ ul{list-style:none}
         <div class="ft-ct">О нас</div>
         <ul class="ft-lk">
           <li><a href="javascript:void(0)" onclick="openQuality()">Система качества</a></li>
-          <li><a href="#">Условия доставки и оплаты</a></li>
+          <li><a href="javascript:void(0)" onclick="openDelivery()">Условия доставки и оплаты</a></li>
           <li><a href="#">Что мы привезём в доставке?</a></li>
-          <li><a href="#">Наши рецепты</a></li>
+          <li><a href="recipes.html">Наши рецепты</a></li>
           <li><a href="#">Наш блог</a></li>
           <li><a href="#">Мы в Яндекс.Дзен</a></li>
           <li><a href="#">О компании</a></li>
@@ -1047,6 +1083,46 @@ ul{list-style:none}
         <button class="doc-x" onclick="closeDoc()">✕</button>
       </div>
       <div class="doc-body" id="docBody"></div>
+    </div>
+  </div>
+</div>
+
+<!-- DELIVERY MODAL -->
+<div id="delov" class="off" onclick="if(event.target===this)closeDelivery()">
+  <div class="del-pnl">
+    <button class="del-x" onclick="closeDelivery()" aria-label="Закрыть">×</button>
+    <div class="del-card">
+      <div class="del-card-t">Карта доставки</div>
+      <div class="del-city" id="delCity">
+        <button class="del-city-cur" onclick="toggleDelCity(event)">
+          <span id="delCityName">Москва и область</span>
+          <svg class="del-city-arr" width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="2,4 7,10 12,4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="del-city-opts">
+          <button onclick="setDelCity('Москва и область')">Москва и область</button>
+          <button onclick="setDelCity('Санкт-Петербург')">Санкт-Петербург</button>
+        </div>
+      </div>
+      <div class="del-addr" id="delAddrWrap">
+        <input type="text" id="delAddr" placeholder="Укажите адрес доставки" oninput="checkDelAddr()" autocomplete="off">
+        <span class="del-addr-ok">✓</span>
+      </div>
+      <div class="del-map">
+        <iframe src="https://yandex.ru/map-widget/v1/?ll=37.617635%2C55.755864&z=10" frameborder="0" allowfullscreen></iframe>
+        <div class="del-map-btn">Доставить сюда</div>
+      </div>
+      <div class="del-free">
+        <div class="del-free-t">Бесплатная доставка</div>
+        <div class="del-free-s">0 ₽ — при заказе от 2 500 ₽</div>
+      </div>
+    </div>
+    <div class="del-cond">
+      <h2 class="del-cond-t">Условия доставки</h2>
+      <ul class="del-cond-list">
+        <li>По Москве и МО до 60 км от МКАД</li>
+        <li>Курьер пришлёт СМС перед тем, как выезжать к вам</li>
+        <li>У вас будет 15 минут на проверку заказа</li>
+      </ul>
     </div>
   </div>
 </div>
@@ -1763,6 +1839,38 @@ function closeQuality(){
   document.getElementById('qualov').classList.add('off');
   document.body.style.overflow='';
 }
+
+function openDelivery(){
+  document.getElementById('delov').classList.remove('off');
+  document.body.style.overflow='hidden';
+}
+function closeDelivery(){
+  document.getElementById('delov').classList.add('off');
+  document.body.style.overflow='';
+  document.getElementById('delCity').classList.remove('open');
+}
+function toggleDelCity(e){
+  if(e)e.stopPropagation();
+  document.getElementById('delCity').classList.toggle('open');
+}
+function setDelCity(name){
+  document.getElementById('delCityName').textContent=name;
+  document.getElementById('delCity').classList.remove('open');
+}
+function checkDelAddr(){
+  const i=document.getElementById('delAddr');
+  document.getElementById('delAddrWrap').classList.toggle('ok',i.value.trim().length>=3);
+}
+document.addEventListener('click',function(e){
+  const c=document.getElementById('delCity');
+  if(c&&c.classList.contains('open')&&!c.contains(e.target))c.classList.remove('open');
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    const d=document.getElementById('delov');
+    if(d&&!d.classList.contains('off'))closeDelivery();
+  }
+});
 </script>
 </body>
 </html>
