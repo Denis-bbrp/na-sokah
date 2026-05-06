@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Что мы привезём — НА СОКАХ.Еда</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Unbounded:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Golos Text',sans-serif;background:#fff;color:#1a1a1a;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+button{cursor:pointer;font-family:inherit;border:none;outline:none;background:none}
+a{text-decoration:none;color:inherit}
+:root{
+  --or:#F26522;--or-d:#D4501A;
+  --ye:#FFD600;--ye-h:#f0c800;
+  --bdr:#e4e4e4;
+  --ink:#1a1a1a;--ink2:#4a4a4a;--ink3:#8a8a8a;
+  --rs:26px;
+}
+
+/* HEADER */
+#hdr{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--bdr)}
+.w{max-width:1200px;margin:0 auto;padding:0 32px}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo img{height:42px;width:auto;display:block}
+.hdr-r{display:flex;align-items:center;gap:10px}
+.hdr-btn{font-size:14px;font-weight:500;color:#1a1a1a;padding:9px 20px;border:1.5px solid var(--bdr);border-radius:8px;transition:border-color .15s,background .15s;font-family:inherit}
+.hdr-btn:hover{border-color:#aaa}
+.hdr-btn-pri{background:var(--or);color:#fff;border-color:var(--or)}
+.hdr-btn-pri:hover{background:var(--or-d);border-color:var(--or-d)}
+
+/* BREADCRUMB */
+.bc-row{padding:24px 0 8px}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:#999}
+.breadcrumb a{color:#999;transition:color .15s}
+.breadcrumb a:hover{color:var(--or)}
+.breadcrumb-sep{color:#ddd}
+
+/* PAGE */
+.up-wrap{max-width:760px;margin:0 auto;padding:24px 32px 96px}
+.up-h1{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#888;text-align:center;margin:32px 0 64px}
+
+/* STEP BLOCK */
+.up-step{margin-bottom:88px}
+.up-step:last-child{margin-bottom:0}
+.up-num{font-size:15px;color:#1a1a1a;line-height:1.6;margin-bottom:6px;font-weight:500}
+.up-text{font-size:15px;color:#1a1a1a;line-height:1.65;max-width:560px;margin-bottom:32px}
+.up-img{width:100%;aspect-ratio:16/10;background:#f0f0ec;border-radius:6px;overflow:hidden}
+.up-img img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* FOOTER */
+#ft{background:#f5f5f5;border-radius:var(--rs) var(--rs) 0 0;margin-top:8px;padding:52px 0 36px}
+.ft-g{display:grid;grid-template-columns:2fr 1.4fr 1.4fr;gap:44px;margin-bottom:36px}
+.ft-ct{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#bbb;margin-bottom:14px}
+.ft-lk{display:flex;flex-direction:column;gap:3px;list-style:none}
+.ft-lk a{font-size:13px;color:#888;transition:color .15s;line-height:1.35}
+.ft-lk a:hover{color:#333}
+.ft-sub{font-size:13px;color:#888;margin-bottom:10px;line-height:1.5}
+.ft-sc{display:flex;gap:8px}
+.ft-sc a{width:38px;height:38px;border-radius:12px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;color:#888;transition:background .15s,opacity .15s;text-decoration:none;font-size:20px;overflow:hidden}
+.ft-sc a:hover{background:#d8d8d8}
+.ft-sc a img{width:55%;height:55%;object-fit:contain;display:block;filter:grayscale(1) invert(1) brightness(1.1) contrast(.7)}
+.ft-ph{font-size:13px;font-weight:400;color:#555;margin:6px 0 12px;letter-spacing:0;line-height:1.5}
+.ft-ap{font-size:13px;color:#888;margin-bottom:12px;line-height:1.5}
+.app-bts{display:flex;flex-direction:row;gap:8px;flex-wrap:wrap}
+.store-bd{display:inline-flex;align-items:center;gap:8px;background:#e4e4e4;color:#5a5a5a;border-radius:6px;padding:5px 12px;text-decoration:none;min-width:0;transition:background .15s}
+.store-bd:hover{background:#d8d8d8}
+.store-bd-ic{width:20px;height:20px;fill:currentColor;flex-shrink:0}
+.store-bd-tx{display:flex;flex-direction:column;line-height:1}
+.store-bd-tx small{font-size:9px;font-weight:400;letter-spacing:.01em;margin-bottom:2px;color:inherit}
+.store-bd-tx b{font-size:14px;font-weight:600;letter-spacing:-.01em;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:inherit}
+.ft-legal{border-top:1px solid #e0e0e0;padding-top:20px;margin-bottom:20px}
+.ft-legal-g{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px}
+.ft-bt{border-top:1px solid #e0e0e0;padding-top:18px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.ft-eng{font-size:12px;color:#bbb;transition:color .15s}
+.ft-eng:hover{color:#666}
+.ft-pay{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ft-pay img{height:32px;width:auto;display:block}
+.ft-copy{margin-left:auto;font-size:11px;color:#bbb}
+
+@media(max-width:900px){
+  .w{padding:0 16px}
+  .up-wrap{padding:16px 16px 64px}
+  .up-step{margin-bottom:56px}
+  .up-img{aspect-ratio:4/3}
+  .ft-g{grid-template-columns:1fr;gap:28px}
+  .ft-legal-g{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="w">
+    <div class="hdr-in">
+      <a href="na-sokah.html" class="logo">
+        <img src="logo/logo-full.png" alt="НА СОКАХ.Еда"/>
+      </a>
+      <div class="hdr-r">
+        <a href="menu.html" class="hdr-btn">Меню блюд</a>
+        <a href="recipes.html" class="hdr-btn">Рецепты</a>
+        <a href="na-sokah.html" class="hdr-btn hdr-btn-pri">На главную</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="w">
+  <div class="bc-row">
+    <div class="breadcrumb">
+      <a href="na-sokah.html">Главная</a>
+      <span class="breadcrumb-sep">/</span>
+      <span style="color:#1a1a1a">Что мы привезём</span>
+    </div>
+  </div>
+</div>
+
+<main class="up-wrap">
+  <h1 class="up-h1">Что мы привезём</h1>
+
+  <section class="up-step">
+    <div class="up-num">1/5</div>
+    <p class="up-text">Курьер привозит продукты в крафт-пакетах – привычно и удобно, как обычная доставка из магазина. Один пакет нужно сразу убрать в морозилку. Каждое блюдо – в своем крафт-пакете. На нем отмечено, когда приготовить.</p>
+    <div class="up-img"><img src="unpacking-img/1.jpg" alt="Курьер привозит крафт-пакеты"/></div>
+  </section>
+
+  <section class="up-step">
+    <div class="up-num">2/5</div>
+    <p class="up-text">Выбираем блюдо, находим его рецепт, достаем необходимое из морозилки – обычно там хранится нарезанное мясо в специальных вакуумных пакетах.</p>
+    <div class="up-img"><img src="unpacking-img/2.jpg" alt="Выбираем блюдо и достаём ингредиенты"/></div>
+  </section>
+
+  <section class="up-step">
+    <div class="up-num">3/5</div>
+    <p class="up-text">Открываем пакет – там все подготовленные ингредиенты: многие овощи – нарезаны, авторский соус – уже готов, специи и лапша – точно отмерены. Но зелень мы оставляем немытой – так она лучше хранится.</p>
+    <div class="up-img"><img src="unpacking-img/3.jpg" alt="Подготовленные ингредиенты в пакете"/></div>
+  </section>
+
+  <section class="up-step">
+    <div class="up-num">4/5</div>
+    <p class="up-text">Готовим за 15 минут: пошаговые инструкции продуманы так, чтобы оптимизировать все перемещения по кухне.</p>
+    <div class="up-img"><img src="unpacking-img/4.jpg" alt="Готовим за 15 минут по инструкции"/></div>
+  </section>
+
+  <section class="up-step">
+    <div class="up-num">5/5 Готово!</div>
+    <p class="up-text">Ресторанный стейк и салат из рукколы с рикоттой – всего за 15 минут.</p>
+    <div class="up-img"><img src="unpacking-img/5.jpg" alt="Готовое блюдо: стейк с салатом"/></div>
+  </section>
+
+  <section class="up-step">
+    <p class="up-text">А еще в наборе – все необходимые дополнения: молоко для утреннего кофе, рикотта и хлопья на завтрак, чизкейк и эклеры на десерт, фрукты и орешки на перекус. Готовую запеканку можно быстро съесть, а круассаны испечь свежие.</p>
+    <div class="up-img"><img src="unpacking-img/6.jpg" alt="Дополнения: завтрак, десерты, перекус"/></div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer id="ft">
+  <div class="w">
+    <div class="ft-g">
+      <div>
+        <div class="ft-ct">О нас</div>
+        <ul class="ft-lk">
+          <li><a href="na-sokah.html#qual">Система качества</a></li>
+          <li><a href="na-sokah.html#delivery">Условия доставки и оплаты</a></li>
+          <li><a href="unpacking.html">Что мы привезём в доставке?</a></li>
+          <li><a href="recipes.html">Наши рецепты</a></li>
+          <li><a href="#">Наш блог</a></li>
+          <li><a href="#">Мы в Яндекс.Дзен</a></li>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ct">На связи</div>
+        <div class="ft-sub">Готовы ответить на ваши вопросы<br>ежедневно с 6:00 до 23:00</div>
+        <div class="ft-ph">+7 902 403 9564</div>
+        <div class="ft-sc">
+          <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+          <a href="#" title="MAX"><img src="foto/max-icon.png" alt="MAX"></a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-ct">Так удобнее</div>
+        <div class="ft-ap">Ого! В приложении вас ждёт супер-скидка 15% на первый заказ</div>
+        <div class="app-bts">
+          <a href="#" class="store-bd">
+            <svg class="store-bd-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div class="store-bd-tx"><small>Download on the</small><b>App Store</b></div>
+          </a>
+          <a href="#" class="store-bd">
+            <svg class="store-bd-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.892 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198 2.792 1.617c.453.246.749.726.749 1.265 0 .54-.296 1.02-.749 1.265l-2.797 1.62-2.553-2.553 2.558-2.514zM5.864 2.658 16.802 8.99l-2.302 2.302L5.864 2.658z"/></svg>
+            <div class="store-bd-tx"><small>GET IT ON</small><b>Google Play</b></div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="ft-legal">
+      <div class="ft-ct">Юридические документы</div>
+      <div class="ft-legal-g">
+        <ul class="ft-lk">
+          <li><a href="#">Пользовательское соглашение</a></li>
+          <li><a href="#">Обработка персональных данных</a></li>
+        </ul>
+        <ul class="ft-lk">
+          <li><a href="#">Политика конфиденциальности</a></li>
+          <li><a href="#">Использование cookie</a></li>
+        </ul>
+        <ul class="ft-lk">
+          <li><a href="#">Рекламные и информ. рассылки</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bt">
+      <a href="#" class="ft-eng">English version</a>
+      <div class="ft-pay">
+        <img src="foto/IMAGE 2026-04-17 01:37:38.jpg" alt="МИР">
+      </div>
+      <div class="ft-copy">2013–2026 НА СОКАХ.Еда</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

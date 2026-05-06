@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1"/>
+<title>Что мы привезём — НА СОКАХ.Еда</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Golos Text',sans-serif;background:#fff;color:#1a1a1a;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+button{cursor:pointer;font-family:inherit;border:none;outline:none;background:none}
+a{text-decoration:none;color:inherit}
+:root{
+  --or:#F26522;--or-d:#D4501A;
+  --ye:#FFD600;
+  --bdr:#e4e4e4;
+  --ink:#1a1a1a;--ink2:#4a4a4a;--ink3:#8a8a8a;
+}
+
+/* HEADER */
+#hdr{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--bdr)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 14px}
+.h-back{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f3f3f3}
+.h-logo img{height:32px;width:auto;display:block}
+.h-spc{width:40px}
+
+/* PAGE */
+.up-wrap{padding:8px 16px 48px}
+.up-h1{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#888;text-align:center;margin:24px 0 36px}
+
+/* STEP BLOCK */
+.up-step{margin-bottom:48px}
+.up-step:last-child{margin-bottom:0}
+.up-num{font-size:14px;color:#1a1a1a;line-height:1.5;margin-bottom:4px;font-weight:500}
+.up-text{font-size:14px;color:#1a1a1a;line-height:1.6;margin-bottom:18px}
+.up-img{width:100%;aspect-ratio:4/3;background:#f0f0ec;border-radius:6px;overflow:hidden}
+.up-img img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* FOOTER */
+#ft{background:#f2f2f2;padding:24px 18px 36px;margin-top:0}
+.ft-row1{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:20px;border-bottom:1px solid #e0e0e0}
+.ft-sec-sub{font-size:13px;color:#555;line-height:1.4}
+.ft-stores{display:flex;flex-direction:column;gap:6px;flex-shrink:0}
+.store-bd{display:inline-flex;align-items:center;gap:8px;background:#e4e4e4;color:#5a5a5a;border-radius:6px;padding:5px 11px;text-decoration:none;min-width:124px;transition:background .15s}
+.store-bd:hover{background:#d8d8d8}
+.store-bd-ic{width:20px;height:20px;fill:currentColor;flex-shrink:0}
+.store-bd-tx{display:flex;flex-direction:column;line-height:1}
+.store-bd-tx small{font-size:8px;font-weight:400;letter-spacing:.01em;margin-bottom:2px;color:inherit}
+.store-bd-tx b{font-size:14px;font-weight:600;letter-spacing:-.01em;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:inherit}
+.ft-contact{display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0;border-bottom:1px solid #e0e0e0}
+.ft-ph{font-size:18px;font-weight:700;color:#1a1a1a;margin-bottom:5px}
+.ft-hrs{font-size:12px;color:#888;line-height:1.5}
+.ft-soc-sm{display:flex;gap:7px}
+.ft-soc-sm a{width:44px;height:44px;border-radius:12px;background:#e4e4e4;display:flex;align-items:center;justify-content:center;font-size:20px;color:#888;text-decoration:none;flex-shrink:0;overflow:hidden;transition:background .15s}
+.ft-soc-sm a:hover{background:#d8d8d8}
+.ft-lnk{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid #e0e0e0}
+.ft-lnk-col{flex:1;display:flex;flex-direction:column;gap:5px}
+.ft-lnk-col a{font-size:13px;color:#555;text-decoration:none;line-height:1.3}
+.ft-jur-ttl{font-size:10px;font-weight:700;letter-spacing:.08em;color:#999;text-transform:uppercase;margin:20px 0 12px}
+.ft-jur{display:flex;flex-direction:column;gap:5px;padding-bottom:20px;border-bottom:1px solid #e0e0e0}
+.ft-jur a{font-size:13px;color:#555;text-decoration:none}
+.ft-pay-r{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid #e0e0e0;align-items:center}
+.ft-copy{font-size:11px;color:#aaa;padding-top:14px}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="hdr-in">
+    <a href="mobile.html" class="h-back" aria-label="Назад">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+    <a href="mobile.html" class="h-logo">
+      <img src="logo/logo-mobile.png" alt="НА СОКАХ.Еда"/>
+    </a>
+    <div class="h-spc"></div>
+  </div>
+</header>
+
+<main class="up-wrap">
+  <h1 class="up-h1">Что мы привезём</h1>
+
+  <section class="up-step">
+    <div class="up-num">1/5</div>
+    <p class="up-text">Курьер привозит продукты в крафт-пакетах – привычно и удобно, как обычная доставка из магазина. Один пакет нужно сразу убрать в морозилку. Каждое блюдо – в своем крафт-пакете. На нем отмечено, когда приготовить.</p>
+    <div class="up-img"><img src="unpacking-img/1.jpg" alt="Курьер привозит крафт-пакеты"/></div>
+  </section>
+
+  <section class="up-step">
+    <div class="up-num">2/5</div>
+    <p class="up-text">Выбираем блюдо, находим его рецепт, достаем необходимое из морозилки – обычно там хранится нарезанное мясо в специальных вакуумных пакетах.</p>
+    <div class="up-img"><img src="unpacking-img/2.jpg" alt="Выбираем блюдо и достаём ингредиенты"/></div>
+  </section>
+
+  <section class="up-step">
+    <div class="up-num">3/5</div>
+    <p class="up-text">Открываем пакет – там все подготовленные ингредиенты: многие овощи – нарезаны, авторский соус – уже готов, специи и лапша – точно отмерены. Но зелень мы оставляем немытой – так она лучше хранится.</p>
+    <div class="up-img"><img src="unpacking-img/3.jpg" alt="Подготовленные ингредиенты в пакете"/></div>
+  </section>
+
+  <section class="up-step">
+    <div class="up-num">4/5</div>
+    <p class="up-text">Готовим за 15 минут: пошаговые инструкции продуманы так, чтобы оптимизировать все перемещения по кухне.</p>
+    <div class="up-img"><img src="unpacking-img/4.jpg" alt="Готовим за 15 минут по инструкции"/></div>
+  </section>
+
+  <section class="up-step">
+    <div class="up-num">5/5 Готово!</div>
+    <p class="up-text">Ресторанный стейк и салат из рукколы с рикоттой – всего за 15 минут.</p>
+    <div class="up-img"><img src="unpacking-img/5.jpg" alt="Готовое блюдо: стейк с салатом"/></div>
+  </section>
+
+  <section class="up-step">
+    <p class="up-text">А еще в наборе – все необходимые дополнения: молоко для утреннего кофе, рикотта и хлопья на завтрак, чизкейк и эклеры на десерт, фрукты и орешки на перекус. Готовую запеканку можно быстро съесть, а круассаны испечь свежие.</p>
+    <div class="up-img"><img src="unpacking-img/6.jpg" alt="Дополнения: завтрак, десерты, перекус"/></div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer id="ft">
+  <div class="ft-row1">
+    <div>
+      <div class="ft-sec-sub" style="font-size:15px;font-weight:600;color:#333">Здесь ждёт скидка 10%</div>
+    </div>
+    <div class="ft-stores">
+      <a href="#" class="store-bd">
+        <svg class="store-bd-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="store-bd-tx"><small>Download on the</small><b>App Store</b></div>
+      </a>
+      <a href="#" class="store-bd">
+        <svg class="store-bd-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.892 2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198 2.792 1.617c.453.246.749.726.749 1.265 0 .54-.296 1.02-.749 1.265l-2.797 1.62-2.553-2.553 2.558-2.514zM5.864 2.658 16.802 8.99l-2.302 2.302L5.864 2.658z"/></svg>
+        <div class="store-bd-tx"><small>GET IT ON</small><b>Google Play</b></div>
+      </a>
+    </div>
+  </div>
+  <div class="ft-contact">
+    <div>
+      <div class="ft-ph">+7 902 403 9564</div>
+      <div class="ft-hrs">Ежедневно с 6:00<br>до 23:00</div>
+    </div>
+    <div class="ft-soc-sm">
+      <a href="#"><i class="fab fa-telegram"></i></a>
+      <a href="#"><i class="fab fa-vk"></i></a>
+      <a href="#"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="#aaa" fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12c0 2.1.62 4.05 1.69 5.66L2 22l4.55-1.64A9.97 9.97 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z M12 7a5 5 0 1 1 0 10A5 5 0 0 1 12 7z"/></svg></a>
+    </div>
+  </div>
+  <div class="ft-lnk">
+    <div class="ft-lnk-col">
+      <a href="mobile.html#qual">Система качества</a>
+      <a href="mobile.html#delivery">Условия доставки и оплаты</a>
+      <a href="unpacking-mobile.html">Что мы привезём?</a>
+      <a href="recipes-mobile.html">Наши рецепты</a>
+    </div>
+    <div class="ft-lnk-col">
+      <a href="#">Наш блог</a>
+      <a href="#">Мы в Яндекс.Дзен</a>
+      <a href="#">О компании</a>
+      <a href="#">English version</a>
+      <a href="#">Контакты</a>
+    </div>
+  </div>
+  <div class="ft-jur-ttl">ЮРИДИЧЕСКИЕ ДОКУМЕНТЫ</div>
+  <div class="ft-jur">
+    <a href="#">Пользовательское соглашение</a>
+    <a href="#">Обработка персональных данных</a>
+    <a href="#">Политика конфиденциальности</a>
+    <a href="#">Использование cookie</a>
+    <a href="#">Рекламные и информ. рассылки</a>
+  </div>
+  <div class="ft-pay-r">
+    <img src="foto/IMAGE 2026-04-17 01:37:38.jpg" style="height:44px;display:block" alt="МИР"/>
+  </div>
+  <div class="ft-copy">2018–2026 НА СОКАХ</div>
+</footer>
+
+</body>
+</html>
