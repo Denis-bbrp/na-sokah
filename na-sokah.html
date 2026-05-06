@@ -6,7 +6,7 @@
 <title>НА СОКАХ.Еда — готовьте как шеф за 15 минут</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;700;800;900&family=Golos+Text:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;700;800;900&family=Golos+Text:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&family=Yeseva+One&display=swap" rel="stylesheet"/>
 <link href="https://fonts.cdnfonts.com/css/gilroy-free" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 <style>
@@ -38,7 +38,13 @@ ul{list-style:none}
 /* HEADER */
 #hdr{position:relative;z-index:200;background:#fff;border-bottom:1px solid var(--bdr)}
 .hdr-in{display:flex;align-items:center;justify-content:space-between;height:84px;gap:12px}
-.logo{display:flex;align-items:center;gap:16px;flex-shrink:0}
+.logo-grp{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.logo{display:flex;align-items:center;font-family:'Yeseva One',serif;font-size:32px;font-weight:400;color:#2a1a0c;letter-spacing:-.01em;line-height:1;text-decoration:none}
+.logo:hover{color:#000}
+.logo-bars{display:flex;flex-direction:column;justify-content:center;gap:5px;flex-shrink:0;width:30px;height:30px;padding:0;background:none;border:none;cursor:pointer;border-radius:8px;transition:background .15s}
+.logo-bars:hover{background:rgba(0,0,0,.05)}
+.logo-bars span{display:block;width:26px;height:3px;background:var(--ye);border-radius:2px;margin:0 auto}
+.logo-eda{color:var(--or)}
 .city-wrap{position:relative;flex-shrink:0}
 .city-btn{display:flex;align-items:center;gap:5px;font-size:18px;color:var(--ink2);padding:12px 20px;border-radius:var(--rp);transition:background .15s}
 .city-btn:hover{background:var(--card)}
@@ -56,14 +62,15 @@ ul{list-style:none}
 .cart-ct.on{display:flex}
 
 /* HERO */
-#hero{padding:16px 0 0}
-.hero-wrap{background:var(--or);border-radius:40px;padding:64px 64px 56px;display:flex;flex-direction:column;gap:40px}
-.hero-title{font-family:'Golos Text',sans-serif;font-size:clamp(42px,5.5vw,82px);font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.01em;white-space:nowrap}
-.hero-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:end}
-.hero-bl{font-family:'Golos Text',sans-serif;font-size:clamp(16px,1.7vw,22px);font-weight:300;color:rgba(255,255,255,.9);line-height:1.45;margin-bottom:14px;text-align:left}
-.hero-inner{border-radius:22px;overflow:hidden;height:500px;background:#e8601e}
-.hero-inner img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .5s}
-.hero-inner:hover img{transform:scale(1.04)}
+#hero{padding:8px 0 0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) 6px minmax(0,1fr);min-height:680px;border-radius:24px;overflow:hidden;background:#E8E1CF}
+.hero-photo{position:relative;height:100%;background:#E8E1CF;overflow:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-divider{background:var(--ye)}
+.hero-panel{background:#E8E1CF;padding:48px 40px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.hero-scheme{display:block;width:100%;max-width:440px;height:auto;margin:0 auto 28px}
+.hero-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:#fff;font-size:16px;font-weight:600;padding:18px 36px;border-radius:14px;transition:background .15s,transform .15s}
+.hero-cta:hover{background:#000;transform:translateY(-1px)}
 
 /* CATEGORIES */
 #cats{padding:36px 0 0}
@@ -423,14 +430,18 @@ ul{list-style:none}
   .ft-g{grid-template-columns:1fr 1fr}
 }
 @media(max-width:960px){
-  .hero-inner{height:340px}
+  .hero-grid{grid-template-columns:1fr;grid-template-rows:auto 6px auto;min-height:auto;border-radius:20px}
+  .hero-photo{aspect-ratio:16/10;height:auto}
+  .hero-panel{padding:36px 28px}
+  .hero-scheme{max-width:380px;margin-bottom:22px}
 }
 @media(max-width:640px){
   .w{padding:0 14px}
-  .hero-wrap{padding:32px 24px 32px;border-radius:24px;gap:28px}
-  .hero-title{white-space:normal}
-  .hero-inner{height:240px}
-  .hero-bottom{grid-template-columns:1fr;gap:14px}
+  .hero-grid{border-radius:18px}
+  .hero-photo{aspect-ratio:5/4}
+  .hero-panel{padding:28px 22px 32px}
+  .hero-scheme{max-width:300px;margin-bottom:20px}
+  .hero-cta{padding:14px 26px;font-size:14px;border-radius:12px}
   .sets-box,.testi-box,.faq-box{padding:24px 18px}
   .ft-g{grid-template-columns:1fr}
   .city-wrap{display:none}
@@ -597,9 +608,12 @@ img[src$="/14.jpg"]{object-fit:contain !important;background:#fff}
 <header id="hdr">
   <div class="w">
     <div class="hdr-in">
-      <a href="na-sokah.html" class="logo">
-        <img src="logo/logo-full.png" alt="НА СОКАХ.Еда" style="height:70px;width:auto;display:block;">
-      </a>
+      <div class="logo-grp">
+        <button type="button" class="logo-bars" onclick="openLogin()" aria-label="Войти в личный кабинет">
+          <span></span><span></span><span></span>
+        </button>
+        <a href="na-sokah.html" class="logo">НА СОКАХ<span class="logo-eda">.ЕДА</span></a>
+      </div>
       <div class="hdr-r">
         <div class="city-wrap">
           <button class="city-btn" id="cityBtn">Москва <span class="city-arr">▾</span></button>
@@ -620,27 +634,14 @@ img[src$="/14.jpg"]{object-fit:contain !important;background:#fff}
 <!-- HERO -->
 <section id="hero">
   <div class="w">
-    <div class="hero-wrap">
-      <div class="hero-title">Привет,<br>это НА СОКАХ.Еда</div>
-      <div class="hero-bottom">
-        <div>
-          <div class="hero-bl">Соберём всё<br>необходимое,</div>
-          <div class="hero-inner">
-            <img src="foto/seedream-85674d4b0abfd43dffcf90e3d49c4c3e.png" alt="Свежие ингредиенты" loading="eager"/>
-          </div>
-        </div>
-        <div>
-          <div class="hero-bl">чтобы вы<br>приготовили</div>
-          <div class="hero-inner">
-            <img src="foto/seedream-dc1c4788ca59da1d8dce87d5f3ca1d83.png" alt="Процесс готовки" loading="eager"/>
-          </div>
-        </div>
-        <div>
-          <div class="hero-bl">ресторанный ужин<br>за 15 минут</div>
-          <div class="hero-inner">
-            <img src="foto/seedream-5a1e6f81adf4d0ac21b314d9e90cd1ab.png" alt="Готовый ужин" loading="eager"/>
-          </div>
-        </div>
+    <div class="hero-grid">
+      <div class="hero-photo">
+        <img src="foto/for-hero.png" alt="" loading="eager"/>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-panel">
+        <img class="hero-scheme" src="foto/for-hero-2.png" alt="Как это работает: подготовим, готовите, ресторанный ужин"/>
+        <a href="menu.html" class="hero-cta">Изучите наши предложения.</a>
       </div>
     </div>
   </div>
@@ -871,7 +872,7 @@ img[src$="/14.jpg"]{object-fit:contain !important;background:#fff}
         <ul class="ft-lk">
           <li><a href="javascript:void(0)" onclick="openQuality()">Система качества</a></li>
           <li><a href="javascript:void(0)" onclick="openDelivery()">Условия доставки и оплаты</a></li>
-          <li><a href="#">Что мы привезём в доставке?</a></li>
+          <li><a href="unpacking.html">Что мы привезём в доставке?</a></li>
           <li><a href="recipes.html">Наши рецепты</a></li>
           <li><a href="#">Наш блог</a></li>
           <li><a href="#">Мы в Яндекс.Дзен</a></li>

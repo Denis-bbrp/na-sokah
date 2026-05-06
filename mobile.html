@@ -6,7 +6,7 @@
 <title>НА СОКАХ.Еда — готовьте как шеф за 15 минут [v5]</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&family=Yeseva+One&display=swap" rel="stylesheet"/>
 <link href="https://fonts.cdnfonts.com/css/gilroy-free" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 <style>
@@ -66,6 +66,7 @@ ul{list-style:none}
 #hdr.s{box-shadow:0 2px 12px rgba(0,0,0,.07)}
 .hdr-in{display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 16px}
 .hdr-logo-area{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-full-wrap{font-family:'Yeseva One',serif;font-size:22px;font-weight:400;color:#2a1a0c;letter-spacing:-.01em;line-height:1;text-decoration:none;display:flex;align-items:center}
 .logo-full-wrap img{height:36px;width:auto;display:block}
 .logo-compact-text{display:none;font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1}
 #hdr.s .logo-full-wrap{display:none}
@@ -93,14 +94,14 @@ ul{list-style:none}
 .cart-ct.on{display:flex}
 
 /* ========== HERO ========== */
-#hero{padding:12px 16px 0}
-.hero-wrap{background:var(--or);border-radius:28px;padding:28px 24px 24px;display:flex;flex-direction:column;gap:24px}
-.hero-title{font-family:'Golos Text',sans-serif;font-size:38px;font-weight:300;color:#fff;line-height:1.08;letter-spacing:-.01em}
-.hero-imgs{display:flex;flex-direction:column;gap:20px;overflow-x:visible;margin:0;padding:0}
-.hero-img-col{flex-shrink:unset;width:100%}
-.hero-bl{font-family:'Golos Text',sans-serif;font-size:30px;font-weight:300;color:rgba(255,255,255,.92);line-height:1.2;margin:0 0 14px;text-align:left}
-.hero-inner{border-radius:22px;overflow:hidden;height:300px;background:#e8601e}
-.hero-inner img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+#hero{padding:8px 12px 24px}
+.hero-stack{border-radius:18px;overflow:hidden;background:#E8E1CF;display:flex;flex-direction:column}
+.hero-photo{aspect-ratio:5/4;background:#E8E1CF;overflow:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-divider{height:5px;background:var(--ye)}
+.hero-panel{background:#E8E1CF;padding:24px 18px 28px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.hero-scheme{display:block;width:100%;max-width:320px;height:auto;margin:0 auto 22px}
+.hero-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:#fff;font-size:14px;font-weight:600;padding:14px 26px;border-radius:12px;text-decoration:none}
 
 /* ========== TAGLINE ========== */
 #cats{padding:24px 16px 0}
@@ -503,7 +504,7 @@ img[src$="/14.jpg"]{object-fit:contain !important;background:#fff}
         <span></span><span></span><span></span>
       </button>
       <a href="mobile.html" class="logo-full-wrap">
-        <img src="logo/logo-full.png" alt="НА СОКАХ.Еда">
+        <span>НА СОКАХ<span style="color:var(--or)">.ЕДА</span></span>
       </a>
       <span class="logo-compact-text">NA <span style="color:var(--ink3)">|</span> <span style="color:var(--or)">EDA</span></span>
     </div>
@@ -578,20 +579,14 @@ try{(function(){
 </script>
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-wrap">
-    <div class="hero-imgs">
-      <div class="hero-img-col">
-        <div class="hero-bl">Соберём всё<br>необходимое,</div>
-        <div class="hero-inner"><img src="foto/seedream-85674d4b0abfd43dffcf90e3d49c4c3e.png" alt="Продукты" loading="eager"/></div>
-      </div>
-      <div class="hero-img-col">
-        <div class="hero-bl">чтобы вы<br>приготовили</div>
-        <div class="hero-inner"><img src="foto/seedream-dc1c4788ca59da1d8dce87d5f3ca1d83.png" alt="Готовка" loading="eager"/></div>
-      </div>
-      <div class="hero-img-col">
-        <div class="hero-bl">ресторанный ужин<br>за 15 минут</div>
-        <div class="hero-inner"><img src="foto/seedream-5a1e6f81adf4d0ac21b314d9e90cd1ab.png" alt="Блюдо" loading="eager"/></div>
-      </div>
+  <div class="hero-stack">
+    <div class="hero-photo">
+      <img src="foto/for-hero.png" alt="" loading="eager"/>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-panel">
+      <img class="hero-scheme" src="foto/for-hero-2.png" alt="Как это работает: подготовим, готовите, ресторанный ужин"/>
+      <a href="menu.html" class="hero-cta">Изучите наши предложения.</a>
     </div>
   </div>
 </section>
@@ -786,7 +781,7 @@ try{(function(){
     <div class="ft-lnk-col">
       <a href="javascript:void(0)" onclick="openQuality()">Система качества</a>
       <a href="javascript:void(0)" onclick="openDelivery()">Условия доставки и оплаты</a>
-      <a href="#">Что мы привезём?</a>
+      <a href="unpacking-mobile.html">Что мы привезём?</a>
       <a href="recipes-mobile.html">Наши рецепты</a>
     </div>
     <div class="ft-lnk-col">
