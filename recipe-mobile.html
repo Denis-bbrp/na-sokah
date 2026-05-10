@@ -26,6 +26,25 @@ a{text-decoration:none;color:inherit}
 .hdr-in{display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 14px}
 .h-back{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f3f3f3}
 .h-logo img{height:32px;width:auto;display:block}
+.btn-burger{position:relative;width:24px;height:18px;flex-shrink:0;padding:0;background:none;border:none;cursor:pointer}
+.btn-burger span{position:absolute;left:0;width:100%;height:2.5px;background:#1a1a1a;border-radius:2px;transition:all .26s cubic-bezier(.4,0,.2,1)}
+.btn-burger span:nth-child(1){top:0}
+.btn-burger span:nth-child(2){top:50%;transform:translateY(-50%)}
+.btn-burger span:nth-child(3){bottom:0}
+.btn-burger.open span:nth-child(1){top:50%;transform:translateY(-50%) rotate(45deg)}
+.btn-burger.open span:nth-child(2){opacity:0;transform:translateY(-50%) scaleX(0)}
+.btn-burger.open span:nth-child(3){bottom:50%;transform:translateY(50%) rotate(-45deg)}
+.hdr-logo-area{display:flex;align-items:center;gap:10px}
+.logo-text{font-size:15px;font-weight:700;color:#1a1a1a;letter-spacing:-.02em;line-height:1;text-decoration:none}
+#nav-ov{position:fixed;top:0;left:0;right:0;bottom:0;z-index:300;background:#efefef;opacity:0;pointer-events:none;transition:opacity .15s ease;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-top:56px}
+#nav-ov.on{opacity:1;pointer-events:auto}
+.nav-body{padding:16px}
+.nav-close-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.nav-close-btn{background:none;border:none;cursor:pointer;font-size:24px;color:#888;padding:4px 8px}
+.nav-links-card{background:#fff;border-radius:16px;overflow:hidden;margin-bottom:12px}
+.nav-link{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;font-size:15px;font-weight:500;color:#1a1a1a;text-decoration:none;border-bottom:1px solid #e4e4e4}
+.nav-link:last-child{border-bottom:none}
+.nav-link-arr{color:#aaa;font-size:16px}
 .h-spc{width:40px}
 
 /* CONTENT */
@@ -100,12 +119,31 @@ img[src$="/14.jpg"]{object-fit:contain !important;background:#fff}
     <a href="recipes-mobile.html" class="h-back" aria-label="Назад">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
     </a>
-    <a href="mobile.html" class="h-logo">
-      <img src="logo/logo-mobile.png" alt="НА СОКАХ.Еда"/>
-    </a>
+    <div class="hdr-logo-area h-logo">
+      <button class="btn-burger" id="burgerBtn" onclick="toggleNav()"><span></span><span></span><span></span></button>
+      <a href="mobile.html" class="logo-text">NA <span style="color:#8a8a8a">|</span> <span style="color:#F26522">EDA</span></a>
+    </div>
     <div class="h-spc"></div>
   </div>
 </header>
+<div id="nav-ov">
+  <div class="nav-body">
+    <div class="nav-close-row">
+      <a href="mobile.html" class="logo-text">NA <span style="color:#8a8a8a">|</span> <span style="color:#F26522">EDA</span></a>
+      <button class="nav-close-btn" onclick="closeNav()">✕</button>
+    </div>
+    <div class="nav-links-card">
+      <a href="mobile.html" class="nav-link">Главная <span class="nav-link-arr">›</span></a>
+      <a href="menu.html" class="nav-link">Все блюда <span class="nav-link-arr">›</span></a>
+      <a href="mobile.html#sets" class="nav-link">Шеф-наборы <span class="nav-link-arr">›</span></a>
+      <a href="mobile.html#fav" class="nav-link">Хиты продаж <span class="nav-link-arr">›</span></a>
+      <a href="recipes-mobile.html" class="nav-link">Рецепты <span class="nav-link-arr">›</span></a>
+    </div>
+    <div class="nav-links-card">
+      <a href="mobile.html#faq" class="nav-link">О сервисе <span class="nav-link-arr">›</span></a>
+    </div>
+  </div>
+</div>
 
 <div class="r-wrap" id="page-root"></div>
 
@@ -223,6 +261,9 @@ function render(){
 }
 
 document.addEventListener('DOMContentLoaded',bootstrap);
+function openNav(){document.getElementById('nav-ov').classList.add('on');document.getElementById('burgerBtn').classList.add('open');}
+function closeNav(){document.getElementById('nav-ov').classList.remove('on');document.getElementById('burgerBtn').classList.remove('open');}
+function toggleNav(){document.getElementById('nav-ov').classList.contains('on')?closeNav():openNav();}
 </script>
 
 </body>

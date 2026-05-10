@@ -188,6 +188,25 @@ ul{list-style:none}
   .cat-title{font-size:26px}
 }
 img[src$="/14.jpg"]{object-fit:contain !important;background:#fff}
+.btn-burger{position:relative;width:26px;height:20px;flex-shrink:0;padding:0;background:none;border:none;cursor:pointer}
+.btn-burger span{position:absolute;left:0;width:100%;height:3px;background:#1a1a1a;border-radius:2px;transition:all .26s cubic-bezier(.4,0,.2,1)}
+.btn-burger span:nth-child(1){top:0}
+.btn-burger span:nth-child(2){top:50%;transform:translateY(-50%)}
+.btn-burger span:nth-child(3){bottom:0}
+.btn-burger.open span:nth-child(1){top:50%;transform:translateY(-50%) rotate(45deg)}
+.btn-burger.open span:nth-child(2){opacity:0;transform:translateY(-50%) scaleX(0)}
+.btn-burger.open span:nth-child(3){bottom:50%;transform:translateY(50%) rotate(-45deg)}
+.hdr-logo-area{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.logo-text{font-size:17px;font-weight:700;color:#1a1a1a;letter-spacing:-.02em;line-height:1;text-decoration:none}
+#nav-ov{position:fixed;top:0;left:0;right:0;bottom:0;z-index:300;background:#efefef;opacity:0;pointer-events:none;transition:opacity .15s ease;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-top:56px}
+#nav-ov.on{opacity:1;pointer-events:auto}
+.nav-body{padding:16px}
+.nav-close-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.nav-close-btn{background:none;border:none;cursor:pointer;font-size:24px;color:#888;padding:4px 8px}
+.nav-links-card{background:#fff;border-radius:16px;overflow:hidden;margin-bottom:12px}
+.nav-link{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;font-size:15px;font-weight:500;color:#1a1a1a;text-decoration:none;border-bottom:1px solid #e4e4e4}
+.nav-link:last-child{border-bottom:none}
+.nav-link-arr{color:#aaa;font-size:16px}
 </style>
 </head>
 <body>
@@ -196,9 +215,10 @@ img[src$="/14.jpg"]{object-fit:contain !important;background:#fff}
 <header id="hdr">
   <div class="w">
     <div class="hdr-in">
-      <a href="na-sokah.html" class="logo">
-        <img src="logo/logo-full.png" alt="НА СОКАХ.Еда" style="height:48px;width:auto;display:block;">
-      </a>
+      <div class="hdr-logo-area">
+        <button class="btn-burger" id="burgerBtn" onclick="toggleNav()"><span></span><span></span><span></span></button>
+        <a href="na-sokah.html" class="logo-text">NA <span style="color:#8a8a8a">|</span> <span style="color:#F26522">EDA</span></a>
+      </div>
       <div class="hdr-r">
         <button class="btn-login" id="loginBtn" onclick="openLogin()">Войти</button>
         <button class="btn-cart" id="cartBtn" onclick="openCart()">
@@ -210,6 +230,24 @@ img[src$="/14.jpg"]{object-fit:contain !important;background:#fff}
     </div>
   </div>
 </header>
+<div id="nav-ov">
+  <div class="nav-body">
+    <div class="nav-close-row">
+      <a href="na-sokah.html" class="logo-text">NA <span style="color:#8a8a8a">|</span> <span style="color:#F26522">EDA</span></a>
+      <button class="nav-close-btn" onclick="closeNav()">✕</button>
+    </div>
+    <div class="nav-links-card">
+      <a href="na-sokah.html" class="nav-link">Главная <span class="nav-link-arr">›</span></a>
+      <a href="menu.html" class="nav-link">Все блюда <span class="nav-link-arr">›</span></a>
+      <a href="na-sokah.html#sets" class="nav-link">Шеф-наборы <span class="nav-link-arr">›</span></a>
+      <a href="na-sokah.html#fav" class="nav-link">Хиты продаж <span class="nav-link-arr">›</span></a>
+      <a href="recipes.html" class="nav-link">Рецепты <span class="nav-link-arr">›</span></a>
+    </div>
+    <div class="nav-links-card">
+      <a href="na-sokah.html#faq" class="nav-link">О сервисе <span class="nav-link-arr">›</span></a>
+    </div>
+  </div>
+</div>
 
 <!-- PAGE BODY -->
 <div class="w">
@@ -554,6 +592,9 @@ function backToPhone(){
   document.getElementById('lStep2').style.display='none';
 }
 function verifyCode(){closeLogin();}
+function openNav(){document.getElementById('nav-ov').classList.add('on');document.getElementById('burgerBtn').classList.add('open');}
+function closeNav(){document.getElementById('nav-ov').classList.remove('on');document.getElementById('burgerBtn').classList.remove('open');}
+function toggleNav(){document.getElementById('nav-ov').classList.contains('on')?closeNav():openNav();}
 </script>
 </body>
 </html>
