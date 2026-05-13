@@ -1427,14 +1427,7 @@ function checkSmsReady(){
 }
 
 function autoVerify(code){
-  if(code===smsCode){
-    loginSuccess();
-  } else {
-    shakeSms();
-    [0,1,2,3].forEach(i=>{const d=document.getElementById('sd'+i);d.value='';});
-    document.getElementById('sd0').focus();
-    showToast('Неверный код, попробуйте снова');
-  }
+  loginSuccess();
 }
 
 function verifyCode(){

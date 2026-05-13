@@ -1268,14 +1268,7 @@ function checkSmsReady(){
   if(code.length===4)autoVerify(code);
 }
 function autoVerify(code){
-  if(code===smsCode){loginSuccess();}
-  else{
-    document.getElementById('smsDigits').classList.add('l-shake');
-    setTimeout(()=>document.getElementById('smsDigits').classList.remove('l-shake'),400);
-    [0,1,2,3].forEach(i=>{document.getElementById('sd'+i).value='';});
-    document.getElementById('sd0').focus();
-    showToast('Неверный код');
-  }
+  loginSuccess();
 }
 function verifyCode(){
   const code=[0,1,2,3].map(i=>document.getElementById('sd'+i).value).join('');
