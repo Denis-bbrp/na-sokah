@@ -1461,6 +1461,18 @@ function showYaReviews(){
 }
 
 renderFAQ();setupSmsInputs();
+
+window.addEventListener('popstate',function(){
+  const h=location.hash;
+  if(h==='#quality'){document.getElementById('qualov').classList.remove('off');document.body.style.overflow='hidden';}
+  else if(h==='#delivery'){document.getElementById('delov').classList.remove('off');document.body.style.overflow='hidden';}
+  else{document.getElementById('qualov').classList.add('off');document.getElementById('delov').classList.add('off');document.body.style.overflow='';}
+});
+(function(){
+  const h=location.hash;
+  if(h==='#quality')openQuality();
+  else if(h==='#delivery')openDelivery();
+})();
 </script>
 
 <!-- DISH PANEL -->
@@ -1684,6 +1696,7 @@ function qSlide(id,dir){
 }
 function renderQSlide(id){updateSliderUI(id);}
 function openQuality(){
+  history.pushState({overlay:'quality'},'','#quality');
   document.getElementById('qualov').classList.remove('off');
   document.body.style.overflow='hidden';
   for(const id in qSliders){qSliders[id].idx=0;buildTrack(id);}
@@ -1695,15 +1708,18 @@ function openQuality(){
   }
 }
 function closeQuality(){
+  history.pushState(null,'',location.pathname);
   document.getElementById('qualov').classList.add('off');
   document.body.style.overflow='';
 }
 
 function openDelivery(){
+  history.pushState({overlay:'delivery'},'','#delivery');
   document.getElementById('delov').classList.remove('off');
   document.body.style.overflow='hidden';
 }
 function closeDelivery(){
+  history.pushState(null,'',location.pathname);
   document.getElementById('delov').classList.add('off');
   document.body.style.overflow='';
   const c=document.getElementById('delCity');

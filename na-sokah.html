@@ -1719,6 +1719,18 @@ function toggleAcc(hd){
   const shortMonths=['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
   if(lbl) lbl.textContent=today.getDate()+' '+shortMonths[today.getMonth()];
 })();
+
+window.addEventListener('popstate',function(){
+  const h=location.hash;
+  if(h==='#quality'){document.getElementById('qualov').classList.remove('off');document.body.style.overflow='hidden';}
+  else if(h==='#delivery'){document.getElementById('delov').classList.remove('off');document.body.style.overflow='hidden';}
+  else{document.getElementById('qualov').classList.add('off');document.getElementById('delov').classList.add('off');document.body.style.overflow='';}
+});
+(function(){
+  const h=location.hash;
+  if(h==='#quality')openQuality();
+  else if(h==='#delivery')openDelivery();
+})();
 </script>
 
 <!-- DISH PANEL -->
@@ -1904,6 +1916,7 @@ function qCheckGo(i){
 }
 function qCheckNav(dir){qCheckGo((qCheckIdx+dir+qCheckTotal)%qCheckTotal);}
 function openQuality(){
+  history.pushState({overlay:'quality'},'','#quality');
   document.getElementById('qualov').classList.remove('off');
   document.body.style.overflow='hidden';
   for(const id in qSliders){qSliders[id].idx=0;renderQSlide(id);}
@@ -1914,15 +1927,18 @@ function openQuality(){
   }
 }
 function closeQuality(){
+  history.pushState(null,'',location.pathname);
   document.getElementById('qualov').classList.add('off');
   document.body.style.overflow='';
 }
 
 function openDelivery(){
+  history.pushState({overlay:'delivery'},'','#delivery');
   document.getElementById('delov').classList.remove('off');
   document.body.style.overflow='hidden';
 }
 function closeDelivery(){
+  history.pushState(null,'',location.pathname);
   document.getElementById('delov').classList.add('off');
   document.body.style.overflow='';
   document.getElementById('delCity').classList.remove('open');
