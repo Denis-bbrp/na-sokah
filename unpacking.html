@@ -42,15 +42,15 @@ a{text-decoration:none;color:inherit}
 .breadcrumb-sep{color:#ddd}
 
 /* PAGE */
-.up-wrap{max-width:760px;margin:0 auto;padding:24px 32px 96px}
-.up-h1{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#888;text-align:center;margin:32px 0 64px}
+.up-wrap{max-width:920px;margin:0 auto;padding:40px 48px 120px}
+.up-h1{font-family:'Unbounded',sans-serif;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#bbb;text-align:center;margin:16px 0 72px}
 
 /* STEP BLOCK */
-.up-step{margin-bottom:88px}
+.up-step{margin-bottom:80px}
 .up-step:last-child{margin-bottom:0}
-.up-num{font-size:15px;color:#1a1a1a;line-height:1.6;margin-bottom:6px;font-weight:500}
-.up-text{font-size:15px;color:#1a1a1a;line-height:1.65;max-width:560px;margin-bottom:32px}
-.up-img{width:100%;aspect-ratio:16/10;background:#f0f0ec;border-radius:6px;overflow:hidden}
+.up-num{display:none}
+.up-text{font-size:24px;font-weight:400;color:#333;line-height:1.5;margin-bottom:28px}
+.up-img{width:100%;aspect-ratio:16/9;background:#f0f0ec;border-radius:8px;overflow:hidden}
 .up-img img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* FOOTER */
@@ -85,8 +85,9 @@ a{text-decoration:none;color:inherit}
 
 @media(max-width:900px){
   .w{padding:0 16px}
-  .up-wrap{padding:16px 16px 64px}
+  .up-wrap{padding:24px 20px 64px}
   .up-step{margin-bottom:56px}
+  .up-text{font-size:17px}
   .up-img{aspect-ratio:4/3}
   .ft-g{grid-template-columns:1fr;gap:28px}
   .ft-legal-g{grid-template-columns:1fr}
@@ -162,38 +163,28 @@ a{text-decoration:none;color:inherit}
   <h1 class="up-h1">Что мы привезём</h1>
 
   <section class="up-step">
-    <div class="up-num">1/5</div>
-    <p class="up-text">Курьер привозит продукты в крафт-пакетах – привычно и удобно, как обычная доставка из магазина. Один пакет нужно сразу убрать в морозилку. Каждое блюдо – в своем крафт-пакете. На нем отмечено, когда приготовить.</p>
+    <p class="up-text">1/5 &nbsp;Курьер доставляет продукты в крафт-пакетах — удобно и привычно, как при обычной доставке из магазина. Один из пакетов нужно сразу поместить в морозилку. Для каждого блюда предусмотрен отдельный крафт-пакет с отметкой, когда его лучше приготовить.</p>
     <div class="up-img"><img src="unpacking-img/1.jpg" alt="Курьер привозит крафт-пакеты"/></div>
   </section>
 
   <section class="up-step">
-    <div class="up-num">2/5</div>
-    <p class="up-text">Выбираем блюдо, находим его рецепт, достаем необходимое из морозилки – обычно там хранится нарезанное мясо в специальных вакуумных пакетах.</p>
+    <p class="up-text">2/5 &nbsp;Выбираете блюдо, находите рецепт и достаёте нужные ингредиенты из морозилки — обычно там хранится нарезанное мясо в специальных вакуумных упаковках.</p>
     <div class="up-img"><img src="unpacking-img/2.jpg" alt="Выбираем блюдо и достаём ингредиенты"/></div>
   </section>
 
   <section class="up-step">
-    <div class="up-num">3/5</div>
-    <p class="up-text">Открываем пакет – там все подготовленные ингредиенты: многие овощи – нарезаны, авторский соус – уже готов, специи и лапша – точно отмерены. Но зелень мы оставляем немытой – так она лучше хранится.</p>
+    <p class="up-text">3/5 &nbsp;Открываете пакет, а внутри — уже подготовленные ингредиенты: многие овощи нарезаны, фирменный соус полностью готов, а специи и лапша заранее точно отмерены. Зелень мы оставляем немытой, чтобы она дольше сохраняла свежесть.</p>
     <div class="up-img"><img src="unpacking-img/3.jpg" alt="Подготовленные ингредиенты в пакете"/></div>
   </section>
 
   <section class="up-step">
-    <div class="up-num">4/5</div>
-    <p class="up-text">Готовим за 15 минут: пошаговые инструкции продуманы так, чтобы оптимизировать все перемещения по кухне.</p>
+    <p class="up-text">4/5 &nbsp;Готовите блюдо всего за 15 минут: пошаговые инструкции составлены так, чтобы сделать процесс максимально удобным и сократить лишние движения по кухне.</p>
     <div class="up-img"><img src="unpacking-img/4.jpg" alt="Готовим за 15 минут по инструкции"/></div>
   </section>
 
   <section class="up-step">
-    <div class="up-num">5/5 Готово!</div>
-    <p class="up-text">Ресторанный стейк и салат из рукколы с рикоттой – всего за 15 минут.</p>
+    <p class="up-text">5/5 Готово! &nbsp;Ресторанный картофельный салат с креветками и апельсиновым соусом — всего за 15 минут.</p>
     <div class="up-img"><img src="unpacking-img/5.jpg" alt="Готовое блюдо: стейк с салатом"/></div>
-  </section>
-
-  <section class="up-step">
-    <p class="up-text">А еще в наборе – все необходимые дополнения: молоко для утреннего кофе, рикотта и хлопья на завтрак, чизкейк и эклеры на десерт, фрукты и орешки на перекус. Готовую запеканку можно быстро съесть, а круассаны испечь свежие.</p>
-    <div class="up-img"><img src="unpacking-img/6.jpg" alt="Дополнения: завтрак, десерты, перекус"/></div>
   </section>
 </main>
 
